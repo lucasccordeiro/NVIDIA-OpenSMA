@@ -1,0 +1,19 @@
+// Minimal std::bit_cast shim for ESBMC verification.
+// Implements the standard semantics: same-size object reinterpretation
+// via byte copy. Sufficient for pdk::mctp::app::Packet::{to_span,from}.
+#pragma once
+#include <cstddef>
+#include <string.h>  // ESBMC's libc provides ::memcpy here
+
+namespace std {
+
+template <typename To, typename From>
+constexpr To bit_cast(const From& src) noexcept
+{
+    static_assert(sizeof(To) == sizeof(From), "bit_cast size mismatch");
+    To dst;
+    ::memcpy(&dst, &src, sizeof(To));
+    return dst;
+}
+
+}  // namespace std

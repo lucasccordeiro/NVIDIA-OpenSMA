@@ -1,0 +1,32 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/OpenSMA/verification/harnesses/mctp_packet_negative_harness.cpp
+Parsing /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.510s
+GOTO program processing time: 0.010s
+Starting Bounded Model Checking
+Symex completed in: 0.007s (73 assignments)
+Caching time: 0.000s (removed 1 assertions)
+Slicing time: 0.000s (removed 60 assignments)
+Generated 26 VCC(s), 5 remaining after simplification (12 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Building error trace
+
+[Counterexample]
+
+
+State 3 file /Users/user/OpenSMA/verification/stubs/pdk-cmn-flowcontrol.h line 20 column 5 function corepdk_assert thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/OpenSMA/verification/stubs/pdk-cmn-flowcontrol.h line 20 column 5 function corepdk_assert
+  assertion corepdk_assert
+  !((_Bool)((signed long int)(!(condition::0 && (_Bool)msg::1))))
+
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit aarch64 macos

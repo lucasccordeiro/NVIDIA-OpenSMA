@@ -1,0 +1,40 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/OpenSMA/verification/harnesses/mctp_router_harness.cpp
+Parsing /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp
+Parsing /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.641s
+GOTO program processing time: 0.012s
+Checking base case, k = 1
+Starting Bounded Model Checking
+WARNING: no body for function here#
+WARNING: no body for function here#
+Symex completed in: 0.016s (125 assignments)
+Slicing time: 0.000s (removed 88 assignments)
+Generated 72 VCC(s), 9 remaining after simplification (37 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.004s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.006s
+BMC program time: 0.031s
+No bug has been found in the base case
+Checking forward condition, k = 1
+Starting Bounded Model Checking
+WARNING: no body for function here#
+WARNING: no body for function here#
+Symex completed in: 0.015s (121 assignments)
+Slicing time: 0.001s (removed 95 assignments)
+Generated 66 VCC(s), 5 remaining after simplification (26 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+BMC program time: 0.020s
+
+VERIFICATION SUCCESSFUL
+
+Solution found by the forward condition; all states are reachable (k = 1)
+ESBMC version 8.2.0 64-bit aarch64 macos

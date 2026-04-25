@@ -1,0 +1,36 @@
+// Minimal std::array shim for ESBMC verification.
+// ESBMC 8.2.0's bundled <array> crashes the C++ frontend converter
+// (Assertion failed: ctor_class_symb in gen_vptr_initializations);
+// using ::size_t in template params triggers a separate conversion error,
+// so we use unsigned long directly.
+#pragma once
+
+namespace std {
+
+template <typename T, unsigned long N>
+struct array
+{
+    T elems[N];
+
+    constexpr T*            data() noexcept { return elems; }
+    constexpr const T*      data() const noexcept { return elems; }
+    constexpr unsigned long size() const noexcept { return N; }
+    constexpr T&            operator[](unsigned long i) noexcept { return elems[i]; }
+    constexpr const T&      operator[](unsigned long i) const noexcept { return elems[i]; }
+
+    // at() asserts bounds via __ESBMC_assert so OOB access surfaces as a
+    // property violation instead of a real exception (production code relies
+    // on the throw to propagate; we report it as a verification failure).
+    constexpr T& at(unsigned long i) noexcept
+    {
+        __ESBMC_assert(i < N, "std::array::at out of range");
+        return elems[i];
+    }
+    constexpr const T& at(unsigned long i) const noexcept
+    {
+        __ESBMC_assert(i < N, "std::array::at out of range");
+        return elems[i];
+    }
+};
+
+}  // namespace std

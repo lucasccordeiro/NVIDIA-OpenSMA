@@ -33,8 +33,9 @@ FP_INCS := -I$(REPO)/src
 
 .PHONY: all mctp_packet mctp_packet_func mctp_packet_neg \
         mctp_router mctp_router_func mctp_router_neg \
-        fixed_point fixed_point_func clean
-all: mctp_packet mctp_router fixed_point
+        fixed_point fixed_point_func \
+        utils utils_func utils_neg clean
+all: mctp_packet mctp_router fixed_point utils
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
@@ -97,6 +98,25 @@ fixed_point_func:
 	  -DESBMC_FUNCTIONAL=1 \
 	  $(HARNESSES)/fixed_point_harness.cpp \
 	  2>&1 | tee $(RESULTS)/fixed_point_func.log
+
+utils:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) $(FP_INCS) -I$(STUBS) \
+	  $(HARNESSES)/utils_harness.cpp \
+	  2>&1 | tee $(RESULTS)/utils.log
+
+utils_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(FUNC_FLAGS) $(FP_INCS) -I$(STUBS) \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/utils_harness.cpp \
+	  2>&1 | tee $(RESULTS)/utils_func.log
+
+utils_neg:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  $(HARNESSES)/utils_negative_harness.cpp \
+	  2>&1 | tee $(RESULTS)/utils_neg.log
 
 clean:
 	rm -rf $(RESULTS)

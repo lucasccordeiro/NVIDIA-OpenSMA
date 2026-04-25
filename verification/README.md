@@ -35,6 +35,7 @@ ESBMC to produce a counterexample.
 | `mctp_packet` | `corepdk/.../app/pdk-mctp-app-packet.cpp` | ✅ | ✅ | ✅ |
 | `mctp_router` | `corepdk/.../platforms/x86/pdk-mctp-platforms-router-plat.cpp` | ✅ | ✅ | ✅ |
 | `fixed_point` | `src/nv/common/fixed_point.h` | ✅ | ✅ | — |
+| `utils` | `src/nv/common/utils.h` (saturating add/sub/mul/align_to) | ✅ (after F-2 fix) | ✅ | ✅ |
 
 ## ESBMC frontend bugs filed
 
@@ -51,11 +52,17 @@ and the workaround sites are tagged `WORKAROUND esbmc#<n>`.
 
 ## Findings
 
-`pdk::mctp::platforms::set_cur_eid()` lacks a bounds check on its `interface`
-argument; ESBMC's negative harness produces a deterministic counterexample
-showing `interface == UsEnd` triggers `std::array::at()` OOB. In production
-this throws `std::out_of_range`, uncaught, → `std::terminate()`. Recommended
-fix: mirror `get_cur_eid`'s explicit `if (interface >= UsEnd) ...` guard.
+- **F-1**: `pdk::mctp::platforms::set_cur_eid()` lacks a bounds check on its
+  `interface` argument; CEX shows `interface == UsEnd` triggers
+  `std::array::at()` OOB → uncaught → `std::terminate()`. Fix: mirror
+  `get_cur_eid`'s explicit guard.
+- **F-2**: `nv::common::align_to()` overflows for `value == alignment ==
+  2³¹` because the return-statement arithmetic `value + alignment - 1`
+  is parsed as `(value + alignment) - 1` while the guard parenthesises
+  differently. Fix: parenthesise as `value + (alignment - 1)` so the
+  arithmetic matches the guard.
+
+See `REPORT.md` for full reproductions and CEX traces.
 
 ## Reproducing
 
@@ -67,6 +74,7 @@ make mctp_packet_neg     # negative test (expect VERIFICATION FAILED)
 
 make mctp_router  mctp_router_func  mctp_router_neg
 make fixed_point  fixed_point_func
+make utils        utils_func        utils_neg
 ```
 
 Requires `ESBMC` 8.2.0 on `$PATH` or pass `ESBMC=/path/to/esbmc make ...`.

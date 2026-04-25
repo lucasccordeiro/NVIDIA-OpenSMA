@@ -16,4 +16,11 @@ constexpr To bit_cast(const From& src) noexcept
     return dst;
 }
 
+// Minimal std::has_single_bit: true iff x is a power of two.
+template <typename T>
+constexpr bool has_single_bit(T x) noexcept
+{
+    return x != 0 && (x & (x - 1)) == 0;
+}
+
 }  // namespace std

@@ -7,13 +7,15 @@
 
 ## TL;DR
 
-Three modules verified end-to-end against language-level safety properties
+Four modules verified end-to-end against language-level safety properties
 (pointer/bounds/overflow/div-by-zero/memory-leak) and against module-specific
-functional contracts via k-induction. One real codebase finding:
+functional contracts via k-induction. **Two real codebase findings**:
 `pdk::mctp::platforms::set_cur_eid()` will `std::terminate()` on an
-out-of-range `interface` argument. Three ESBMC C++-frontend bugs filed
-against [esbmc/esbmc](https://github.com/esbmc/esbmc); workarounds in place
-so verification continues.
+out-of-range `interface` (F-1); `nv::common::align_to()` overflows for
+`value == alignment == 2³¹` despite its own guard (F-2). Three ESBMC
+C++-frontend bugs filed against
+[esbmc/esbmc](https://github.com/esbmc/esbmc); workarounds in place so
+verification continues.
 
 ## What was verified
 
@@ -22,6 +24,7 @@ so verification continues.
 | MCTP packet parser | `corepdk/.../app/pdk-mctp-app-packet.cpp` | ✅ 62 VCC | ✅ 76 VCC, k=1 | ✅ CEX on undersized input |
 | MCTP routing helpers | `corepdk/.../platforms/x86/pdk-mctp-platforms-router-plat.cpp` | ✅ 70 VCC | ✅ 66 VCC, k=1 | ✅ CEX on `iface == UsEnd` |
 | Fixed-point arithmetic | `src/nv/common/fixed_point.h` | ✅ 78 VCC | ✅ 24 VCC, k=1 | — |
+| Saturating arithmetic | `src/nv/common/utils.h` | ✅ 20 VCC (after F-2 fix) | ✅ k=1 | ✅ CEX reproduces F-2 |
 
 All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
@@ -78,6 +81,47 @@ if (interface >= static_cast<uint16_t>(Interface::UsEnd)) {
 }
 routing_table.ec.cur_eid.at(interface) = eid;
 ```
+
+### F-2 — `align_to()` overflows on `value == alignment == 2³¹` (medium)
+
+**File**: `src/nv/common/utils.h:79-83`
+
+```cpp
+template<typename T, typename U>
+requires(std::is_integral_v<T> && std::is_integral_v<U>)
+constexpr T align_to(T value, U alignment) noexcept
+{
+    if (!is_power_of_2(alignment)) {
+        return std::numeric_limits<T>::max();
+    }
+    if (value > (std::numeric_limits<T>::max()) - (alignment - 1)) {
+        return std::numeric_limits<T>::max();         // guard
+    }
+    return static_cast<T>((value + alignment - 1) & ~(alignment - 1)
+                          & std::numeric_limits<T>::max());  // <-- overflow
+}
+```
+
+The guard checks `value > MAX - (alignment - 1)`, but the arithmetic in the
+return statement is parsed left-to-right as `(value + alignment) - 1`. For
+`value = alignment = 0x80000000`, the guard passes (`value > MAX -
+0x7fffffff = 0x80000000` is false because `>` is strict), then
+`value + alignment` overflows to `0` before the `- 1`.
+
+ESBMC's negative-harness counterexample pins exactly these inputs.
+
+**Suggested fix** (one line, parenthesise the addition to match the guard):
+
+```cpp
+return static_cast<T>((value + (alignment - 1)) & ~(alignment - 1)
+                      & std::numeric_limits<T>::max());
+```
+
+`make utils` runs the harness with the fix applied (saturation contract
+proves both directions); `make utils_neg` is a regression sentinel against
+the buggy form — it must always emit a counterexample, otherwise either
+ESBMC's overflow check regressed or the harness was unintentionally
+constrained.
 
 ### Items checked, no defects
 
@@ -136,14 +180,12 @@ once the upstream fixes land.
 
 ## Suggested next steps
 
-1. Land the suggested fix for F-1 (`set_cur_eid` bounds check) — small,
-   isolated, and removes a real terminate path.
-2. Add a fourth target: `nv::common::expected` or `nv::common::utils` —
-   header-only, broad reuse, low overlay cost.
-3. Once esbmc#4180 closes: revisit `pdk-mctp-app-validator.cpp`, then walk
+1. Land the suggested fixes for F-1 (`set_cur_eid` bounds check) and F-2
+   (`align_to` parenthesisation) — both one-line, isolated.
+2. Once esbmc#4180 closes: revisit `pdk-mctp-app-validator.cpp`, then walk
    down the `nsm_type_*.cpp` family in `src/nv/mctp/` (similar parser
    shape; the harness template will transfer).
-4. Stand up a CI hook that runs `make all` on every PR; verification must
+3. Stand up a CI hook that runs `make all` on every PR; verification must
    stay green and any failure must be triaged before merge.
 
 ## Reproducing

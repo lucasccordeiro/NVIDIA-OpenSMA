@@ -35,7 +35,7 @@ ESBMC to produce a counterexample.
 | `mctp_packet` | `corepdk/.../app/pdk-mctp-app-packet.cpp` | ✅ | ✅ | ✅ |
 | `mctp_router` | `corepdk/.../platforms/x86/pdk-mctp-platforms-router-plat.cpp` | ✅ | ✅ | ✅ |
 | `fixed_point` | `src/nv/common/fixed_point.h` | ✅ | ✅ | — |
-| `utils` | `src/nv/common/utils.h` (saturating add/sub/mul/align_to) | ✅ (after F-2 fix) | ✅ | ✅ |
+| `utils` | `src/nv/common/utils.h` (saturating add/sub/mul/align_to) | ✅ | ✅ | ⚠ (ESBMC strict unsigned-wrap demo, not a bug) |
 
 ## ESBMC frontend bugs filed
 
@@ -52,17 +52,20 @@ and the workaround sites are tagged `WORKAROUND esbmc#<n>`.
 
 ## Findings
 
-- **F-1**: `pdk::mctp::platforms::set_cur_eid()` lacks a bounds check on its
-  `interface` argument; CEX shows `interface == UsEnd` triggers
-  `std::array::at()` OOB → uncaught → `std::terminate()`. Fix: mirror
-  `get_cur_eid`'s explicit guard.
-- **F-2**: `nv::common::align_to()` overflows for `value == alignment ==
-  2³¹` because the return-statement arithmetic `value + alignment - 1`
-  is parsed as `(value + alignment) - 1` while the guard parenthesises
-  differently. Fix: parenthesise as `value + (alignment - 1)` so the
-  arithmetic matches the guard.
+- **F-1** (defensive observation, reachability not traced):
+  `pdk::mctp::platforms::set_cur_eid()` writes to a 2-element array
+  indexed by a wire-supplied `interface` without bounds-checking. Whether
+  the dispatch path can deliver `interface >= UsEnd` is not verified here.
+  Production builds with `-fno-exceptions`, so an OOB hit goes to
+  `abort()`/UB, not an uncaught throw. Fix is one line (mirror
+  `get_cur_eid`).
+- **F-2** *retracted*: initially claimed overflow in `align_to`; on
+  review, the unsigned wrap is mathematically benign (cancels exactly
+  under the subsequent mask). ESBMC's `--unsigned-overflow-check` flagged
+  a defined behaviour, not a defect. The proposed parenthesisation is a
+  readability change, not a correctness one.
 
-See `REPORT.md` for full reproductions and CEX traces.
+See `REPORT.md` for full discussion.
 
 ## Reproducing
 

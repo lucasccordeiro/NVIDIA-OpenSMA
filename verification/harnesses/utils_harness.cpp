@@ -61,16 +61,13 @@ constexpr inline bool is_power_of_2(uint32_t x) noexcept
 
 // Verbatim from utils.h:align_to (uint32_t-on-uint32_t specialisation).
 //
-// FINDING F-2: Production has an unsigned overflow at the marked line when
-//   value == alignment == 2^31. The guard above checks against
-//   `MAX - (alignment - 1)` but the arithmetic below is parsed as
-//   `(value + alignment) - 1` (left-to-right associativity), which overflows
-//   even when the guard passes. Fix is to parenthesize as
-//   `value + (alignment - 1)` so the arithmetic matches the guard.
-//
-// To exercise the harness we apply the *fixed* parenthesisation here so
-// Phase 2 can prove the saturation contract; the negative harness reuses
-// the buggy form to keep producing the CEX as a regression sentinel.
+// NOTE: F-2 was initially reported as an overflow bug here and has been
+// RETRACTED. For unsigned types, `(value + alignment) - 1` and
+// `value + (alignment - 1)` are identically equal modulo 2^32; the wrap in
+// the unparenthesised form is reverted by the subsequent subtraction, so
+// the function's output is the same. We use the parenthesised form below
+// only to keep ESBMC's --unsigned-overflow-check quiet during the
+// saturation-contract proof; production may use either form.
 constexpr inline uint32_t align_to(uint32_t value, uint32_t alignment) noexcept
 {
     if (!is_power_of_2(alignment)) {
@@ -79,7 +76,7 @@ constexpr inline uint32_t align_to(uint32_t value, uint32_t alignment) noexcept
     if (value > UINT32_MAX - (alignment - 1)) {
         return UINT32_MAX;
     }
-    return (value + (alignment - 1)) & ~(alignment - 1) & UINT32_MAX;  // F-2 fix
+    return (value + (alignment - 1)) & ~(alignment - 1) & UINT32_MAX;
 }
 
 }  // namespace nv::common

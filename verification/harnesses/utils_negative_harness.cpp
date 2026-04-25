@@ -1,13 +1,17 @@
-// Regression sentinel for finding F-2 (align_to overflow).
+// Demonstrator: ESBMC's `--unsigned-overflow-check` on the unparenthesised
+// `value + alignment - 1` form in nv::common::align_to.
 //
-// This harness reproduces the production bug at src/nv/common/utils.h:82 by
-// using the unparenthesised `value + alignment - 1` form. ESBMC must emit a
-// counterexample on this harness; if it ever reports VERIFICATION SUCCESSFUL,
-// either ESBMC's overflow check regressed or the input space was constrained
-// — both are bugs.
+// IMPORTANT: this is NOT a regression sentinel for a real bug. F-2 was
+// retracted on review: in unsigned arithmetic
+// `(value + alignment) - 1 ≡ value + (alignment - 1) (mod 2^N)`, so the
+// wrap below is benign — it is reverted by the subsequent subtraction and
+// the final masked result is correct.
 //
-// Once the production fix is applied (parenthesise as `value + (alignment - 1)`),
-// this harness becomes obsolete and should be deleted along with F-2 itself.
+// The harness is retained because:
+//   (a) it documents what triggered the original (incorrect) F-2 claim, and
+//   (b) it is a tidy reference for "ESBMC flags a wrap that doesn't matter
+//       for the function's output" — the kind of false-positive shape future
+//       harness authors should be ready to recognise.
 
 #include <cstdint>
 #include <climits>

@@ -9,11 +9,10 @@
 
 Four modules verified end-to-end against language-level safety properties
 (pointer/bounds/overflow/div-by-zero/memory-leak) and against module-specific
-functional contracts via k-induction. **Two real codebase findings**:
-`pdk::mctp::platforms::set_cur_eid()` will `std::terminate()` on an
-out-of-range `interface` (F-1); `nv::common::align_to()` overflows for
-`value == alignment == 2³¹` despite its own guard (F-2). Three ESBMC
-C++-frontend bugs filed against
+functional contracts via k-induction. **One defensive-programming
+observation** (F-1, reachability not traced — see below). One initially-claimed
+finding (F-2) **retracted on review**: it was a benign unsigned wrap in
+`align_to`, not a bug. Three ESBMC C++-frontend bugs filed against
 [esbmc/esbmc](https://github.com/esbmc/esbmc); workarounds in place so
 verification continues.
 
@@ -24,7 +23,7 @@ verification continues.
 | MCTP packet parser | `corepdk/.../app/pdk-mctp-app-packet.cpp` | ✅ 62 VCC | ✅ 76 VCC, k=1 | ✅ CEX on undersized input |
 | MCTP routing helpers | `corepdk/.../platforms/x86/pdk-mctp-platforms-router-plat.cpp` | ✅ 70 VCC | ✅ 66 VCC, k=1 | ✅ CEX on `iface == UsEnd` |
 | Fixed-point arithmetic | `src/nv/common/fixed_point.h` | ✅ 78 VCC | ✅ 24 VCC, k=1 | — |
-| Saturating arithmetic | `src/nv/common/utils.h` | ✅ 20 VCC (after F-2 fix) | ✅ k=1 | ✅ CEX reproduces F-2 |
+| Saturating arithmetic | `src/nv/common/utils.h` | ✅ 20 VCC | ✅ k=1 | ⚠ ESBMC strict unsigned-overflow demo (not a bug) |
 
 All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
@@ -49,7 +48,7 @@ All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
 ## Findings
 
-### F-1 — `set_cur_eid()` lacks bounds check (medium)
+### F-1 — `set_cur_eid()` lacks bounds check (defensive observation; reachability not traced)
 
 **File**: `corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp:34`
 
@@ -61,19 +60,38 @@ void set_cur_eid(RoutingTable& routing_table,
 }
 ```
 
-Compare with the sibling `get_cur_eid` (line 24), which guards with
-`if (interface >= static_cast<uint16_t>(Interface::UsEnd))`. `set_cur_eid`
-has no such guard and relies on `std::array::at()` to throw
-`std::out_of_range` if `interface` is out of bounds. The throw is uncaught
-on every reachable call path in this codebase → `std::terminate()` and
-firmware reset.
+`cur_eid` is a `std::array<uint8_t, UsEnd>` (`UsEnd == 2`). The sibling
+`get_cur_eid` guards with `if (interface >= UsEnd) ...`; `set_cur_eid` has
+no such guard.
 
-ESBMC's `mctp_router_neg` harness produces a deterministic counterexample:
-calling `set_cur_eid(table, UsEnd, ...)` violates the array bound at
-`pdk-mctp-platforms-router-plat.cpp:36` (verified against our shim's
-`std::array::at`).
+**What the verifier shows**: `mctp_router_neg` produces a deterministic
+counterexample where `interface == UsEnd` violates an `__ESBMC_assert(i < N,
+...)` baked into the verification-only `<array>` shim's `at()`. This is a
+*model-checking artefact* derived from the shim, not a direct proof of a
+production failure mode.
 
-**Suggested fix**: mirror `get_cur_eid`'s guard:
+**What I did NOT verify**:
+
+- **Runtime effect under `-fno-exceptions`.** Production builds with
+  `-fno-exceptions -fno-rtti` (`etc/platforms/*.mk`). Standard libstdc++ +
+  `-fno-exceptions` replaces the `std::out_of_range` throw with `abort()`
+  (or implementation-defined behaviour). It is *not* an uncaught exception
+  → `std::terminate()` as I originally claimed.
+- **Reachability**. The only non-test caller is
+  `Control::on_set_endpoint_id` (`pdk-mctp-platforms-control.cpp:61`),
+  which forwards `platforms::get_packet_interface(rx)` — a wire-supplied
+  `uint8_t` from `priv.packet_interface`. Whether the MCTP dispatch path
+  can deliver `interface >= UsEnd` to that handler depends on the protocol
+  router (which interfaces accept Set-EID; how `packet_interface` is
+  validated upstream). I have not traced this. If the dispatch path
+  already restricts `interface < UsEnd` before this handler runs, F-1
+  reduces to an internally-impossible state and is purely a
+  defensive-programming nit.
+
+**Recommendation**: add the guard mirroring `get_cur_eid`. Cost is one
+line; the benefit is removing dependence on an external invariant that
+isn't documented at the function boundary. Whether to file as a CVE-class
+finding requires the reachability trace I haven't done.
 
 ```cpp
 if (interface >= static_cast<uint16_t>(Interface::UsEnd)) {
@@ -82,46 +100,34 @@ if (interface >= static_cast<uint16_t>(Interface::UsEnd)) {
 routing_table.ec.cur_eid.at(interface) = eid;
 ```
 
-### F-2 — `align_to()` overflows on `value == alignment == 2³¹` (medium)
+### F-2 — RETRACTED (was: `align_to()` overflow)
 
-**File**: `src/nv/common/utils.h:79-83`
+I initially claimed `align_to` had a real overflow bug. **It does not.**
+For unsigned arithmetic, `(value + alignment) - 1` and
+`value + (alignment - 1)` are identically equal modulo 2³² because
+addition and subtraction are modular and the operations cancel. Concretely,
+for `value = alignment = 0x80000000`:
 
-```cpp
-template<typename T, typename U>
-requires(std::is_integral_v<T> && std::is_integral_v<U>)
-constexpr T align_to(T value, U alignment) noexcept
-{
-    if (!is_power_of_2(alignment)) {
-        return std::numeric_limits<T>::max();
-    }
-    if (value > (std::numeric_limits<T>::max()) - (alignment - 1)) {
-        return std::numeric_limits<T>::max();         // guard
-    }
-    return static_cast<T>((value + alignment - 1) & ~(alignment - 1)
-                          & std::numeric_limits<T>::max());  // <-- overflow
-}
-```
+- `(0x80000000 + 0x80000000) - 1 = 0 - 1 = 0xffffffff (mod 2³²)`
+- `0x80000000 + 0x7fffffff = 0xffffffff`
 
-The guard checks `value > MAX - (alignment - 1)`, but the arithmetic in the
-return statement is parsed left-to-right as `(value + alignment) - 1`. For
-`value = alignment = 0x80000000`, the guard passes (`value > MAX -
-0x7fffffff = 0x80000000` is false because `>` is strict), then
-`value + alignment` overflows to `0` before the `- 1`.
+Both then go through `& ~(alignment - 1) = & 0x80000000` → `0x80000000`,
+which is the correct aligned result. ESBMC's `--unsigned-overflow-check`
+flagged the intermediate wrap on `value + alignment`, but unsigned wrap is
+**defined behaviour** in C++ — the flag catches *unintended* wraps for
+review, not bugs.
 
-ESBMC's negative-harness counterexample pins exactly these inputs.
+The `make utils_neg` harness still produces a counterexample (the wrap is
+real, just benign); the harness is retained as a demonstrator of ESBMC's
+strict unsigned-overflow flag, not as a regression sentinel for a defect.
+The "fix" applied in `utils_harness.cpp` (parenthesising as
+`value + (alignment - 1)`) is a readability/intent improvement that makes
+the arithmetic match the guard's expression — adoption is a style choice,
+not a correctness one.
 
-**Suggested fix** (one line, parenthesise the addition to match the guard):
-
-```cpp
-return static_cast<T>((value + (alignment - 1)) & ~(alignment - 1)
-                      & std::numeric_limits<T>::max());
-```
-
-`make utils` runs the harness with the fix applied (saturation contract
-proves both directions); `make utils_neg` is a regression sentinel against
-the buggy form — it must always emit a counterexample, otherwise either
-ESBMC's overflow check regressed or the harness was unintentionally
-constrained.
+**Lesson**: when ESBMC reports an `--unsigned-overflow-check` violation,
+verify whether the wrap matters for the function's *output*. A wrap that
+is reverted by a subsequent inverse operation is an artefact, not a bug.
 
 ### Items checked, no defects
 
@@ -180,8 +186,11 @@ once the upstream fixes land.
 
 ## Suggested next steps
 
-1. Land the suggested fixes for F-1 (`set_cur_eid` bounds check) and F-2
-   (`align_to` parenthesisation) — both one-line, isolated.
+1. Trace MCTP dispatch reachability for F-1: does the receive path ever
+   deliver a Set-EID Control packet with `priv.packet_interface >= UsEnd`
+   to `Control::on_set_endpoint_id`? If yes, F-1 escalates to a real
+   abort/UB path under `-fno-exceptions`; if no, it stays a
+   defensive-programming nit.
 2. Once esbmc#4180 closes: revisit `pdk-mctp-app-validator.cpp`, then walk
    down the `nsm_type_*.cpp` family in `src/nv/mctp/` (similar parser
    shape; the harness template will transfer).

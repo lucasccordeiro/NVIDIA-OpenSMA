@@ -70,13 +70,17 @@ counterexample where `interface == UsEnd` violates an `__ESBMC_assert(i < N,
 *model-checking artefact* derived from the shim, not a direct proof of a
 production failure mode.
 
-**What I did NOT verify**:
+**Runtime effect (empirically confirmed)**: under production flags
+`-fno-exceptions -fno-rtti`, `std::array::at(OOB)` calls `abort()` — not
+silent corruption, not a throw. Reproduced via ESBMC's `--branch-coverage
+--generate-ctest-testcase` on a 26-line standalone harness mirroring the
+relevant call shape (`verification/ctest/f1/`); the generated executable
+exits with signal 6 (SIGABRT) when ESBMC picks any `i ∈ [UsEnd, UsEnd+8)`.
 
-- **Runtime effect under `-fno-exceptions`.** Production builds with
-  `-fno-exceptions -fno-rtti` (`etc/platforms/*.mk`). Standard libstdc++ +
-  `-fno-exceptions` replaces the `std::out_of_range` throw with `abort()`
-  (or implementation-defined behaviour). It is *not* an uncaught exception
-  → `std::terminate()` as I originally claimed.
+So *if* a caller delivers `interface >= UsEnd` to `set_cur_eid`, the firmware
+resets. Whether that path is reachable is the open question (below).
+
+**What I did NOT verify**:
 - **Reachability**. The only non-test caller is
   `Control::on_set_endpoint_id` (`pdk-mctp-platforms-control.cpp:61`),
   which forwards `platforms::get_packet_interface(rx)` — a wire-supplied
@@ -103,6 +107,14 @@ routing_table.ec.cur_eid.at(interface) = eid;
 ### F-2 — RETRACTED (was: `align_to()` overflow)
 
 I initially claimed `align_to` had a real overflow bug. **It does not.**
+The retraction is empirically validated via ESBMC's
+`--branch-coverage --generate-ctest-testcase` on an equivalence harness
+(`verification/ctest/f2/align_equiv.cpp`) that asserts
+`align_buggy(v, A) == align_fixed(v, A)` for all inputs. ESBMC's BMC
+explored the full input space without finding a counterexample to the
+equivalence, and all 5 generated runtime test cases pass at execution time
+(`100% tests passed, 0 tests failed`).
+
 For unsigned arithmetic, `(value + alignment) - 1` and
 `value + (alignment - 1)` are identically equal modulo 2³² because
 addition and subtraction are modular and the operations cancel. Concretely,
@@ -210,3 +222,18 @@ make mctp_router_neg
 ```
 
 ESBMC 8.2.0 on `$PATH`, or pass `ESBMC=/path/to/esbmc make ...`.
+
+### CTest-generated executable validators
+
+```sh
+# F-2 retraction: empirical equivalence of buggy and fixed forms.
+cd verification/ctest/f2
+esbmc --std c++20 --branch-coverage --generate-ctest-testcase align_equiv.cpp
+mkdir -p build && cd build && cmake .. && cmake --build . && ctest
+
+# F-1 failure mode: std::array::at(OOB) under production flags.
+cd verification/ctest/f1
+esbmc --std c++20 -I../../stubs --branch-coverage --generate-ctest-testcase array_oob.cpp
+mkdir -p build && cd build && cmake .. && cmake --build .
+./test_case_1   # expect SIGABRT (exit 134)
+```

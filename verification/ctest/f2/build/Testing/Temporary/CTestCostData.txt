@@ -1,0 +1,6 @@
+test_case_1 1 0.24971
+test_case_2 1 0.226018
+test_case_3 1 0.232786
+test_case_4 1 0.224271
+test_case_5 1 0.218003
+---

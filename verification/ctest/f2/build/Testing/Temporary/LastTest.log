@@ -1,0 +1,78 @@
+Start testing: Apr 25 21:50 BST
+----------------------------------------------------------
+1/5 Testing: test_case_1
+1/5 Test: test_case_1
+Command: "/Users/user/OpenSMA/verification/ctest/f2/build/test_case_1"
+Directory: /Users/user/OpenSMA/verification/ctest/f2/build
+"test_case_1" start time: Apr 25 21:50 BST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.25 sec
+----------------------------------------------------------
+Test Passed.
+"test_case_1" end time: Apr 25 21:50 BST
+"test_case_1" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/5 Testing: test_case_2
+2/5 Test: test_case_2
+Command: "/Users/user/OpenSMA/verification/ctest/f2/build/test_case_2"
+Directory: /Users/user/OpenSMA/verification/ctest/f2/build
+"test_case_2" start time: Apr 25 21:50 BST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.23 sec
+----------------------------------------------------------
+Test Passed.
+"test_case_2" end time: Apr 25 21:50 BST
+"test_case_2" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/5 Testing: test_case_3
+3/5 Test: test_case_3
+Command: "/Users/user/OpenSMA/verification/ctest/f2/build/test_case_3"
+Directory: /Users/user/OpenSMA/verification/ctest/f2/build
+"test_case_3" start time: Apr 25 21:50 BST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.23 sec
+----------------------------------------------------------
+Test Passed.
+"test_case_3" end time: Apr 25 21:50 BST
+"test_case_3" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/5 Testing: test_case_4
+4/5 Test: test_case_4
+Command: "/Users/user/OpenSMA/verification/ctest/f2/build/test_case_4"
+Directory: /Users/user/OpenSMA/verification/ctest/f2/build
+"test_case_4" start time: Apr 25 21:50 BST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.22 sec
+----------------------------------------------------------
+Test Passed.
+"test_case_4" end time: Apr 25 21:50 BST
+"test_case_4" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/5 Testing: test_case_5
+5/5 Test: test_case_5
+Command: "/Users/user/OpenSMA/verification/ctest/f2/build/test_case_5"
+Directory: /Users/user/OpenSMA/verification/ctest/f2/build
+"test_case_5" start time: Apr 25 21:50 BST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.22 sec
+----------------------------------------------------------
+Test Passed.
+"test_case_5" end time: Apr 25 21:50 BST
+"test_case_5" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Apr 25 21:50 BST

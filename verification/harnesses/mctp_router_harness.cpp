@@ -22,9 +22,8 @@ uint8_t  nondet_u8();
 unsigned nondet_uint();
 }
 
-// WORKAROUND esbmc#4182: type-alias for class/enum types; using-decl for fns.
-using Interface    = pdk::mctp::platforms::Interface;
-using RoutingTable = pdk::mctp::platforms::RoutingTable;
+using pdk::mctp::platforms::Interface;
+using pdk::mctp::platforms::RoutingTable;
 using pdk::mctp::platforms::DefaultInterface;
 using pdk::mctp::platforms::get_cur_eid;
 using pdk::mctp::platforms::set_cur_eid;

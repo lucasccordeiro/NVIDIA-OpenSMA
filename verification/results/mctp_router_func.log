@@ -6,7 +6,7 @@ Converting
 Generating GOTO Program
 GOTO program creation time: 0.427s
 Interval Analysis time: 0.009s
-GOTO program processing time: 0.019s
+GOTO program processing time: 0.018s
 Checking base case, k = 1
 Starting Bounded Model Checking
 WARNING: no body for function here#
@@ -30,9 +30,9 @@ Slicing time: 0.000s (removed 95 assignments)
 Generated 65 VCC(s), 4 remaining after simplification (25 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.001s
+Encoding to solver time: 0.002s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.003s
+Runtime decision procedure: 0.002s
 BMC program time: 0.019s
 
 VERIFICATION SUCCESSFUL

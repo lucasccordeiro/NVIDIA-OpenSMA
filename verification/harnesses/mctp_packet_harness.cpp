@@ -9,8 +9,6 @@
 //   get(set(x)) == x for both {length, interface} accessor pairs;
 //   round-trip via to_span/from preserves all fields.
 //
-// Class types are imported via type-alias instead of using-declaration
-// (workaround for esbmc/esbmc#4182).
 
 #include <cstdint>
 
@@ -23,9 +21,7 @@ uint16_t nondet_u16();
 unsigned nondet_uint();
 }
 
-// WORKAROUND esbmc#4182: type-alias instead of using-declaration for class
-// types — ESBMC's converter rejects `Using UsingType` sugar over RecordType.
-using Packet = pdk::mctp::app::Packet;
+using pdk::mctp::app::Packet;
 using pdk::mctp::platforms::PrivHeaderSize;
 using pdk::mctp::platforms::get_packet_interface;
 using pdk::mctp::platforms::get_packet_length;

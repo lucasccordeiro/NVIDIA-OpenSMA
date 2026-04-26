@@ -19,7 +19,7 @@ extern "C" {
 unsigned nondet_uint();
 }
 
-using Packet = pdk::mctp::app::Packet;
+using pdk::mctp::app::Packet;
 
 int main()
 {

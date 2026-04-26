@@ -15,8 +15,8 @@
 
 #include "app/pdk-mctp-app-router-plat.h"
 
-using RoutingTable = pdk::mctp::platforms::RoutingTable;
-using Interface    = pdk::mctp::platforms::Interface;
+using pdk::mctp::platforms::RoutingTable;
+using pdk::mctp::platforms::Interface;
 using pdk::mctp::platforms::set_cur_eid;
 
 constexpr auto UsEnd = static_cast<uint8_t>(Interface::UsEnd);

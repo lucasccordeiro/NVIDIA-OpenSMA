@@ -3,28 +3,25 @@ Parsing /Users/user/OpenSMA/verification/harnesses/mctp_packet_harness.cpp
 Parsing /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.543s
-GOTO program processing time: 0.011s
+GOTO program creation time: 0.415s
+GOTO program processing time: 0.008s
 Starting Bounded Model Checking
-WARNING: no body for function array#
-WARNING: no body for function array#
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
-WARNING: no body for function array#
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
-Symex completed in: 0.015s (203 assignments)
+Symex completed in: 0.014s (130 assignments)
 Caching time: 0.000s (removed 1 assertions)
-Slicing time: 0.001s (removed 184 assignments)
-Generated 64 VCC(s), 11 remaining after simplification (18 assignments)
+Slicing time: 0.000s (removed 113 assignments)
+Generated 62 VCC(s), 9 remaining after simplification (16 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.000s
+Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.000s
-BMC program time: 0.018s
+BMC program time: 0.016s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

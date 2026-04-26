@@ -1,8 +1,17 @@
 // Minimal std::array shim for ESBMC verification.
-// Tracks: esbmc#4183 (gen_vptr_initializations crash on std::array
-// instantiation; split out from the original esbmc#4180 Bug 1).
+//
+// Tracks: esbmc#4190 (bundled <array> is implemented as a class with no
+// user-accessible aggregate-init constructor; aggregate initialisation
+// `std::array<T, N>{a, b, c}` — which OpenSMA uses in
+// pdk-mctp-platforms-config.h for the SupportedType table — fails to
+// parse against the bundled header).
+//
+// The earlier reason for this shim (esbmc#4183, gen_vptr_initializations
+// crash on std::array<T,N>) was fixed by esbmc/esbmc#4188 on 2026-04-26.
+// The aggregate-init divergence is what keeps the shim necessary now.
+//
 // Using ::size_t in template params triggered a separate conversion error
-// at the time this shim was written, so we use unsigned long directly.
+// at the time this shim was first written, so we use unsigned long directly.
 #pragma once
 
 namespace std {

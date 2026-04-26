@@ -3,11 +3,13 @@ Parsing /Users/user/OpenSMA/verification/harnesses/mctp_packet_harness.cpp
 Parsing /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.438s
-Interval Analysis time: 0.010s
-GOTO program processing time: 0.020s
+GOTO program creation time: 0.535s
+Interval Analysis time: 0.013s
+GOTO program processing time: 0.026s
 Checking base case, k = 1
 Starting Bounded Model Checking
+WARNING: no body for function array#
+WARNING: no body for function array#
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
@@ -16,22 +18,25 @@ WARNING: not checking alignment for access to packed struct struct pdk::mctp::pl
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+WARNING: no body for function array#
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
-Symex completed in: 0.018s (146 assignments)
-Slicing time: 0.000s (removed 81 assignments)
-Generated 76 VCC(s), 12 remaining after simplification (65 assignments)
+Symex completed in: 0.019s (217 assignments)
+Slicing time: 0.000s (removed 148 assignments)
+Generated 76 VCC(s), 12 remaining after simplification (69 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.002s
+Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.000s
+Runtime decision procedure: 0.001s
 BMC program time: 0.022s
 No bug has been found in the base case
 Checking forward condition, k = 1
 Starting Bounded Model Checking
+WARNING: no body for function array#
+WARNING: no body for function array#
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
@@ -40,19 +45,20 @@ WARNING: not checking alignment for access to packed struct struct pdk::mctp::pl
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+WARNING: no body for function array#
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
-Symex completed in: 0.018s (136 assignments)
-Slicing time: 0.000s (removed 108 assignments)
+Symex completed in: 0.017s (207 assignments)
+Slicing time: 0.001s (removed 179 assignments)
 Generated 66 VCC(s), 2 remaining after simplification (28 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.000s
-BMC program time: 0.020s
+BMC program time: 0.019s
 
 VERIFICATION SUCCESSFUL
 

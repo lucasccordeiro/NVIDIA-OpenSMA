@@ -3,7 +3,7 @@ Parsing /Users/user/OpenSMA/verification/harnesses/mctp_packet_negative_harness.
 Parsing /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.365s
+GOTO program creation time: 0.399s
 GOTO program processing time: 0.007s
 Starting Bounded Model Checking
 Symex completed in: 0.005s (73 assignments)

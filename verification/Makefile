@@ -4,12 +4,18 @@ STUBS      := $(CURDIR)/stubs
 RESULTS    := $(CURDIR)/results
 HARNESSES  := $(CURDIR)/harnesses
 
-# Include order: stubs first so they shadow real headers, then mctp-cpp src,
-# then the x86 platform that provides PrivateHeader and get/set helpers.
+# Common include order: stubs first (so libc++ shims shadow real headers
+# and pdk-cmn-flowcontrol.h is intercepted), then mctp-cpp src, then the
+# x86 platform that provides PrivateHeader and the get/set helpers.
 MCTP_INCS := \
   -I$(STUBS) \
   -I$(REPO)/corepdk/modules/mctp-cpp/src \
   -I$(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86
+
+# Packet-specific overlay (workaround for esbmc#4191 — bit_cast aliasing
+# CEX). Prepended ONLY to the mctp_packet* targets; other harnesses pull
+# the production pdk-mctp-app-packet.h directly. Drop once #4191 is fixed.
+PACKET_OVERLAY := -I$(STUBS)/packet_overlay
 
 # Standard language-level safety profile. ESBMC enables pointer-check,
 # bounds-check, and div-by-zero by default; we add the explicit opt-ins
@@ -39,14 +45,15 @@ FP_INCS := -I$(REPO)/src
 
 .PHONY: all mctp_packet mctp_packet_func mctp_packet_neg \
         mctp_router mctp_router_func mctp_router_neg \
+        mctp_validator mctp_validator_func \
         fixed_point fixed_point_func \
         utils utils_func utils_neg clean
-all: mctp_packet mctp_router fixed_point utils
+all: mctp_packet mctp_router mctp_validator fixed_point utils
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
 	@mkdir -p $(RESULTS)
-	$(ESBMC) $(LANG_FLAGS) $(MCTP_INCS) \
+	$(ESBMC) $(LANG_FLAGS) $(PACKET_OVERLAY) $(MCTP_INCS) \
 	  $(HARNESSES)/mctp_packet_harness.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
 	  2>&1 | tee $(RESULTS)/mctp_packet.log
@@ -54,7 +61,7 @@ mctp_packet:
 # Phase 2: functional contract (round-trip equivalence) via k-induction.
 mctp_packet_func:
 	@mkdir -p $(RESULTS)
-	$(ESBMC) $(FUNC_FLAGS) $(MCTP_INCS) \
+	$(ESBMC) $(FUNC_FLAGS) $(PACKET_OVERLAY) $(MCTP_INCS) \
 	  -DESBMC_FUNCTIONAL=1 \
 	  $(HARNESSES)/mctp_packet_harness.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
@@ -62,7 +69,7 @@ mctp_packet_func:
 
 mctp_packet_neg:
 	@mkdir -p $(RESULTS)
-	$(ESBMC) $(LANG_FLAGS) $(MCTP_INCS) \
+	$(ESBMC) $(LANG_FLAGS) $(PACKET_OVERLAY) $(MCTP_INCS) \
 	  $(HARNESSES)/mctp_packet_negative_harness.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
 	  2>&1 | tee $(RESULTS)/mctp_packet_neg.log
@@ -91,6 +98,40 @@ mctp_router_func:
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
 	  2>&1 | tee $(RESULTS)/mctp_router_func.log
+
+# Validator: build-time sed of validator.cpp to swap the C++20 `using enum`
+# line for per-enumerator using-decls (workaround for esbmc#4195). Source of
+# truth is the upstream file; the patched copy is regenerated each build.
+VALIDATOR_PATCHED := $(RESULTS)/pdk-mctp-app-validator.patched.cpp
+VALIDATOR_SRC     := $(REPO)/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp
+
+$(VALIDATOR_PATCHED): $(VALIDATOR_SRC)
+	@mkdir -p $(RESULTS)
+	@sed 's|using enum pdk::cmn::log::Destination;|using pdk::cmn::log::Destination::Console; /* WORKAROUND esbmc#4195 */|' \
+	  $(VALIDATOR_SRC) > $@
+
+mctp_validator: $(VALIDATOR_PATCHED)
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) $(MCTP_INCS) \
+	  -I$(REPO)/corepdk/modules/mctp-cpp/src/app \
+	  $(HARNESSES)/mctp_validator_harness.cpp \
+	  $(VALIDATOR_PATCHED) \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
+	  2>&1 | tee $(RESULTS)/mctp_validator.log
+
+mctp_validator_func: $(VALIDATOR_PATCHED)
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --overflow-check --interval-analysis \
+	  --k-induction --k-step 1 --max-k-step 16 \
+	  $(MCTP_INCS) \
+	  -I$(REPO)/corepdk/modules/mctp-cpp/src/app \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/mctp_validator_harness.cpp \
+	  $(VALIDATOR_PATCHED) \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
+	  2>&1 | tee $(RESULTS)/mctp_validator_func.log
 
 fixed_point:
 	@mkdir -p $(RESULTS)

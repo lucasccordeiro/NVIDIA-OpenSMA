@@ -1,0 +1,81 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/OpenSMA/verification/harnesses/mctp_validator_harness.cpp
+Parsing /Users/user/OpenSMA/verification/results/pdk-mctp-app-validator.patched.cpp
+Parsing /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp
+Parsing /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.546s
+GOTO program processing time: 0.012s
+Starting Bounded Model Checking
+Unwinding loop 25 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 25 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 25 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 25 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+Unwinding loop 25 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 25 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 25 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 25 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+Symex completed in: 0.034s (203 assignments)
+Caching time: 0.001s (removed 1 assertions)
+Slicing time: 0.000s (removed 178 assignments)
+Generated 119 VCC(s), 16 remaining after simplification (24 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+BMC program time: 0.037s
+
+VERIFICATION SUCCESSFUL
+ESBMC version 8.2.0 64-bit aarch64 macos

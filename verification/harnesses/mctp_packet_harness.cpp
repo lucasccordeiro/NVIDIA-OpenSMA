@@ -9,8 +9,8 @@
 //   get(set(x)) == x for both {length, interface} accessor pairs;
 //   round-trip via to_span/from preserves all fields.
 //
-// All deeply-qualified names are pulled into harness scope via using-decls
-// (workaround for esbmc/esbmc#4180).
+// Class types are imported via type-alias instead of using-declaration
+// (workaround for esbmc/esbmc#4182).
 
 #include <cstdint>
 
@@ -23,7 +23,7 @@ uint16_t nondet_u16();
 unsigned nondet_uint();
 }
 
-// WORKAROUND esbmc#4180: type-alias instead of using-declaration for class
+// WORKAROUND esbmc#4182: type-alias instead of using-declaration for class
 // types — ESBMC's converter rejects `Using UsingType` sugar over RecordType.
 using Packet = pdk::mctp::app::Packet;
 using pdk::mctp::platforms::PrivHeaderSize;

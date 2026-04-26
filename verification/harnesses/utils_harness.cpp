@@ -2,11 +2,12 @@
 // (production source: src/nv/common/utils.h).
 //
 // utils.h pulls in <type_traits> features (std::is_enum_v, std::is_unsigned,
-// std::enable_if_t) that ESBMC 8.2.0 cannot parse. Rather than overlay
-// <type_traits> as a whole, we inline the function bodies *byte-identically*
-// to production for the uint32_t specialisation, dropping only the SFINAE
-// constraints (which are well-formedness gates, not semantics). Every helper
-// below is a verbatim copy of the corresponding production body.
+// std::enable_if_t) that ESBMC's bundled <type_traits> shim does not provide
+// (esbmc#4190). Rather than overlay <type_traits> as a whole, we inline the
+// function bodies *byte-identically* to production for the uint32_t
+// specialisation, dropping only the SFINAE constraints (which are
+// well-formedness gates, not semantics). Every helper below is a verbatim
+// copy of the corresponding production body.
 //
 // Phase 1: confirm the saturating wrappers cannot themselves overflow.
 // Phase 2: confirm the saturation contract holds.

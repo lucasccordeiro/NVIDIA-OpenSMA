@@ -1,6 +1,8 @@
-// Minimal std::bit_cast shim for ESBMC verification.
-// Implements the standard semantics: same-size object reinterpretation
-// via byte copy. Sufficient for pdk::mctp::app::Packet::{to_span,from}.
+// Minimal <bit> shim for ESBMC verification.
+// Tracks: esbmc#4190 (bundled libc++ shim is missing <bit>).
+// Provides std::bit_cast (same-size object reinterpretation via byte copy)
+// and std::has_single_bit. Sufficient for pdk::mctp::app::Packet and the
+// nv::common saturating-arithmetic helpers.
 #pragma once
 #include <cstddef>
 #include <string.h>  // ESBMC's libc provides ::memcpy here

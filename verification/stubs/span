@@ -1,4 +1,5 @@
 // Minimal std::span shim for ESBMC verification.
+// Tracks: esbmc#4190 (bundled libc++ shim is missing <span>).
 // Production uses only: data(), size(), operator[], the {ptr, size} ctor,
 // and the implicit-decay ctor from a reference to T. That is all we provide.
 #pragma once

@@ -151,44 +151,24 @@ is reverted by a subsequent inverse operation is an artefact, not a bug.
 
 ## Tooling-level findings (ESBMC bugs)
 
-Three C++ frontend bugs were discovered during harness development. Each
-has a freestanding minimal reproducer under `verification/esbmc_bug_repros/`
-and is upstream:
+Five C++ frontend bugs surfaced while building the harnesses. Each has a
+freestanding minimal reproducer under `verification/esbmc_bug_repros/`
+and is filed upstream. **Every workaround currently in this tree is
+backed by an open issue.**
 
-1. **[esbmc/esbmc#4180](https://github.com/esbmc/esbmc/issues/4180)** —
-   two converter assertion failures:
-   - `std::array<T, N>` instantiation crashes
-     `gen_vptr_initializations` (3-line repro). **Still open.**
-   - Namespace-qualified `constexpr` initialiser crashes
-     `getAsType` (`NestedNameSpecifierBase.h:159`) (24-line repro).
-     **Fixed** by [esbmc#4184](https://github.com/esbmc/esbmc/pull/4184)
-     (merged 2026-04-26). Also unblocked `std::bit_cast<T*>(...)` call
-     sites that went through the same converter path. The corresponding
-     workarounds in `verification/stubs/app/pdk-mctp-app-packet.h` were
-     removed (3 sites: `using TransmitUnit`, `using PrivHeaderSize`,
-     `using corepdk_assert` plus their unqualified call sites). The
-     overlay still keeps a C-cast in lieu of `std::bit_cast` — but this
-     is for a *different* artefact: ESBMC reports a spurious round-trip
-     CEX where the CEX itself shows `mirror = &pkt` (i.e. the property
-     should hold by aliasing). To be reported separately.
-2. **[esbmc/esbmc#4182](https://github.com/esbmc/esbmc/issues/4182)** —
-   `using ns::T;` for a class **or** enum type triggers
-   `Conversion of unsupported clang type: Using` (16-line repro plus a
-   follow-up comment with the enum-type variant).
+| Issue | Title | State | Workaround in tree |
+|---|---|---|---|
+| [#4180](https://github.com/esbmc/esbmc/issues/4180) | Original umbrella (array crash + qualified constexpr) | **closed** — split into #4183 (still open) and fixed via #4184 | n/a |
+| [#4182](https://github.com/esbmc/esbmc/issues/4182) | `using ns::T;` for class / enum types fails conversion | open | type-alias `using T = ns::T;` in every harness |
+| [#4183](https://github.com/esbmc/esbmc/issues/4183) | `std::array<T,N>` crashes `gen_vptr_initializations` | open | `verification/stubs/array` shim |
+| [#4190](https://github.com/esbmc/esbmc/issues/4190) | bundled libc++ missing `<span>`, `<bit>`, parts of `<type_traits>` | open | `verification/stubs/{span,bit}` shims; `<type_traits>` features inlined into utils harness |
+| [#4191](https://github.com/esbmc/esbmc/issues/4191) | spurious CEX on aliased `*std::bit_cast<T*>(...)` round-trip | open | C-cast in lieu of `std::bit_cast` in `pdk-mctp-app-packet.h` overlay |
+| [#4184](https://github.com/esbmc/esbmc/pull/4184) | `getAsType` guard for namespace-qualified constexpr | merged 2026-04-26 | (workarounds removed) |
 
-Workarounds applied in `verification/stubs/`:
-
-- `<array>`, `<span>`, `<bit>` — minimal POD shims that expose only the
-  surface OpenSMA actually uses.
-- `verification/stubs/app/pdk-mctp-app-packet*.h` — overlay headers that are
-  byte-identical to production except for a `using` declaration in lieu of
-  the `platforms::TransmitUnit` qualifier and `reinterpret_cast` in lieu
-  of `std::bit_cast` inside class methods.
-- Type-aliases (`using T = ns::T;`) instead of using-declarations
-  (`using ns::T;`) for class/enum types in every harness.
-
-Every workaround site is tagged `// WORKAROUND esbmc#<n>` for easy removal
-once the upstream fixes land.
+Every workaround site is tagged `// WORKAROUND esbmc#<n>` pointing at the
+specific open issue listed in the table above. Removing a workaround is a
+mechanical `grep` once the corresponding upstream fix lands; the tags are
+kept narrow so multiple fixes can be reaped independently.
 
 ## What was deferred and why
 

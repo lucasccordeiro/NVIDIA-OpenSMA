@@ -1,8 +1,8 @@
 // Minimal std::array shim for ESBMC verification.
-// ESBMC 8.2.0's bundled <array> crashes the C++ frontend converter
-// (Assertion failed: ctor_class_symb in gen_vptr_initializations);
-// using ::size_t in template params triggers a separate conversion error,
-// so we use unsigned long directly.
+// Tracks: esbmc#4183 (gen_vptr_initializations crash on std::array
+// instantiation; split out from the original esbmc#4180 Bug 1).
+// Using ::size_t in template params triggered a separate conversion error
+// at the time this shim was written, so we use unsigned long directly.
 #pragma once
 
 namespace std {

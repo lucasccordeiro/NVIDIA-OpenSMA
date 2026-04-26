@@ -23,10 +23,16 @@ LANG_FLAGS := \
   --unwind 4 \
   --no-unwinding-assertions
 
-# Functional / inductive profile.
+# Functional / inductive profile. Restored to k-induction with
+# --interval-analysis after esbmc#4184 cleared the qualified-constexpr
+# blocker. Works on all current targets because the verification-only
+# overlay for pdk-mctp-app-packet.h replaces std::bit_cast<T*> with a
+# C-cast (tagged WORKAROUND esbmc#4180 part 1) — that delta is what keeps
+# the memcpy out of the inductive proof obligation.
 FUNC_FLAGS := \
   --std c++20 \
   --overflow-check \
+  --interval-analysis \
   --k-induction --k-step 1 --max-k-step 6
 
 FP_INCS := -I$(REPO)/src

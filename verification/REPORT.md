@@ -158,9 +158,19 @@ and is upstream:
 1. **[esbmc/esbmc#4180](https://github.com/esbmc/esbmc/issues/4180)** —
    two converter assertion failures:
    - `std::array<T, N>` instantiation crashes
-     `gen_vptr_initializations` (3-line repro).
+     `gen_vptr_initializations` (3-line repro). **Still open.**
    - Namespace-qualified `constexpr` initialiser crashes
      `getAsType` (`NestedNameSpecifierBase.h:159`) (24-line repro).
+     **Fixed** by [esbmc#4184](https://github.com/esbmc/esbmc/pull/4184)
+     (merged 2026-04-26). Also unblocked `std::bit_cast<T*>(...)` call
+     sites that went through the same converter path. The corresponding
+     workarounds in `verification/stubs/app/pdk-mctp-app-packet.h` were
+     removed (3 sites: `using TransmitUnit`, `using PrivHeaderSize`,
+     `using corepdk_assert` plus their unqualified call sites). The
+     overlay still keeps a C-cast in lieu of `std::bit_cast` — but this
+     is for a *different* artefact: ESBMC reports a spurious round-trip
+     CEX where the CEX itself shows `mirror = &pkt` (i.e. the property
+     should hold by aliasing). To be reported separately.
 2. **[esbmc/esbmc#4182](https://github.com/esbmc/esbmc/issues/4182)** —
    `using ns::T;` for a class **or** enum type triggers
    `Conversion of unsupported clang type: Using` (16-line repro plus a

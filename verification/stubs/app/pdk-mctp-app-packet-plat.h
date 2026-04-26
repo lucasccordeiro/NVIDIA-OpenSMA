@@ -1,15 +1,12 @@
-// Verification-only overlay of corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet-plat.h
+// Verification-only overlay of pdk-mctp-app-packet-plat.h.
 //
-// Required because the production plat.h contains a relative `#include
-// "pdk-mctp-app-packet.h"` that resolves to the production packet.h regardless
-// of `-I` order, which in turn re-introduces the symbols our overlay
-// (workaround for esbmc/esbmc#4180) already defines, producing a redefinition
-// error. By also overlaying plat.h, the relative include resolves to our
-// overlay packet.h that lives next to it under verification/stubs/app/.
-//
-// The function declarations below are byte-identical to production.
-//
-// Remove once esbmc/esbmc#4180 is fixed.
+// Required because the production plat.h does a relative
+// `#include "pdk-mctp-app-packet.h"` that resolves to the production
+// packet.h regardless of `-I` order; without this overlay, both the
+// production and our overlay packet.h get pulled into the same TU, causing
+// redefinition errors. Function signatures below are byte-identical to
+// production. Remove together with packet.h overlay once esbmc#4180 part 1
+// is fixed.
 #pragma once
 #include "pdk-mctp-app-packet.h"
 

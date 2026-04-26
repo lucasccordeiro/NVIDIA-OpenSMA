@@ -3,16 +3,16 @@ Parsing /Users/user/OpenSMA/verification/harnesses/mctp_packet_negative_harness.
 Parsing /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.510s
-GOTO program processing time: 0.010s
+GOTO program creation time: 0.427s
+GOTO program processing time: 0.008s
 Starting Bounded Model Checking
-Symex completed in: 0.007s (73 assignments)
+Symex completed in: 0.006s (73 assignments)
 Caching time: 0.000s (removed 1 assertions)
 Slicing time: 0.000s (removed 60 assignments)
 Generated 26 VCC(s), 5 remaining after simplification (12 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.001s
+Encoding to solver time: 0.000s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.001s
 Building error trace

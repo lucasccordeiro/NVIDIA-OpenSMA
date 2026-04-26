@@ -1,18 +1,23 @@
 # ESBMC Verification of OpenSMA
 
 Bounded model-checking harnesses for selected modules of NVIDIA OpenSMA, run
-against [ESBMC](https://github.com/esbmc/esbmc) 8.2.0 (verified) on macOS aarch64.
+against [ESBMC](https://github.com/esbmc/esbmc) on macOS aarch64.
 
 ## Layout
 
 ```
 verification/
-├── Makefile                 # ESBMC invocations per target/profile
-├── run.sh                   # thin wrapper: ./run.sh mctp_packet
-├── harnesses/               # one *_harness.cpp per target (Phase 1 + Phase 2)
-├── stubs/                   # verification-only header overlays + minimal STL shims
-├── esbmc_bug_repros/        # standalone reproducers for ESBMC frontend bugs
-└── results/                 # esbmc logs (latest run; regenerated on `make`)
+├── Makefile                          # ESBMC invocations per target/profile
+├── run.sh                            # thin wrapper: ./run.sh mctp_packet
+├── harnesses/                        # *_harness.cpp per target (Phase 1 + Phase 2)
+├── stubs/                            # verification-only header shims
+│   ├── array, span, bit              # libc++ shims for esbmc#4190
+│   ├── pdk-cmn-flowcontrol.h         # drops upstream Ada/log dep
+│   ├── pdk/cmn/log/log.h             # no-op log shim
+│   └── packet_overlay/app/...        # esbmc#4191 workaround (mctp_packet only)
+├── ctest/{f1,f2}/                    # ESBMC --generate-ctest-testcase outputs
+├── esbmc_bug_repros/                 # standalone repros for upstream ESBMC bugs
+└── results/                          # esbmc logs + sed-patched validator.cpp
 ```
 
 ## Profiles
@@ -21,8 +26,9 @@ verification/
 
 - `<target>` — language-level safety (default checks + `--memory-leak-check
   --overflow-check --unsigned-overflow-check --nan-check --unwind 4`).
-- `<target>_func` — functional contracts via `--k-induction --k-step 1
-  --max-k-step 6`, with `-DESBMC_FUNCTIONAL=1` enabling extra `__ESBMC_assert`
+- `<target>_func` — functional contracts via `--k-induction --interval-analysis
+  --k-step 1 --max-k-step 6` (validator uses `--max-k-step 16` for its branchier
+  state machine), with `-DESBMC_FUNCTIONAL=1` enabling extra `__ESBMC_assert`
   in the harness.
 
 Negative tests (`<target>_neg`) deliberately drive the unsafe path and expect
@@ -34,21 +40,23 @@ ESBMC to produce a counterexample.
 |---|---|:-:|:-:|:-:|
 | `mctp_packet` | `corepdk/.../app/pdk-mctp-app-packet.cpp` | ✅ | ✅ | ✅ |
 | `mctp_router` | `corepdk/.../platforms/x86/pdk-mctp-platforms-router-plat.cpp` | ✅ | ✅ | ✅ |
+| `mctp_validator` | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=9 (reset contract; bit_cast-dependent contracts gated until [#4192](https://github.com/esbmc/esbmc/pull/4192) lands) | — |
 | `fixed_point` | `src/nv/common/fixed_point.h` | ✅ | ✅ | — |
 | `utils` | `src/nv/common/utils.h` (saturating add/sub/mul/align_to) | ✅ | ✅ | ⚠ (ESBMC strict unsigned-wrap demo, not a bug) |
 
-## ESBMC frontend bugs filed
+## ESBMC issues filed
 
-Three C++ frontend bugs were discovered while preparing harnesses; minimal
-reproducers live under `esbmc_bug_repros/`. Each is worked around in `stubs/`
-and the workaround sites are tagged `WORKAROUND esbmc#<n>`.
+Every workaround in this tree maps to a specific filed issue. See `REPORT.md`
+for the full table; brief view:
 
-- [esbmc/esbmc#4180](https://github.com/esbmc/esbmc/issues/4180) —
-  `<array>` instantiation crashes the converter; namespace-qualified
-  `constexpr` initialiser crashes the converter.
-- [esbmc/esbmc#4182](https://github.com/esbmc/esbmc/issues/4182) —
-  `using ns::T;` for class or enum types triggers
-  `Conversion of unsupported clang type: Using`.
+| Issue | State | Workaround |
+|---|---|---|
+| [#4180](https://github.com/esbmc/esbmc/issues/4180) | closed (split + fixed) | — |
+| [#4182](https://github.com/esbmc/esbmc/issues/4182) | fixed by [#4187](https://github.com/esbmc/esbmc/pull/4187) | (removed) |
+| [#4183](https://github.com/esbmc/esbmc/issues/4183) | fixed by [#4188](https://github.com/esbmc/esbmc/pull/4188) | (crash gone; `<array>` shim retained for #4190 reasons) |
+| [#4190](https://github.com/esbmc/esbmc/issues/4190) | open ([#4194](https://github.com/esbmc/esbmc/pull/4194) in flight) | `stubs/{array,span,bit}` shims; `<type_traits>` features inlined into utils harness |
+| [#4191](https://github.com/esbmc/esbmc/issues/4191) | open ([#4192](https://github.com/esbmc/esbmc/pull/4192) in flight) | C-cast in lieu of `std::bit_cast` (`stubs/packet_overlay/`); validator's bit_cast-dependent Phase 2 contracts gated |
+| [#4195](https://github.com/esbmc/esbmc/issues/4195) | open | build-time `sed` rewrites validator.cpp's `using enum` line |
 
 ## Findings
 
@@ -57,13 +65,14 @@ and the workaround sites are tagged `WORKAROUND esbmc#<n>`.
   indexed by a wire-supplied `interface` without bounds-checking. Whether
   the dispatch path can deliver `interface >= UsEnd` is not verified here.
   Production builds with `-fno-exceptions`, so an OOB hit goes to
-  `abort()`/UB, not an uncaught throw. Fix is one line (mirror
+  `abort()`/UB, not an uncaught throw. Empirical SIGABRT confirmed on
+  host via ESBMC's ctest gen (see `ctest/f1/`). Fix is one line (mirror
   `get_cur_eid`).
 - **F-2** *retracted*: initially claimed overflow in `align_to`; on
   review, the unsigned wrap is mathematically benign (cancels exactly
   under the subsequent mask). ESBMC's `--unsigned-overflow-check` flagged
-  a defined behaviour, not a defect. The proposed parenthesisation is a
-  readability change, not a correctness one.
+  defined behaviour, not a defect — confirmed empirically by ESBMC's ctest
+  gen (see `ctest/f2/`).
 
 See `REPORT.md` for full discussion.
 
@@ -71,13 +80,14 @@ See `REPORT.md` for full discussion.
 
 ```sh
 cd verification
-make mctp_packet         # Phase 1
-make mctp_packet_func    # Phase 2 (k-induction)
-make mctp_packet_neg     # negative test (expect VERIFICATION FAILED)
-
-make mctp_router  mctp_router_func  mctp_router_neg
-make fixed_point  fixed_point_func
-make utils        utils_func        utils_neg
+make all                                       # Phase 1 across every target
+make mctp_packet_func mctp_router_func \
+     mctp_validator_func                       # Phase 2 (k-induction)
+make fixed_point_func utils_func               # ditto
+make mctp_packet_neg mctp_router_neg utils_neg # negative tests (expect FAILED)
 ```
 
-Requires `ESBMC` 8.2.0 on `$PATH` or pass `ESBMC=/path/to/esbmc make ...`.
+Requires ESBMC on `$PATH` (current `master` recommended), or pass
+`ESBMC=/path/to/esbmc make ...`. The validator target requires that
+upstream's `pdk-mctp-app-validator.cpp` is sed-patched at build time;
+`results/pdk-mctp-app-validator.patched.cpp` is the generated copy.

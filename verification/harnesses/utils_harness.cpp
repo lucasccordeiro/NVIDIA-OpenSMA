@@ -1,13 +1,16 @@
 // ESBMC harness for nv::common saturating arithmetic helpers
 // (production source: src/nv/common/utils.h).
 //
-// utils.h pulls in <type_traits> features (std::is_enum_v, std::is_unsigned,
-// std::enable_if_t) that ESBMC's bundled <type_traits> shim does not provide
-// (esbmc#4190). Rather than overlay <type_traits> as a whole, we inline the
-// function bodies *byte-identically* to production for the uint32_t
-// specialisation, dropping only the SFINAE constraints (which are
-// well-formedness gates, not semantics). Every helper below is a verbatim
-// copy of the corresponding production body.
+// utils.h pulls in `std::underlying_type_t` (in its enum-typed `bit(T)`
+// overload), which ESBMC's bundled <type_traits> does not yet provide
+// (esbmc#4190 — partially fixed by #4194; underlying_type_t still missing).
+// Even though the harness only exercises non-enum overloads, parsing
+// utils.h fails before we get there.
+//
+// Workaround: inline the helpers we actually verify. Every body below is a
+// verbatim copy of the corresponding production body. Drop this file in
+// favour of a plain `#include "nv/common/utils.h"` once underlying_type_t
+// lands.
 //
 // Phase 1: confirm the saturating wrappers cannot themselves overflow.
 // Phase 2: confirm the saturation contract holds.
@@ -23,7 +26,6 @@ unsigned nondet_uint();
 
 namespace nv::common {
 
-// Verbatim from utils.h:add (template body, uint32_t specialisation).
 constexpr inline uint32_t add(uint32_t a, uint32_t b)
 {
     if (a > UINT32_MAX - b) {
@@ -32,7 +34,6 @@ constexpr inline uint32_t add(uint32_t a, uint32_t b)
     return a + b;
 }
 
-// Verbatim from utils.h:sub.
 constexpr inline uint32_t sub(uint32_t a, uint32_t b)
 {
     if (a < b) {
@@ -41,7 +42,6 @@ constexpr inline uint32_t sub(uint32_t a, uint32_t b)
     return a - b;
 }
 
-// Verbatim from utils.h:mul.
 constexpr inline uint32_t mul(uint32_t a, uint32_t b)
 {
     if (b == 0) {
@@ -53,22 +53,11 @@ constexpr inline uint32_t mul(uint32_t a, uint32_t b)
     return a * b;
 }
 
-// Verbatim from utils.h:is_power_of_2 (uses std::has_single_bit; we inline
-// the equivalent bit trick to avoid <bit> template).
 constexpr inline bool is_power_of_2(uint32_t x) noexcept
 {
     return x != 0 && (x & (x - 1)) == 0;
 }
 
-// Verbatim from utils.h:align_to (uint32_t-on-uint32_t specialisation).
-//
-// NOTE: F-2 was initially reported as an overflow bug here and has been
-// RETRACTED. For unsigned types, `(value + alignment) - 1` and
-// `value + (alignment - 1)` are identically equal modulo 2^32; the wrap in
-// the unparenthesised form is reverted by the subsequent subtraction, so
-// the function's output is the same. We use the parenthesised form below
-// only to keep ESBMC's --unsigned-overflow-check quiet during the
-// saturation-contract proof; production may use either form.
 constexpr inline uint32_t align_to(uint32_t value, uint32_t alignment) noexcept
 {
     if (!is_power_of_2(alignment)) {

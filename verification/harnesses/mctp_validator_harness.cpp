@@ -11,11 +11,6 @@
 //   - reset() zeroes the state machine.
 //   - validate() returns false whenever interface >= Interface::End.
 //   - validate() returns false whenever ctl.hdr_ver != 0x01.
-//
-// The last two contracts read fields through `Control::PktReq::from(pkt)`,
-// which is `*std::bit_cast<PktReq*>(&pkt.hdr)` — they're blocked by
-// esbmc#4191 (spurious CEX through aliased bit_cast). Gated behind a
-// separate ESBMC_FUNCTIONAL_BIT_CAST flag; run them once #4192 lands.
 
 #include <cstdint>
 
@@ -74,7 +69,7 @@ void check_validate_rejects_bad_hdr_ver()
 
     bool ok = v.validate(pkt, Interface::UsI2c);
 
-#ifdef ESBMC_FUNCTIONAL_BIT_CAST  // blocked by esbmc#4191 until #4192 lands
+#ifdef ESBMC_FUNCTIONAL
     __ESBMC_assert(!ok, "validate rejects hdr_ver != 0x01");
 #endif
     (void)ok;

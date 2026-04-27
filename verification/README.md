@@ -11,10 +11,10 @@ verification/
 ├── run.sh                            # thin wrapper: ./run.sh mctp_packet
 ├── harnesses/                        # *_harness.cpp per target (Phase 1 + Phase 2)
 ├── stubs/                            # verification-only header shims
-│   ├── array, span, bit              # libc++ shims for esbmc#4190
+│   ├── array                         # esbmc#4190 (aggregate-init divergence)
+│   ├── span, bit                     # thin replacements over post-#4194/#4192 bundled
 │   ├── pdk-cmn-flowcontrol.h         # drops upstream Ada/log dep
-│   ├── pdk/cmn/log/log.h             # no-op log shim
-│   └── packet_overlay/app/...        # esbmc#4191 workaround (mctp_packet only)
+│   └── pdk/cmn/log/log.h             # no-op log shim
 ├── ctest/{f1,f2}/                    # ESBMC --generate-ctest-testcase outputs
 ├── esbmc_bug_repros/                 # standalone repros for upstream ESBMC bugs
 └── results/                          # esbmc logs + sed-patched validator.cpp
@@ -40,7 +40,7 @@ ESBMC to produce a counterexample.
 |---|---|:-:|:-:|:-:|
 | `mctp_packet` | `corepdk/.../app/pdk-mctp-app-packet.cpp` | ✅ | ✅ | ✅ |
 | `mctp_router` | `corepdk/.../platforms/x86/pdk-mctp-platforms-router-plat.cpp` | ✅ | ✅ | ✅ |
-| `mctp_validator` | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=9 (reset contract; bit_cast-dependent contracts gated until [#4192](https://github.com/esbmc/esbmc/pull/4192) lands) | — |
+| `mctp_validator` | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | — |
 | `fixed_point` | `src/nv/common/fixed_point.h` | ✅ | ✅ | — |
 | `utils` | `src/nv/common/utils.h` (saturating add/sub/mul/align_to) | ✅ | ✅ | ⚠ (ESBMC strict unsigned-wrap demo, not a bug) |
 
@@ -54,8 +54,8 @@ for the full table; brief view:
 | [#4180](https://github.com/esbmc/esbmc/issues/4180) | closed (split + fixed) | — |
 | [#4182](https://github.com/esbmc/esbmc/issues/4182) | fixed by [#4187](https://github.com/esbmc/esbmc/pull/4187) | (removed) |
 | [#4183](https://github.com/esbmc/esbmc/issues/4183) | fixed by [#4188](https://github.com/esbmc/esbmc/pull/4188) | (crash gone; `<array>` shim retained for #4190 reasons) |
-| [#4190](https://github.com/esbmc/esbmc/issues/4190) | open ([#4194](https://github.com/esbmc/esbmc/pull/4194) in flight) | `stubs/{array,span,bit}` shims; `<type_traits>` features inlined into utils harness |
-| [#4191](https://github.com/esbmc/esbmc/issues/4191) | open ([#4192](https://github.com/esbmc/esbmc/pull/4192) in flight) | C-cast in lieu of `std::bit_cast` (`stubs/packet_overlay/`); validator's bit_cast-dependent Phase 2 contracts gated |
+| [#4190](https://github.com/esbmc/esbmc/issues/4190) | partial — [#4194](https://github.com/esbmc/esbmc/pull/4194) merged; aggregate-`<array>` and `underlying_type_t` still missing | thin `<span>` shim (avoids bundled-`<array>` collision); `<array>` shim retained; `utils.h` inlined for `underlying_type_t` |
+| [#4191](https://github.com/esbmc/esbmc/issues/4191) | fixed by [#4192](https://github.com/esbmc/esbmc/pull/4192); follow-up: pointer overload uses `reinterpret_cast` (drops const) | thin `<bit>` shim that uses C-cast for the pointer specialisation |
 | [#4195](https://github.com/esbmc/esbmc/issues/4195) | open | build-time `sed` rewrites validator.cpp's `using enum` line |
 
 ## Findings

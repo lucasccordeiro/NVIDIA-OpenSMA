@@ -1,20 +1,29 @@
 Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/OpenSMA/verification/harnesses/mctp_packet_negative_harness.cpp
 Parsing /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+In file included from /Users/user/OpenSMA/verification/harnesses/mctp_packet_negative_harness.cpp:16:
+In file included from /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet.h:19:
+In file included from /Users/user/OpenSMA/verification/stubs/span:10:
+/Users/user/OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
+   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
+      |                                                                                           ^
+/Users/user/OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
+   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
+      |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.399s
-GOTO program processing time: 0.007s
+GOTO program creation time: 0.414s
+GOTO program processing time: 0.005s
 Starting Bounded Model Checking
-Symex completed in: 0.005s (73 assignments)
+Symex completed in: 0.006s (77 assignments)
 Caching time: 0.000s (removed 1 assertions)
-Slicing time: 0.000s (removed 60 assignments)
-Generated 26 VCC(s), 5 remaining after simplification (12 assignments)
+Slicing time: 0.001s (removed 62 assignments)
+Generated 28 VCC(s), 5 remaining after simplification (14 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.000s
+Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.001s
+Runtime decision procedure: 0.000s
 Building error trace
 
 [Counterexample]

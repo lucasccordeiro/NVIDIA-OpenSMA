@@ -12,11 +12,6 @@ MCTP_INCS := \
   -I$(REPO)/corepdk/modules/mctp-cpp/src \
   -I$(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86
 
-# Packet-specific overlay (workaround for esbmc#4191 — bit_cast aliasing
-# CEX). Prepended ONLY to the mctp_packet* targets; other harnesses pull
-# the production pdk-mctp-app-packet.h directly. Drop once #4191 is fixed.
-PACKET_OVERLAY := -I$(STUBS)/packet_overlay
-
 # Standard language-level safety profile. ESBMC enables pointer-check,
 # bounds-check, and div-by-zero by default; we add the explicit opt-ins
 # (memory-leak, overflow, unsigned overflow, NaN).
@@ -53,7 +48,7 @@ all: mctp_packet mctp_router mctp_validator fixed_point utils
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
 	@mkdir -p $(RESULTS)
-	$(ESBMC) $(LANG_FLAGS) $(PACKET_OVERLAY) $(MCTP_INCS) \
+	$(ESBMC) $(LANG_FLAGS) $(MCTP_INCS) \
 	  $(HARNESSES)/mctp_packet_harness.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
 	  2>&1 | tee $(RESULTS)/mctp_packet.log
@@ -61,7 +56,7 @@ mctp_packet:
 # Phase 2: functional contract (round-trip equivalence) via k-induction.
 mctp_packet_func:
 	@mkdir -p $(RESULTS)
-	$(ESBMC) $(FUNC_FLAGS) $(PACKET_OVERLAY) $(MCTP_INCS) \
+	$(ESBMC) $(FUNC_FLAGS) $(MCTP_INCS) \
 	  -DESBMC_FUNCTIONAL=1 \
 	  $(HARNESSES)/mctp_packet_harness.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
@@ -69,7 +64,7 @@ mctp_packet_func:
 
 mctp_packet_neg:
 	@mkdir -p $(RESULTS)
-	$(ESBMC) $(LANG_FLAGS) $(PACKET_OVERLAY) $(MCTP_INCS) \
+	$(ESBMC) $(LANG_FLAGS) $(MCTP_INCS) \
 	  $(HARNESSES)/mctp_packet_negative_harness.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
 	  2>&1 | tee $(RESULTS)/mctp_packet_neg.log

@@ -1,11 +1,20 @@
 Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/OpenSMA/verification/harnesses/mctp_packet_harness.cpp
 Parsing /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+In file included from /Users/user/OpenSMA/verification/harnesses/mctp_packet_harness.cpp:15:
+In file included from /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet.h:19:
+In file included from /Users/user/OpenSMA/verification/stubs/span:10:
+/Users/user/OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
+   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
+      |                                                                                           ^
+/Users/user/OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
+   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
+      |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.409s
-Interval Analysis time: 0.009s
-GOTO program processing time: 0.019s
+GOTO program creation time: 0.412s
+Interval Analysis time: 0.008s
+GOTO program processing time: 0.014s
 Checking base case, k = 1
 Starting Bounded Model Checking
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
@@ -20,15 +29,15 @@ WARNING: not checking alignment for access to packed struct struct pdk::mctp::pl
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
-Symex completed in: 0.016s (146 assignments)
-Slicing time: 0.001s (removed 81 assignments)
-Generated 76 VCC(s), 12 remaining after simplification (65 assignments)
+Symex completed in: 0.020s (158 assignments)
+Slicing time: 0.000s (removed 91 assignments)
+Generated 82 VCC(s), 12 remaining after simplification (67 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.002s
+Encoding to solver time: 0.003s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.001s
-BMC program time: 0.020s
+BMC program time: 0.025s
 No bug has been found in the base case
 Checking forward condition, k = 1
 Starting Bounded Model Checking
@@ -44,15 +53,15 @@ WARNING: not checking alignment for access to packed struct struct pdk::mctp::pl
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
-Symex completed in: 0.017s (136 assignments)
-Slicing time: 0.000s (removed 108 assignments)
-Generated 66 VCC(s), 2 remaining after simplification (28 assignments)
+Symex completed in: 0.020s (148 assignments)
+Slicing time: 0.001s (removed 118 assignments)
+Generated 72 VCC(s), 2 remaining after simplification (30 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.001s
-BMC program time: 0.019s
+Runtime decision procedure: 0.000s
+BMC program time: 0.022s
 
 VERIFICATION SUCCESSFUL
 

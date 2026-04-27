@@ -1,47 +1,45 @@
 Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/OpenSMA/verification/harnesses/mctp_validator_harness.cpp
 Parsing /Users/user/OpenSMA/verification/results/pdk-mctp-app-validator.patched.cpp
+In file included from /Users/user/OpenSMA/verification/harnesses/mctp_validator_harness.cpp:17:
+In file included from /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.h:20:
+In file included from /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet.h:19:
+In file included from /Users/user/OpenSMA/verification/stubs/span:10:
+/Users/user/OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
+   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
+      |                                                                                           ^
+/Users/user/OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
+   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
+      |                                                                                              ^
 Parsing /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp
+In file included from /Users/user/OpenSMA/verification/harnesses/mctp_validator_harness.cpp:17:
+In file included from /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.h:20:
+In file included from /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet.h:19:
+In file included from /Users/user/OpenSMA/verification/stubs/span:10:
+/Users/user/OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
+   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
+      |                                                                                           ^
+/Users/user/OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
+   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
+      |                                                                                              ^
 Parsing /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+In file included from /Users/user/OpenSMA/verification/harnesses/mctp_validator_harness.cpp:17:
+In file included from /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.h:20:
+In file included from /Users/user/OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet.h:19:
+In file included from /Users/user/OpenSMA/verification/stubs/span:10:
+/Users/user/OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
+   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
+      |                                                                                           ^
+/Users/user/OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
+   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
+      |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.546s
-GOTO program processing time: 0.012s
+GOTO program creation time: 0.609s
+GOTO program processing time: 0.009s
 Starting Bounded Model Checking
-Unwinding loop 25 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 25 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 25 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Not unwinding loop 25 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-Unwinding loop 25 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 25 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 25 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Not unwinding loop 25 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
@@ -66,16 +64,77 @@ WARNING: not checking alignment for access to packed struct struct pdk::mctp::ap
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-Symex completed in: 0.034s (203 assignments)
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/results/pdk-mctp-app-validator.patched.cpp line 44 column 9 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/results/pdk-mctp-app-validator.patched.cpp line 44 column 9 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: no body for function Packet#S
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::NsmPktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: no body for function hide#
+WARNING: no body for function Packet#S
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: no body for function hide#
+WARNING: no body for function hide#
+Symex completed in: 0.068s (371 assignments)
 Caching time: 0.001s (removed 1 assertions)
-Slicing time: 0.000s (removed 178 assignments)
-Generated 119 VCC(s), 16 remaining after simplification (24 assignments)
+Slicing time: 0.000s (removed 332 assignments)
+Generated 216 VCC(s), 11 remaining after simplification (38 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.000s
+Encoding to solver time: 0.002s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.001s
-BMC program time: 0.037s
+Runtime decision procedure: 0.000s
+BMC program time: 0.072s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

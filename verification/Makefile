@@ -158,6 +158,20 @@ spi_utils_func:
 	  $(HARNESSES)/spi_utils_harness.cpp \
 	  2>&1 | tee $(RESULTS)/spi_utils_func.log
 
+i2c_crc8:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) -I$(STUBS) \
+	  $(HARNESSES)/i2c_crc8_harness.cpp \
+	  2>&1 | tee $(RESULTS)/i2c_crc8.log
+
+i2c_crc8_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --overflow-check --interval-analysis \
+	  --k-induction --k-step 1 --max-k-step 12 \
+	  -I$(STUBS) -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/i2c_crc8_harness.cpp \
+	  2>&1 | tee $(RESULTS)/i2c_crc8_func.log
+
 fixed_point:
 	@mkdir -p $(RESULTS)
 	$(ESBMC) $(LANG_FLAGS) $(FP_INCS) \

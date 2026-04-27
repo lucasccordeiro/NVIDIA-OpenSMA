@@ -1,0 +1,341 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.390s
+Interval Analysis time: 0.010s
+GOTO program processing time: 0.016s
+Checking base case, k = 1
+Starting Bounded Model Checking
+Not unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Not unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Not unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Not unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 7 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Symex completed in: 0.013s (150 assignments)
+Slicing time: 0.001s (removed 101 assignments)
+Generated 55 VCC(s), 6 remaining after simplification (49 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+BMC program time: 0.020s
+No bug has been found in the base case
+Checking forward condition, k = 1
+Starting Bounded Model Checking
+Not unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Not unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Not unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Not unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 7 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Symex completed in: 0.012s (147 assignments)
+Slicing time: 0.001s (removed 101 assignments)
+Generated 57 VCC(s), 9 remaining after simplification (46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+The forward condition is unable to prove the property
+Checking base case, k = 2
+Starting Bounded Model Checking
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Not unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Not unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Not unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 7 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Not unwinding loop 7 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Symex completed in: 0.019s (204 assignments)
+Slicing time: 0.001s (removed 116 assignments)
+Generated 94 VCC(s), 15 remaining after simplification (88 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.008s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+BMC program time: 0.037s
+No bug has been found in the base case
+Checking forward condition, k = 2
+Starting Bounded Model Checking
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Not unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Not unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Not unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 7 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Not unwinding loop 7 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Symex completed in: 0.020s (197 assignments)
+Slicing time: 0.000s (removed 124 assignments)
+Generated 93 VCC(s), 14 remaining after simplification (73 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.006s
+The forward condition is unable to prove the property
+Checking base case, k = 3
+Starting Bounded Model Checking
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Not unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Not unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Not unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 7 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Unwinding loop 7 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Not unwinding loop 7 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Symex completed in: 0.027s (258 assignments)
+Slicing time: 0.001s (removed 140 assignments)
+Generated 133 VCC(s), 24 remaining after simplification (118 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.009s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.007s
+BMC program time: 0.044s
+No bug has been found in the base case
+Checking forward condition, k = 3
+Starting Bounded Model Checking
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Not unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Not unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Not unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 7 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Unwinding loop 7 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Not unwinding loop 7 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Symex completed in: 0.028s (248 assignments)
+Slicing time: 0.001s (removed 150 assignments)
+Generated 129 VCC(s), 20 remaining after simplification (98 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.008s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.006s
+The forward condition is unable to prove the property
+Checking base case, k = 4
+Starting Bounded Model Checking
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Not unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Not unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Not unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 7 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Unwinding loop 7 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Unwinding loop 7 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Not unwinding loop 7 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Symex completed in: 0.043s (312 assignments)
+Slicing time: 0.002s (removed 164 assignments)
+Generated 172 VCC(s), 33 remaining after simplification (148 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.010s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.007s
+BMC program time: 0.063s
+No bug has been found in the base case
+Checking forward condition, k = 4
+Starting Bounded Model Checking
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Not unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Not unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Not unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 7 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Unwinding loop 7 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Unwinding loop 7 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Not unwinding loop 7 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Symex completed in: 0.037s (299 assignments)
+Slicing time: 0.002s (removed 176 assignments)
+Generated 165 VCC(s), 26 remaining after simplification (123 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.009s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+The forward condition is unable to prove the property
+Checking base case, k = 5
+Starting Bounded Model Checking
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Not unwinding loop 3 iteration 5   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Not unwinding loop 3 iteration 5   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 7 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Unwinding loop 7 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Unwinding loop 7 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Unwinding loop 7 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Not unwinding loop 3 iteration 5   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Symex completed in: 0.103s (735 assignments)
+Slicing time: 0.006s (removed 351 assignments)
+Generated 481 VCC(s), 87 remaining after simplification (384 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.020s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.039s
+BMC program time: 0.168s
+No bug has been found in the base case
+Checking forward condition, k = 5
+Starting Bounded Model Checking
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
+Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Not unwinding loop 3 iteration 5   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 83 column 5 function f_crc8_incremental_total
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Not unwinding loop 3 iteration 5   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 7 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Unwinding loop 7 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Unwinding loop 7 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Unwinding loop 7 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 114 column 5 function f_crc8_init_zero_invariant
+Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Not unwinding loop 3 iteration 5   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 51 column 5 function crc8
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Not unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
+Symex completed in: 0.103s (698 assignments)
+Slicing time: 0.004s (removed 379 assignments)
+Generated 451 VCC(s), 57 remaining after simplification (319 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.016s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.032s
+BMC program time: 0.156s
+
+VERIFICATION SUCCESSFUL
+
+Solution found by the forward condition; all states are reachable (k = 5)
+ESBMC version 8.2.0 64-bit aarch64 macos

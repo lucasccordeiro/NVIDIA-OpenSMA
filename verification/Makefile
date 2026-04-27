@@ -41,9 +41,10 @@ FP_INCS := -I$(REPO)/src
 .PHONY: all mctp_packet mctp_packet_func mctp_packet_neg \
         mctp_router mctp_router_func mctp_router_neg \
         mctp_validator mctp_validator_func \
+        nsm_type_2 nsm_type_2_func \
         fixed_point fixed_point_func \
         utils utils_func utils_neg clean
-all: mctp_packet mctp_router mctp_validator fixed_point utils
+all: mctp_packet mctp_router mctp_validator nsm_type_2 fixed_point utils
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
@@ -127,6 +128,20 @@ mctp_validator_func: $(VALIDATOR_PATCHED)
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
 	  2>&1 | tee $(RESULTS)/mctp_validator_func.log
+
+nsm_type_2:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  $(HARNESSES)/nsm_type_2_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_type_2.log
+
+nsm_type_2_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --overflow-check --interval-analysis \
+	  --k-induction --k-step 1 --max-k-step 16 \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/nsm_type_2_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_type_2_func.log
 
 fixed_point:
 	@mkdir -p $(RESULTS)

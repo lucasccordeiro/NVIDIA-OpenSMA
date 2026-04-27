@@ -26,6 +26,7 @@ verification continues.
 | Saturating arithmetic | `src/nv/common/utils.h` | ✅ 20 VCC | ✅ k=1 | ⚠ ESBMC strict unsigned-overflow demo (not a bug) |
 | MCTP validator state machine | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | — |
 | NSM type 2 (PCIe-link reset validator) | `src/nv/mctp/nsm_type_2.cpp` (`validatePcieLinkResetValue`) | ✅ | ✅ k=12 (membership iff + below-range rejection) | — |
+| SPI byte-buffer (de)serialisation | `src/nv/spi/utils.{h,cpp}` (`buf_to_u{16,32}`, `u{16,32}_to_buf`) | ✅ | ✅ k=9 (round-trip + big-endian + OOB-no-write) | — |
 
 All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
@@ -105,6 +106,15 @@ if (interface >= static_cast<uint16_t>(Interface::UsEnd)) {
 }
 routing_table.ec.cur_eid.at(interface) = eid;
 ```
+
+### F-3 — RETRACTED (was: `buf_to_u32` signed shift overflow)
+
+ESBMC's `--overflow-check` flagged `buf[start_idx] << ByteShift3` (i.e. `int(byte) << 24`) as an arithmetic-overflow violation when `byte >= 0x80`. Investigated:
+
+- Production builds with `-std=c++23`. Under C++20+ ([expr.shift]/2), signed left-shift `E1 << E2` is well-defined whenever `E1 × 2^E2` is representable in the *unsigned* counterpart of the result type. `128 × 2^24 = 2^31` fits in `unsigned int` (max `2^32 - 1`), so the shift is defined and produces `INT_MIN` as `int`; the surrounding `static_cast<uint32_t>(...)` then recovers the correct `0x80000000` bit pattern.
+- Empirically validated: ESBMC's BMC proves `prod_form(b0, b1, b2, b3) == fixed_form(b0, b1, b2, b3)` for all four input bytes (0 VCCs after simplification — equivalence is structural). See `verification/ctest/f3/`.
+
+Same shape as F-2 — strict-flag noise on a defined wrap that's reverted by a subsequent cast. Not a defect under the production build standard. The harness uses the parenthesised form so Phase 2's strict overflow-check passes; observable semantics are identical.
 
 ### F-2 — RETRACTED (was: `align_to()` overflow)
 

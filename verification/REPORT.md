@@ -112,10 +112,12 @@ routing_table.ec.cur_eid.at(interface) = eid;
 
 ESBMC's `--overflow-check` flagged `buf[start_idx] << ByteShift3` (i.e. `int(byte) << 24`) as an arithmetic-overflow violation when `byte >= 0x80`. Investigated:
 
-- Production builds with `-std=c++23`. Under C++20+ ([expr.shift]/2), signed left-shift `E1 << E2` is well-defined whenever `E1 × 2^E2` is representable in the *unsigned* counterpart of the result type. `128 × 2^24 = 2^31` fits in `unsigned int` (max `2^32 - 1`), so the shift is defined and produces `INT_MIN` as `int`; the surrounding `static_cast<uint32_t>(...)` then recovers the correct `0x80000000` bit pattern.
+- Production builds with `-std=c++23`. Under C++20+ ([expr.shift]/2), signed left-shift `E1 << E2` is well-defined: the value is the unique result congruent to `E1 × 2^E2` modulo `2^N` where `N` is the width of the result type. For `int(128) << 24`, that's `INT_MIN`; the surrounding `static_cast<uint32_t>(...)` then recovers the correct `0x80000000` bit pattern. **No UB.**
 - Empirically validated: ESBMC's BMC proves `prod_form(b0, b1, b2, b3) == fixed_form(b0, b1, b2, b3)` for all four input bytes (0 VCCs after simplification — equivalence is structural). See `verification/ctest/f3/`.
 
-Same shape as F-2 — strict-flag noise on a defined wrap that's reverted by a subsequent cast. Not a defect under the production build standard. The harness uses the parenthesised form so Phase 2's strict overflow-check passes; observable semantics are identical.
+Not a defect in OpenSMA. **It is, however, an ESBMC standard-conformance gap**: the default `--overflow-check` flags this even with `--std c++20` explicitly set, applying pre-C++20 UB rules irrespective of the language standard. Filed upstream as [esbmc/esbmc#4201](https://github.com/esbmc/esbmc/issues/4201) — "C++ overflow-check: signed left-shift wrap reported as violation under --std c++20+".
+
+The spi_utils harness uses the parenthesised form so Phase 2's strict overflow-check passes; observable semantics are identical to production.
 
 ### F-2 — RETRACTED (was: `align_to()` overflow)
 
@@ -177,6 +179,7 @@ backed by an open issue.**
 | [#4190](https://github.com/esbmc/esbmc/issues/4190) | bundled libc++ missing `<span>`, `<bit>`, parts of `<type_traits>`; bundled `<array>` is a `class` not an aggregate | partial — [#4194](https://github.com/esbmc/esbmc/pull/4194) bundled `<span>` + most traits; aggregate-`<array>` and `std::underlying_type_t` still missing | thin `<span>` shim (transitive `<bit>` + avoids bundled-`<array>` collision); `<array>` shim retained; utils.h inlined for `underlying_type_t` |
 | [#4191](https://github.com/esbmc/esbmc/issues/4191) | spurious CEX on aliased `*std::bit_cast<T*>(...)` round-trip | fixed by [#4192](https://github.com/esbmc/esbmc/pull/4192) — but the bundled pointer overload uses `reinterpret_cast` (drops const → compile error on `bit_cast<uint8_t*>(this)` in const methods) | thin `<bit>` shim that keeps the pointer aliasing fix and uses C-cast for the pointer specialisation (preserves `std::bit_cast`'s const-agnostic semantics); follow-up commented on #4191 |
 | [#4195](https://github.com/esbmc/esbmc/issues/4195) | C++20 `using enum X;` (`UsingEnumDecl`) not handled | open | build-time `sed` rewrites `validator.cpp`'s `using enum` line to per-enumerator `using` declarations; source of truth is upstream |
+| [#4201](https://github.com/esbmc/esbmc/issues/4201) | `--overflow-check` flags signed left-shift wrap that is defined under C++20+ | open | parenthesise the cast inside the shift in the `spi_utils` harness (observable semantics unchanged) |
 | [#4184](https://github.com/esbmc/esbmc/pull/4184) | `getAsType` guard for namespace-qualified constexpr | merged 2026-04-26 | (workarounds removed) |
 | [#4188](https://github.com/esbmc/esbmc/pull/4188) | tag-id mismatch in `annotate_class_method` | merged 2026-04-26 | (crash gone; see #4190 row for the residual `<array>` shim reason) |
 | [#4187](https://github.com/esbmc/esbmc/pull/4187) | `UsingType` handling for clang ≥ 22 | merged 2026-04-26 | (workarounds removed) |

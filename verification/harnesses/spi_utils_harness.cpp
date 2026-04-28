@@ -27,24 +27,15 @@ constexpr uint8_t ByteShift1 = 8;
 constexpr uint8_t ByteShift2 = 16;
 constexpr uint8_t ByteShift3 = 24;
 
-// From src/nv/spi/utils.h.
-//
-// NOTE: the production form parenthesises the cast OUTSIDE the shift,
-// e.g. `static_cast<uint32_t>(buf[start_idx] << ByteShift3)`. Under
-// C++23 (the production build standard), `uint8_t << 24` is well-defined
-// wrap on the promoted-int type, then the cast to uint32_t recovers the
-// intended bit pattern — empirically equivalent to the parenthesised
-// form below for all input bytes (verified via ctest/f3/). ESBMC's
-// `--overflow-check` flags the signed wrap as a strict-mode noise
-// (same pattern as F-2 `align_to`); we use the parenthesised form so
-// the harness verifies cleanly under that flag without changing
-// observable semantics.
+// Verbatim from src/nv/spi/utils.h. After esbmc#4203 the signed-shl
+// wrap is no longer flagged under --std c++20+, so the production form
+// below verifies cleanly without parenthesisation gymnastics.
 inline uint16_t buf_to_u16(std::span<uint8_t> buf, uint8_t start_idx)
 {
     if (start_idx + sizeof(uint16_t) > buf.size()) {
         return 0;
     }
-    return (static_cast<uint16_t>(buf[start_idx]) << ByteShift1)
+    return (static_cast<uint16_t>(buf[start_idx] << ByteShift1))
          | (static_cast<uint16_t>(buf[start_idx + 1]));
 }
 
@@ -53,9 +44,9 @@ inline uint32_t buf_to_u32(std::span<uint8_t> buf, uint8_t start_idx)
     if (start_idx + sizeof(uint32_t) > buf.size()) {
         return 0;
     }
-    return (static_cast<uint32_t>(buf[start_idx]) << ByteShift3)
-         | (static_cast<uint32_t>(buf[start_idx + 1]) << ByteShift2)
-         | (static_cast<uint32_t>(buf[start_idx + 2]) << ByteShift1)
+    return (static_cast<uint32_t>(buf[start_idx] << ByteShift3))
+         | (static_cast<uint32_t>(buf[start_idx + 1] << ByteShift2))
+         | (static_cast<uint32_t>(buf[start_idx + 2] << ByteShift1))
          | (static_cast<uint32_t>(buf[start_idx + 3]));
 }
 

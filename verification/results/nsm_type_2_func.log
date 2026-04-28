@@ -2,31 +2,31 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.391s
-Interval Analysis time: 0.008s
-GOTO program processing time: 0.014s
+GOTO program creation time: 0.935s
+Interval Analysis time: 0.006s
+GOTO program processing time: 0.012s
 Checking base case, k = 1
 Starting Bounded Model Checking
 Not unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.007s (101 assignments)
+Symex completed in: 0.006s (101 assignments)
 Slicing time: 0.000s (removed 72 assignments)
 Generated 8 VCC(s), 2 remaining after simplification (29 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.001s
+Encoding to solver time: 0.000s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.002s
-BMC program time: 0.011s
+BMC program time: 0.009s
 No bug has been found in the base case
 Checking forward condition, k = 1
 Starting Bounded Model Checking
 Not unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.007s (99 assignments)
-Slicing time: 0.000s (removed 75 assignments)
+Symex completed in: 0.005s (99 assignments)
+Slicing time: 0.001s (removed 75 assignments)
 Generated 9 VCC(s), 3 remaining after simplification (24 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
@@ -42,15 +42,15 @@ Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/n
 Not unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.009s (119 assignments)
-Slicing time: 0.001s (removed 85 assignments)
+Symex completed in: 0.008s (119 assignments)
+Slicing time: 0.000s (removed 85 assignments)
 Generated 14 VCC(s), 2 remaining after simplification (34 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.001s
+Encoding to solver time: 0.000s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.002s
-BMC program time: 0.013s
+BMC program time: 0.011s
 No bug has been found in the base case
 Checking forward condition, k = 2
 Starting Bounded Model Checking
@@ -60,14 +60,14 @@ Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/n
 Not unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.009s (117 assignments)
+Symex completed in: 0.007s (117 assignments)
 Slicing time: 0.001s (removed 90 assignments)
 Generated 15 VCC(s), 3 remaining after simplification (27 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.002s
+Runtime decision procedure: 0.001s
 The forward condition is unable to prove the property
 Checking base case, k = 3
 Starting Bounded Model Checking
@@ -80,7 +80,7 @@ Not unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harness
 Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.012s (137 assignments)
+Symex completed in: 0.009s (137 assignments)
 Slicing time: 0.001s (removed 98 assignments)
 Generated 20 VCC(s), 2 remaining after simplification (39 assignments)
 No solver specified; defaulting to bitwuzla
@@ -88,7 +88,7 @@ Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.002s
-BMC program time: 0.016s
+BMC program time: 0.013s
 No bug has been found in the base case
 Checking forward condition, k = 3
 Starting Bounded Model Checking
@@ -101,14 +101,14 @@ Not unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harness
 Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.012s (135 assignments)
+Symex completed in: 0.011s (135 assignments)
 Slicing time: 0.001s (removed 105 assignments)
 Generated 21 VCC(s), 3 remaining after simplification (30 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.002s
+Runtime decision procedure: 0.001s
 The forward condition is unable to prove the property
 Checking base case, k = 4
 Starting Bounded Model Checking
@@ -124,15 +124,15 @@ Unwinding loop 3 iteration 1   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.014s (155 assignments)
-Slicing time: 0.001s (removed 111 assignments)
+Symex completed in: 0.012s (155 assignments)
+Slicing time: 0.000s (removed 111 assignments)
 Generated 26 VCC(s), 2 remaining after simplification (44 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.002s
-BMC program time: 0.018s
+Runtime decision procedure: 0.001s
+BMC program time: 0.015s
 No bug has been found in the base case
 Checking forward condition, k = 4
 Starting Bounded Model Checking
@@ -174,7 +174,7 @@ Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 5   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.016s (173 assignments)
+Symex completed in: 0.015s (173 assignments)
 Slicing time: 0.001s (removed 124 assignments)
 Generated 32 VCC(s), 2 remaining after simplification (49 assignments)
 No solver specified; defaulting to bitwuzla
@@ -182,7 +182,7 @@ Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.002s
-BMC program time: 0.020s
+BMC program time: 0.019s
 No bug has been found in the base case
 Checking forward condition, k = 5
 Starting Bounded Model Checking
@@ -201,7 +201,7 @@ Unwinding loop 3 iteration 2   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 5   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.016s (171 assignments)
+Symex completed in: 0.014s (171 assignments)
 Slicing time: 0.001s (removed 135 assignments)
 Generated 33 VCC(s), 3 remaining after simplification (36 assignments)
 No solver specified; defaulting to bitwuzla
@@ -230,15 +230,15 @@ Unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 5   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 6   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.018s (191 assignments)
-Slicing time: 0.001s (removed 137 assignments)
+Symex completed in: 0.017s (191 assignments)
+Slicing time: 0.000s (removed 137 assignments)
 Generated 38 VCC(s), 2 remaining after simplification (54 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.002s
+Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.002s
-BMC program time: 0.023s
+BMC program time: 0.021s
 No bug has been found in the base case
 Checking forward condition, k = 6
 Starting Bounded Model Checking
@@ -260,14 +260,14 @@ Unwinding loop 3 iteration 3   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 5   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 6   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.019s (189 assignments)
+Symex completed in: 0.017s (189 assignments)
 Slicing time: 0.001s (removed 150 assignments)
 Generated 39 VCC(s), 3 remaining after simplification (39 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.002s
+Runtime decision procedure: 0.001s
 The forward condition is unable to prove the property
 Checking base case, k = 7
 Starting Bounded Model Checking
@@ -292,7 +292,7 @@ Unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 5   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 6   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 7   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.022s (209 assignments)
+Symex completed in: 0.019s (209 assignments)
 Slicing time: 0.000s (removed 150 assignments)
 Generated 44 VCC(s), 2 remaining after simplification (59 assignments)
 No solver specified; defaulting to bitwuzla
@@ -300,7 +300,7 @@ Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.002s
-BMC program time: 0.026s
+BMC program time: 0.023s
 No bug has been found in the base case
 Checking forward condition, k = 7
 Starting Bounded Model Checking
@@ -325,14 +325,14 @@ Unwinding loop 3 iteration 4   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 5   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 6   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 7   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.022s (207 assignments)
+Symex completed in: 0.018s (207 assignments)
 Slicing time: 0.001s (removed 165 assignments)
 Generated 45 VCC(s), 3 remaining after simplification (42 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.001s
+Encoding to solver time: 0.002s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.002s
+Runtime decision procedure: 0.001s
 The forward condition is unable to prove the property
 Checking base case, k = 8
 Starting Bounded Model Checking
@@ -360,15 +360,15 @@ Unwinding loop 3 iteration 5   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 6   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 7   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 8   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.024s (227 assignments)
+Symex completed in: 0.022s (227 assignments)
 Slicing time: 0.001s (removed 163 assignments)
 Generated 50 VCC(s), 2 remaining after simplification (64 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.002s
+Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.002s
-BMC program time: 0.029s
+BMC program time: 0.026s
 No bug has been found in the base case
 Checking forward condition, k = 8
 Starting Bounded Model Checking
@@ -396,12 +396,12 @@ Unwinding loop 3 iteration 5   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 6   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 7   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 8   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.026s (225 assignments)
+Symex completed in: 0.021s (225 assignments)
 Slicing time: 0.001s (removed 180 assignments)
 Generated 51 VCC(s), 3 remaining after simplification (45 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.001s
+Encoding to solver time: 0.000s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.002s
 The forward condition is unable to prove the property
@@ -434,15 +434,15 @@ Unwinding loop 3 iteration 6   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 7   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 8   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 9   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.028s (245 assignments)
-Slicing time: 0.001s (removed 176 assignments)
+Symex completed in: 0.024s (245 assignments)
+Slicing time: 0.000s (removed 176 assignments)
 Generated 56 VCC(s), 2 remaining after simplification (69 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.003s
-BMC program time: 0.034s
+Runtime decision procedure: 0.002s
+BMC program time: 0.028s
 No bug has been found in the base case
 Checking forward condition, k = 9
 Starting Bounded Model Checking
@@ -473,7 +473,7 @@ Unwinding loop 3 iteration 6   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 7   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 8   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 9   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.026s (243 assignments)
+Symex completed in: 0.024s (243 assignments)
 Slicing time: 0.001s (removed 195 assignments)
 Generated 57 VCC(s), 3 remaining after simplification (48 assignments)
 No solver specified; defaulting to bitwuzla
@@ -514,15 +514,15 @@ Unwinding loop 3 iteration 7   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 8   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 9   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 10   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.030s (263 assignments)
+Symex completed in: 0.026s (263 assignments)
 Slicing time: 0.001s (removed 189 assignments)
 Generated 62 VCC(s), 2 remaining after simplification (74 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.002s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.003s
-BMC program time: 0.036s
+Runtime decision procedure: 0.002s
+BMC program time: 0.031s
 No bug has been found in the base case
 Checking forward condition, k = 10
 Starting Bounded Model Checking
@@ -556,8 +556,8 @@ Unwinding loop 3 iteration 7   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 8   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 9   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 10   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.030s (261 assignments)
-Slicing time: 0.001s (removed 210 assignments)
+Symex completed in: 0.026s (261 assignments)
+Slicing time: 0.000s (removed 210 assignments)
 Generated 63 VCC(s), 3 remaining after simplification (51 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
@@ -600,15 +600,15 @@ Unwinding loop 3 iteration 8   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 9   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 10   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 11   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.036s (281 assignments)
-Slicing time: 0.002s (removed 202 assignments)
+Symex completed in: 0.028s (281 assignments)
+Slicing time: 0.001s (removed 202 assignments)
 Generated 68 VCC(s), 2 remaining after simplification (79 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.002s
+Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.003s
-BMC program time: 0.043s
+BMC program time: 0.034s
 No bug has been found in the base case
 Checking forward condition, k = 11
 Starting Bounded Model Checking
@@ -645,12 +645,12 @@ Unwinding loop 3 iteration 8   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 9   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 10   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 3 iteration 11   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.034s (279 assignments)
-Slicing time: 0.001s (removed 225 assignments)
+Symex completed in: 0.031s (279 assignments)
+Slicing time: 0.000s (removed 225 assignments)
 Generated 69 VCC(s), 3 remaining after simplification (54 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.002s
+Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.002s
 The forward condition is unable to prove the property
@@ -689,15 +689,15 @@ Unwinding loop 3 iteration 8   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 9   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 10   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 11   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.036s (278 assignments)
+Symex completed in: 0.030s (278 assignments)
 Slicing time: 0.001s (removed 217 assignments)
 Generated 68 VCC(s), 2 remaining after simplification (61 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.001s
+Encoding to solver time: 0.002s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.003s
-BMC program time: 0.042s
+Runtime decision procedure: 0.002s
+BMC program time: 0.035s
 No bug has been found in the base case
 Checking forward condition, k = 12
 Starting Bounded Model Checking
@@ -734,10 +734,10 @@ Unwinding loop 3 iteration 8   file /Users/user/OpenSMA/verification/harnesses/n
 Unwinding loop 3 iteration 9   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 10   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 3 iteration 11   file /Users/user/OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.036s (276 assignments)
-Slicing time: 0.000s (removed 268 assignments)
+Symex completed in: 0.031s (276 assignments)
+Slicing time: 0.001s (removed 268 assignments)
 Generated 66 VCC(s), 0 remaining after simplification (8 assignments)
-BMC program time: 0.036s
+BMC program time: 0.032s
 
 VERIFICATION SUCCESSFUL
 

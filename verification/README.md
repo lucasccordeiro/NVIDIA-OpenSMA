@@ -15,9 +15,9 @@ verification/
 │   ├── span, bit                     # thin replacements over post-#4194/#4192 bundled
 │   ├── pdk-cmn-flowcontrol.h         # drops upstream Ada/log dep
 │   └── pdk/cmn/log/log.h             # no-op log shim
-├── ctest/{f1,f2}/                    # ESBMC --generate-ctest-testcase outputs
+├── ctest/{f1,f2,f3}/                 # ESBMC --generate-ctest-testcase outputs
 ├── esbmc_bug_repros/                 # standalone repros for upstream ESBMC bugs
-└── results/                          # esbmc logs + sed-patched validator.cpp
+└── results/                          # esbmc logs (regenerated on `make`)
 ```
 
 ## Profiles
@@ -59,8 +59,8 @@ for the full table; brief view:
 | [#4183](https://github.com/esbmc/esbmc/issues/4183) | fixed by [#4188](https://github.com/esbmc/esbmc/pull/4188) | (crash gone; `<array>` shim retained for #4190 reasons) |
 | [#4190](https://github.com/esbmc/esbmc/issues/4190) | partial — [#4194](https://github.com/esbmc/esbmc/pull/4194) merged; aggregate-`<array>` and `underlying_type_t` still missing | thin `<span>` shim (avoids bundled-`<array>` collision); `<array>` shim retained; `utils.h` inlined for `underlying_type_t` |
 | [#4191](https://github.com/esbmc/esbmc/issues/4191) | fixed by [#4192](https://github.com/esbmc/esbmc/pull/4192); follow-up: pointer overload uses `reinterpret_cast` (drops const) | thin `<bit>` shim that uses C-cast for the pointer specialisation |
-| [#4195](https://github.com/esbmc/esbmc/issues/4195) | open | build-time `sed` rewrites validator.cpp's `using enum` line |
-| [#4201](https://github.com/esbmc/esbmc/issues/4201) | open | spi_utils harness parenthesises cast inside shift (no semantic change) |
+| [#4195](https://github.com/esbmc/esbmc/issues/4195) | fixed by [#4204](https://github.com/esbmc/esbmc/pull/4204) | (workaround removed) |
+| [#4201](https://github.com/esbmc/esbmc/issues/4201) | fixed by [#4203](https://github.com/esbmc/esbmc/pull/4203) | (workaround removed) |
 
 ## Findings
 

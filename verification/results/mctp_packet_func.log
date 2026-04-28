@@ -12,8 +12,8 @@ In file included from /Users/user/OpenSMA/verification/stubs/span:10:
       |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.412s
-Interval Analysis time: 0.008s
+GOTO program creation time: 0.604s
+Interval Analysis time: 0.009s
 GOTO program processing time: 0.014s
 Checking base case, k = 1
 Starting Bounded Model Checking
@@ -29,15 +29,15 @@ WARNING: not checking alignment for access to packed struct struct pdk::mctp::pl
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
-Symex completed in: 0.020s (158 assignments)
-Slicing time: 0.000s (removed 91 assignments)
+Symex completed in: 0.018s (158 assignments)
+Slicing time: 0.001s (removed 91 assignments)
 Generated 82 VCC(s), 12 remaining after simplification (67 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.003s
+Encoding to solver time: 0.002s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.001s
-BMC program time: 0.025s
+BMC program time: 0.022s
 No bug has been found in the base case
 Checking forward condition, k = 1
 Starting Bounded Model Checking
@@ -53,15 +53,15 @@ WARNING: not checking alignment for access to packed struct struct pdk::mctp::pl
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
-Symex completed in: 0.020s (148 assignments)
-Slicing time: 0.001s (removed 118 assignments)
+Symex completed in: 0.017s (148 assignments)
+Slicing time: 0.000s (removed 118 assignments)
 Generated 72 VCC(s), 2 remaining after simplification (30 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.000s
-BMC program time: 0.022s
+BMC program time: 0.019s
 
 VERIFICATION SUCCESSFUL
 

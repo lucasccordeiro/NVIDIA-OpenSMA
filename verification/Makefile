@@ -96,36 +96,23 @@ mctp_router_func:
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
 	  2>&1 | tee $(RESULTS)/mctp_router_func.log
 
-# Validator: build-time sed of validator.cpp to swap the C++20 `using enum`
-# line for per-enumerator using-decls (workaround for esbmc#4195). Source of
-# truth is the upstream file; the patched copy is regenerated each build.
-VALIDATOR_PATCHED := $(RESULTS)/pdk-mctp-app-validator.patched.cpp
-VALIDATOR_SRC     := $(REPO)/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp
-
-$(VALIDATOR_PATCHED): $(VALIDATOR_SRC)
-	@mkdir -p $(RESULTS)
-	@sed 's|using enum pdk::cmn::log::Destination;|using pdk::cmn::log::Destination::Console; /* WORKAROUND esbmc#4195 */|' \
-	  $(VALIDATOR_SRC) > $@
-
-mctp_validator: $(VALIDATOR_PATCHED)
+mctp_validator:
 	@mkdir -p $(RESULTS)
 	$(ESBMC) $(LANG_FLAGS) $(MCTP_INCS) \
-	  -I$(REPO)/corepdk/modules/mctp-cpp/src/app \
 	  $(HARNESSES)/mctp_validator_harness.cpp \
-	  $(VALIDATOR_PATCHED) \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
 	  2>&1 | tee $(RESULTS)/mctp_validator.log
 
-mctp_validator_func: $(VALIDATOR_PATCHED)
+mctp_validator_func:
 	@mkdir -p $(RESULTS)
 	$(ESBMC) --std c++20 --overflow-check --interval-analysis \
 	  --k-induction --k-step 1 --max-k-step 16 \
 	  $(MCTP_INCS) \
-	  -I$(REPO)/corepdk/modules/mctp-cpp/src/app \
 	  -DESBMC_FUNCTIONAL=1 \
 	  $(HARNESSES)/mctp_validator_harness.cpp \
-	  $(VALIDATOR_PATCHED) \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
 	  2>&1 | tee $(RESULTS)/mctp_validator_func.log

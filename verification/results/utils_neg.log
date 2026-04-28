@@ -2,18 +2,18 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/OpenSMA/verification/harnesses/utils_negative_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.409s
+GOTO program creation time: 0.560s
 GOTO program processing time: 0.004s
 Starting Bounded Model Checking
 Symex completed in: 0.002s (54 assignments)
-Caching time: 0.001s (removed 1 assertions)
-Slicing time: 0.000s (removed 36 assignments)
+Caching time: 0.000s (removed 1 assertions)
+Slicing time: 0.001s (removed 36 assignments)
 Generated 9 VCC(s), 8 remaining after simplification (17 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.001s
+Encoding to solver time: 0.000s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.000s
+Runtime decision procedure: 0.001s
 Building error trace
 
 [Counterexample]

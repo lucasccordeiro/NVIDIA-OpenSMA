@@ -26,16 +26,16 @@ In file included from /Users/user/OpenSMA/verification/stubs/span:10:
       |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.416s
-GOTO program processing time: 0.006s
+GOTO program creation time: 0.547s
+GOTO program processing time: 0.005s
 Starting Bounded Model Checking
-Symex completed in: 0.003s (76 assignments)
+Symex completed in: 0.004s (76 assignments)
 Caching time: 0.000s (removed 1 assertions)
 Slicing time: 0.000s (removed 69 assignments)
 Generated 10 VCC(s), 6 remaining after simplification (6 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.000s
+Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.000s
 Building error trace

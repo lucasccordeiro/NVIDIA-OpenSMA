@@ -2,67 +2,67 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.471s
-Interval Analysis time: 0.012s
-GOTO program processing time: 0.020s
+GOTO program creation time: 0.398s
+Interval Analysis time: 0.010s
+GOTO program processing time: 0.018s
 Checking base case, k = 1
 Starting Bounded Model Checking
-Not unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.045s (348 assignments)
-Slicing time: 0.002s (removed 152 assignments)
-Generated 227 VCC(s), 50 remaining after simplification (196 assignments)
-No solver specified; defaulting to bitwuzla
-Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.007s
-Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.014s
-BMC program time: 0.073s
-No bug has been found in the base case
-Checking forward condition, k = 1
-Starting Bounded Model Checking
-Not unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.046s (334 assignments)
-Slicing time: 0.002s (removed 176 assignments)
-Generated 210 VCC(s), 39 remaining after simplification (158 assignments)
+Not unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.045s (346 assignments)
+Slicing time: 0.003s (removed 152 assignments)
+Generated 224 VCC(s), 48 remaining after simplification (194 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.014s
+BMC program time: 0.068s
+No bug has been found in the base case
+Checking forward condition, k = 1
+Starting Bounded Model Checking
+Not unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.047s (332 assignments)
+Slicing time: 0.002s (removed 182 assignments)
+Generated 207 VCC(s), 37 remaining after simplification (150 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.004s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.008s
 The forward condition is unable to prove the property
 Checking base case, k = 2
 Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Not unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.047s (354 assignments)
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Not unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.046s (352 assignments)
 Slicing time: 0.002s (removed 158 assignments)
-Generated 233 VCC(s), 50 remaining after simplification (196 assignments)
+Generated 230 VCC(s), 48 remaining after simplification (194 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.006s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.012s
-BMC program time: 0.068s
+Runtime decision procedure: 0.013s
+BMC program time: 0.067s
 No bug has been found in the base case
 Checking forward condition, k = 2
 Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Not unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.043s (340 assignments)
-Slicing time: 0.001s (removed 182 assignments)
-Generated 216 VCC(s), 39 remaining after simplification (158 assignments)
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Not unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.043s (338 assignments)
+Slicing time: 0.001s (removed 188 assignments)
+Generated 213 VCC(s), 37 remaining after simplification (150 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.004s
@@ -71,198 +71,198 @@ Runtime decision procedure: 0.007s
 The forward condition is unable to prove the property
 Checking base case, k = 3
 Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Not unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.045s (360 assignments)
-Slicing time: 0.002s (removed 164 assignments)
-Generated 239 VCC(s), 50 remaining after simplification (196 assignments)
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Not unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.048s (358 assignments)
+Slicing time: 0.003s (removed 164 assignments)
+Generated 236 VCC(s), 48 remaining after simplification (194 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.006s
+Encoding to solver time: 0.007s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.013s
-BMC program time: 0.066s
+BMC program time: 0.071s
 No bug has been found in the base case
 Checking forward condition, k = 3
 Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Not unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.044s (346 assignments)
-Slicing time: 0.002s (removed 188 assignments)
-Generated 222 VCC(s), 39 remaining after simplification (158 assignments)
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Not unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.044s (344 assignments)
+Slicing time: 0.002s (removed 194 assignments)
+Generated 219 VCC(s), 37 remaining after simplification (150 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.005s
+Encoding to solver time: 0.004s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.007s
 The forward condition is unable to prove the property
 Checking base case, k = 4
 Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Not unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.045s (366 assignments)
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Not unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.048s (364 assignments)
 Slicing time: 0.002s (removed 170 assignments)
-Generated 245 VCC(s), 50 remaining after simplification (196 assignments)
+Generated 242 VCC(s), 48 remaining after simplification (194 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.013s
+BMC program time: 0.070s
+No bug has been found in the base case
+Checking forward condition, k = 4
+Starting Bounded Model Checking
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Not unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.046s (350 assignments)
+Slicing time: 0.002s (removed 200 assignments)
+Generated 225 VCC(s), 37 remaining after simplification (150 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.004s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.006s
+The forward condition is unable to prove the property
+Checking base case, k = 5
+Starting Bounded Model Checking
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Not unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.046s (370 assignments)
+Slicing time: 0.003s (removed 176 assignments)
+Generated 248 VCC(s), 48 remaining after simplification (194 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.006s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.013s
-BMC program time: 0.066s
-No bug has been found in the base case
-Checking forward condition, k = 4
-Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Not unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.043s (352 assignments)
-Slicing time: 0.002s (removed 194 assignments)
-Generated 228 VCC(s), 39 remaining after simplification (158 assignments)
-No solver specified; defaulting to bitwuzla
-Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.005s
-Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.007s
-The forward condition is unable to prove the property
-Checking base case, k = 5
-Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Not unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.046s (372 assignments)
-Slicing time: 0.002s (removed 176 assignments)
-Generated 251 VCC(s), 50 remaining after simplification (196 assignments)
-No solver specified; defaulting to bitwuzla
-Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.006s
-Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.012s
-BMC program time: 0.067s
+BMC program time: 0.068s
 No bug has been found in the base case
 Checking forward condition, k = 5
 Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Not unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.044s (358 assignments)
-Slicing time: 0.002s (removed 200 assignments)
-Generated 234 VCC(s), 39 remaining after simplification (158 assignments)
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Not unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.043s (356 assignments)
+Slicing time: 0.002s (removed 206 assignments)
+Generated 231 VCC(s), 37 remaining after simplification (150 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.005s
+Encoding to solver time: 0.004s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.007s
 The forward condition is unable to prove the property
 Checking base case, k = 6
 Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Not unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.046s (378 assignments)
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Not unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.049s (376 assignments)
 Slicing time: 0.002s (removed 182 assignments)
-Generated 257 VCC(s), 50 remaining after simplification (196 assignments)
+Generated 254 VCC(s), 48 remaining after simplification (194 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.005s
+Encoding to solver time: 0.006s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.013s
-BMC program time: 0.067s
+Runtime decision procedure: 0.014s
+BMC program time: 0.072s
 No bug has been found in the base case
 Checking forward condition, k = 6
 Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Not unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.045s (364 assignments)
-Slicing time: 0.001s (removed 206 assignments)
-Generated 240 VCC(s), 39 remaining after simplification (158 assignments)
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Not unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.046s (362 assignments)
+Slicing time: 0.002s (removed 212 assignments)
+Generated 237 VCC(s), 37 remaining after simplification (150 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.004s
@@ -271,227 +271,227 @@ Runtime decision procedure: 0.007s
 The forward condition is unable to prove the property
 Checking base case, k = 7
 Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 4 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 5 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Not unwinding loop 6 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.047s (384 assignments)
-Slicing time: 0.003s (removed 188 assignments)
-Generated 263 VCC(s), 50 remaining after simplification (196 assignments)
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 4 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 5 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Not unwinding loop 6 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.049s (382 assignments)
+Slicing time: 0.002s (removed 188 assignments)
+Generated 260 VCC(s), 48 remaining after simplification (194 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.006s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.013s
-BMC program time: 0.069s
+BMC program time: 0.071s
 No bug has been found in the base case
 Checking forward condition, k = 7
 Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 4 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 5 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Not unwinding loop 6 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.044s (370 assignments)
-Slicing time: 0.002s (removed 212 assignments)
-Generated 246 VCC(s), 39 remaining after simplification (158 assignments)
-No solver specified; defaulting to bitwuzla
-Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.005s
-Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.007s
-The forward condition is unable to prove the property
-Checking base case, k = 8
-Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 4 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 5 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Not unwinding loop 6 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.048s (390 assignments)
-Slicing time: 0.002s (removed 194 assignments)
-Generated 269 VCC(s), 50 remaining after simplification (196 assignments)
-No solver specified; defaulting to bitwuzla
-Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.006s
-Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.013s
-BMC program time: 0.069s
-No bug has been found in the base case
-Checking forward condition, k = 8
-Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Not unwinding loop 4 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Not unwinding loop 5 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Not unwinding loop 6 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Symex completed in: 0.045s (376 assignments)
-Slicing time: 0.001s (removed 218 assignments)
-Generated 252 VCC(s), 39 remaining after simplification (158 assignments)
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 4 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 5 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Not unwinding loop 6 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.045s (368 assignments)
+Slicing time: 0.002s (removed 218 assignments)
+Generated 243 VCC(s), 37 remaining after simplification (150 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.004s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.007s
 The forward condition is unable to prove the property
+Checking base case, k = 8
+Starting Bounded Model Checking
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 4 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 5 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Not unwinding loop 6 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.050s (388 assignments)
+Slicing time: 0.002s (removed 194 assignments)
+Generated 266 VCC(s), 48 remaining after simplification (194 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.013s
+BMC program time: 0.072s
+No bug has been found in the base case
+Checking forward condition, k = 8
+Starting Bounded Model Checking
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Not unwinding loop 4 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Not unwinding loop 5 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Not unwinding loop 6 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Symex completed in: 0.046s (374 assignments)
+Slicing time: 0.002s (removed 224 assignments)
+Generated 249 VCC(s), 37 remaining after simplification (150 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.007s
+The forward condition is unable to prove the property
 Checking base case, k = 9
 Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Symex completed in: 0.073s (555 assignments)
-Slicing time: 0.003s (removed 260 assignments)
-Generated 413 VCC(s), 77 remaining after simplification (295 assignments)
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Symex completed in: 0.074s (551 assignments)
+Slicing time: 0.004s (removed 268 assignments)
+Generated 407 VCC(s), 73 remaining after simplification (283 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.009s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.029s
-BMC program time: 0.115s
+Runtime decision procedure: 0.031s
+BMC program time: 0.118s
 No bug has been found in the base case
 Checking forward condition, k = 9
 Starting Bounded Model Checking
-Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 4 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u16_total
-Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 5 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 104 column 5 function f_buf_to_u32_total
-Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 6 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 169 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Unwinding loop 7 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 177 column 5 function f_oob_idx_no_write
-Symex completed in: 0.068s (533 assignments)
-Slicing time: 0.002s (removed 291 assignments)
-Generated 369 VCC(s), 55 remaining after simplification (242 assignments)
+Unwinding loop 4 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 4 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 86 column 5 function f_buf_to_u16_total
+Unwinding loop 5 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 5 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 95 column 5 function f_buf_to_u32_total
+Unwinding loop 6 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 6 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 160 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 1   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 2   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 3   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 4   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 5   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 6   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 7   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Unwinding loop 7 iteration 8   file /Users/user/OpenSMA/verification/harnesses/spi_utils_harness.cpp line 168 column 5 function f_oob_idx_no_write
+Symex completed in: 0.069s (529 assignments)
+Slicing time: 0.002s (removed 305 assignments)
+Generated 363 VCC(s), 51 remaining after simplification (224 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.007s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.013s
-BMC program time: 0.091s
+Runtime decision procedure: 0.014s
+BMC program time: 0.093s
 
 VERIFICATION SUCCESSFUL
 

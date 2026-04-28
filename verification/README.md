@@ -63,6 +63,7 @@ for the full table; brief view:
 | [#4191](https://github.com/esbmc/esbmc/issues/4191) | fixed by [#4192](https://github.com/esbmc/esbmc/pull/4192); follow-up: pointer overload uses `reinterpret_cast` (drops const) | thin `<bit>` shim that uses C-cast for the pointer specialisation |
 | [#4195](https://github.com/esbmc/esbmc/issues/4195) | fixed by [#4204](https://github.com/esbmc/esbmc/pull/4204) | (workaround removed) |
 | [#4201](https://github.com/esbmc/esbmc/issues/4201) | resolved — [#4211](https://github.com/esbmc/esbmc/pull/4211) **merged** with a type-driven non-negativity predicate on `E1` (7 CORE regressions) | spi_utils harness uses production form directly (workaround removed) |
+| #TBD | `platforms::Control` default-construction crashes ESBMC (`clang_c_adjust_expr.cpp:158` assertion) | open (to be filed) | `mctp_dispatch` calls `set_cur_eid()` directly; production link confirmed by code inspection |
 
 ## Findings
 

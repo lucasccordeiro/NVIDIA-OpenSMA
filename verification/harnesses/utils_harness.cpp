@@ -1,75 +1,17 @@
 // ESBMC harness for nv::common saturating arithmetic helpers
 // (production source: src/nv/common/utils.h).
 //
-// utils.h pulls in `std::underlying_type_t` (in its enum-typed `bit(T)`
-// overload), which ESBMC's bundled <type_traits> does not yet provide
-// (esbmc#4190 — partially fixed by #4194; underlying_type_t still missing).
-// Even though the harness only exercises non-enum overloads, parsing
-// utils.h fails before we get there.
-//
-// Workaround: inline the helpers we actually verify. Every body below is a
-// verbatim copy of the corresponding production body. Drop this file in
-// favour of a plain `#include "nv/common/utils.h"` once underlying_type_t
-// lands.
-//
 // Phase 1: confirm the saturating wrappers cannot themselves overflow.
 // Phase 2: confirm the saturation contract holds.
 
 #include <cstdint>
-#include <climits>
+#include "nv/common/utils.h"
 
 extern "C" {
 uint8_t  nondet_u8();
 uint32_t nondet_u32();
 unsigned nondet_uint();
 }
-
-namespace nv::common {
-
-constexpr inline uint32_t add(uint32_t a, uint32_t b)
-{
-    if (a > UINT32_MAX - b) {
-        return UINT32_MAX;
-    }
-    return a + b;
-}
-
-constexpr inline uint32_t sub(uint32_t a, uint32_t b)
-{
-    if (a < b) {
-        return 0u;
-    }
-    return a - b;
-}
-
-constexpr inline uint32_t mul(uint32_t a, uint32_t b)
-{
-    if (b == 0) {
-        return 0;
-    }
-    if (a > UINT32_MAX / b) {
-        return UINT32_MAX;
-    }
-    return a * b;
-}
-
-constexpr inline bool is_power_of_2(uint32_t x) noexcept
-{
-    return x != 0 && (x & (x - 1)) == 0;
-}
-
-constexpr inline uint32_t align_to(uint32_t value, uint32_t alignment) noexcept
-{
-    if (!is_power_of_2(alignment)) {
-        return UINT32_MAX;
-    }
-    if (value > UINT32_MAX - (alignment - 1)) {
-        return UINT32_MAX;
-    }
-    return (value + (alignment - 1)) & ~(alignment - 1) & UINT32_MAX;
-}
-
-}  // namespace nv::common
 
 using nv::common::add;
 using nv::common::sub;

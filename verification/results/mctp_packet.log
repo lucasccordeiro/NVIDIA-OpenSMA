@@ -12,8 +12,8 @@ In file included from /Users/user/OpenSMA/verification/stubs/span:10:
       |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.563s
-GOTO program processing time: 0.012s
+GOTO program creation time: 0.597s
+GOTO program processing time: 0.006s
 Starting Bounded Model Checking
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
@@ -21,16 +21,16 @@ WARNING: not checking alignment for access to packed struct struct pdk::mctp::pl
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
-Symex completed in: 0.019s (142 assignments)
-Caching time: 0.000s (removed 1 assertions)
+Symex completed in: 0.017s (142 assignments)
+Caching time: 0.001s (removed 1 assertions)
 Slicing time: 0.000s (removed 125 assignments)
 Generated 68 VCC(s), 9 remaining after simplification (16 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.002s
+Encoding to solver time: 0.000s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.001s
-BMC program time: 0.030s
+BMC program time: 0.020s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

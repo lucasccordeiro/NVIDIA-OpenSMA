@@ -27,27 +27,17 @@ constexpr uint8_t ByteShift1 = 8;
 constexpr uint8_t ByteShift2 = 16;
 constexpr uint8_t ByteShift3 = 24;
 
-// From src/nv/spi/utils.h.
-//
-// The production form parenthesises the cast OUTSIDE the shift, e.g.
-// `static_cast<uint32_t>(buf[start_idx] << ByteShift3)`. Under C++20
-// (P0907 [expr.shift]/2), `int(uint8_t)` is non-negative, so the
-// signed left-shift is defined as the modular value — empirically
-// equivalent to the parenthesised form below for all input bytes
-// (verified via ctest/f3/).
-//
-// esbmc#4201 ("flag signed-shl wrap as overflow under C++20+") was
-// briefly fixed by #4203 but **reverted by #4208** because the skip
-// condition was too broad (it would also skip the still-UB negative-E1
-// case). A correct fix needs a non-negativity precondition on E1; until
-// that lands we use the parenthesised form so the harness verifies
-// cleanly under --overflow-check. Observable semantics are identical.
+// Verbatim from src/nv/spi/utils.h. The C++20 [expr.shift]/2 modular
+// rule for non-negative E1 makes `(uint32_t)(buf[i] << ByteShift3)`
+// well-defined; with the type-driven non-negativity refinement of
+// the --overflow-check skip (esbmc#4201 fix), the production form
+// verifies without parenthesisation gymnastics.
 inline uint16_t buf_to_u16(std::span<uint8_t> buf, uint8_t start_idx)
 {
     if (start_idx + sizeof(uint16_t) > buf.size()) {
         return 0;
     }
-    return (static_cast<uint16_t>(buf[start_idx]) << ByteShift1)
+    return (static_cast<uint16_t>(buf[start_idx] << ByteShift1))
          | (static_cast<uint16_t>(buf[start_idx + 1]));
 }
 
@@ -56,9 +46,9 @@ inline uint32_t buf_to_u32(std::span<uint8_t> buf, uint8_t start_idx)
     if (start_idx + sizeof(uint32_t) > buf.size()) {
         return 0;
     }
-    return (static_cast<uint32_t>(buf[start_idx]) << ByteShift3)
-         | (static_cast<uint32_t>(buf[start_idx + 1]) << ByteShift2)
-         | (static_cast<uint32_t>(buf[start_idx + 2]) << ByteShift1)
+    return (static_cast<uint32_t>(buf[start_idx] << ByteShift3))
+         | (static_cast<uint32_t>(buf[start_idx + 1] << ByteShift2))
+         | (static_cast<uint32_t>(buf[start_idx + 2] << ByteShift1))
          | (static_cast<uint32_t>(buf[start_idx + 3]));
 }
 

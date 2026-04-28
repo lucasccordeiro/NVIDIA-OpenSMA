@@ -1,0 +1,141 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp
+Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp
+In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:14:
+In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet-plat.h:19:
+In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet.h:19:
+In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
+/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
+   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
+      |                                                                                           ^
+/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
+   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
+      |                                                                                              ^
+Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp
+In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:14:
+In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet-plat.h:19:
+In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet.h:19:
+In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
+/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
+   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
+      |                                                                                           ^
+/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
+   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
+      |                                                                                              ^
+Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:14:
+In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet-plat.h:19:
+In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet.h:19:
+In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
+/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
+   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
+      |                                                                                           ^
+/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
+   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
+      |                                                                                              ^
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.771s
+GOTO program processing time: 0.014s
+Starting Bounded Model Checking
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 44 column 9 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+Unwinding loop 4 iteration 2   file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 44 column 9 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: no body for function Packet#S
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::NsmPktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: no body for function hide#
+WARNING: no body for function Packet#S
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: no body for function hide#
+WARNING: no body for function hide#
+Symex completed in: 0.061s (347 assignments)
+Caching time: 0.000s (removed 1 assertions)
+Slicing time: 0.001s (removed 271 assignments)
+Generated 179 VCC(s), 10 remaining after simplification (75 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+Building error trace
+
+[Counterexample]
+
+
+State 5 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp line 40 column 5 function main thread 0
+----------------------------------------------------
+  iface_val = 2 (00000010)
+
+State 7 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 43 column 5 function set_packet_interface thread 0
+----------------------------------------------------
+  pkt::0->priv.packet_interface = { .priv={ .packet_length=0, .packet_interface=interface::1?1!0&0#1, .reserved0=0 }, .hdr={ .hdr_ver=1, .rsvd=0, .dst_eid=0, .src_eid=0, .msg_tag=0,
+    .tag_owner=0, .pkt_seq=0, .eom=0,
+    .som=1 },
+    .msg={ .elems={ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } } }
+
+State 8 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp line 57 column 5 function main thread 0
+----------------------------------------------------
+  valid = 1
+
+State 9 file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 35 column 9 function at thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 35 column 9 function at
+  std::array::at out of range
+  i::0 < 2
+
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit aarch64 macos

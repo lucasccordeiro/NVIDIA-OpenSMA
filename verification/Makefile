@@ -134,8 +134,10 @@ mctp_validator_func:
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
 	  2>&1 | tee $(RESULTS)/mctp_validator_func.log
 
-# F-1 reachability: proves the validator passes gap interfaces [UsEnd=2, End=18)
-# for a well-formed PLDM packet, leading set_cur_eid() to OOB on cur_eid.
+# F-1 reachability: Control SetEpId Request with gap interface [UsEnd=2, End=18)
+# passes Validator::validate(), then on_set_endpoint_id() → set_cur_eid() OOBs.
+# Note: Control ctrl{} triggers an ESBMC frontend crash (filed separately), so
+# the harness calls set_cur_eid() directly after validate() returns true.
 # Expected: VERIFICATION FAILED ("std::array::at out of range").
 mctp_dispatch:
 	@mkdir -p $(RESULTS)

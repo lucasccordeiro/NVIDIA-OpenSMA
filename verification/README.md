@@ -61,7 +61,7 @@ for the full table; brief view:
 | [#4190](https://github.com/esbmc/esbmc/issues/4190) | partial — [#4194](https://github.com/esbmc/esbmc/pull/4194) merged; aggregate-`<array>` and `underlying_type_t` still missing | thin `<span>` shim (avoids bundled-`<array>` collision); `<array>` shim retained; `utils.h` inlined for `underlying_type_t` |
 | [#4191](https://github.com/esbmc/esbmc/issues/4191) | fixed by [#4192](https://github.com/esbmc/esbmc/pull/4192); follow-up: pointer overload uses `reinterpret_cast` (drops const) | thin `<bit>` shim that uses C-cast for the pointer specialisation |
 | [#4195](https://github.com/esbmc/esbmc/issues/4195) | fixed by [#4204](https://github.com/esbmc/esbmc/pull/4204) | (workaround removed) |
-| [#4201](https://github.com/esbmc/esbmc/issues/4201) | open — [#4203](https://github.com/esbmc/esbmc/pull/4203) reverted by [#4208](https://github.com/esbmc/esbmc/pull/4208) (skip too broad); refined replacement [#4211](https://github.com/esbmc/esbmc/pull/4211) open with a type-driven non-negativity predicate on `E1` and 8 CORE regressions | spi_utils harness parenthesises cast inside shift on mainline; drops once #4211 lands |
+| [#4201](https://github.com/esbmc/esbmc/issues/4201) | open — [#4203](https://github.com/esbmc/esbmc/pull/4203) reverted by [#4208](https://github.com/esbmc/esbmc/pull/4208) (skip too broad); refined replacement [#4211](https://github.com/esbmc/esbmc/pull/4211) open with a type-driven non-negativity predicate on `E1` and 7 CORE regressions | spi_utils harness parenthesises cast inside shift on mainline; drops once #4211 lands |
 
 ## Findings
 

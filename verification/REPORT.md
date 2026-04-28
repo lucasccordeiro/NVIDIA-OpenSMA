@@ -7,14 +7,17 @@
 
 ## TL;DR
 
-Four modules verified end-to-end against language-level safety properties
+Nine modules verified end-to-end against language-level safety properties
 (pointer/bounds/overflow/div-by-zero/memory-leak) and against module-specific
-functional contracts via k-induction. **One defensive-programming
-observation** (F-1, reachability not traced — see below). One initially-claimed
-finding (F-2) **retracted on review**: it was a benign unsigned wrap in
-`align_to`, not a bug. Three ESBMC C++-frontend bugs filed against
-[esbmc/esbmc](https://github.com/esbmc/esbmc); workarounds in place so
-verification continues.
+functional contracts via k-induction. **One active finding (F-1)**:
+`set_cur_eid()` OOBs on a 2-entry array when a Control SetEpId Request
+carries a gap interface; ESBMC proves both the validator gap (with the
+correct packet type) and the OOB endpoint; code inspection confirms the
+production call-site (`on_set_endpoint_id()`) makes the connection without
+a bounds check. One initially-claimed finding (F-2) **retracted on review**:
+it was a benign unsigned wrap in `align_to`, not a bug. Multiple ESBMC
+C++-frontend bugs filed against [esbmc/esbmc](https://github.com/esbmc/esbmc);
+workarounds in place so verification continues.
 
 ## What was verified
 
@@ -25,6 +28,7 @@ verification continues.
 | Fixed-point arithmetic | `src/nv/common/fixed_point.h` | ✅ 78 VCC | ✅ 24 VCC, k=1 | — |
 | Saturating arithmetic | `src/nv/common/utils.h` | ✅ 20 VCC | ✅ k=1 | ⚠ ESBMC strict unsigned-overflow demo (not a bug) |
 | MCTP validator state machine | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | — |
+| MCTP dispatch — F-1 reachability | `mctp_dispatch_harness.cpp` + `pdk-mctp-app-validator.cpp` + router/packet | ✅ CEX — `set_cur_eid` OOBs (iface=2, valid=true) | — | ✅ (expected FAILED) |
 | NSM type 2 (PCIe-link reset validator) | `src/nv/mctp/nsm_type_2.cpp` (`validatePcieLinkResetValue`) | ✅ | ✅ k=12 (membership iff + below-range rejection) | — |
 | SPI byte-buffer (de)serialisation | `src/nv/spi/utils.{h,cpp}` (`buf_to_u{16,32}`, `u{16,32}_to_buf`) | ✅ | ✅ k=9 (round-trip + big-endian + OOB-no-write) | — |
 | I2C CRC-8 helpers | `src/nv/i2c/helper.cpp` (`crc8`) | ✅ | ✅ k=5 (incrementality + init-zero invariant) | — |
@@ -53,7 +57,7 @@ All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
 ## Findings
 
-### F-1 — `set_cur_eid()` lacks bounds check (defensive observation; reachability not traced)
+### F-1 — `set_cur_eid()` OOBs on gap interface via Control SetEpId dispatch
 
 **File**: `corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp:34`
 
@@ -69,11 +73,46 @@ void set_cur_eid(RoutingTable& routing_table,
 `get_cur_eid` guards with `if (interface >= UsEnd) ...`; `set_cur_eid` has
 no such guard.
 
-**What the verifier shows**: `mctp_router_neg` produces a deterministic
-counterexample where `interface == UsEnd` violates an `__ESBMC_assert(i < N,
-...)` baked into the verification-only `<array>` shim's `at()`. This is a
-*model-checking artefact* derived from the shim, not a direct proof of a
-production failure mode.
+**What the verifier proves** (`mctp_dispatch`, `mctp_router_neg`):
+
+The `mctp_dispatch` harness (`verification/harnesses/mctp_dispatch_harness.cpp`)
+constructs a **Control SetEpId Request** — the exact packet type that
+`Control::process()` dispatches to `on_set_endpoint_id()` — with interface
+`iface_val` constrained to the gap `[UsEnd=2, End=18)`. ESBMC proves two
+properties in sequence:
+
+1. **Validator gap**: `Validator::validate()` returns `true` for this packet
+   and interface. The validator guards `interface >= End` (18) but not
+   `interface >= UsEnd` (2); interfaces in `[2, 17]` pass unchallenged.
+
+2. **OOB**: `set_cur_eid(router, iface_val, eid)` calls
+   `cur_eid.at(iface_val)`, which violates `i < N` (i.e., `iface_val < 2`).
+
+Counterexample produced by ESBMC (Bitwuzla, sub-second):
+
+```
+iface_val = 2          → passes __ESBMC_assume(iface_val >= 2 && iface_val < 18)
+valid     = 1          → validate() accepted the Control SetEpId Request
+VIOLATED: std::array::at out of range  (i::0 < 2 fails)
+```
+
+3. **Production connection (code inspection)**: `on_set_endpoint_id()`
+   (`pdk-mctp-platforms-control.cpp:61`) calls
+
+   ```cpp
+   set_cur_eid(_router, platforms::get_packet_interface(rx), crx.data[1]);
+   ```
+
+   unconditionally for `SetEidNormal` and `SetEidForced` sub-commands, with
+   no additional bounds check on the interface value.
+
+*Note on harness scope*: `platforms::Control ctrl{}` triggers an ESBMC
+frontend crash (assertion in `clang_c_adjust_expr.cpp:158`; filed as
+esbmc/esbmc#TBD), so `Control::process()` is not called directly in the
+harness. The harness calls `set_cur_eid()` directly after `validate()` —
+the same sequence `on_set_endpoint_id()` executes at lines 57–61. The
+production connection is confirmed by code inspection, not by the formal
+proof alone.
 
 **Runtime effect (empirically confirmed)**: under production flags
 `-fno-exceptions -fno-rtti`, `std::array::at(OOB)` calls `abort()` — not
@@ -82,25 +121,17 @@ silent corruption, not a throw. Reproduced via ESBMC's `--branch-coverage
 relevant call shape (`verification/ctest/f1/`); the generated executable
 exits with signal 6 (SIGABRT) when ESBMC picks any `i ∈ [UsEnd, UsEnd+8)`.
 
-So *if* a caller delivers `interface >= UsEnd` to `set_cur_eid`, the firmware
-resets. Whether that path is reachable is the open question (below).
-
-**What I did NOT verify**:
-- **Reachability**. The only non-test caller is
-  `Control::on_set_endpoint_id` (`pdk-mctp-platforms-control.cpp:61`),
-  which forwards `platforms::get_packet_interface(rx)` — a wire-supplied
-  `uint8_t` from `priv.packet_interface`. Whether the MCTP dispatch path
-  can deliver `interface >= UsEnd` to that handler depends on the protocol
-  router (which interfaces accept Set-EID; how `packet_interface` is
-  validated upstream). I have not traced this. If the dispatch path
-  already restricts `interface < UsEnd` before this handler runs, F-1
-  reduces to an internally-impossible state and is purely a
-  defensive-programming nit.
+**What remains open**: whether the MCTP protocol router can deliver a
+Set-EID Control packet with `priv.packet_interface >= UsEnd` to
+`on_set_endpoint_id()` in a real deployment. This depends on which physical
+interfaces accept the Set-EID command and how `packet_interface` is set
+upstream of the dispatch loop. If the receive path already guarantees
+`packet_interface < UsEnd`, the OOB is unreachable at runtime; if not,
+any such packet causes `abort()`.
 
 **Recommendation**: add the guard mirroring `get_cur_eid`. Cost is one
-line; the benefit is removing dependence on an external invariant that
-isn't documented at the function boundary. Whether to file as a CVE-class
-finding requires the reachability trace I haven't done.
+line; the benefit is removing dependence on an external invariant that is
+not documented at the function boundary.
 
 ```cpp
 if (interface >= static_cast<uint16_t>(Interface::UsEnd)) {
@@ -187,6 +218,7 @@ backed by an open issue.**
 | [#4203](https://github.com/esbmc/esbmc/pull/4203) | skip signed-shl overflow claim under C++20+ | merged 2026-04-28, **reverted by [#4208](https://github.com/esbmc/esbmc/pull/4208)** the same day (skip condition too broad — would suppress still-UB negative-`E1` case) | spi_utils workaround restored |
 | [#4204](https://github.com/esbmc/esbmc/pull/4204) | handle `UsingEnumDecl` (C++20 `using enum`) | merged 2026-04-28 | (sed-patch dropped; validator.cpp compiles directly) |
 | [#4211](https://github.com/esbmc/esbmc/pull/4211) | replacement for #4203: skip signed-shl overflow only when `E1` is provably non-negative (type-driven predicate); standard-aware via `--std c++20+` parsing; legacy spellings (`98`, `03`) and pre-C++20 unaffected | open (7 CORE regressions, paired with the OpenSMA harness restoration) | n/a — when this lands, the spi_utils parenthesisation workaround drops |
+| [#TBD](https://github.com/esbmc/esbmc/issues) | `platforms::Control` default-construction triggers assertion `new_comp.size() == ops.size()` in `clang_c_adjust_expr.cpp:158`; ESBMC aborts during GOTO program creation | open (to be filed) | `mctp_dispatch` harness calls `set_cur_eid()` directly after `validate()` instead of through `Control::process()`; production connection confirmed by code inspection |
 
 Every workaround site is tagged `// WORKAROUND esbmc#<n>` pointing at the
 specific open issue listed in the table above. Removing a workaround is a
@@ -195,12 +227,6 @@ kept narrow so multiple fixes can be reaped independently.
 
 ## What was deferred and why
 
-- **`pdk-mctp-app-validator.cpp`** — depends transitively on
-  `pdk-mctp-app-control.h`, `pdk-mctp-app-vendor.h`, `pdk-mctp-platforms-nsm.h`,
-  and `pdk-mctp-platforms-nsm-packet.h`, each containing 2–4 `std::bit_cast`
-  call sites. Verifying it would require ~360 lines of overlay-header
-  maintenance — clerical workaround surface, not verification work. Will
-  revisit once esbmc#4180 closes.
 - **FreeRTOS-backed code** (`src/nv/ipc/queue.cpp`, `src/nv/ipc/event.cpp`,
   `src/nv/ipc/timer.cpp`) — the actual logic is in
   `src/sys/x86/sys/ipc/queue.cpp`, which delegates to `xQueueSendToBack`,
@@ -208,30 +234,40 @@ kept narrow so multiple fixes can be reaped independently.
   out of scope for the initial sweep.
 - **Ada units** (`*.ads`, `*.adb`) — ESBMC has no Ada frontend. These will
   need to be stubbed at the C ABI boundary if they're ever in scope.
+- **Full Control dispatch path** — verifying `Control::process()` end-to-end
+  is blocked by the ESBMC frontend crash on `platforms::Control` construction
+  (esbmc/esbmc#TBD). Once that is fixed, the harness can be upgraded to call
+  `ctrl.process()` directly, eliminating the code-inspection step for the
+  F-1 production connection.
 
 ## Suggested next steps
 
-1. Trace MCTP dispatch reachability for F-1: does the receive path ever
-   deliver a Set-EID Control packet with `priv.packet_interface >= UsEnd`
-   to `Control::on_set_endpoint_id`? If yes, F-1 escalates to a real
-   abort/UB path under `-fno-exceptions`; if no, it stays a
-   defensive-programming nit.
-2. Once esbmc#4180 closes: revisit `pdk-mctp-app-validator.cpp`, then walk
-   down the `nsm_type_*.cpp` family in `src/nv/mctp/` (similar parser
+1. **Apply the one-line fix** for F-1 — mirror the `get_cur_eid` guard in
+   `set_cur_eid`, removing dependence on an external invariant that isn't
+   documented at the function boundary (see recommendation in F-1 section).
+2. **Trace the full receive path for F-1** — determine whether the MCTP
+   protocol router can deliver a Set-EID Control packet with
+   `priv.packet_interface >= UsEnd` to `on_set_endpoint_id`. If yes, F-1
+   is a reachable abort under `-fno-exceptions`; if no, the fix is still
+   good defensive practice.
+3. **Upgrade mctp_dispatch once esbmc#TBD is fixed** — replace the
+   direct `set_cur_eid()` call with `ctrl.process()` to prove the full
+   end-to-end path formally, removing the code-inspection caveat.
+4. Walk down the `nsm_type_*.cpp` family in `src/nv/mctp/` (similar parser
    shape; the harness template will transfer).
-3. Stand up a CI hook that runs `make all` on every PR; verification must
+5. Stand up a CI hook that runs `make all` on every PR; verification must
    stay green and any failure must be triaged before merge.
 
 ## Reproducing
 
 ```sh
 cd verification
-make all                 # mctp_packet + mctp_router + fixed_point (Phase 1)
-make mctp_packet_func    # Phase 2 (k-induction)
-make mctp_router_func
-make fixed_point_func
-make mctp_packet_neg     # negative tests (expect VERIFICATION FAILED)
-make mctp_router_neg
+make all                                       # Phase 1 across every target
+make mctp_packet_func mctp_router_func \
+     mctp_validator_func                       # Phase 2 (k-induction)
+make fixed_point_func utils_func               # ditto
+make mctp_packet_neg mctp_router_neg utils_neg # negative tests (expect FAILED)
+make mctp_dispatch                             # F-1 reachability (expect FAILED)
 ```
 
 ESBMC 8.2.0 on `$PATH`, or pass `ESBMC=/path/to/esbmc make ...`.

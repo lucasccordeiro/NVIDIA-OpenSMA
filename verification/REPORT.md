@@ -11,11 +11,12 @@ Nine modules verified end-to-end against language-level safety properties
 (pointer/bounds/overflow/div-by-zero/memory-leak) and against module-specific
 functional contracts via k-induction. **One vulnerability formally proven
 reachable** (F-1) via `mctp_dispatch` — ESBMC finds a counterexample where a
-well-formed PLDM packet with a gap interface triggers `set_cur_eid()` to
-OOB-index the 2-entry `cur_eid` array. Two initially-claimed findings (F-2,
-F-3) **retracted on review**. Several ESBMC C++-frontend bugs filed against
-[esbmc/esbmc](https://github.com/esbmc/esbmc); most are now fixed and merged;
-workarounds removed where applicable.
+Control SetEpId Request with a gap interface triggers `set_cur_eid()` to
+OOB-index the 2-entry `cur_eid` array; code inspection confirms the production
+call-site `on_set_endpoint_id()` makes this call unconditionally. Two
+initially-claimed findings (F-2, F-3) **retracted on review**. Several ESBMC
+C++-frontend bugs filed against [esbmc/esbmc](https://github.com/esbmc/esbmc);
+most are now fixed and merged; workarounds removed where applicable.
 
 ## What was verified
 
@@ -76,22 +77,37 @@ no such guard.
 `Interface::UsEnd` (2). Any interface value in `[2, 17]` — the gap — passes
 validation yet OOBs in `set_cur_eid()`.
 
-**What ESBMC proved** (`mctp_dispatch` harness, `LANG_FLAGS`, 179 VCC / 10
+**What ESBMC proved** (`mctp_dispatch` harness, `LANG_FLAGS`, 194 VCC / 10
 remaining after simplification; Bitwuzla solves in <0.01 s):
 
-The harness constrains `iface_val` to `[UsEnd=2, End=18)` and builds a
-minimal PLDM start-of-message that satisfies every guard inside `validate()`
-(`hdr_ver==0x01`, `dst_eid==NULL_EID`, `msg_type==Pldm`, `som==1`). ESBMC
-finds the counterexample immediately:
+The harness constrains `iface_val` to `[UsEnd=2, End=18)` and constructs a
+**Control SetEpId Request** — the exact packet type dispatched to
+`on_set_endpoint_id()` — satisfying every guard inside `validate()`
+(`hdr_ver=1`, `dst_eid=NULL_EID`, `som=1`, `eom=1`, `tag_owner=1`,
+`msg_type=Control`, `rq=1`, `Cmd::SetEpId`, `SetEidNormal`). ESBMC finds the
+counterexample immediately:
 
 ```
-State 5  iface_val = 2   (Interface::DsI2c0, first gap value)
-State 8  valid = 1       (Validator::validate() returns true)
-State 9  Violated: std::array::at out of range  [i::0 < 2  fails]
-         at set_cur_eid() → cur_eid.at(2) on a size-2 array
+State 5   iface_val = 2   (first gap value: passes assume >= UsEnd && < End)
+State 9   valid = 1       (Validator::validate() returns true)
+State 10  Violated: std::array::at out of range  [i::0 < 2  fails]
+          at set_cur_eid() → cur_eid.at(2) on a size-2 array
 ```
 
 Any `iface_val ∈ [2, 17]` triggers the same path.
+
+**Production connection (code inspection)**: `on_set_endpoint_id()`
+(`pdk-mctp-platforms-control.cpp:61`) calls
+
+```cpp
+set_cur_eid(_router, platforms::get_packet_interface(rx), crx.data[1]);
+```
+
+unconditionally for `SetEidNormal` and `SetEidForced`, with no bounds check
+on the interface value. `platforms::Control ctrl{}` triggers an ESBMC frontend
+crash (assertion in `clang_c_adjust_expr.cpp:158`; filed as esbmc/esbmc#TBD),
+so `Control::process()` is not called directly in the harness; the connection
+is confirmed by code inspection.
 
 **Runtime effect (empirically confirmed)**: under production flags
 `-fno-exceptions -fno-rtti`, `std::array::at(OOB)` calls `abort()` — not
@@ -99,9 +115,9 @@ silent corruption, not a throw. Reproduced via ESBMC's `--branch-coverage
 --generate-ctest-testcase` on a 26-line standalone harness (`ctest/f1/`);
 the generated executable exits with signal 6 (SIGABRT).
 
-**Recommendation**: this is a confirmed reachable abort path for any
-well-formed PLDM (or Control Request) packet whose `priv.packet_interface`
-falls in `[UsEnd, End)`. Add the guard that `get_cur_eid` already carries:
+**Recommendation**: this is a confirmed abort path for any Control SetEpId
+Request whose `priv.packet_interface` falls in `[UsEnd, End)`. Add the guard
+that `get_cur_eid` already carries:
 
 ```cpp
 if (interface >= static_cast<uint16_t>(Interface::UsEnd)) {
@@ -192,6 +208,7 @@ backed by an open issue.**
 | [#4204](https://github.com/esbmc/esbmc/pull/4204) | handle `UsingEnumDecl` (C++20 `using enum`) | merged 2026-04-28 | (sed-patch dropped; validator.cpp compiles directly) |
 | [#4211](https://github.com/esbmc/esbmc/pull/4211) | replacement for #4203: skip signed-shl overflow only when `E1` is provably non-negative (type-driven predicate); standard-aware via `--std c++20+` parsing; legacy spellings (`98`, `03`) and pre-C++20 unaffected | **merged** (7 CORE regressions, paired with the OpenSMA harness restoration) | spi_utils parenthesisation workaround removed |
 | [#4213](https://github.com/esbmc/esbmc/pull/4213) | add `std::underlying_type` and `underlying_type_t` to bundled `<type_traits>` (SFINAE-guarded via `__underlying_type(T)` builtin; `::type` only present for enum types) | **merged** (2 CORE regressions: positive and negative) | `utils.h` workaround removed; harness now includes production header directly |
+| [#TBD](https://github.com/esbmc/esbmc/issues) | `platforms::Control` default-construction triggers assertion `new_comp.size() == ops.size()` in `clang_c_adjust_expr.cpp:158`; ESBMC aborts during GOTO program creation | open (to be filed) | `mctp_dispatch` harness calls `set_cur_eid()` directly after `validate()` instead of through `Control::process()`; production connection confirmed by code inspection |
 
 Every workaround site is tagged `// WORKAROUND esbmc#<n>` pointing at the
 specific open issue listed in the table above. Removing a workaround is a
@@ -200,6 +217,11 @@ kept narrow so multiple fixes can be reaped independently.
 
 ## What was deferred and why
 
+- **Full Control dispatch path** — verifying `Control::process()` end-to-end
+  is blocked by the ESBMC frontend crash on `platforms::Control` construction
+  (esbmc/esbmc#TBD). Once that is fixed, the harness can be upgraded to call
+  `ctrl.process()` directly, formally proving the full path without a
+  code-inspection step.
 - **FreeRTOS-backed code** (`src/nv/ipc/queue.cpp`, `src/nv/ipc/event.cpp`,
   `src/nv/ipc/timer.cpp`) — the actual logic is in
   `src/sys/x86/sys/ipc/queue.cpp`, which delegates to `xQueueSendToBack`,
@@ -212,11 +234,14 @@ kept narrow so multiple fixes can be reaped independently.
 
 1. **Fix F-1**: add the `interface >= UsEnd` guard to `set_cur_eid()` (or
    tighten `Validator::validate()` to reject `>= UsEnd`). F-1 is confirmed
-   reachable — any PLDM packet with `priv.packet_interface ∈ [2, 17]` will
-   abort the firmware under `-fno-exceptions`.
-2. Expand coverage to the `nsm_type_*.cpp` family in `src/nv/mctp/` (similar
+   reachable — a Control SetEpId Request with `priv.packet_interface ∈ [2, 17]`
+   will abort the firmware under `-fno-exceptions`.
+2. **Upgrade `mctp_dispatch` once esbmc#TBD is fixed**: replace the direct
+   `set_cur_eid()` call with `ctrl.process()` to prove the full end-to-end
+   path formally, eliminating the code-inspection caveat.
+3. Expand coverage to the `nsm_type_*.cpp` family in `src/nv/mctp/` (similar
    parser shape; the harness template transfers directly).
-3. Stand up a CI hook that runs `make all` on every PR; verification must
+4. Stand up a CI hook that runs `make all` on every PR; verification must
    stay green and any failure must be triaged before merge.
 
 ## Reproducing

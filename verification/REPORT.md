@@ -1,20 +1,21 @@
 # OpenSMA ESBMC Verification — Initial Report
 
-**Date**: 2026-04-25
+**Date**: 2026-04-25 (updated 2026-04-29)
 **Tool**: ESBMC 8.2.0 (aarch64-macos)
 **Scope**: bounded model checking of selected modules in
 [NVIDIA/OpenSMA](https://github.com/NVIDIA/OpenSMA)
 
 ## TL;DR
 
-Four modules verified end-to-end against language-level safety properties
+Nine modules verified end-to-end against language-level safety properties
 (pointer/bounds/overflow/div-by-zero/memory-leak) and against module-specific
-functional contracts via k-induction. **One defensive-programming
-observation** (F-1, reachability not traced — see below). One initially-claimed
-finding (F-2) **retracted on review**: it was a benign unsigned wrap in
-`align_to`, not a bug. Three ESBMC C++-frontend bugs filed against
-[esbmc/esbmc](https://github.com/esbmc/esbmc); workarounds in place so
-verification continues.
+functional contracts via k-induction. **One vulnerability formally proven
+reachable** (F-1) via `mctp_dispatch` — ESBMC finds a counterexample where a
+well-formed PLDM packet with a gap interface triggers `set_cur_eid()` to
+OOB-index the 2-entry `cur_eid` array. Two initially-claimed findings (F-2,
+F-3) **retracted on review**. Several ESBMC C++-frontend bugs filed against
+[esbmc/esbmc](https://github.com/esbmc/esbmc); most are now fixed and merged;
+workarounds removed where applicable.
 
 ## What was verified
 
@@ -22,6 +23,7 @@ verification continues.
 |---|---|:-:|:-:|:-:|
 | MCTP packet parser | `corepdk/.../app/pdk-mctp-app-packet.cpp` | ✅ 62 VCC | ✅ 76 VCC, k=1 | ✅ CEX on undersized input |
 | MCTP routing helpers | `corepdk/.../platforms/x86/pdk-mctp-platforms-router-plat.cpp` | ✅ 70 VCC | ✅ 66 VCC, k=1 | ✅ CEX on `iface == UsEnd` |
+| MCTP dispatch (F-1 reachability) | `Validator::validate()` + `set_cur_eid()` | — | — | ✅ CEX: `iface_val=2`, `valid=true`, OOB at `cur_eid.at(2)` |
 | Fixed-point arithmetic | `src/nv/common/fixed_point.h` | ✅ 78 VCC | ✅ 24 VCC, k=1 | — |
 | Saturating arithmetic | `src/nv/common/utils.h` | ✅ 20 VCC | ✅ k=1 | ⚠ ESBMC strict unsigned-overflow demo (not a bug) |
 | MCTP validator state machine | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | — |
@@ -53,7 +55,7 @@ All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
 ## Findings
 
-### F-1 — `set_cur_eid()` lacks bounds check (defensive observation; reachability not traced)
+### F-1 — `set_cur_eid()` lacks bounds check (reachability formally proven)
 
 **File**: `corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp:34`
 
@@ -69,38 +71,37 @@ void set_cur_eid(RoutingTable& routing_table,
 `get_cur_eid` guards with `if (interface >= UsEnd) ...`; `set_cur_eid` has
 no such guard.
 
-**What the verifier shows**: `mctp_router_neg` produces a deterministic
-counterexample where `interface == UsEnd` violates an `__ESBMC_assert(i < N,
-...)` baked into the verification-only `<array>` shim's `at()`. This is a
-*model-checking artefact* derived from the shim, not a direct proof of a
-production failure mode.
+**Root cause — the validator gap**: `Validator::validate()` rejects
+`interface >= Interface::End` (18), but `cur_eid` is sized to
+`Interface::UsEnd` (2). Any interface value in `[2, 17]` — the gap — passes
+validation yet OOBs in `set_cur_eid()`.
+
+**What ESBMC proved** (`mctp_dispatch` harness, `LANG_FLAGS`, 179 VCC / 10
+remaining after simplification; Bitwuzla solves in <0.01 s):
+
+The harness constrains `iface_val` to `[UsEnd=2, End=18)` and builds a
+minimal PLDM start-of-message that satisfies every guard inside `validate()`
+(`hdr_ver==0x01`, `dst_eid==NULL_EID`, `msg_type==Pldm`, `som==1`). ESBMC
+finds the counterexample immediately:
+
+```
+State 5  iface_val = 2   (Interface::DsI2c0, first gap value)
+State 8  valid = 1       (Validator::validate() returns true)
+State 9  Violated: std::array::at out of range  [i::0 < 2  fails]
+         at set_cur_eid() → cur_eid.at(2) on a size-2 array
+```
+
+Any `iface_val ∈ [2, 17]` triggers the same path.
 
 **Runtime effect (empirically confirmed)**: under production flags
 `-fno-exceptions -fno-rtti`, `std::array::at(OOB)` calls `abort()` — not
 silent corruption, not a throw. Reproduced via ESBMC's `--branch-coverage
---generate-ctest-testcase` on a 26-line standalone harness mirroring the
-relevant call shape (`verification/ctest/f1/`); the generated executable
-exits with signal 6 (SIGABRT) when ESBMC picks any `i ∈ [UsEnd, UsEnd+8)`.
+--generate-ctest-testcase` on a 26-line standalone harness (`ctest/f1/`);
+the generated executable exits with signal 6 (SIGABRT).
 
-So *if* a caller delivers `interface >= UsEnd` to `set_cur_eid`, the firmware
-resets. Whether that path is reachable is the open question (below).
-
-**What I did NOT verify**:
-- **Reachability**. The only non-test caller is
-  `Control::on_set_endpoint_id` (`pdk-mctp-platforms-control.cpp:61`),
-  which forwards `platforms::get_packet_interface(rx)` — a wire-supplied
-  `uint8_t` from `priv.packet_interface`. Whether the MCTP dispatch path
-  can deliver `interface >= UsEnd` to that handler depends on the protocol
-  router (which interfaces accept Set-EID; how `packet_interface` is
-  validated upstream). I have not traced this. If the dispatch path
-  already restricts `interface < UsEnd` before this handler runs, F-1
-  reduces to an internally-impossible state and is purely a
-  defensive-programming nit.
-
-**Recommendation**: add the guard mirroring `get_cur_eid`. Cost is one
-line; the benefit is removing dependence on an external invariant that
-isn't documented at the function boundary. Whether to file as a CVE-class
-finding requires the reachability trace I haven't done.
+**Recommendation**: this is a confirmed reachable abort path for any
+well-formed PLDM (or Control Request) packet whose `priv.packet_interface`
+falls in `[UsEnd, End)`. Add the guard that `get_cur_eid` already carries:
 
 ```cpp
 if (interface >= static_cast<uint16_t>(Interface::UsEnd)) {
@@ -108,6 +109,9 @@ if (interface >= static_cast<uint16_t>(Interface::UsEnd)) {
 }
 routing_table.ec.cur_eid.at(interface) = eid;
 ```
+
+Alternatively, tighten `Validator::validate()` to reject `interface >=
+Interface::UsEnd` instead of `>= Interface::End`.
 
 ### F-3 — RETRACTED (was: `buf_to_u32` signed shift overflow)
 
@@ -175,10 +179,10 @@ backed by an open issue.**
 | [#4180](https://github.com/esbmc/esbmc/issues/4180) | Original umbrella (array crash + qualified constexpr) | **closed** — split into #4183 (still open) and fixed via #4184 | n/a |
 | [#4182](https://github.com/esbmc/esbmc/issues/4182) | `using ns::T;` for class / enum types fails conversion | **fixed** by [#4187](https://github.com/esbmc/esbmc/pull/4187) (merged 2026-04-26) | (workarounds removed; harnesses now use plain `using ns::T;`) |
 | [#4183](https://github.com/esbmc/esbmc/issues/4183) | `std::array<T,N>` crashes `gen_vptr_initializations` | **fixed** by [#4188](https://github.com/esbmc/esbmc/pull/4188) (merged 2026-04-26) | (crash gone; `<array>` shim retained for the unrelated aggregate-init divergence — see #4190 below) |
-| [#4190](https://github.com/esbmc/esbmc/issues/4190) | bundled libc++ missing `<span>`, `<bit>`, parts of `<type_traits>`; bundled `<array>` is a `class` not an aggregate | partial — [#4194](https://github.com/esbmc/esbmc/pull/4194) bundled `<span>` + most traits; aggregate-`<array>` and `std::underlying_type_t` still missing | thin `<span>` shim (transitive `<bit>` + avoids bundled-`<array>` collision); `<array>` shim retained; utils.h inlined for `underlying_type_t` |
+| [#4190](https://github.com/esbmc/esbmc/issues/4190) | bundled libc++ missing `<span>`, `<bit>`, parts of `<type_traits>`; bundled `<array>` is a `class` not an aggregate | partial — [#4194](https://github.com/esbmc/esbmc/pull/4194) bundled `<span>` + most traits; [#4213](https://github.com/esbmc/esbmc/pull/4213) added `std::underlying_type`/`underlying_type_t`; aggregate-`<array>` still missing | thin `<span>` shim (transitive `<bit>` + avoids bundled-`<array>` collision); `<array>` shim retained for aggregate-init |
 | [#4191](https://github.com/esbmc/esbmc/issues/4191) | spurious CEX on aliased `*std::bit_cast<T*>(...)` round-trip | fixed by [#4192](https://github.com/esbmc/esbmc/pull/4192) — but the bundled pointer overload uses `reinterpret_cast` (drops const → compile error on `bit_cast<uint8_t*>(this)` in const methods) | thin `<bit>` shim that keeps the pointer aliasing fix and uses C-cast for the pointer specialisation (preserves `std::bit_cast`'s const-agnostic semantics); follow-up commented on #4191 |
 | [#4195](https://github.com/esbmc/esbmc/issues/4195) | C++20 `using enum X;` (`UsingEnumDecl`) not handled | fixed by [#4204](https://github.com/esbmc/esbmc/pull/4204) (merged 2026-04-28) | (sed-patch dropped; validator.cpp compiles directly from upstream) |
-| [#4201](https://github.com/esbmc/esbmc/issues/4201) | `--overflow-check` flags signed left-shift wrap that is defined under C++20+ | open — [#4203](https://github.com/esbmc/esbmc/pull/4203) merged then reverted by [#4208](https://github.com/esbmc/esbmc/pull/4208) (skip too broad); refined replacement [#4211](https://github.com/esbmc/esbmc/pull/4211) is open with a non-negativity precondition on `E1` (type-driven shape predicate covers the firmware byte-deserialiser idiom) | spi_utils harness uses production form on local build of #4211; mainline ESBMC still requires the parenthesisation workaround |
+| [#4201](https://github.com/esbmc/esbmc/issues/4201) | `--overflow-check` flags signed left-shift wrap that is defined under C++20+ | resolved — [#4203](https://github.com/esbmc/esbmc/pull/4203) merged then reverted by [#4208](https://github.com/esbmc/esbmc/pull/4208) (skip too broad); refined replacement [#4211](https://github.com/esbmc/esbmc/pull/4211) **merged** with a type-driven non-negativity predicate on `E1` | spi_utils harness uses production form directly (parenthesisation workaround removed) |
 | [#4184](https://github.com/esbmc/esbmc/pull/4184) | `getAsType` guard for namespace-qualified constexpr | merged 2026-04-26 | (workarounds removed) |
 | [#4188](https://github.com/esbmc/esbmc/pull/4188) | tag-id mismatch in `annotate_class_method` | merged 2026-04-26 | (crash gone; see #4190 row for the residual `<array>` shim reason) |
 | [#4187](https://github.com/esbmc/esbmc/pull/4187) | `UsingType` handling for clang ≥ 22 | merged 2026-04-26 | (workarounds removed) |
@@ -186,7 +190,8 @@ backed by an open issue.**
 | [#4194](https://github.com/esbmc/esbmc/pull/4194) | bundle `<span>` and complete `<type_traits>` | merged 2026-04-27 | `<span>` shim retained as thin replacement (transitive `<bit>` + avoid bundled-`<array>` collision); utils.h still inlined for residual `underlying_type_t` gap |
 | [#4203](https://github.com/esbmc/esbmc/pull/4203) | skip signed-shl overflow claim under C++20+ | merged 2026-04-28, **reverted by [#4208](https://github.com/esbmc/esbmc/pull/4208)** the same day (skip condition too broad — would suppress still-UB negative-`E1` case) | spi_utils workaround restored |
 | [#4204](https://github.com/esbmc/esbmc/pull/4204) | handle `UsingEnumDecl` (C++20 `using enum`) | merged 2026-04-28 | (sed-patch dropped; validator.cpp compiles directly) |
-| [#4211](https://github.com/esbmc/esbmc/pull/4211) | replacement for #4203: skip signed-shl overflow only when `E1` is provably non-negative (type-driven predicate); standard-aware via `--std c++20+` parsing; legacy spellings (`98`, `03`) and pre-C++20 unaffected | open (7 CORE regressions, paired with the OpenSMA harness restoration) | n/a — when this lands, the spi_utils parenthesisation workaround drops |
+| [#4211](https://github.com/esbmc/esbmc/pull/4211) | replacement for #4203: skip signed-shl overflow only when `E1` is provably non-negative (type-driven predicate); standard-aware via `--std c++20+` parsing; legacy spellings (`98`, `03`) and pre-C++20 unaffected | **merged** (7 CORE regressions, paired with the OpenSMA harness restoration) | spi_utils parenthesisation workaround removed |
+| [#4213](https://github.com/esbmc/esbmc/pull/4213) | add `std::underlying_type` and `underlying_type_t` to bundled `<type_traits>` (SFINAE-guarded via `__underlying_type(T)` builtin; `::type` only present for enum types) | **merged** (2 CORE regressions: positive and negative) | `utils.h` workaround removed; harness now includes production header directly |
 
 Every workaround site is tagged `// WORKAROUND esbmc#<n>` pointing at the
 specific open issue listed in the table above. Removing a workaround is a
@@ -195,12 +200,6 @@ kept narrow so multiple fixes can be reaped independently.
 
 ## What was deferred and why
 
-- **`pdk-mctp-app-validator.cpp`** — depends transitively on
-  `pdk-mctp-app-control.h`, `pdk-mctp-app-vendor.h`, `pdk-mctp-platforms-nsm.h`,
-  and `pdk-mctp-platforms-nsm-packet.h`, each containing 2–4 `std::bit_cast`
-  call sites. Verifying it would require ~360 lines of overlay-header
-  maintenance — clerical workaround surface, not verification work. Will
-  revisit once esbmc#4180 closes.
 - **FreeRTOS-backed code** (`src/nv/ipc/queue.cpp`, `src/nv/ipc/event.cpp`,
   `src/nv/ipc/timer.cpp`) — the actual logic is in
   `src/sys/x86/sys/ipc/queue.cpp`, which delegates to `xQueueSendToBack`,
@@ -211,14 +210,12 @@ kept narrow so multiple fixes can be reaped independently.
 
 ## Suggested next steps
 
-1. Trace MCTP dispatch reachability for F-1: does the receive path ever
-   deliver a Set-EID Control packet with `priv.packet_interface >= UsEnd`
-   to `Control::on_set_endpoint_id`? If yes, F-1 escalates to a real
-   abort/UB path under `-fno-exceptions`; if no, it stays a
-   defensive-programming nit.
-2. Once esbmc#4180 closes: revisit `pdk-mctp-app-validator.cpp`, then walk
-   down the `nsm_type_*.cpp` family in `src/nv/mctp/` (similar parser
-   shape; the harness template will transfer).
+1. **Fix F-1**: add the `interface >= UsEnd` guard to `set_cur_eid()` (or
+   tighten `Validator::validate()` to reject `>= UsEnd`). F-1 is confirmed
+   reachable — any PLDM packet with `priv.packet_interface ∈ [2, 17]` will
+   abort the firmware under `-fno-exceptions`.
+2. Expand coverage to the `nsm_type_*.cpp` family in `src/nv/mctp/` (similar
+   parser shape; the harness template transfers directly).
 3. Stand up a CI hook that runs `make all` on every PR; verification must
    stay green and any failure must be triaged before merge.
 
@@ -226,12 +223,13 @@ kept narrow so multiple fixes can be reaped independently.
 
 ```sh
 cd verification
-make all                 # mctp_packet + mctp_router + fixed_point (Phase 1)
+make all                 # all Phase 1 targets
 make mctp_packet_func    # Phase 2 (k-induction)
 make mctp_router_func
 make fixed_point_func
 make mctp_packet_neg     # negative tests (expect VERIFICATION FAILED)
 make mctp_router_neg
+make mctp_dispatch       # F-1 reachability proof (expect VERIFICATION FAILED)
 ```
 
 ESBMC 8.2.0 on `$PATH`, or pass `ESBMC=/path/to/esbmc make ...`.

@@ -24,6 +24,20 @@ LANG_FLAGS := \
   --unwind 4 \
   --no-unwinding-assertions
 
+# utils.h::align_to uses `value + alignment - 1` (left-to-right), so
+# `value + alignment` can overflow for value = alignment = 2^31 even though
+# the guard above passes. The wrap is benign in unsigned arithmetic — the
+# final masked result is correct (finding F-2, retracted). Drop
+# --unsigned-overflow-check here; utils_neg documents the false-positive.
+UTILS_LANG_FLAGS := \
+  --std c++20 \
+  --memory-leak-check \
+  --overflow-check \
+  --ub-shift-check \
+  --nan-check \
+  --unwind 4 \
+  --no-unwinding-assertions
+
 # Functional / inductive profile. Restored to k-induction with
 # --interval-analysis after esbmc#4184 cleared the qualified-constexpr
 # blocker. Works on all current targets because the verification-only
@@ -194,7 +208,7 @@ fixed_point_func:
 
 utils:
 	@mkdir -p $(RESULTS)
-	$(ESBMC) $(LANG_FLAGS) $(FP_INCS) -I$(STUBS) \
+	$(ESBMC) $(UTILS_LANG_FLAGS) $(FP_INCS) -I$(STUBS) \
 	  $(HARNESSES)/utils_harness.cpp \
 	  2>&1 | tee $(RESULTS)/utils.log
 

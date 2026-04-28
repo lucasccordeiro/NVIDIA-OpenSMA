@@ -55,6 +55,7 @@ FP_INCS := -I$(REPO)/src
 .PHONY: all mctp_packet mctp_packet_func mctp_packet_neg \
         mctp_router mctp_router_func mctp_router_neg \
         mctp_validator mctp_validator_func \
+        mctp_dispatch \
         nsm_type_2 nsm_type_2_func \
         spi_utils spi_utils_func \
         i2c_crc8 i2c_crc8_func \
@@ -132,6 +133,18 @@ mctp_validator_func:
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
 	  2>&1 | tee $(RESULTS)/mctp_validator_func.log
+
+# F-1 reachability: proves the validator passes gap interfaces [UsEnd=2, End=18)
+# for a well-formed PLDM packet, leading set_cur_eid() to OOB on cur_eid.
+# Expected: VERIFICATION FAILED ("std::array::at out of range").
+mctp_dispatch:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) $(MCTP_INCS) \
+	  $(HARNESSES)/mctp_dispatch_harness.cpp \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
+	  2>&1 | tee $(RESULTS)/mctp_dispatch.log
 
 nsm_type_2:
 	@mkdir -p $(RESULTS)

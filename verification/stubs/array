@@ -24,6 +24,11 @@ struct array
     constexpr T*            data() noexcept { return elems; }
     constexpr const T*      data() const noexcept { return elems; }
     constexpr unsigned long size() const noexcept { return N; }
+    constexpr bool          empty() const noexcept { return N == 0; }
+    constexpr T*            begin() noexcept { return elems; }
+    constexpr const T*      begin() const noexcept { return elems; }
+    constexpr T*            end() noexcept { return elems + N; }
+    constexpr const T*      end() const noexcept { return elems + N; }
     constexpr T&            operator[](unsigned long i) noexcept { return elems[i]; }
     constexpr const T&      operator[](unsigned long i) const noexcept { return elems[i]; }
 

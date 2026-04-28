@@ -1,0 +1,20 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/OpenSMA/verification/harnesses/literals_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.858s
+GOTO program processing time: 0.008s
+Starting Bounded Model Checking
+Symex completed in: 0.006s (91 assignments)
+Caching time: 0.000s (removed 1 assertions)
+Slicing time: 0.000s (removed 66 assignments)
+Generated 11 VCC(s), 10 remaining after simplification (24 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.013s
+
+VERIFICATION SUCCESSFUL
+ESBMC version 8.2.0 64-bit aarch64 macos

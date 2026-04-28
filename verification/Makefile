@@ -43,9 +43,11 @@ FP_INCS := -I$(REPO)/src
         mctp_validator mctp_validator_func \
         nsm_type_2 nsm_type_2_func \
         spi_utils spi_utils_func \
+        i2c_crc8 i2c_crc8_func \
+        literals literals_func literals_neg \
         fixed_point fixed_point_func \
         utils utils_func utils_neg clean
-all: mctp_packet mctp_router mctp_validator nsm_type_2 spi_utils fixed_point utils
+all: mctp_packet mctp_router mctp_validator nsm_type_2 spi_utils i2c_crc8 literals fixed_point utils
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
@@ -158,6 +160,24 @@ i2c_crc8_func:
 	  -I$(STUBS) -DESBMC_FUNCTIONAL=1 \
 	  $(HARNESSES)/i2c_crc8_harness.cpp \
 	  2>&1 | tee $(RESULTS)/i2c_crc8_func.log
+
+literals:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  $(HARNESSES)/literals_harness.cpp \
+	  2>&1 | tee $(RESULTS)/literals.log
+
+literals_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(FUNC_FLAGS) -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/literals_harness.cpp \
+	  2>&1 | tee $(RESULTS)/literals_func.log
+
+literals_neg:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --ub-shift-check \
+	  $(HARNESSES)/literals_negative_harness.cpp \
+	  2>&1 | tee $(RESULTS)/literals_neg.log
 
 fixed_point:
 	@mkdir -p $(RESULTS)

@@ -1,0 +1,35 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/OpenSMA/verification/harnesses/literals_negative_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.759s
+GOTO program processing time: 0.004s
+Starting Bounded Model Checking
+Symex completed in: 0.002s (42 assignments)
+Caching time: 0.000s (removed 0 assertions)
+Slicing time: 0.000s (removed 36 assignments)
+Generated 1 VCC(s), 1 remaining after simplification (6 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Building error trace
+
+[Counterexample]
+
+
+State 1 file /Users/user/OpenSMA/verification/harnesses/literals_negative_harness.cpp line 17 column 5 function main thread 0
+----------------------------------------------------
+  i = 64 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 01000000)
+
+State 3 file /Users/user/OpenSMA/verification/harnesses/literals_negative_harness.cpp line 12 column 5 function bit thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/OpenSMA/verification/harnesses/literals_negative_harness.cpp line 12 column 5 function bit
+  undefined behavior on shift operation shl
+  i::0 < 64
+
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit aarch64 macos

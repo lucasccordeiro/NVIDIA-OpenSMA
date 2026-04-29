@@ -1,7 +1,7 @@
 Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp
-In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:14:
+In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:33:
 In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet-plat.h:19:
 In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet.h:19:
 In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
@@ -12,7 +12,7 @@ In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
    23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
       |                                                                                              ^
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp
-In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:14:
+In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:33:
 In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet-plat.h:19:
 In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet.h:19:
 In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
@@ -23,7 +23,7 @@ In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
    23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
       |                                                                                              ^
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
-In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:14:
+In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:33:
 In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet-plat.h:19:
 In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet.h:19:
 In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
@@ -35,8 +35,8 @@ In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
       |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.771s
-GOTO program processing time: 0.014s
+GOTO program creation time: 0.694s
+GOTO program processing time: 0.011s
 Starting Bounded Model Checking
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
@@ -100,39 +100,44 @@ WARNING: not checking alignment for access to packed struct struct pdk::mctp::ap
 WARNING: no body for function hide#
 WARNING: no body for function hide#
 WARNING: no body for function hide#
-Symex completed in: 0.061s (347 assignments)
+Symex completed in: 0.074s (366 assignments)
 Caching time: 0.000s (removed 1 assertions)
-Slicing time: 0.001s (removed 271 assignments)
-Generated 179 VCC(s), 10 remaining after simplification (75 assignments)
+Slicing time: 0.002s (removed 289 assignments)
+Generated 194 VCC(s), 10 remaining after simplification (76 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.002s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.005s
+Runtime decision procedure: 0.003s
 Building error trace
 
 [Counterexample]
 
 
-State 5 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp line 40 column 5 function main thread 0
+State 5 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp line 58 column 5 function main thread 0
 ----------------------------------------------------
   iface_val = 2 (00000010)
 
-State 7 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 43 column 5 function set_packet_interface thread 0
+State 7 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp line 79 column 24 function main thread 0
 ----------------------------------------------------
-  pkt::0->priv.packet_interface = { .priv={ .packet_length=0, .packet_interface=interface::1?1!0&0#1, .reserved0=0 }, .hdr={ .hdr_ver=1, .rsvd=0, .dst_eid=0, .src_eid=0, .msg_tag=0,
-    .tag_owner=0, .pkt_seq=0, .eom=0,
-    .som=1 },
-    .msg={ .elems={ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } } }
+  *return_value$_operator[]$7 = { .priv={ .packet_length = 0 }, .hdr={ .hdr_ver=1, .rsvd=0, .dst_eid=0, .src_eid=0, .msg_tag=0,
+    .tag_owner=1, .pkt_seq=0, .eom=1,
+    .som=1 }, .msg={ .elems={ 0, 128, 1, 0, nondet_symbol(symex::nondet2), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } } }
 
-State 8 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp line 57 column 5 function main thread 0
+State 8 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 43 column 5 function set_packet_interface thread 0
+----------------------------------------------------
+  pkt::0->priv.packet_interface = { .priv=2, .hdr={ .hdr_ver=1, .rsvd=0, .dst_eid=0, .src_eid=0, .msg_tag=0,
+    .tag_owner=1, .pkt_seq=0, .eom=1,
+    .som=1 }, .msg={ .elems={ 0, 128, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } } }
+
+State 9 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp line 83 column 5 function main thread 0
 ----------------------------------------------------
   valid = 1
 
-State 9 file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 35 column 9 function at thread 0
+State 10 file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 40 column 9 function at thread 0
 ----------------------------------------------------
 Violated property:
-  file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 35 column 9 function at
+  file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 40 column 9 function at
   std::array::at out of range
   i::0 < 2
 

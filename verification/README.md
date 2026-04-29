@@ -43,9 +43,11 @@ ESBMC to produce a counterexample.
 | `mctp_dispatch` | F-1 reachability: `Validator::validate()` + `set_cur_eid()` | — | — | ✅ CEX: `iface_val=2`, `valid=true`, OOB at `cur_eid.at(2)` |
 | `mctp_validator` | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | — |
 | `nsm_type_2` | `src/nv/mctp/nsm_type_2.cpp` (`validatePcieLinkResetValue`) | ✅ | ✅ k=12 | — |
+| `nsm_bitmask` | `src/nv/mctp/nsm_msg_bitmask.h` (`set_bit`/`unset_bit`/`get_bit`/`is_bit_set`) | ✅ 75 VCC | ✅ k=1 | ✅ CEX on `set_bit`/`unset_bit(arr8, pos≥64)` — F-5 |
+| `nsm_type5_validate` | `src/nv/mctp/nsm_type_5.cpp` (five field-validator functions) | ✅ 14 VCC | ✅ k=1 | — |
 | `spi_utils` | `src/nv/spi/utils.{h,cpp}` (buf_to_u16/u32, u16/u32_to_buf) | ✅ | ✅ k=9 | — |
 | `i2c_crc8` | `src/nv/i2c/helper.cpp` (crc8) | ✅ | ✅ k=5 | — |
-| `literals` | `src/nv/common/literals.h` (UDL truncation + shift) | ✅ | ✅ k=1 | ✅ CEX on `_bit(i≥64)` |
+| `literals` | `src/nv/common/literals.h` (UDL truncation + shift) | ✅ | ✅ k=1 | ✅ CEX on `_bit(i≥64)` — F-4 |
 | `fixed_point` | `src/nv/common/fixed_point.h` | ✅ | ✅ | — |
 | `utils` | `src/nv/common/utils.h` (saturating add/sub/mul/align_to) | ✅ | ✅ | ⚠ (ESBMC strict unsigned-wrap demo, not a bug) |
 
@@ -81,6 +83,14 @@ for the full table; brief view:
   computes `1ULL << i` with no guard — UB when `i >= 64` per
   `[expr.shift]/1`. All current call sites use compile-time constants ≤ 5, so
   no runtime exposure today. Fix: change `constexpr` → `consteval`.
+- **F-5** (latent UB, low severity):
+  `set_bit` and `unset_bit` on `std::array<uint8_t, NvMctpEventSupportedNum=8>`
+  in `src/nv/mctp/nsm_msg_bitmask.h` call `bitmask.at(pos/8)` without a bounds
+  guard. `get_bit` carries `if (byte_index < bitmask.size())` but the write
+  operations do not. For `pos ≥ 64`, `byte_index ≥ 8` is OOB on a size-8 array
+  (ESBMC CEX: `pos=248`, `byte_index=31`). All current call sites use constants
+  4 and 5, so no runtime exposure today. Fix: add the same guard that `get_bit`
+  already carries to both write operations.
 - **F-2** *retracted*: initially claimed overflow in `align_to`; on
   review, the unsigned wrap is mathematically benign (cancels exactly
   under the subsequent mask). ESBMC's `--unsigned-overflow-check` flagged
@@ -104,6 +114,7 @@ make mctp_packet_func mctp_router_func \
 make fixed_point_func utils_func               # ditto
 make mctp_packet_neg mctp_router_neg utils_neg # negative tests (expect FAILED)
 make mctp_dispatch                             # F-1 reachability proof (expect FAILED)
+make nsm_bitmask_neg                           # F-5 OOB proof (expect FAILED)
 ```
 
 Requires ESBMC on `$PATH` (current `master` recommended), or pass

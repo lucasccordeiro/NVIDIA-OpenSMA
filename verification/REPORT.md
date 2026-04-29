@@ -105,7 +105,7 @@ set_cur_eid(_router, platforms::get_packet_interface(rx), crx.data[1]);
 
 unconditionally for `SetEidNormal` and `SetEidForced`, with no bounds check
 on the interface value. `platforms::Control ctrl{}` triggers an ESBMC frontend
-crash (assertion in `clang_c_adjust_expr.cpp:158`; filed as esbmc/esbmc#TBD),
+crash (assertion in `clang_c_adjust_expr.cpp:158`; filed as esbmc/esbmc#4214),
 so `Control::process()` is not called directly in the harness; the connection
 is confirmed by code inspection.
 
@@ -208,7 +208,7 @@ backed by an open issue.**
 | [#4204](https://github.com/esbmc/esbmc/pull/4204) | handle `UsingEnumDecl` (C++20 `using enum`) | merged 2026-04-28 | (sed-patch dropped; validator.cpp compiles directly) |
 | [#4211](https://github.com/esbmc/esbmc/pull/4211) | replacement for #4203: skip signed-shl overflow only when `E1` is provably non-negative (type-driven predicate); standard-aware via `--std c++20+` parsing; legacy spellings (`98`, `03`) and pre-C++20 unaffected | **merged** (7 CORE regressions, paired with the OpenSMA harness restoration) | spi_utils parenthesisation workaround removed |
 | [#4213](https://github.com/esbmc/esbmc/pull/4213) | add `std::underlying_type` and `underlying_type_t` to bundled `<type_traits>` (SFINAE-guarded via `__underlying_type(T)` builtin; `::type` only present for enum types) | **merged** (2 CORE regressions: positive and negative) | `utils.h` workaround removed; harness now includes production header directly |
-| [#TBD](https://github.com/esbmc/esbmc/issues) | `platforms::Control` default-construction triggers assertion `new_comp.size() == ops.size()` in `clang_c_adjust_expr.cpp:158`; ESBMC aborts during GOTO program creation | open (to be filed) | `mctp_dispatch` harness calls `set_cur_eid()` directly after `validate()` instead of through `Control::process()`; production connection confirmed by code inspection |
+| [#4214](https://github.com/esbmc/esbmc/issues/4214) | `platforms::Control` default-construction triggers assertion `new_comp.size() == ops.size()` in `clang_c_adjust_expr.cpp:158`; ESBMC aborts during GOTO program creation | open | `mctp_dispatch` harness calls `set_cur_eid()` directly after `validate()` instead of through `Control::process()`; production connection confirmed by code inspection |
 
 Every workaround site is tagged `// WORKAROUND esbmc#<n>` pointing at the
 specific open issue listed in the table above. Removing a workaround is a
@@ -219,7 +219,7 @@ kept narrow so multiple fixes can be reaped independently.
 
 - **Full Control dispatch path** — verifying `Control::process()` end-to-end
   is blocked by the ESBMC frontend crash on `platforms::Control` construction
-  (esbmc/esbmc#TBD). Once that is fixed, the harness can be upgraded to call
+  (esbmc/esbmc#4214). Once that is fixed, the harness can be upgraded to call
   `ctrl.process()` directly, formally proving the full path without a
   code-inspection step.
 - **FreeRTOS-backed code** (`src/nv/ipc/queue.cpp`, `src/nv/ipc/event.cpp`,
@@ -236,7 +236,7 @@ kept narrow so multiple fixes can be reaped independently.
    tighten `Validator::validate()` to reject `>= UsEnd`). F-1 is confirmed
    reachable — a Control SetEpId Request with `priv.packet_interface ∈ [2, 17]`
    will abort the firmware under `-fno-exceptions`.
-2. **Upgrade `mctp_dispatch` once esbmc#TBD is fixed**: replace the direct
+2. **Upgrade `mctp_dispatch` once esbmc#4214 is fixed**: replace the direct
    `set_cur_eid()` call with `ctrl.process()` to prove the full end-to-end
    path formally, eliminating the code-inspection caveat.
 3. Expand coverage to the `nsm_type_*.cpp` family in `src/nv/mctp/` (similar

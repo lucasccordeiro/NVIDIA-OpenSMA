@@ -14,9 +14,11 @@ reachable** (F-1) via `mctp_dispatch` — ESBMC finds a counterexample where a
 Control SetEpId Request with a gap interface triggers `set_cur_eid()` to
 OOB-index the 2-entry `cur_eid` array; code inspection confirms the production
 call-site `on_set_endpoint_id()` makes this call unconditionally. Two
-initially-claimed findings (F-2, F-3) **retracted on review**. Several ESBMC
-C++-frontend bugs filed against [esbmc/esbmc](https://github.com/esbmc/esbmc);
-most are now fixed and merged; workarounds removed where applicable.
+initially-claimed findings (F-2, F-3) **retracted on review**. One further finding (F-4) is a latent UB in `literals.h::operator""_bit` —
+no current call site is at risk, but the function lacks a `consteval` or
+runtime guard. Several ESBMC C++-frontend bugs filed against
+[esbmc/esbmc](https://github.com/esbmc/esbmc); most are now fixed and merged;
+workarounds removed where applicable.
 
 ## What was verified
 
@@ -31,7 +33,7 @@ most are now fixed and merged; workarounds removed where applicable.
 | NSM type 2 (PCIe-link reset validator) | `src/nv/mctp/nsm_type_2.cpp` (`validatePcieLinkResetValue`) | ✅ | ✅ k=12 (membership iff + below-range rejection) | — |
 | SPI byte-buffer (de)serialisation | `src/nv/spi/utils.{h,cpp}` (`buf_to_u{16,32}`, `u{16,32}_to_buf`) | ✅ | ✅ k=9 (round-trip + big-endian + OOB-no-write) | — |
 | I2C CRC-8 helpers | `src/nv/i2c/helper.cpp` (`crc8`) | ✅ | ✅ k=5 (incrementality + init-zero invariant) | — |
-| User-defined integer literals | `src/nv/common/literals.h` (`_u8`/`_u16`/`_u32`/`_i8`/`_i16`/`_i32`/`_bits_sizeof`/`_bit`) | ✅ | ✅ k=1 (mask agreement, signed/unsigned truncation parity, `bits/8`, `1ULL << i`) | ✅ CEX on `_bit(i≥64)` via `--ub-shift-check` |
+| User-defined integer literals | `src/nv/common/literals.h` (`_u8`/`_u16`/`_u32`/`_i8`/`_i16`/`_i32`/`_bits_sizeof`/`_bit`) | ✅ | ✅ k=1 (mask agreement, signed/unsigned truncation parity, `bits/8`, `1ULL << i`) | ✅ CEX on `_bit(i≥64)` via `--ub-shift-check` — **F-4** |
 
 All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
@@ -132,6 +134,61 @@ routing_table.ec.cur_eid.at(interface) = eid;
 
 Alternatively, tighten `Validator::validate()` to reject `interface >=
 Interface::UsEnd` instead of `>= Interface::End`.
+
+### F-4 — `operator""_bit` missing precondition guard on shift count
+
+**File**: `src/nv/common/literals.h:61`
+
+```cpp
+constexpr auto operator""_bit(unsigned long long i)
+{
+    return static_cast<decltype(i)>(1) << i;
+}
+```
+
+`1ULL << i` is undefined behaviour when `i >= 64` — the shift count equals or
+exceeds the width of `unsigned long long` (`[expr.shift]/1`). The function is
+`constexpr` but not `consteval`, so a runtime invocation with an out-of-range
+argument is valid C++ that silently invokes UB.
+
+**What ESBMC proved** (`literals_neg`, `--ub-shift-check`, nondet `i ∈ [64, 128)`):
+
+```
+State 1  i = 64
+State 3  Violated: undefined behavior on shift operation shl
+         i::0 < 64  (shift count must be < type width)
+VERIFICATION FAILED
+```
+
+**Severity: low in practice.** Every production call site uses a small
+compile-time constant as the UDL operand (e.g. `1_bit`, `2_bit`, `3_bit` in
+enum class definitions across `spi_edma.h`, `ssif.h`, `i2c_types.h`, etc.).
+The compiler evaluates those at compile time and would diagnose any
+out-of-range literal. No current call site passes a runtime value.
+
+The risk is latent: a future caller that loops over bit positions (e.g.
+`for (int b = 0; b < N; ++b) mask |= nv::operator""_bit(b)`) would silently
+invoke UB once `b >= 64`.
+
+**Recommendation**: change `constexpr` to `consteval` — this locks the
+operator to compile-time-only use at zero runtime cost and eliminates the
+concern entirely:
+
+```cpp
+consteval auto operator""_bit(unsigned long long i)
+{
+    return static_cast<decltype(i)>(1) << i;
+}
+```
+
+If runtime use is ever intentionally needed, add a guard:
+
+```cpp
+constexpr auto operator""_bit(unsigned long long i)
+{
+    return i < 64 ? static_cast<decltype(i)>(1) << i : 0ULL;
+}
+```
 
 ### F-3 — RETRACTED (was: `buf_to_u32` signed shift overflow)
 

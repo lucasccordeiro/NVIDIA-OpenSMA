@@ -57,12 +57,14 @@ FP_INCS := -I$(REPO)/src
         mctp_validator mctp_validator_func \
         mctp_dispatch \
         nsm_type_2 nsm_type_2_func \
+        nsm_bitmask nsm_bitmask_func nsm_bitmask_neg \
+        nsm_type5_validate nsm_type5_validate_func \
         spi_utils spi_utils_func \
         i2c_crc8 i2c_crc8_func \
         literals literals_func literals_neg \
         fixed_point fixed_point_func \
         utils utils_func utils_neg clean
-all: mctp_packet mctp_router mctp_validator nsm_type_2 spi_utils i2c_crc8 literals fixed_point utils
+all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_bitmask nsm_type5_validate spi_utils i2c_crc8 literals fixed_point utils
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
@@ -239,6 +241,43 @@ utils_neg:
 	$(ESBMC) $(LANG_FLAGS) \
 	  $(HARNESSES)/utils_negative_harness.cpp \
 	  2>&1 | tee $(RESULTS)/utils_neg.log
+
+# Phase 1+2: nsm_msg bitmask operations (set_bit, unset_bit, get_bit, is_bit_set)
+# on the 32-element (NvMctpSupportedNum) array. Direct include — no stubs needed.
+nsm_bitmask:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) -I$(REPO)/src \
+	  $(HARNESSES)/nsm_bitmask_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_bitmask.log
+
+nsm_bitmask_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(FUNC_FLAGS) -I$(REPO)/src \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/nsm_bitmask_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_bitmask_func.log
+
+# Negative: set_bit on the 8-element (NvMctpEventSupportedNum) array with
+# nondet pos ≥ 64 — byte_index ≥ 8 is OOB. Expected: VERIFICATION FAILED.
+nsm_bitmask_neg:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) -I$(REPO)/src \
+	  $(HARNESSES)/nsm_bitmask_negative_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_bitmask_neg.log
+
+# Phase 1+2: nsm_type_5 field validators (inlined verbatim, no MCU stubs needed).
+nsm_type5_validate:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  $(HARNESSES)/nsm_type5_validate_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_type5_validate.log
+
+nsm_type5_validate_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(FUNC_FLAGS) \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/nsm_type5_validate_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_type5_validate_func.log
 
 clean:
 	rm -rf $(RESULTS)

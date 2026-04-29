@@ -1,0 +1,30 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.590s
+GOTO program processing time: 0.014s
+Starting Bounded Model Checking
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+Symex completed in: 0.037s (372 assignments)
+Caching time: 0.003s (removed 8 assertions)
+Slicing time: 0.003s (removed 187 assignments)
+Generated 123 VCC(s), 75 remaining after simplification (177 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.020s
+BMC program time: 0.077s
+
+VERIFICATION SUCCESSFUL
+ESBMC version 8.2.0 64-bit aarch64 macos

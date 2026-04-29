@@ -1,22 +1,25 @@
 # OpenSMA ESBMC Verification — Initial Report
 
-**Date**: 2026-04-25 (updated 2026-04-30)
+**Date**: 2026-04-25 (updated 2026-04-29)
 **Tool**: ESBMC 8.2.0 (aarch64-macos)
 **Scope**: bounded model checking of selected modules in
 [NVIDIA/OpenSMA](https://github.com/NVIDIA/OpenSMA)
 
 ## TL;DR
 
-Nine modules verified end-to-end against language-level safety properties
+Eleven modules verified end-to-end against language-level safety properties
 (pointer/bounds/overflow/div-by-zero/memory-leak) and against module-specific
 functional contracts via k-induction. **One vulnerability formally proven
 reachable** (F-1) via `mctp_dispatch` — ESBMC finds a counterexample where a
 Control SetEpId Request with a gap interface triggers `set_cur_eid()` to
 OOB-index the 2-entry `cur_eid` array; code inspection confirms the production
 call-site `on_set_endpoint_id()` makes this call unconditionally. Two
-initially-claimed findings (F-2, F-3) **retracted on review**. One further finding (F-4) is a latent UB in `literals.h::operator""_bit` —
-no current call site is at risk, but the function lacks a `consteval` or
-runtime guard. Several ESBMC C++-frontend bugs filed against
+initially-claimed findings (F-2, F-3) **retracted on review**. Two further
+latent-UB findings: **F-4** in `literals.h::operator""_bit` (shift-count ≥ 64)
+and **F-5** in `nsm_msg_bitmask.h::set_bit` / `unset_bit` on the 8-element
+event bitmask (index ≥ 64 reaches `std::array::at` OOB); neither has a
+dangerous current call site but both lack the runtime guard that sibling
+operations carry. Several ESBMC C++-frontend bugs filed against
 [esbmc/esbmc](https://github.com/esbmc/esbmc); most are now fixed and merged;
 workarounds removed where applicable.
 
@@ -34,6 +37,8 @@ workarounds removed where applicable.
 | SPI byte-buffer (de)serialisation | `src/nv/spi/utils.{h,cpp}` (`buf_to_u{16,32}`, `u{16,32}_to_buf`) | ✅ | ✅ k=9 (round-trip + big-endian + OOB-no-write) | — |
 | I2C CRC-8 helpers | `src/nv/i2c/helper.cpp` (`crc8`) | ✅ | ✅ k=5 (incrementality + init-zero invariant) | — |
 | User-defined integer literals | `src/nv/common/literals.h` (`_u8`/`_u16`/`_u32`/`_i8`/`_i16`/`_i32`/`_bits_sizeof`/`_bit`) | ✅ | ✅ k=1 (mask agreement, signed/unsigned truncation parity, `bits/8`, `1ULL << i`) | ✅ CEX on `_bit(i≥64)` via `--ub-shift-check` — **F-4** |
+| NSM bitmask operations | `src/nv/mctp/nsm_msg_bitmask.h` (`set_bit`/`unset_bit`/`get_bit`/`is_bit_set`) | ✅ 75 VCC | ✅ k=1 (set→get non-zero; unset→get zero; is_bit_set iff get_bit≠0) | ✅ CEX on `set_bit`/`unset_bit(arr8, pos≥64)` — **F-5** |
+| NSM type 5 field validators | `src/nv/mctp/nsm_type_5.cpp` (`validateFatalErrorInjectionPayload`, `validateDeviceIndex{GpuDegradeMode,PowerSupply}`, `validateAction{GpuDegradeMode}`, `validateModePowerSupply`) | ✅ 14 VCC | ✅ k=1 (exact characterisation: accepted iff bitmask∈{0,1,2}, index/mode in documented ranges) | — |
 
 All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
@@ -190,6 +195,67 @@ constexpr auto operator""_bit(unsigned long long i)
 }
 ```
 
+### F-5 — `set_bit` / `unset_bit` missing bounds guard on the 8-element event bitmask
+
+**File**: `src/nv/mctp/nsm_msg_bitmask.h`
+
+```cpp
+// For NSM Events (NvMctpEventSupportedNum = 8 bytes = 64 bits)
+static constexpr void set_bit(std::array<uint8_t, NvMctpEventSupportedNum>& bitmask,
+                              uint8_t pos)
+{
+    const size_t byte_index  = pos / 8;          // 0–31 for uint8_t pos
+    const size_t bit_offset  = pos % 8;
+    bitmask.at(byte_index)  |= ...;              // OOB if byte_index >= 8
+}
+```
+
+`bitmask.at(byte_index)` throws (or calls `abort()` under `-fno-exceptions`)
+when `byte_index >= NvMctpEventSupportedNum (8)`, i.e. when `pos >= 64`. The
+sibling `get_bit` carries `if (byte_index < bitmask.size()) ...` which prevents
+the OOB; `set_bit` and `unset_bit` have no equivalent guard.
+
+The same asymmetry exists for the 32-element (`NvMctpSupportedNum`) overloads,
+but for that size `byte_index = pos/8 ≤ 31 < 32` holds for all `uint8_t pos`,
+so the 32-element `set_bit` is safe for every possible argument.
+
+**What ESBMC proved** (`nsm_bitmask_neg`, nondet `pos ∈ [64, 255]`):
+
+```
+State 2  pos = 248
+State 6  Violated: Index out of bounds
+         index::0 < 8    (byte_index = 248/8 = 31 on a size-8 array)
+VERIFICATION FAILED
+```
+
+**Severity: low in practice.** All current call sites pass small compile-time
+constants: `static_cast<uint8_t>(DeviceError)` = 4 and
+`static_cast<uint8_t>(GpioSpoofing)` = 5 (`nsm_type_5.h:125–126`). Both map
+to `byte_index = 0`, well within the 8-element array. No current call site
+passes a runtime or loop-controlled position.
+
+The risk is latent: a future caller that iterates over error-type positions or
+passes an unvalidated `uint8_t` field (e.g. received from a packet) could reach
+`pos ≥ 64` and trigger the abort path under production `-fno-exceptions` flags.
+
+**Recommendation**: add the same bounds guard that `get_bit` already carries:
+
+```cpp
+static constexpr void set_bit(std::array<uint8_t, NvMctpEventSupportedNum>& bitmask,
+                              uint8_t pos)
+{
+    const size_t byte_index = pos / 8;
+    if (byte_index >= bitmask.size())
+        return;                                  // matches get_bit's guard
+    const size_t bit_offset  = pos % 8;
+    bitmask.at(byte_index)  |= static_cast<uint8_t>((1U << bit_offset) & UINT8_MAX);
+}
+```
+
+Apply the same fix to `unset_bit`. Alternatively, make the precondition
+explicit in a `static_assert` or `constexpr` wrapper that limits `pos` to the
+representable range of the array.
+
 ### F-3 — RETRACTED (was: `buf_to_u32` signed shift overflow)
 
 ESBMC's `--overflow-check` flagged `buf[start_idx] << ByteShift3` (i.e. `int(byte) << 24`) as an arithmetic-overflow violation when `byte >= 0x80`. Investigated:
@@ -303,27 +369,36 @@ kept narrow so multiple fixes can be reaped independently.
    tighten `Validator::validate()` to reject `>= UsEnd`). F-1 is confirmed
    reachable — a Control SetEpId Request with `priv.packet_interface ∈ [2, 17]`
    will abort the firmware under `-fno-exceptions`.
-2. **Upgrade `mctp_dispatch` once esbmc#4216 is fixed**: call
+2. **Fix F-5**: add the `byte_index >= bitmask.size()` guard to `set_bit` and
+   `unset_bit` on `std::array<uint8_t, NvMctpEventSupportedNum>` — matching the
+   guard `get_bit` already carries. Low urgency (no current OOB call site), but
+   straightforward one-line fix.
+3. **Upgrade `mctp_dispatch` once esbmc#4216 is fixed**: call
    `ctrl.on_set_endpoint_id()` directly (via a thin subclass) to prove the
    full end-to-end path formally, eliminating the code-inspection caveat on
    the `on_set_endpoint_id()` → `set_cur_eid()` link. (`ctrl{}` construction
    now works as of esbmc/esbmc#4215.)
-3. Expand coverage to the `nsm_type_*.cpp` family in `src/nv/mctp/` (similar
-   parser shape; the harness template transfers directly).
-4. Stand up a CI hook that runs `make all` on every PR; verification must
+4. Expand coverage to `nsm_type_3.cpp` — `is_temp_sensor_available`,
+   `is_power_sensor_available`, `is_voltage_sensor_available` are the same
+   linear-scan pattern as `validatePcieLinkResetValue`; platform sensor arrays
+   would need to be inlined verbatim from the target config.
+5. Stand up a CI hook that runs `make all` on every PR; verification must
    stay green and any failure must be triaged before merge.
 
 ## Reproducing
 
 ```sh
 cd verification
-make all                 # all Phase 1 targets
-make mctp_packet_func    # Phase 2 (k-induction)
+make all                    # all Phase 1 targets (includes nsm_bitmask, nsm_type5_validate)
+make mctp_packet_func       # Phase 2 (k-induction)
 make mctp_router_func
 make fixed_point_func
-make mctp_packet_neg     # negative tests (expect VERIFICATION FAILED)
+make nsm_bitmask_func       # bitmask contracts (k=1)
+make nsm_type5_validate_func  # nsm_type5 field-validator contracts (k=1)
+make mctp_packet_neg        # negative tests (expect VERIFICATION FAILED)
 make mctp_router_neg
-make mctp_dispatch       # F-1 reachability proof (expect VERIFICATION FAILED)
+make mctp_dispatch          # F-1 reachability proof (expect VERIFICATION FAILED)
+make nsm_bitmask_neg        # F-5: set_bit OOB on 8-element array (expect VERIFICATION FAILED)
 ```
 
 ESBMC 8.2.0 on `$PATH`, or pass `ESBMC=/path/to/esbmc make ...`.

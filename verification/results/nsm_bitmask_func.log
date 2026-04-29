@@ -1,0 +1,55 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.521s
+Interval Analysis time: 0.014s
+GOTO program processing time: 0.024s
+Checking base case, k = 1
+Starting Bounded Model Checking
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+Symex completed in: 0.038s (440 assignments)
+Slicing time: 0.004s (removed 199 assignments)
+Generated 127 VCC(s), 79 remaining after simplification (241 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.014s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.032s
+BMC program time: 0.088s
+No bug has been found in the base case
+Checking forward condition, k = 1
+Starting Bounded Model Checking
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+WARNING: no body for function array#
+Symex completed in: 0.038s (418 assignments)
+Slicing time: 0.003s (removed 248 assignments)
+Generated 105 VCC(s), 57 remaining after simplification (170 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.015s
+BMC program time: 0.063s
+
+VERIFICATION SUCCESSFUL
+
+Solution found by the forward condition; all states are reachable (k = 1)
+ESBMC version 8.2.0 64-bit aarch64 macos

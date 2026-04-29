@@ -1,0 +1,30 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.843s
+Interval Analysis time: 0.007s
+GOTO program processing time: 0.012s
+Checking base case, k = 1
+Starting Bounded Model Checking
+Symex completed in: 0.008s (136 assignments)
+Slicing time: 0.001s (removed 78 assignments)
+Generated 5 VCC(s), 5 remaining after simplification (58 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+BMC program time: 0.015s
+No bug has been found in the base case
+Checking forward condition, k = 1
+Starting Bounded Model Checking
+Symex completed in: 0.007s (131 assignments)
+Slicing time: 0.001s (removed 119 assignments)
+Generated 0 VCC(s), 0 remaining after simplification (12 assignments)
+BMC program time: 0.008s
+
+VERIFICATION SUCCESSFUL
+
+Solution found by the forward condition; all states are reachable (k = 1)
+ESBMC version 8.2.0 64-bit aarch64 macos

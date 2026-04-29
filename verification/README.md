@@ -76,6 +76,11 @@ for the full table; brief view:
   `cur_eid.at(2)` fails). Production builds with `-fno-exceptions`, so the
   OOB hits `abort()`. Fix: add an `interface >= UsEnd` guard to
   `set_cur_eid()`, or tighten `validate()` to reject `>= UsEnd`.
+- **F-4** (latent UB, low severity):
+  `operator""_bit(unsigned long long i)` in `src/nv/common/literals.h`
+  computes `1ULL << i` with no guard — UB when `i >= 64` per
+  `[expr.shift]/1`. All current call sites use compile-time constants ≤ 5, so
+  no runtime exposure today. Fix: change `constexpr` → `consteval`.
 - **F-2** *retracted*: initially claimed overflow in `align_to`; on
   review, the unsigned wrap is mathematically benign (cancels exactly
   under the subsequent mask). ESBMC's `--unsigned-overflow-check` flagged

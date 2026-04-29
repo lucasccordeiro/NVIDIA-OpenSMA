@@ -1,6 +1,6 @@
 # OpenSMA ESBMC Verification — Initial Report
 
-**Date**: 2026-04-25 (updated 2026-04-29)
+**Date**: 2026-04-25 (updated 2026-04-30)
 **Tool**: ESBMC 8.2.0 (aarch64-macos)
 **Scope**: bounded model checking of selected modules in
 [NVIDIA/OpenSMA](https://github.com/NVIDIA/OpenSMA)
@@ -105,9 +105,13 @@ set_cur_eid(_router, platforms::get_packet_interface(rx), crx.data[1]);
 
 unconditionally for `SetEidNormal` and `SetEidForced`, with no bounds check
 on the interface value. `platforms::Control ctrl{}` triggers an ESBMC frontend
-crash (assertion in `clang_c_adjust_expr.cpp:158`; filed as esbmc/esbmc#4214),
-so `Control::process()` is not called directly in the harness; the connection
-is confirmed by code inspection.
+crash (assertion in `clang_c_adjust_expr.cpp:158`; filed as esbmc/esbmc#4214).
+That bug was fixed by [#4215](https://github.com/esbmc/esbmc/pull/4215)
+(merged 2026-04-29), so `platforms::Control ctrl{}` now constructs without
+crashing.  Calling `ctrl.process()` or `ctrl.on_set_endpoint_id()` directly
+is still blocked by esbmc/esbmc#4216 (see Tooling section), so `Control::process()`
+is not called directly in the harness; the connection is confirmed by code
+inspection.
 
 **Runtime effect (empirically confirmed)**: under production flags
 `-fno-exceptions -fno-rtti`, `std::array::at(OOB)` calls `abort()` — not
@@ -208,7 +212,8 @@ backed by an open issue.**
 | [#4204](https://github.com/esbmc/esbmc/pull/4204) | handle `UsingEnumDecl` (C++20 `using enum`) | merged 2026-04-28 | (sed-patch dropped; validator.cpp compiles directly) |
 | [#4211](https://github.com/esbmc/esbmc/pull/4211) | replacement for #4203: skip signed-shl overflow only when `E1` is provably non-negative (type-driven predicate); standard-aware via `--std c++20+` parsing; legacy spellings (`98`, `03`) and pre-C++20 unaffected | **merged** (7 CORE regressions, paired with the OpenSMA harness restoration) | spi_utils parenthesisation workaround removed |
 | [#4213](https://github.com/esbmc/esbmc/pull/4213) | add `std::underlying_type` and `underlying_type_t` to bundled `<type_traits>` (SFINAE-guarded via `__underlying_type(T)` builtin; `::type` only present for enum types) | **merged** (2 CORE regressions: positive and negative) | `utils.h` workaround removed; harness now includes production header directly |
-| [#4214](https://github.com/esbmc/esbmc/issues/4214) | `platforms::Control` default-construction triggers assertion `new_comp.size() == ops.size()` in `clang_c_adjust_expr.cpp:158`; ESBMC aborts during GOTO program creation | open | `mctp_dispatch` harness calls `set_cur_eid()` directly after `validate()` instead of through `Control::process()`; production connection confirmed by code inspection |
+| [#4214](https://github.com/esbmc/esbmc/issues/4214) | `platforms::Control` default-construction triggers assertion `new_comp.size() == ops.size()` in `clang_c_adjust_expr.cpp:158`; ESBMC aborts during GOTO program creation | **fixed** by [#4215](https://github.com/esbmc/esbmc/pull/4215) (merged 2026-04-29) | (workaround note updated; `ctrl{}` now constructs cleanly) |
+| [#4216](https://github.com/esbmc/esbmc/issues/4216) | `switch (static_cast<enum>(packed_field))` + second field read in case body crashes SMT encoding (`mk_eq` bitvector width mismatch in `bitwuzla_conv.cpp:512` / `z3_conv.cpp:756`) | open | `mctp_dispatch` harness calls `set_cur_eid()` directly after `validate()`; calling `ctrl.on_set_endpoint_id()` (via thin subclass) triggers this crash |
 
 Every workaround site is tagged `// WORKAROUND esbmc#<n>` pointing at the
 specific open issue listed in the table above. Removing a workaround is a
@@ -217,11 +222,16 @@ kept narrow so multiple fixes can be reaped independently.
 
 ## What was deferred and why
 
-- **Full Control dispatch path** — verifying `Control::process()` end-to-end
-  is blocked by the ESBMC frontend crash on `platforms::Control` construction
-  (esbmc/esbmc#4214). Once that is fixed, the harness can be upgraded to call
-  `ctrl.process()` directly, formally proving the full path without a
-  code-inspection step.
+- **Full Control dispatch path** — `platforms::Control ctrl{}` now constructs
+  cleanly (esbmc/esbmc#4214 fixed by PR #4215, merged 2026-04-29). Calling
+  `ctrl.process()` or `ctrl.on_set_endpoint_id()` is blocked by two new bugs:
+  (a) `dereference.cpp:1358` assertion fires on the variable-index
+  `_routing_map.at(entry_in_map)` loop in `on_get_routing_table_entry` (dead
+  code on a SetEpId packet but still inlined by ESBMC); (b) esbmc/esbmc#4216:
+  `mk_eq` bitvector-width crash on `switch(static_cast<enum>(crx.data[0]))` +
+  `crx.data[1]` in the case body. Once #4216 is fixed, the harness can be
+  upgraded to call `ctrl.on_set_endpoint_id()` directly (via thin subclass),
+  formally proving the full path without a code-inspection step.
 - **FreeRTOS-backed code** (`src/nv/ipc/queue.cpp`, `src/nv/ipc/event.cpp`,
   `src/nv/ipc/timer.cpp`) — the actual logic is in
   `src/sys/x86/sys/ipc/queue.cpp`, which delegates to `xQueueSendToBack`,
@@ -236,9 +246,11 @@ kept narrow so multiple fixes can be reaped independently.
    tighten `Validator::validate()` to reject `>= UsEnd`). F-1 is confirmed
    reachable — a Control SetEpId Request with `priv.packet_interface ∈ [2, 17]`
    will abort the firmware under `-fno-exceptions`.
-2. **Upgrade `mctp_dispatch` once esbmc#4214 is fixed**: replace the direct
-   `set_cur_eid()` call with `ctrl.process()` to prove the full end-to-end
-   path formally, eliminating the code-inspection caveat.
+2. **Upgrade `mctp_dispatch` once esbmc#4216 is fixed**: call
+   `ctrl.on_set_endpoint_id()` directly (via a thin subclass) to prove the
+   full end-to-end path formally, eliminating the code-inspection caveat on
+   the `on_set_endpoint_id()` → `set_cur_eid()` link. (`ctrl{}` construction
+   now works as of esbmc/esbmc#4215.)
 3. Expand coverage to the `nsm_type_*.cpp` family in `src/nv/mctp/` (similar
    parser shape; the harness template transfers directly).
 4. Stand up a CI hook that runs `make all` on every PR; verification must

@@ -10,12 +10,20 @@
 //   set_cur_eid(_router, get_packet_interface(rx), crx.data[1])
 //   unconditionally for SetEidNormal/SetEidForced sub-commands.
 //
-// Note: instantiating platforms::Control triggers an ESBMC frontend crash
-// (filed as esbmc/esbmc#<TBD>), so process() is not called directly here.
-// The harness proves: (1) validate() accepts gap interfaces for a SetEpId
-// Request, and (2) set_cur_eid() OOBs on the 2-entry array.  Code inspection
-// confirms (3): on_set_endpoint_id() connects them without any additional
-// bounds check on the interface.
+// Status of the "full dispatch path" upgrade (post esbmc/esbmc#4215):
+//   - platforms::Control ctrl{} now constructs without crashing (#4214 fixed).
+//   - ctrl.process(rx, tx) crashes dereference.cpp:1358 in construct_from_
+//     const_struct_offset, triggered by on_get_routing_table_entry's variable-
+//     index loop (dead code on a SetEpId packet but still inlined by ESBMC).
+//   - ctrl.on_set_endpoint_id(rx, tx) (via thin subclass) crashes mk_eq in
+//     bitwuzla_conv.cpp:512 / z3_conv.cpp:756 with a bitvector-width mismatch:
+//     switch-on-static_cast<enum>(packed_field) + second field read in case
+//     body (filed as esbmc/esbmc#4216).
+//
+// Until #4216 is fixed this harness calls set_cur_eid() directly after
+// validate(), relying on code inspection for step (3): on_set_endpoint_id()
+// calls set_cur_eid() unconditionally without a bounds check on the interface.
+// The harness formally proves (1) and (2).
 //
 // Expected: VERIFICATION FAILED — "std::array::at out of range"
 

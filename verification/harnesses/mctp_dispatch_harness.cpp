@@ -16,11 +16,12 @@
 //     const_struct_offset, triggered by on_get_routing_table_entry's variable-
 //     index loop (dead code on a SetEpId packet but still inlined by ESBMC).
 //   - ctrl.on_set_endpoint_id(rx, tx) (via thin subclass) crashes mk_eq in
-//     bitwuzla_conv.cpp:512 / z3_conv.cpp:756 with a bitvector-width mismatch:
-//     switch-on-static_cast<enum>(packed_field) + second field read in case
-//     body (filed as esbmc/esbmc#4216).
+//     bitwuzla_conv.cpp:512 / to_solver_smt_ast in smt_ast.h:111 with a
+//     bitvector-width mismatch: switch-on-static_cast<enum>(packed_field) +
+//     second field read in case body (filed as esbmc/esbmc#4232; #4216 closed
+//     by #4217 but two variants of the crash persist).
 //
-// Until #4216 is fixed this harness calls set_cur_eid() directly after
+// Until #4232 is fixed this harness calls set_cur_eid() directly after
 // validate(), relying on code inspection for step (3): on_set_endpoint_id()
 // calls set_cur_eid() unconditionally without a bounds check on the interface.
 // The harness formally proves (1) and (2).

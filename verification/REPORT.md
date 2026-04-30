@@ -336,7 +336,8 @@ backed by an open issue.**
 | [#4211](https://github.com/esbmc/esbmc/pull/4211) | replacement for #4203: skip signed-shl overflow only when `E1` is provably non-negative (type-driven predicate); standard-aware via `--std c++20+` parsing; legacy spellings (`98`, `03`) and pre-C++20 unaffected | **merged** (7 CORE regressions, paired with the OpenSMA harness restoration) | spi_utils parenthesisation workaround removed |
 | [#4213](https://github.com/esbmc/esbmc/pull/4213) | add `std::underlying_type` and `underlying_type_t` to bundled `<type_traits>` (SFINAE-guarded via `__underlying_type(T)` builtin; `::type` only present for enum types) | **merged** (2 CORE regressions: positive and negative) | `utils.h` workaround removed; harness now includes production header directly |
 | [#4214](https://github.com/esbmc/esbmc/issues/4214) | `platforms::Control` default-construction triggers assertion `new_comp.size() == ops.size()` in `clang_c_adjust_expr.cpp:158`; ESBMC aborts during GOTO program creation | **fixed** by [#4215](https://github.com/esbmc/esbmc/pull/4215) (merged 2026-04-29) | (workaround note updated; `ctrl{}` now constructs cleanly) |
-| [#4216](https://github.com/esbmc/esbmc/issues/4216) | `switch (static_cast<enum>(packed_field))` + second field read in case body crashes SMT encoding (`mk_eq` bitvector width mismatch in `bitwuzla_conv.cpp:512` / `z3_conv.cpp:756`) | open | `mctp_dispatch` harness calls `set_cur_eid()` directly after `validate()`; calling `ctrl.on_set_endpoint_id()` (via thin subclass) triggers this crash |
+| [#4216](https://github.com/esbmc/esbmc/issues/4216) | `switch (static_cast<enum>(packed_field))` + second field read in case body crashes SMT encoding (`mk_eq` bitvector width mismatch in `bitwuzla_conv.cpp:512` / `z3_conv.cpp:756`) | closed by [#4217](https://github.com/esbmc/esbmc/pull/4217) — but two crashes persist; see #4232 | `mctp_dispatch` harness calls `set_cur_eid()` directly after `validate()`; calling `ctrl.on_set_endpoint_id()` (via thin subclass) still crashes |
+| [#4232](https://github.com/esbmc/esbmc/issues/4232) | `mk_eq` / `to_solver_smt_ast` crash persists after #4217: bitfield-base struct + switch-case + member read (two variants: Crash A → `to_solver_smt_ast, smt_ast.h:111`; Crash B → `mk_eq, bitwuzla_conv.cpp:512`) | open | `mctp_dispatch` calls `set_cur_eid()` directly; full `ctrl.on_set_endpoint_id()` path blocked until fixed |
 
 Every workaround site is tagged `// WORKAROUND esbmc#<n>` pointing at the
 specific open issue listed in the table above. Removing a workaround is a
@@ -350,11 +351,12 @@ kept narrow so multiple fixes can be reaped independently.
   `ctrl.process()` or `ctrl.on_set_endpoint_id()` is blocked by two new bugs:
   (a) `dereference.cpp:1358` assertion fires on the variable-index
   `_routing_map.at(entry_in_map)` loop in `on_get_routing_table_entry` (dead
-  code on a SetEpId packet but still inlined by ESBMC); (b) esbmc/esbmc#4216:
-  `mk_eq` bitvector-width crash on `switch(static_cast<enum>(crx.data[0]))` +
-  `crx.data[1]` in the case body. Once #4216 is fixed, the harness can be
-  upgraded to call `ctrl.on_set_endpoint_id()` directly (via thin subclass),
-  formally proving the full path without a code-inspection step.
+  code on a SetEpId packet but still inlined by ESBMC); (b) esbmc/esbmc#4232:
+  two `mk_eq` / `to_solver_smt_ast` crashes persist after #4217 on
+  `switch(static_cast<enum>(crx.data[0]))` + `crx.data[1]` in the case body.
+  Once #4232 is fixed, the harness can be upgraded to call
+  `ctrl.on_set_endpoint_id()` directly (via thin subclass), formally proving
+  the full path without a code-inspection step.
 - **FreeRTOS-backed code** (`src/nv/ipc/queue.cpp`, `src/nv/ipc/event.cpp`,
   `src/nv/ipc/timer.cpp`) — the actual logic is in
   `src/sys/x86/sys/ipc/queue.cpp`, which delegates to `xQueueSendToBack`,
@@ -373,7 +375,7 @@ kept narrow so multiple fixes can be reaped independently.
    `unset_bit` on `std::array<uint8_t, NvMctpEventSupportedNum>` — matching the
    guard `get_bit` already carries. Low urgency (no current OOB call site), but
    straightforward one-line fix.
-3. **Upgrade `mctp_dispatch` once esbmc#4216 is fixed**: call
+3. **Upgrade `mctp_dispatch` once esbmc#4232 is fixed**: call
    `ctrl.on_set_endpoint_id()` directly (via a thin subclass) to prove the
    full end-to-end path formally, eliminating the code-inspection caveat on
    the `on_set_endpoint_id()` → `set_cur_eid()` link. (`ctrl{}` construction

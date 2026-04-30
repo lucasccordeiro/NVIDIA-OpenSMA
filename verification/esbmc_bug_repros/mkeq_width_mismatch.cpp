@@ -1,8 +1,13 @@
-// Minimal reproducer for esbmc/esbmc#4216.
+// Minimal reproducer for esbmc/esbmc#4216 / esbmc/esbmc#4232.
 //
-// ESBMC crashes with:
-//   Assertion failed: (a->sort->get_data_width() == b->sort->get_data_width()),
-//   function mk_eq, file bitwuzla_conv.cpp:512  (also z3_conv.cpp:756)
+// Crash A (post-#4217, this file): the fix in #4217 changed the crash site.
+//   Before #4217: Assertion failed: (a->sort->get_data_width() == b->sort->get_data_width()),
+//                 function mk_eq, file bitwuzla_conv.cpp:512
+//   After  #4217: Assertion failed: (to_solver_smt_ast != nullptr),
+//                 function to_solver_smt_ast, file smt_ast.h:111
+//
+// See mkeq_width_mismatch_b.cpp for Crash B: the function-call variant still
+// hits the original mk_eq assertion even after #4217.
 //
 // Trigger: struct derived from a bitfield base + array member.  Using
 //   static_cast<enum>(struct.data[0]) as a switch discriminant AND reading
@@ -13,7 +18,7 @@
 // Using `if (req.data[0] == 0)` instead of switch → VERIFICATION FAILED correctly.
 //
 // Expected: VERIFICATION FAILED ("OOB").
-// Actual:   assertion in mk_eq (bitwuzla/z3_conv.cpp).
+// Actual:   crash at to_solver_smt_ast, smt_ast.h:111 (post-#4217).
 //
 // Reproduction:
 //   esbmc --std c++20 mkeq_width_mismatch.cpp

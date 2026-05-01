@@ -60,12 +60,13 @@ FP_INCS := -I$(REPO)/src
         nsm_type3 nsm_type3_func \
         nsm_bitmask nsm_bitmask_func nsm_bitmask_neg \
         nsm_type5_validate nsm_type5_validate_func \
+        telemetry telemetry_func \
         spi_utils spi_utils_func \
         i2c_crc8 i2c_crc8_func \
         literals literals_func literals_neg \
         fixed_point fixed_point_func \
         utils utils_func utils_neg clean
-all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate spi_utils i2c_crc8 literals fixed_point utils
+all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
@@ -165,6 +166,35 @@ nsm_type_2_func:
 	  -DESBMC_FUNCTIONAL=1 \
 	  $(HARNESSES)/nsm_type_2_harness.cpp \
 	  2>&1 | tee $(RESULTS)/nsm_type_2_func.log
+
+# Phase 1+2: telemetry sensor-ID lookup functions + buffer_to_uint32 (fixed).
+# Uses --ub-shift-check (not --unsigned-overflow-check) because uint32_t<<24
+# triggers a false positive in ESBMC's unsigned-overflow model for the fixed
+# form; --ub-shift-check correctly accepts it.
+# Note: the production buffer_to_uint32 has a misplaced cast (F-6, latent UB):
+#   static_cast<uint32_t>(buffer[3] << 24)  should be
+#   static_cast<uint32_t>(buffer[3]) << 24
+# ESBMC cannot prove this because it models signed shifts as bitvector wrap
+# (same limitation as the retracted F-3). The harness verifies the fixed form.
+telemetry:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 \
+	  --memory-leak-check \
+	  --overflow-check \
+	  --ub-shift-check \
+	  --nan-check \
+	  --unwind 4 \
+	  --no-unwinding-assertions \
+	  $(HARNESSES)/telemetry_harness.cpp \
+	  2>&1 | tee $(RESULTS)/telemetry.log
+
+telemetry_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --overflow-check --interval-analysis \
+	  --k-induction --k-step 1 --max-k-step 16 \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/telemetry_harness.cpp \
+	  2>&1 | tee $(RESULTS)/telemetry_func.log
 
 # Phase 1+2: NSM Type-3 sensor availability functions (inlined verbatim,
 # testrunner platform config: 8 temp sensors, 3 power sensors, 0 voltage sensors).

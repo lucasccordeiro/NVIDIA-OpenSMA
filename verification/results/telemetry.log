@@ -1,0 +1,29 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.770s
+GOTO program processing time: 0.005s
+Starting Bounded Model Checking
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 4 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 5 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 5 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 5 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 4 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 5 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 5 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 5 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.028s (193 assignments)
+Caching time: 0.000s (removed 0 assertions)
+Slicing time: 0.000s (removed 170 assignments)
+Generated 80 VCC(s), 0 remaining after simplification (23 assignments)
+BMC program time: 0.029s
+
+VERIFICATION SUCCESSFUL
+ESBMC version 8.2.0 64-bit aarch64 macos

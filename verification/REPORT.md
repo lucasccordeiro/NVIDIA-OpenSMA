@@ -14,12 +14,14 @@ reachable** (F-1) via `mctp_dispatch` — ESBMC finds a counterexample where a
 Control SetEpId Request with a gap interface triggers `set_cur_eid()` to
 OOB-index the 2-entry `cur_eid` array; code inspection confirms the production
 call-site `on_set_endpoint_id()` makes this call unconditionally. Two
-initially-claimed findings (F-2, F-3) **retracted on review**. Two further
-latent-UB findings: **F-4** in `literals.h::operator""_bit` (shift-count ≥ 64)
-and **F-5** in `nsm_msg_bitmask.h::set_bit` / `unset_bit` on the 8-element
-event bitmask (index ≥ 64 reaches `std::array::at` OOB); neither has a
-dangerous current call site but both lack the runtime guard that sibling
-operations carry. Several ESBMC C++-frontend bugs filed against
+initially-claimed findings (F-2, F-3) **retracted on review**. Three further
+latent-UB findings: **F-4** in `literals.h::operator""_bit` (shift-count ≥ 64);
+**F-5** in `nsm_msg_bitmask.h::set_bit` / `unset_bit` on the 8-element event
+bitmask (index ≥ 64 reaches `std::array::at` OOB); and **F-6** in
+`telemetry/utils.cpp::buffer_to_uint32` (misplaced cast causes signed-shift
+UB for byte 3 ≥ 0x80, though the bit pattern is identical on two's-complement).
+None of F-4/F-5/F-6 have dangerous current call sites, but F-5 lacks the
+runtime guard that sibling operations carry. Several ESBMC C++-frontend bugs filed against
 [esbmc/esbmc](https://github.com/esbmc/esbmc); most are now fixed and merged;
 workarounds removed where applicable.
 
@@ -35,6 +37,7 @@ workarounds removed where applicable.
 | MCTP validator state machine | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | — |
 | NSM type 2 (PCIe-link reset validator) | `src/nv/mctp/nsm_type_2.cpp` (`validatePcieLinkResetValue`) | ✅ | ✅ k=12 (membership iff + below-range rejection) | — |
 | NSM type 3 sensor availability | `src/nv/mctp/nsm_type_3.cpp` (`is_temp_sensor_available`, `is_power_sensor_available`, `is_voltage_sensor_available`) | ✅ 37 VCC | ✅ k=9 (membership iff, busbar-unavailable exclusion, voltage always-false) | — |
+| Telemetry sensor-ID lookup + LE deserialiser | `src/nv/telemetry/utils.h` (`getTelemIdFromTempSensorId`, `getTelemIdFromPowerSensorId`, `buffer_to_uint32`) | ✅ 80 VCC | ✅ k=11 (mapping iff, MaxItem for non-members, LE byte-order contract) | — |
 | SPI byte-buffer (de)serialisation | `src/nv/spi/utils.{h,cpp}` (`buf_to_u{16,32}`, `u{16,32}_to_buf`) | ✅ | ✅ k=9 (round-trip + big-endian + OOB-no-write) | — |
 | I2C CRC-8 helpers | `src/nv/i2c/helper.cpp` (`crc8`) | ✅ | ✅ k=5 (incrementality + init-zero invariant) | — |
 | User-defined integer literals | `src/nv/common/literals.h` (`_u8`/`_u16`/`_u32`/`_i8`/`_i16`/`_i32`/`_bits_sizeof`/`_bit`) | ✅ | ✅ k=1 (mask agreement, signed/unsigned truncation parity, `bits/8`, `1ULL << i`) | ✅ CEX on `_bit(i≥64)` via `--ub-shift-check` — **F-4** |
@@ -249,6 +252,28 @@ static constexpr void set_bit(std::array<uint8_t, NvMctpEventSupportedNum>& bitm
 Apply the same fix to `unset_bit`. Alternatively, make the precondition
 explicit in a `static_assert` or `constexpr` wrapper that limits `pos` to the
 representable range of the array.
+
+### F-6 — `buffer_to_uint32` misplaced cast (latent UB, no observable effect)
+
+**File**: `src/nv/telemetry/utils.cpp:31`
+
+```cpp
+return (static_cast<uint32_t>(buffer[0]) << Byte0)
+     | (static_cast<uint32_t>(buffer[1]) << Byte1)
+     | (static_cast<uint32_t>(buffer[2]) << Byte2)
+     | (static_cast<uint32_t>(buffer[3] << Byte3));  // ← bug: cast applied after shift
+```
+
+Bytes 0–2 are correctly `static_cast<uint32_t>(buffer[N]) << Byte` — the byte is widened to `uint32_t` before the shift. Byte 3 is `static_cast<uint32_t>(buffer[3] << 24)` — the byte is shifted as a promoted `int` before the cast. For `buffer[3] >= 0x80`, `int(buffer[3]) << 24` exceeds `INT_MAX`, which is UB under C++20 `[expr.shift]/1`.
+
+**Severity: low in practice.** On every two's-complement platform (all modern targets), the signed-overflow result equals the intended bit pattern: `int(-128) << 24 = 0xFF000000` and `static_cast<uint32_t>(0xFF000000) = 4278190080`, the same value the correct form produces. ESBMC models signed integers as two's-complement bitvectors and therefore cannot distinguish the buggy form from the fixed form — this is the same limitation that caused F-3 to be retracted.
+
+**Fix**: move the closing paren of `static_cast<uint32_t>` to after the shift:
+```cpp
+| (static_cast<uint32_t>(buffer[3]) << Byte3)
+```
+
+**What ESBMC verified** (`telemetry`, 80 VCC Phase 1 with `--ub-shift-check`, k=11 Phase 2): the fixed version is total over all 4-byte inputs and satisfies the little-endian decoding contract `result == b[0] | (b[1] << 8) | (b[2] << 16) | (b[3] << 24)`.
 
 ### F-3 — RETRACTED (was: `buf_to_u32` signed shift overflow)
 

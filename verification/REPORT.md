@@ -7,7 +7,7 @@
 
 ## TL;DR
 
-Twelve modules verified end-to-end against language-level safety properties
+Fourteen modules verified end-to-end against language-level safety properties
 (pointer/bounds/overflow/div-by-zero/memory-leak) and against module-specific
 functional contracts via k-induction. **One vulnerability formally proven
 reachable** (F-1) via `mctp_dispatch` — ESBMC finds a counterexample where a
@@ -42,6 +42,8 @@ workarounds removed where applicable.
 | NSM bitmask operations | `src/nv/mctp/nsm_msg_bitmask.h` (`set_bit`/`unset_bit`/`get_bit`/`is_bit_set`) | ✅ 75 VCC | ✅ k=1 (set→get non-zero; unset→get zero; is_bit_set iff get_bit≠0) | ✅ CEX on `set_bit`/`unset_bit(arr8, pos≥64)` — **F-5** |
 | NSM type 5 field validators | `src/nv/mctp/nsm_type_5.cpp` (`validateFatalErrorInjectionPayload`, `validateDeviceIndex{GpuDegradeMode,PowerSupply}`, `validateAction{GpuDegradeMode}`, `validateModePowerSupply`) | ✅ 14 VCC | ✅ k=1 (exact characterisation: accepted iff bitmask∈{0,1,2}, index/mode in documented ranges) | — |
 | NTC thermistor table | `src/nv/volt_mon/ntc_table.{h,cpp}` (`ntc_resistance_to_temperature`, `ntc_voltage_to_temperature`, `ntc_adc_to_temperature`, `ntc_temperature_to_resistance`, `ntc_temp_to_adc_value`) | ✅ 227 VCC | ✅ k=9 (exact table lookup, range clamping, round-trip identity) | — |
+| Power-smoothing params | `src/nv/soc_pwr_smoothing/presets.{h,cpp}` (`OverrideParam::to_uint32`, `::from_uint32`, `is_valid_param_id`) | ✅ 72 VCC | ✅ k=1 (round-trip pack↔unpack identity, param-id exact characterisation) | — |
+| FRU utilities | `src/nv/fru/fru.cpp` (`verify_checksum`, `decode_6bit_ascii`) | ✅ 76 VCC | ✅ k=9 (checksum true iff sum≡0 mod 256, decode output ∈ [0x20, 0x5F]) | — |
 
 All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
@@ -397,7 +399,9 @@ kept narrow so multiple fixes can be reaped independently.
 3. ~~**Simplify `mctp_dispatch` once esbmc#4237 is fixed**~~ — **done** (`ctrl{}` workaround removed after esbmc/esbmc#4238 merged).
 4. ~~Expand coverage to `nsm_type_3.cpp`~~ — **done** (`nsm_type3` / `nsm_type3_func`, 37 VCC Phase 1, k=9 Phase 2).
 5. ~~Expand coverage to `ntc_table.{h,cpp}`~~ — **done** (`ntc_table` / `ntc_table_func`, 227 VCC Phase 1, k=9 Phase 2, all five conversion functions verified).
-6. Stand up a CI hook that runs `make all` on every PR; verification must
+6. ~~Expand coverage to `soc_pwr_smoothing/presets.{h,cpp}`~~ — **done** (`pwr_smooth_params` / `pwr_smooth_params_func`, 72 VCC Phase 1, k=1 Phase 2: round-trip identity and param-id characterisation).
+7. ~~Expand coverage to `fru.cpp`~~ — **done** (`fru_utils` / `fru_utils_func`, 76 VCC Phase 1, k=9 Phase 2: checksum contract and 6-bit ASCII decode output-range invariant).
+8. Stand up a CI hook that runs `make all` on every PR; verification must
    stay green and any failure must be triaged before merge.
 
 ## Reproducing
@@ -412,6 +416,8 @@ make nsm_type3_func         # nsm_type3 availability contracts (k=9)
 make nsm_bitmask_func       # bitmask contracts (k=1)
 make nsm_type5_validate_func  # nsm_type5 field-validator contracts (k=1)
 make ntc_table_func         # NTC table contracts: exact lookup, range clamping, round-trip (k=9)
+make pwr_smooth_params_func # OverrideParam round-trips + is_valid_param_id characterisation (k=1)
+make fru_utils_func         # checksum contract + decode_6bit_ascii output-range invariant (k=9)
 make mctp_packet_neg        # negative tests (expect VERIFICATION FAILED)
 make mctp_router_neg
 make mctp_dispatch          # F-1 reachability proof (expect VERIFICATION FAILED)

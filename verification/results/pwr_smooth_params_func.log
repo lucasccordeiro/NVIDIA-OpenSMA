@@ -1,0 +1,30 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/pwr_smooth_params_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.384s
+Interval Analysis time: 0.008s
+GOTO program processing time: 0.012s
+Checking base case, k = 1
+Starting Bounded Model Checking
+Symex completed in: 0.007s (94 assignments)
+Slicing time: 0.001s (removed 62 assignments)
+Generated 30 VCC(s), 3 remaining after simplification (32 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+BMC program time: 0.010s
+No bug has been found in the base case
+Checking forward condition, k = 1
+Starting Bounded Model Checking
+Symex completed in: 0.008s (91 assignments)
+Slicing time: 0.000s (removed 83 assignments)
+Generated 27 VCC(s), 0 remaining after simplification (8 assignments)
+BMC program time: 0.008s
+
+VERIFICATION SUCCESSFUL
+
+Solution found by the forward condition; all states are reachable (k = 1)
+ESBMC version 8.2.0 64-bit aarch64 macos

@@ -266,7 +266,9 @@ return (static_cast<uint32_t>(buffer[0]) << Byte0)
 
 Bytes 0–2 are correctly `static_cast<uint32_t>(buffer[N]) << Byte` — the byte is widened to `uint32_t` before the shift. Byte 3 is `static_cast<uint32_t>(buffer[3] << 24)` — the byte is shifted as a promoted `int` before the cast. For `buffer[3] >= 0x80`, `int(buffer[3]) << 24` exceeds `INT_MAX`, which is UB under C++20 `[expr.shift]/1`.
 
-**Severity: low in practice.** On every two's-complement platform (all modern targets), the signed-overflow result equals the intended bit pattern: `int(-128) << 24 = 0xFF000000` and `static_cast<uint32_t>(0xFF000000) = 4278190080`, the same value the correct form produces. ESBMC models signed integers as two's-complement bitvectors and therefore cannot distinguish the buggy form from the fixed form — this is the same limitation that caused F-3 to be retracted.
+**Severity: low in practice.** On every two's-complement platform (all modern targets), the signed-overflow result equals the intended bit pattern: `int(255) << 24 = 0xFF000000` and `static_cast<uint32_t>(0xFF000000) = 4278190080`, the same value the correct form produces.
+
+**Why ESBMC cannot prove this** — ESBMC's arithmetic model uses unconditional bitvector wrap for signed types (equivalent to C++23 semantics), so it cannot distinguish the buggy C++20-UB form from the well-defined fixed form. `--overflow-check` and `--ub-shift-check` both miss it: the former generates no VCC for shift-result overflow; the latter only checks the shift *amount* (≥ 0, < type width), not the shift *result*. This gap is distinct from (and the mirror of) esbmc#4201, which addressed ESBMC being too strict — flagging C++20-defined shift behaviour as UB. Filed as **[esbmc#4240](https://github.com/esbmc/esbmc/issues/4240)**; repro: `esbmc_bug_repros/signed_shift_result_overflow.cpp`.
 
 **Fix**: move the closing paren of `static_cast<uint32_t>` to after the shift:
 ```cpp

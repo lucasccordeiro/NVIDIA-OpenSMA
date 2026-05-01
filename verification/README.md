@@ -40,7 +40,7 @@ ESBMC to produce a counterexample.
 |---|---|:-:|:-:|:-:|
 | `mctp_packet` | `corepdk/.../app/pdk-mctp-app-packet.cpp` | ✅ | ✅ | ✅ |
 | `mctp_router` | `corepdk/.../platforms/x86/pdk-mctp-platforms-router-plat.cpp` | ✅ | ✅ | ✅ |
-| `mctp_dispatch` | F-1 reachability: `Validator::validate()` + `VerifControl::call_on_set_endpoint_id()` | — | — | ✅ CEX: `iface_val=2`, `valid=true`, OOB at `cur_eid.at(2)` (224 VCC) |
+| `mctp_dispatch` | F-1 reachability: `Validator::validate()` + production `on_set_endpoint_id()` | — | — | ✅ CEX: `iface_val=2`, `valid=true`, OOB at `cur_eid.at(2)` (275 VCC) |
 | `mctp_validator` | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | — |
 | `nsm_type_2` | `src/nv/mctp/nsm_type_2.cpp` (`validatePcieLinkResetValue`) | ✅ | ✅ k=12 | — |
 | `nsm_bitmask` | `src/nv/mctp/nsm_msg_bitmask.h` (`set_bit`/`unset_bit`/`get_bit`/`is_bit_set`) | ✅ 75 VCC | ✅ k=1 | ✅ CEX on `set_bit`/`unset_bit(arr8, pos≥64)` — F-5 |
@@ -68,7 +68,8 @@ for the full table; brief view:
 | [#4214](https://github.com/esbmc/esbmc/issues/4214) | `platforms::Control` default-construction crashes ESBMC (`clang_c_adjust_expr.cpp:158` assertion) | **fixed** by [#4215](https://github.com/esbmc/esbmc/pull/4215) (merged 2026-04-29) | (resolved; `ctrl{}` now constructs cleanly) |
 | [#4216](https://github.com/esbmc/esbmc/issues/4216) | `switch(static_cast<enum>(packed_field))` + second field read in case body crashes SMT encoding (`mk_eq` bitvector width mismatch) | closed by [#4217](https://github.com/esbmc/esbmc/pull/4217); see #4232/#4234 for variants | — |
 | [#4232](https://github.com/esbmc/esbmc/issues/4232) | `mk_eq`/`to_solver_smt_ast` crash persists after #4217: bitfield-base struct + aggregate-init + switch-case + member read | **fixed** by [#4233](https://github.com/esbmc/esbmc/pull/4233) | (removed) |
-| [#4234](https://github.com/esbmc/esbmc/issues/4234) | `switch(static_cast<enum>(bit_cast member))` + `at()` in case body crashes `mk_eq` with production types (distinct: trigger is `std::bit_cast<PktReq*>`, not aggregate-init) | open | `VerifControl` if-else workaround in `mctp_dispatch_harness.cpp`; repro: `esbmc_bug_repros/switch_bitcast_at_crash.cpp` |
+| [#4234](https://github.com/esbmc/esbmc/issues/4234) | `switch(static_cast<enum>(bit_cast member))` + `at()` in case body crashes `mk_eq` — fall-through label not normalised in `adjust_switch_case_ops` | **fixed** by [#4235](https://github.com/esbmc/esbmc/pull/4235) (merged 2026-05-01) | (workaround removed; production switch encodes correctly) |
+| [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-init `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111) | open | `VerifControl ctrl;` not `ctrl{}` in harness (tagged `WORKAROUND esbmc#4237`); repro: `esbmc_bug_repros/struct_brace_init_crash.cpp` |
 
 ## Findings
 

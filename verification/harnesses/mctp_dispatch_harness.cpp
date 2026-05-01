@@ -10,22 +10,21 @@
 //   set_cur_eid(_router, get_packet_interface(rx), crx.data[1])
 //   unconditionally for SetEidNormal/SetEidForced sub-commands.
 //
-// Status of the "full dispatch path" upgrade (post esbmc/esbmc#4215,#4233,#4235):
+// Status of the "full dispatch path" upgrade:
 //   - platforms::Control ctrl{} constructs cleanly (esbmc#4214 fixed by #4215).
-//   - ctrl.on_set_endpoint_id(rx, tx) via VerifControl (using Control::on_set_endpoint_id)
-//     still crashes to_solver_smt_ast (smt_ast.h:111) even after #4235:
-//       switch(static_cast<SetEndpoint>(crx.data[0])) — the switch discriminant
-//       is a bit_cast member, and the SMT encoding produces a null AST pointer.
-//       #4235 fixed fall-through label normalisation but not the discriminant
-//       encoding crash.  This crash is currently untracked upstream.
-//   - ctrl.process(rx, tx) is also blocked by dereference.cpp:1358 on the
-//     variable-index _routing_map.at(entry_in_map) loop in
-//     on_get_routing_table_entry (dead code on a SetEpId packet, but inlined).
+//   - ctrl.on_set_endpoint_id(rx, tx) via VerifControl thin subclass works
+//     correctly after esbmc#4232 (fixed by #4233) and esbmc#4234 (fixed by #4235).
+//   - ctrl.process(rx, tx) is still blocked: on_get_routing_table_entry's
+//     variable-index _routing_map.at(entry_in_map) loop crashes
+//     dereference.cpp:1358 (dead code on a SetEpId packet but inlined by ESBMC).
 //
-// WORKAROUND: VerifControl::call_on_set_endpoint_id() inlines the semantics of
-// on_set_endpoint_id() with if-else instead of switch, which avoids the SMT
-// crash and produces correct VERIFICATION FAILED (224 VCCs,
-// counterexample: iface_val=2, valid=true, cur_eid.at(2) OOB).
+// VerifControl is a thin subclass whose only purpose is to promote the
+// protected on_set_endpoint_id() to public so the harness can call it directly.
+// The production source (pdk-mctp-platforms-control.cpp) is compiled as-is —
+// no if-else workaround needed since #4235 fixed the switch-case normalisation.
+// WORKAROUND esbmc#4237: `VerifControl ctrl;` (default-init) not `ctrl{}` —
+// value-initialising a struct that inherits from a class crashes
+// to_solver_smt_ast (smt_ast.h:111).
 //
 // Expected: VERIFICATION FAILED — "std::array::at out of range"
 
@@ -46,33 +45,15 @@ using pdk::mctp::app::Cmd;
 using pdk::mctp::app::MsgType;
 using pdk::mctp::app::NULL_EID;
 using pdk::mctp::app::Packet;
-using pdk::mctp::app::PacketType;
 using pdk::mctp::app::SetEndpoint;
 using pdk::mctp::app::Validator;
 using pdk::mctp::platforms::Control;
 using pdk::mctp::platforms::Interface;
-using pdk::mctp::platforms::get_packet_interface;
-using pdk::mctp::platforms::set_cur_eid;
 using pdk::mctp::platforms::set_packet_interface;
 
-// Thin subclass to expose the protected on_set_endpoint_id() logic.
-// WORKAROUND: production on_set_endpoint_id uses
-// switch(static_cast<SetEndpoint>(crx.data[0])) as the discriminant; with
-// crx obtained via std::bit_cast this crashes ESBMC's SMT encoding
-// (to_solver_smt_ast, smt_ast.h:111) even after #4233 and #4235.
-// This if-else is semantically equivalent and avoids the crash.
+// Thin subclass to promote the protected on_set_endpoint_id() to public.
 struct VerifControl : Control {
-    void call_on_set_endpoint_id(const Packet& rx, Packet& tx)
-    {
-        auto& crx = pdk::mctp::app::Control::PktReq::from(rx);
-        if (pdk::mctp::app::Control::get_packet_type(rx) == PacketType::Request) {
-            auto sub = static_cast<SetEndpoint>(crx.data[0]);
-            if (sub == SetEndpoint::SetEidNormal || sub == SetEndpoint::SetEidForced) {
-                set_cur_eid(_router, get_packet_interface(rx), crx.data[1]);
-            }
-        }
-        (void)tx;
-    }
+    using Control::on_set_endpoint_id;
 };
 
 constexpr auto UsEnd = static_cast<uint8_t>(Interface::UsEnd);
@@ -84,7 +65,7 @@ int main()
     uint8_t iface_val = nondet_u8();
     __ESBMC_assume(iface_val >= UsEnd && iface_val < IfEnd);
 
-    VerifControl ctrl{};
+    VerifControl ctrl;
     Validator    v{ctrl.router()};
 
     // Control SetEpId Request — the packet type that on_set_endpoint_id()
@@ -110,9 +91,9 @@ int main()
 
     // Step 2: on_set_endpoint_id() calls set_cur_eid() with the raw interface
     // byte (pdk-mctp-platforms-control.cpp:61).  cur_eid.at(iface_val) OOBs.
+    Packet tx{};
     if (valid) {
-        Packet tx{};
-        ctrl.call_on_set_endpoint_id(rx, tx);
+        ctrl.on_set_endpoint_id(rx, tx);
     }
 
     return 0;

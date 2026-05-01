@@ -52,6 +52,7 @@ ESBMC to produce a counterexample.
 | `literals` | `src/nv/common/literals.h` (UDL truncation + shift) | ✅ | ✅ k=1 | ✅ CEX on `_bit(i≥64)` — F-4 |
 | `fixed_point` | `src/nv/common/fixed_point.h` | ✅ | ✅ | — |
 | `utils` | `src/nv/common/utils.h` (saturating add/sub/mul/align_to) | ✅ | ✅ | ⚠ (ESBMC strict unsigned-wrap demo, not a bug) |
+| `ntc_table` | `src/nv/volt_mon/ntc_table.{h,cpp}` (binary search + linear interpolation on 166-entry NTC thermistor table; `ntc_resistance_to_temperature`, `ntc_voltage_to_temperature`, `ntc_adc_to_temperature`, `ntc_temperature_to_resistance`, `ntc_temp_to_adc_value`) | ✅ 227 VCC | ✅ k=9 | — |
 
 ## ESBMC issues filed
 
@@ -120,6 +121,7 @@ make mctp_packet_func mctp_router_func \
 make nsm_type3_func                            # ditto
 make telemetry_func                            # ditto
 make fixed_point_func utils_func               # ditto
+make ntc_table_func                            # ditto
 make mctp_packet_neg mctp_router_neg utils_neg # negative tests (expect FAILED)
 make mctp_dispatch                             # F-1 reachability proof (expect FAILED)
 make nsm_bitmask_neg                           # F-5 OOB proof (expect FAILED)

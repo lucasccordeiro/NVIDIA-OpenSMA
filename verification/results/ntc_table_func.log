@@ -1,0 +1,670 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.759s
+Interval Analysis time: 0.009s
+GOTO program processing time: 0.014s
+Checking base case, k = 1
+Starting Bounded Model Checking
+Not unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.015s (254 assignments)
+Slicing time: 0.001s (removed 121 assignments)
+Generated 39 VCC(s), 29 remaining after simplification (133 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.003s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.320s
+BMC program time: 0.340s
+No bug has been found in the base case
+Checking forward condition, k = 1
+Starting Bounded Model Checking
+Not unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.015s (250 assignments)
+Slicing time: 0.002s (removed 129 assignments)
+Generated 40 VCC(s), 30 remaining after simplification (121 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.003s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.028s
+The forward condition is unable to prove the property
+Checking base case, k = 2
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.032s (531 assignments)
+Slicing time: 0.004s (removed 193 assignments)
+Generated 134 VCC(s), 124 remaining after simplification (338 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.008s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 2.135s
+BMC program time: 2.179s
+No bug has been found in the base case
+Checking forward condition, k = 2
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.031s (527 assignments)
+Slicing time: 0.004s (removed 221 assignments)
+Generated 135 VCC(s), 125 remaining after simplification (306 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.260s
+The forward condition is unable to prove the property
+Checking base case, k = 3
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.036s (606 assignments)
+Slicing time: 0.006s (removed 193 assignments)
+Generated 144 VCC(s), 134 remaining after simplification (413 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.009s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 3.194s
+BMC program time: 3.245s
+No bug has been found in the base case
+Checking forward condition, k = 3
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.035s (602 assignments)
+Slicing time: 0.006s (removed 221 assignments)
+Generated 145 VCC(s), 135 remaining after simplification (381 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.008s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.396s
+The forward condition is unable to prove the property
+Checking base case, k = 4
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.041s (681 assignments)
+Slicing time: 0.007s (removed 193 assignments)
+Generated 154 VCC(s), 144 remaining after simplification (488 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.010s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 3.195s
+BMC program time: 3.254s
+No bug has been found in the base case
+Checking forward condition, k = 4
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.041s (677 assignments)
+Slicing time: 0.006s (removed 221 assignments)
+Generated 155 VCC(s), 145 remaining after simplification (456 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.009s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 1.208s
+The forward condition is unable to prove the property
+Checking base case, k = 5
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.046s (756 assignments)
+Slicing time: 0.008s (removed 193 assignments)
+Generated 164 VCC(s), 154 remaining after simplification (563 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.011s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 4.686s
+BMC program time: 4.752s
+No bug has been found in the base case
+Checking forward condition, k = 5
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.045s (752 assignments)
+Slicing time: 0.008s (removed 221 assignments)
+Generated 165 VCC(s), 155 remaining after simplification (531 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.011s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 1.384s
+The forward condition is unable to prove the property
+Checking base case, k = 6
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.051s (831 assignments)
+Slicing time: 0.010s (removed 193 assignments)
+Generated 174 VCC(s), 164 remaining after simplification (638 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.013s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 5.603s
+BMC program time: 5.677s
+No bug has been found in the base case
+Checking forward condition, k = 6
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.051s (827 assignments)
+Slicing time: 0.010s (removed 221 assignments)
+Generated 175 VCC(s), 165 remaining after simplification (606 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.012s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 1.764s
+The forward condition is unable to prove the property
+Checking base case, k = 7
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.056s (906 assignments)
+Slicing time: 0.012s (removed 193 assignments)
+Generated 184 VCC(s), 174 remaining after simplification (713 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.015s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 5.177s
+BMC program time: 5.260s
+No bug has been found in the base case
+Checking forward condition, k = 7
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.057s (902 assignments)
+Slicing time: 0.012s (removed 221 assignments)
+Generated 185 VCC(s), 175 remaining after simplification (681 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.014s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 1.538s
+The forward condition is unable to prove the property
+Checking base case, k = 8
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.062s (981 assignments)
+Slicing time: 0.015s (removed 193 assignments)
+Generated 194 VCC(s), 184 remaining after simplification (788 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.017s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 9.520s
+BMC program time: 9.614s
+No bug has been found in the base case
+Checking forward condition, k = 8
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.062s (977 assignments)
+Slicing time: 0.013s (removed 221 assignments)
+Generated 195 VCC(s), 185 remaining after simplification (756 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.015s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 3.425s
+The forward condition is unable to prove the property
+Checking base case, k = 9
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.068s (1056 assignments)
+Slicing time: 0.015s (removed 193 assignments)
+Generated 204 VCC(s), 194 remaining after simplification (863 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.017s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 10.472s
+BMC program time: 10.573s
+No bug has been found in the base case
+Checking forward condition, k = 9
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 3 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Not unwinding loop 3 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.067s (1052 assignments)
+Slicing time: 0.015s (removed 221 assignments)
+Generated 205 VCC(s), 195 remaining after simplification (831 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.016s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 2.910s
+BMC program time: 3.009s
+
+VERIFICATION SUCCESSFUL
+
+Solution found by the forward condition; all states are reachable (k = 9)
+ESBMC version 8.2.0 64-bit aarch64 macos

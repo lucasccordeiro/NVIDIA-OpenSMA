@@ -2,16 +2,16 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.510s
+GOTO program creation time: 0.379s
 GOTO program processing time: 0.004s
 Starting Bounded Model Checking
 Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 4 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 4 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Not unwinding loop 4 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.007s (89 assignments)
+Symex completed in: 0.006s (89 assignments)
 Caching time: 0.000s (removed 1 assertions)
-Slicing time: 0.000s (removed 67 assignments)
+Slicing time: 0.001s (removed 67 assignments)
 Generated 14 VCC(s), 5 remaining after simplification (21 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic

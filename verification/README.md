@@ -55,6 +55,8 @@ ESBMC to produce a counterexample.
 | `ntc_table` | `src/nv/volt_mon/ntc_table.{h,cpp}` (binary search + linear interpolation on 166-entry NTC thermistor table; `ntc_resistance_to_temperature`, `ntc_voltage_to_temperature`, `ntc_adc_to_temperature`, `ntc_temperature_to_resistance`, `ntc_temp_to_adc_value`) | ✅ 227 VCC | ✅ k=9 | — |
 | `pwr_smooth_params` | `src/nv/soc_pwr_smoothing/presets.{h,cpp}` (`OverrideParam::to_uint32`, `OverrideParam::from_uint32`, `is_valid_param_id`) | ✅ 72 VCC | ✅ k=1 | — |
 | `fru_utils` | `src/nv/fru/fru.cpp` (`verify_checksum`, `decode_6bit_ascii`) | ✅ 76 VCC | ✅ k=9 | — |
+| `soc_sma_filter` | `src/nv/soc_pwr_smoothing/soc_sma_filter_ch.h` (`SocSmaFilterCh::evaluate` — 4-sample sliding-window SMA over SFXP22_10) | ✅ 504 VCC | ✅ k=1 | — |
+| `debug_telemetry_sma` | `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` (`DebugTelemetrySmaCh::evaluate` — 256-sample SMA; uint8_t buffer; percent ∈ [0%, 150%]) | ✅ 261 VCC | ✅ k=1 | — |
 
 ## ESBMC issues filed
 
@@ -125,6 +127,7 @@ make telemetry_func                            # ditto
 make fixed_point_func utils_func               # ditto
 make ntc_table_func                            # ditto
 make pwr_smooth_params_func fru_utils_func     # ditto
+make soc_sma_filter_func debug_telemetry_sma_func  # ditto
 make mctp_packet_neg mctp_router_neg utils_neg # negative tests (expect FAILED)
 make mctp_dispatch                             # F-1 reachability proof (expect FAILED)
 make nsm_bitmask_neg                           # F-5 OOB proof (expect FAILED)

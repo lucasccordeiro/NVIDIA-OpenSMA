@@ -1,13 +1,13 @@
 # OpenSMA ESBMC Verification — Initial Report
 
-**Date**: 2026-04-25 (updated 2026-05-02)
+**Date**: 2026-04-25 (updated 2026-05-01)
 **Tool**: ESBMC 8.2.0 (aarch64-macos)
 **Scope**: bounded model checking of selected modules in
 [NVIDIA/OpenSMA](https://github.com/NVIDIA/OpenSMA)
 
 ## TL;DR
 
-Fourteen modules verified end-to-end against language-level safety properties
+Sixteen modules verified end-to-end against language-level safety properties
 (pointer/bounds/overflow/div-by-zero/memory-leak) and against module-specific
 functional contracts via k-induction. **One vulnerability formally proven
 reachable** (F-1) via `mctp_dispatch` — ESBMC finds a counterexample where a
@@ -44,6 +44,8 @@ workarounds removed where applicable.
 | NTC thermistor table | `src/nv/volt_mon/ntc_table.{h,cpp}` (`ntc_resistance_to_temperature`, `ntc_voltage_to_temperature`, `ntc_adc_to_temperature`, `ntc_temperature_to_resistance`, `ntc_temp_to_adc_value`) | ✅ 227 VCC | ✅ k=9 (exact table lookup, range clamping, round-trip identity) | — |
 | Power-smoothing params | `src/nv/soc_pwr_smoothing/presets.{h,cpp}` (`OverrideParam::to_uint32`, `::from_uint32`, `is_valid_param_id`) | ✅ 72 VCC | ✅ k=1 (round-trip pack↔unpack identity, param-id exact characterisation) | — |
 | FRU utilities | `src/nv/fru/fru.cpp` (`verify_checksum`, `decode_6bit_ascii`) | ✅ 76 VCC | ✅ k=9 (checksum true iff sum≡0 mod 256, decode output ∈ [0x20, 0x5F]) | — |
+| SoC SMA filter | `src/nv/soc_pwr_smoothing/soc_sma_filter_ch.h` (`SocSmaFilterCh::evaluate` — 4-sample sliding-window SMA over SFXP22_10) | ✅ 504 VCC | ✅ k=1 (steady-state: 4 equal inputs → output == input; output ∈ [0, input]) | — |
+| Debug telemetry SMA | `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` (`DebugTelemetrySmaCh::evaluate` — 256-sample SMA; UFXP8_0 buffer; percent ∈ [0%, 150%]) | ✅ 261 VCC | ✅ k=1 (index bounded ∈ [0, 255] by bitwise-AND; output non-negative from zero state) | — |
 
 All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
@@ -401,8 +403,10 @@ kept narrow so multiple fixes can be reaped independently.
 5. ~~Expand coverage to `ntc_table.{h,cpp}`~~ — **done** (`ntc_table` / `ntc_table_func`, 227 VCC Phase 1, k=9 Phase 2, all five conversion functions verified).
 6. ~~Expand coverage to `soc_pwr_smoothing/presets.{h,cpp}`~~ — **done** (`pwr_smooth_params` / `pwr_smooth_params_func`, 72 VCC Phase 1, k=1 Phase 2: round-trip identity and param-id characterisation).
 7. ~~Expand coverage to `fru.cpp`~~ — **done** (`fru_utils` / `fru_utils_func`, 76 VCC Phase 1, k=9 Phase 2: checksum contract and 6-bit ASCII decode output-range invariant).
-8. Stand up a CI hook that runs `make all` on every PR; verification must
-   stay green and any failure must be triaged before merge.
+8. ~~Expand coverage to `soc_pwr_smoothing/soc_sma_filter_ch.h`~~ — **done** (`soc_sma_filter` / `soc_sma_filter_func`, 504 VCC Phase 1, k=1 Phase 2: steady-state identity and output-bounded contracts).
+9. ~~Expand coverage to `soc_pwr_smoothing/debug_telemetry_sma_ch.h`~~ — **done** (`debug_telemetry_sma` / `debug_telemetry_sma_func`, 261 VCC Phase 1, k=1 Phase 2: index-bounded and output-non-negative contracts).
+10. Stand up a CI hook that runs `make all` on every PR; verification must
+    stay green and any failure must be triaged before merge.
 
 ## Reproducing
 
@@ -418,6 +422,8 @@ make nsm_type5_validate_func  # nsm_type5 field-validator contracts (k=1)
 make ntc_table_func         # NTC table contracts: exact lookup, range clamping, round-trip (k=9)
 make pwr_smooth_params_func # OverrideParam round-trips + is_valid_param_id characterisation (k=1)
 make fru_utils_func         # checksum contract + decode_6bit_ascii output-range invariant (k=9)
+make soc_sma_filter_func    # SocSmaFilterCh steady-state identity + output-bounded (k=1)
+make debug_telemetry_sma_func  # DebugTelemetrySmaCh index-bounded + output-nonneg (k=1)
 make mctp_packet_neg        # negative tests (expect VERIFICATION FAILED)
 make mctp_router_neg
 make mctp_dispatch          # F-1 reachability proof (expect VERIFICATION FAILED)

@@ -69,8 +69,10 @@ FP_INCS := -I$(REPO)/src
         ntc_table ntc_table_func \
         pwr_smooth_params pwr_smooth_params_func \
         fru_utils fru_utils_func \
+        soc_sma_filter soc_sma_filter_func \
+        debug_telemetry_sma debug_telemetry_sma_func \
         clean
-all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils
+all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils soc_sma_filter debug_telemetry_sma
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
@@ -390,6 +392,38 @@ fru_utils_func:
 	  -DESBMC_FUNCTIONAL=1 \
 	  $(HARNESSES)/fru_utils_harness.cpp \
 	  2>&1 | tee $(RESULTS)/fru_utils_func.log
+
+# Phase 1+2: 4-sample SMA filter for SoC% telemetry (SocSmaFilterCh).
+# Pure SFXP22_10 arithmetic; no MCU platform includes.
+# Needs array stub: bundled <array> lacks correct value-initialisation tracking.
+soc_sma_filter:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) -I$(STUBS) -I$(REPO)/src \
+	  $(HARNESSES)/soc_sma_filter_harness.cpp \
+	  2>&1 | tee $(RESULTS)/soc_sma_filter.log
+
+soc_sma_filter_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(FUNC_FLAGS) -I$(STUBS) -I$(REPO)/src \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/soc_sma_filter_harness.cpp \
+	  2>&1 | tee $(RESULTS)/soc_sma_filter_func.log
+
+# Phase 1+2: 256-sample SMA for debug telemetry (DebugTelemetrySmaCh).
+# Mixed-type arithmetic: SFXP22_10 → SFXP32_0 → UFXP8_0 buffer.
+# Needs array stub for the same value-initialisation reason as soc_sma_filter.
+debug_telemetry_sma:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) -I$(STUBS) -I$(REPO)/src \
+	  $(HARNESSES)/debug_telemetry_sma_harness.cpp \
+	  2>&1 | tee $(RESULTS)/debug_telemetry_sma.log
+
+debug_telemetry_sma_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(FUNC_FLAGS) -I$(STUBS) -I$(REPO)/src \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/debug_telemetry_sma_harness.cpp \
+	  2>&1 | tee $(RESULTS)/debug_telemetry_sma_func.log
 
 clean:
 	rm -rf $(RESULTS)

@@ -52,6 +52,7 @@ ESBMC to produce a counterexample.
 | `literals` | `src/nv/common/literals.h` (UDL truncation + shift) | ✅ | ✅ k=1 | ✅ CEX on `_bit(i≥64)` — F-4 |
 | `fixed_point` | `src/nv/common/fixed_point.h` | ✅ | ✅ | — |
 | `utils` | `src/nv/common/utils.h` (saturating add/sub/mul/align_to) | ✅ | ✅ | ⚠ (ESBMC strict unsigned-wrap demo, not a bug) |
+| `ntc_table` | `src/nv/volt_mon/ntc_table.{h,cpp}` (binary search + linear interpolation on 166-entry NTC thermistor table; `ntc_resistance_to_temperature`, `ntc_voltage_to_temperature`, `ntc_adc_to_temperature`, `ntc_temperature_to_resistance`, `ntc_temp_to_adc_value`) | ✅ 227 VCC | ✅ k=9 | — |
 
 ## ESBMC issues filed
 
@@ -72,6 +73,7 @@ for the full table; brief view:
 | [#4232](https://github.com/esbmc/esbmc/issues/4232) | `mk_eq`/`to_solver_smt_ast` crash persists after #4217: bitfield-base struct + aggregate-init + switch-case + member read | **fixed** by [#4233](https://github.com/esbmc/esbmc/pull/4233) | (removed) |
 | [#4234](https://github.com/esbmc/esbmc/issues/4234) | `switch(static_cast<enum>(bit_cast member))` + `at()` in case body crashes `mk_eq` — fall-through label not normalised in `adjust_switch_case_ops` | **fixed** by [#4235](https://github.com/esbmc/esbmc/pull/4235) (merged 2026-05-01) | (workaround removed; production switch encodes correctly) |
 | [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-init `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111) | **fixed** by [#4238](https://github.com/esbmc/esbmc/pull/4238) | (workaround removed; `ctrl{}` now constructs cleanly) |
+| [#4240](https://github.com/esbmc/esbmc/issues/4240) | `--overflow-check` / `--ub-shift-check` generating false-positive signed-shl VCCs under `--std c++20` (C++20 [expr.shift]/2 makes signed left-shift fully defined; ESBMC was still applying pre-C++20 rules) | **fixed** by [#4241](https://github.com/esbmc/esbmc/pull/4241) | (no workaround needed; repro: `esbmc_bug_repros/signed_shift_result_overflow.cpp`) |
 
 ## Findings
 
@@ -119,6 +121,7 @@ make mctp_packet_func mctp_router_func \
 make nsm_type3_func                            # ditto
 make telemetry_func                            # ditto
 make fixed_point_func utils_func               # ditto
+make ntc_table_func                            # ditto
 make mctp_packet_neg mctp_router_neg utils_neg # negative tests (expect FAILED)
 make mctp_dispatch                             # F-1 reachability proof (expect FAILED)
 make nsm_bitmask_neg                           # F-5 OOB proof (expect FAILED)

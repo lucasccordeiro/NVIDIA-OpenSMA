@@ -65,8 +65,10 @@ FP_INCS := -I$(REPO)/src
         i2c_crc8 i2c_crc8_func \
         literals literals_func literals_neg \
         fixed_point fixed_point_func \
-        utils utils_func utils_neg clean
-all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils
+        utils utils_func utils_neg \
+        ntc_table ntc_table_func \
+        clean
+all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
@@ -168,14 +170,13 @@ nsm_type_2_func:
 	  2>&1 | tee $(RESULTS)/nsm_type_2_func.log
 
 # Phase 1+2: telemetry sensor-ID lookup functions + buffer_to_uint32 (fixed).
-# Uses --ub-shift-check (not --unsigned-overflow-check) because uint32_t<<24
-# triggers a false positive in ESBMC's unsigned-overflow model for the fixed
-# form; --ub-shift-check correctly accepts it.
-# Note: the production buffer_to_uint32 has a misplaced cast (F-6, latent UB):
-#   static_cast<uint32_t>(buffer[3] << 24)  should be
-#   static_cast<uint32_t>(buffer[3]) << 24
-# ESBMC cannot prove this because it models signed shifts as bitvector wrap
-# (same limitation as the retracted F-3). The harness verifies the fixed form.
+# Uses --ub-shift-check (not --unsigned-overflow-check): uint32_t<<24 through a
+# function-call boundary triggers a false positive in ESBMC's unsigned-overflow
+# model (loses the uint8_t range constraint after the cast).
+# Note: the production buffer_to_uint32 has a misplaced cast (F-6, retracted):
+#   static_cast<uint32_t>(buffer[3] << 24)  vs  static_cast<uint32_t>(buffer[3]) << 24
+# C++20 [expr.shift]/2 makes signed left-shift wrapping well-defined for all
+# inputs (same as the retracted F-3), so this is a style issue, not a bug.
 telemetry:
 	@mkdir -p $(RESULTS)
 	$(ESBMC) --std c++20 \
@@ -326,6 +327,35 @@ nsm_type5_validate_func:
 	  -DESBMC_FUNCTIONAL=1 \
 	  $(HARNESSES)/nsm_type5_validate_harness.cpp \
 	  2>&1 | tee $(RESULTS)/nsm_type5_validate_func.log
+
+# Phase 1+2: NTC thermistor lookup table and conversion functions.
+# Binary search on 166 entries converges in ≤8 iterations → --unwind 9.
+# Production ntc_table.cpp has no MCU dependencies; compiled directly.
+ntc_table:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 \
+	  --memory-leak-check \
+	  --overflow-check \
+	  --unsigned-overflow-check \
+	  --nan-check \
+	  --unwind 9 \
+	  --no-unwinding-assertions \
+	  -I$(REPO)/src \
+	  $(REPO)/src/nv/volt_mon/ntc_table.cpp \
+	  $(HARNESSES)/ntc_table_harness.cpp \
+	  2>&1 | tee $(RESULTS)/ntc_table.log
+
+ntc_table_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 \
+	  --overflow-check \
+	  --interval-analysis \
+	  --k-induction --k-step 1 --max-k-step 12 \
+	  -DESBMC_FUNCTIONAL=1 \
+	  -I$(REPO)/src \
+	  $(REPO)/src/nv/volt_mon/ntc_table.cpp \
+	  $(HARNESSES)/ntc_table_harness.cpp \
+	  2>&1 | tee $(RESULTS)/ntc_table_func.log
 
 clean:
 	rm -rf $(RESULTS)

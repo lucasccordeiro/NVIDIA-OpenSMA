@@ -1,26 +1,24 @@
 # OpenSMA ESBMC Verification — Initial Report
 
-**Date**: 2026-04-25 (updated 2026-05-01)
+**Date**: 2026-04-25 (updated 2026-05-02)
 **Tool**: ESBMC 8.2.0 (aarch64-macos)
 **Scope**: bounded model checking of selected modules in
 [NVIDIA/OpenSMA](https://github.com/NVIDIA/OpenSMA)
 
 ## TL;DR
 
-Eleven modules verified end-to-end against language-level safety properties
+Twelve modules verified end-to-end against language-level safety properties
 (pointer/bounds/overflow/div-by-zero/memory-leak) and against module-specific
 functional contracts via k-induction. **One vulnerability formally proven
 reachable** (F-1) via `mctp_dispatch` — ESBMC finds a counterexample where a
 Control SetEpId Request with a gap interface triggers `set_cur_eid()` to
 OOB-index the 2-entry `cur_eid` array; code inspection confirms the production
 call-site `on_set_endpoint_id()` makes this call unconditionally. Two
-initially-claimed findings (F-2, F-3) **retracted on review**. Three further
-latent-UB findings: **F-4** in `literals.h::operator""_bit` (shift-count ≥ 64);
-**F-5** in `nsm_msg_bitmask.h::set_bit` / `unset_bit` on the 8-element event
-bitmask (index ≥ 64 reaches `std::array::at` OOB); and **F-6** in
-`telemetry/utils.cpp::buffer_to_uint32` (misplaced cast causes signed-shift
-UB for byte 3 ≥ 0x80, though the bit pattern is identical on two's-complement).
-None of F-4/F-5/F-6 have dangerous current call sites, but F-5 lacks the
+initially-claimed findings (F-2, F-3, **F-6**) **retracted on review**. Two
+confirmed latent-UB findings: **F-4** in `literals.h::operator""_bit`
+(shift-count ≥ 64) and **F-5** in `nsm_msg_bitmask.h::set_bit` / `unset_bit`
+on the 8-element event bitmask (index ≥ 64 reaches `std::array::at` OOB).
+Neither F-4 nor F-5 has a dangerous current call site, but F-5 lacks the
 runtime guard that sibling operations carry. Several ESBMC C++-frontend bugs filed against
 [esbmc/esbmc](https://github.com/esbmc/esbmc); most are now fixed and merged;
 workarounds removed where applicable.
@@ -43,6 +41,7 @@ workarounds removed where applicable.
 | User-defined integer literals | `src/nv/common/literals.h` (`_u8`/`_u16`/`_u32`/`_i8`/`_i16`/`_i32`/`_bits_sizeof`/`_bit`) | ✅ | ✅ k=1 (mask agreement, signed/unsigned truncation parity, `bits/8`, `1ULL << i`) | ✅ CEX on `_bit(i≥64)` via `--ub-shift-check` — **F-4** |
 | NSM bitmask operations | `src/nv/mctp/nsm_msg_bitmask.h` (`set_bit`/`unset_bit`/`get_bit`/`is_bit_set`) | ✅ 75 VCC | ✅ k=1 (set→get non-zero; unset→get zero; is_bit_set iff get_bit≠0) | ✅ CEX on `set_bit`/`unset_bit(arr8, pos≥64)` — **F-5** |
 | NSM type 5 field validators | `src/nv/mctp/nsm_type_5.cpp` (`validateFatalErrorInjectionPayload`, `validateDeviceIndex{GpuDegradeMode,PowerSupply}`, `validateAction{GpuDegradeMode}`, `validateModePowerSupply`) | ✅ 14 VCC | ✅ k=1 (exact characterisation: accepted iff bitmask∈{0,1,2}, index/mode in documented ranges) | — |
+| NTC thermistor table | `src/nv/volt_mon/ntc_table.{h,cpp}` (`ntc_resistance_to_temperature`, `ntc_voltage_to_temperature`, `ntc_adc_to_temperature`, `ntc_temperature_to_resistance`, `ntc_temp_to_adc_value`) | ✅ 227 VCC | ✅ k=9 (exact table lookup, range clamping, round-trip identity) | — |
 
 All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
@@ -253,27 +252,26 @@ Apply the same fix to `unset_bit`. Alternatively, make the precondition
 explicit in a `static_assert` or `constexpr` wrapper that limits `pos` to the
 representable range of the array.
 
-### F-6 — `buffer_to_uint32` misplaced cast (latent UB, no observable effect)
+### F-6 — RETRACTED (was: `buffer_to_uint32` misplaced cast)
 
 **File**: `src/nv/telemetry/utils.cpp:31`
 
 ```cpp
-return (static_cast<uint32_t>(buffer[0]) << Byte0)
-     | (static_cast<uint32_t>(buffer[1]) << Byte1)
-     | (static_cast<uint32_t>(buffer[2]) << Byte2)
-     | (static_cast<uint32_t>(buffer[3] << Byte3));  // ← bug: cast applied after shift
+| (static_cast<uint32_t>(buffer[3] << Byte3));  // cast after shift — initially flagged
 ```
 
-Bytes 0–2 are correctly `static_cast<uint32_t>(buffer[N]) << Byte` — the byte is widened to `uint32_t` before the shift. Byte 3 is `static_cast<uint32_t>(buffer[3] << 24)` — the byte is shifted as a promoted `int` before the cast. For `buffer[3] >= 0x80`, `int(buffer[3]) << 24` exceeds `INT_MAX`, which is UB under C++20 `[expr.shift]/1`.
+The cast is applied after the shift rather than before. Initially filed as "signed-shift UB for `buffer[3] >= 0x80` under C++20." **Retracted**: C++20 P0907R4/P1236R1 makes signed left-shift fully defined for all inputs — the result is the unique value congruent to `E1 × 2^E2` modulo `2^N` — removing both the negative-E1 and result-overflow UB clauses that existed in C++17. ESBMC's bitvector model was already correct; `--overflow-check` rightly generates no VCC for this expression under `--std c++20`.
 
-**Severity: low in practice.** On every two's-complement platform (all modern targets), the signed-overflow result equals the intended bit pattern: `int(-128) << 24 = 0xFF000000` and `static_cast<uint32_t>(0xFF000000) = 4278190080`, the same value the correct form produces. ESBMC models signed integers as two's-complement bitvectors and therefore cannot distinguish the buggy form from the fixed form — this is the same limitation that caused F-3 to be retracted.
+This is the same standard-conformance question as the retracted F-3 (`buf_to_u32`). The REPORT.md entry for F-3 already quoted this rule correctly ("Under C++20+ `[expr.shift]/2`, signed left-shift `E1 << E2` is well-defined"); F-6 should have been retracted on the same grounds.
 
-**Fix**: move the closing paren of `static_cast<uint32_t>` to after the shift:
+The code pattern is still a **style/portability issue**: bytes 0–2 cast before shifting (`static_cast<uint32_t>(buffer[N]) << Byte`) while byte 3 casts after. The recommended fix (move the cast before the shift) makes the intent uniform and correct even under C++17:
 ```cpp
 | (static_cast<uint32_t>(buffer[3]) << Byte3)
 ```
 
-**What ESBMC verified** (`telemetry`, 80 VCC Phase 1 with `--ub-shift-check`, k=11 Phase 2): the fixed version is total over all 4-byte inputs and satisfies the little-endian decoding contract `result == b[0] | (b[1] << 8) | (b[2] << 16) | (b[3] << 24)`.
+**ESBMC issue filed as a consequence** — the misanalysis led to filing [esbmc#4240](https://github.com/esbmc/esbmc/issues/4240) ("ESBMC misses signed shl overflow UB under C++20"). That framing was wrong (no UB to miss), but esbmc#4240 uncovered a real ESBMC defect in the opposite direction: under `--std c++20`, `--overflow-check` and `--ub-shift-check` were still generating false-positive VCCs for signed shl (E1 with unknown sign, and E1 < 0 respectively). Fixed by [#4241](https://github.com/esbmc/esbmc/pull/4241). Repro retained at `esbmc_bug_repros/signed_shift_result_overflow.cpp`.
+
+**What ESBMC verified** (`telemetry`, 80 VCC Phase 1 with `--ub-shift-check`, k=11 Phase 2): both the buggy and fixed forms satisfy the little-endian decoding contract across all 4-byte inputs (the two expressions are structurally equivalent under C++20 semantics).
 
 ### F-3 — RETRACTED (was: `buf_to_u32` signed shift overflow)
 
@@ -359,6 +357,7 @@ backed by an open issue.**
 | [#4232](https://github.com/esbmc/esbmc/issues/4232) | `mk_eq` / `to_solver_smt_ast` crash persists after #4217: bitfield-base struct + switch-case + member read (two variants: Crash A → `to_solver_smt_ast, smt_ast.h:111`; Crash B → `mk_eq, bitwuzla_conv.cpp:512`) | **fixed** by [#4233](https://github.com/esbmc/esbmc/pull/4233) (merged) — aggregate-init flatten for bitfield-base derived structs | (workaround removed for simple aggregate-init case; see #4234 for the `std::bit_cast` variant) |
 | [#4234](https://github.com/esbmc/esbmc/issues/4234) | `switch(static_cast<enum>(bit_cast member))` + `at()` in case body crashes `mk_eq` (`bitwuzla_conv.cpp:512`) — trigger is fall-through switch-case label not normalised in `adjust_switch_case_ops` | **fixed** by [#4235](https://github.com/esbmc/esbmc/pull/4235) — recurse into fall-through chain body before returning | (workaround removed; production switch now encodes correctly) |
 | [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-initialising `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111); `Derived d;` (default-init) works correctly | **fixed** by [#4238](https://github.com/esbmc/esbmc/pull/4238) | (workaround removed; `ctrl{}` now constructs cleanly) |
+| [#4240](https://github.com/esbmc/esbmc/issues/4240) | `--overflow-check` / `--ub-shift-check` generating false-positive signed-shl VCCs under `--std c++20` (C++20 [expr.shift]/2 defines signed left-shift wrapping for all inputs; ESBMC was still applying pre-C++20 rules) | **fixed** by [#4241](https://github.com/esbmc/esbmc/pull/4241) | (no workaround needed; repro: `esbmc_bug_repros/signed_shift_result_overflow.cpp`) |
 
 Every workaround site is tagged `// WORKAROUND esbmc#<n>` pointing at the
 specific open issue listed in the table above. Removing a workaround is a
@@ -397,7 +396,8 @@ kept narrow so multiple fixes can be reaped independently.
    straightforward one-line fix.
 3. ~~**Simplify `mctp_dispatch` once esbmc#4237 is fixed**~~ — **done** (`ctrl{}` workaround removed after esbmc/esbmc#4238 merged).
 4. ~~Expand coverage to `nsm_type_3.cpp`~~ — **done** (`nsm_type3` / `nsm_type3_func`, 37 VCC Phase 1, k=9 Phase 2).
-5. Stand up a CI hook that runs `make all` on every PR; verification must
+5. ~~Expand coverage to `ntc_table.{h,cpp}`~~ — **done** (`ntc_table` / `ntc_table_func`, 227 VCC Phase 1, k=9 Phase 2, all five conversion functions verified).
+6. Stand up a CI hook that runs `make all` on every PR; verification must
    stay green and any failure must be triaged before merge.
 
 ## Reproducing
@@ -411,6 +411,7 @@ make fixed_point_func
 make nsm_type3_func         # nsm_type3 availability contracts (k=9)
 make nsm_bitmask_func       # bitmask contracts (k=1)
 make nsm_type5_validate_func  # nsm_type5 field-validator contracts (k=1)
+make ntc_table_func         # NTC table contracts: exact lookup, range clamping, round-trip (k=9)
 make mctp_packet_neg        # negative tests (expect VERIFICATION FAILED)
 make mctp_router_neg
 make mctp_dispatch          # F-1 reachability proof (expect VERIFICATION FAILED)

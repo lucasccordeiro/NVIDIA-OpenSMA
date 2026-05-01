@@ -57,6 +57,7 @@ FP_INCS := -I$(REPO)/src
         mctp_validator mctp_validator_func \
         mctp_dispatch \
         nsm_type_2 nsm_type_2_func \
+        nsm_type3 nsm_type3_func \
         nsm_bitmask nsm_bitmask_func nsm_bitmask_neg \
         nsm_type5_validate nsm_type5_validate_func \
         spi_utils spi_utils_func \
@@ -64,7 +65,7 @@ FP_INCS := -I$(REPO)/src
         literals literals_func literals_neg \
         fixed_point fixed_point_func \
         utils utils_func utils_neg clean
-all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_bitmask nsm_type5_validate spi_utils i2c_crc8 literals fixed_point utils
+all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate spi_utils i2c_crc8 literals fixed_point utils
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
@@ -164,6 +165,22 @@ nsm_type_2_func:
 	  -DESBMC_FUNCTIONAL=1 \
 	  $(HARNESSES)/nsm_type_2_harness.cpp \
 	  2>&1 | tee $(RESULTS)/nsm_type_2_func.log
+
+# Phase 1+2: NSM Type-3 sensor availability functions (inlined verbatim,
+# testrunner platform config: 8 temp sensors, 3 power sensors, 0 voltage sensors).
+nsm_type3:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  $(HARNESSES)/nsm_type3_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_type3.log
+
+nsm_type3_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --overflow-check --interval-analysis \
+	  --k-induction --k-step 1 --max-k-step 16 \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/nsm_type3_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_type3_func.log
 
 spi_utils:
 	@mkdir -p $(RESULTS)

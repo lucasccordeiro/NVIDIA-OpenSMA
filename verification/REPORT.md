@@ -34,6 +34,7 @@ workarounds removed where applicable.
 | Saturating arithmetic | `src/nv/common/utils.h` | ✅ 20 VCC | ✅ k=1 | ⚠ ESBMC strict unsigned-overflow demo (not a bug) |
 | MCTP validator state machine | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | — |
 | NSM type 2 (PCIe-link reset validator) | `src/nv/mctp/nsm_type_2.cpp` (`validatePcieLinkResetValue`) | ✅ | ✅ k=12 (membership iff + below-range rejection) | — |
+| NSM type 3 sensor availability | `src/nv/mctp/nsm_type_3.cpp` (`is_temp_sensor_available`, `is_power_sensor_available`, `is_voltage_sensor_available`) | ✅ 37 VCC | ✅ k=9 (membership iff, busbar-unavailable exclusion, voltage always-false) | — |
 | SPI byte-buffer (de)serialisation | `src/nv/spi/utils.{h,cpp}` (`buf_to_u{16,32}`, `u{16,32}_to_buf`) | ✅ | ✅ k=9 (round-trip + big-endian + OOB-no-write) | — |
 | I2C CRC-8 helpers | `src/nv/i2c/helper.cpp` (`crc8`) | ✅ | ✅ k=5 (incrementality + init-zero invariant) | — |
 | User-defined integer literals | `src/nv/common/literals.h` (`_u8`/`_u16`/`_u32`/`_i8`/`_i16`/`_i32`/`_bits_sizeof`/`_bit`) | ✅ | ✅ k=1 (mask agreement, signed/unsigned truncation parity, `bits/8`, `1ULL << i`) | ✅ CEX on `_bit(i≥64)` via `--ub-shift-check` — **F-4** |
@@ -375,10 +376,7 @@ kept narrow so multiple fixes can be reaped independently.
    to `VerifControl ctrl{}` (one-character change). The full path is already proven
    via the production function; this is a cleanup to eliminate the
    `WORKAROUND esbmc#4237` tag.
-4. Expand coverage to `nsm_type_3.cpp` — `is_temp_sensor_available`,
-   `is_power_sensor_available`, `is_voltage_sensor_available` are the same
-   linear-scan pattern as `validatePcieLinkResetValue`; platform sensor arrays
-   would need to be inlined verbatim from the target config.
+4. ~~Expand coverage to `nsm_type_3.cpp`~~ — **done** (`nsm_type3` / `nsm_type3_func`, 37 VCC Phase 1, k=9 Phase 2).
 5. Stand up a CI hook that runs `make all` on every PR; verification must
    stay green and any failure must be triaged before merge.
 
@@ -386,10 +384,11 @@ kept narrow so multiple fixes can be reaped independently.
 
 ```sh
 cd verification
-make all                    # all Phase 1 targets (includes nsm_bitmask, nsm_type5_validate)
+make all                    # all Phase 1 targets (includes nsm_type3, nsm_bitmask, nsm_type5_validate)
 make mctp_packet_func       # Phase 2 (k-induction)
 make mctp_router_func
 make fixed_point_func
+make nsm_type3_func         # nsm_type3 availability contracts (k=9)
 make nsm_bitmask_func       # bitmask contracts (k=1)
 make nsm_type5_validate_func  # nsm_type5 field-validator contracts (k=1)
 make mctp_packet_neg        # negative tests (expect VERIFICATION FAILED)

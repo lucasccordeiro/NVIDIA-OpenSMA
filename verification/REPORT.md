@@ -1,6 +1,6 @@
 # OpenSMA ESBMC Verification — Initial Report
 
-**Date**: 2026-04-25 (updated 2026-04-30)
+**Date**: 2026-04-25 (updated 2026-05-01)
 **Tool**: ESBMC 8.2.0 (aarch64-macos)
 **Scope**: bounded model checking of selected modules in
 [NVIDIA/OpenSMA](https://github.com/NVIDIA/OpenSMA)
@@ -29,7 +29,7 @@ workarounds removed where applicable.
 |---|---|:-:|:-:|:-:|
 | MCTP packet parser | `corepdk/.../app/pdk-mctp-app-packet.cpp` | ✅ 62 VCC | ✅ 76 VCC, k=1 | ✅ CEX on undersized input |
 | MCTP routing helpers | `corepdk/.../platforms/x86/pdk-mctp-platforms-router-plat.cpp` | ✅ 70 VCC | ✅ 66 VCC, k=1 | ✅ CEX on `iface == UsEnd` |
-| MCTP dispatch (F-1 reachability) | `Validator::validate()` + `VerifControl::call_on_set_endpoint_id()` | — | — | ✅ CEX: `iface_val=2`, `valid=true`, OOB at `cur_eid.at(2)` (224 VCC) |
+| MCTP dispatch (F-1 reachability) | `Validator::validate()` + `VerifControl::on_set_endpoint_id()` (production) | — | — | ✅ CEX: `iface_val=2`, `valid=true`, OOB at `cur_eid.at(2)` (275 VCC) |
 | Fixed-point arithmetic | `src/nv/common/fixed_point.h` | ✅ 78 VCC | ✅ 24 VCC, k=1 | — |
 | Saturating arithmetic | `src/nv/common/utils.h` | ✅ 20 VCC | ✅ k=1 | ⚠ ESBMC strict unsigned-overflow demo (not a bug) |
 | MCTP validator state machine | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | — |
@@ -84,7 +84,7 @@ no such guard.
 `Interface::UsEnd` (2). Any interface value in `[2, 17]` — the gap — passes
 validation yet OOBs in `set_cur_eid()`.
 
-**What ESBMC proved** (`mctp_dispatch` harness, `LANG_FLAGS`, 224 VCC / 10
+**What ESBMC proved** (`mctp_dispatch` harness, `LANG_FLAGS`, 275 VCC / 16
 remaining after simplification; Bitwuzla solves in <0.01 s):
 
 The harness constrains `iface_val` to `[UsEnd=2, End=18)` and constructs a
@@ -103,26 +103,15 @@ State 10  Violated: std::array::at out of range  [i::0 < 2  fails]
 
 Any `iface_val ∈ [2, 17]` triggers the same path.
 
-**Production connection (formally proven)**: the harness uses a `VerifControl`
-thin subclass that inlines the semantics of `on_set_endpoint_id()`
-(`pdk-mctp-platforms-control.cpp:61`) as an if-else equivalent:
-
-```cpp
-set_cur_eid(_router, get_packet_interface(rx), crx.data[1]);
-```
-
-is called unconditionally for `SetEidNormal` and `SetEidForced`, with no bounds
-check on the interface value. The `VerifControl` subclass gives the `Validator`
-the same `RoutingTable` (`ctrl.router()`), so both steps operate on the same
-object. This eliminates the earlier code-inspection caveat — the full dispatch
-path from `validate()` through `on_set_endpoint_id()` to `set_cur_eid()` is
-now formally proven end-to-end.
-
-The if-else form is needed as a workaround for esbmc/esbmc#4234: the production
-`switch(static_cast<SetEndpoint>(crx.data[0]))` combined with `at()` in the
-case body crashes ESBMC's SMT encoding (`mk_eq` assertion, `bitwuzla_conv.cpp:512`).
-Once #4234 is fixed the workaround can be replaced with the production
-`on_set_endpoint_id()` call directly.
+**Production connection (formally proven)**: the harness compiles
+`pdk-mctp-platforms-control.cpp` as-is and calls the production
+`on_set_endpoint_id()` directly via a `VerifControl` thin subclass
+that promotes the protected method to public. The `VerifControl`
+subclass gives the `Validator` the same `RoutingTable` (`ctrl.router()`),
+so both steps operate on the same object. This eliminates all code-inspection
+caveats — the full dispatch path from `validate()` through
+`on_set_endpoint_id()` to `set_cur_eid()` is now formally proven end-to-end
+with the production source unchanged.
 
 **Runtime effect (empirically confirmed)**: under production flags
 `-fno-exceptions -fno-rtti`, `std::array::at(OOB)` calls `abort()` — not
@@ -342,7 +331,8 @@ backed by an open issue.**
 | [#4214](https://github.com/esbmc/esbmc/issues/4214) | `platforms::Control` default-construction triggers assertion `new_comp.size() == ops.size()` in `clang_c_adjust_expr.cpp:158`; ESBMC aborts during GOTO program creation | **fixed** by [#4215](https://github.com/esbmc/esbmc/pull/4215) (merged 2026-04-29) | (workaround note updated; `ctrl{}` now constructs cleanly) |
 | [#4216](https://github.com/esbmc/esbmc/issues/4216) | `switch (static_cast<enum>(packed_field))` + second field read in case body crashes SMT encoding (`mk_eq` bitvector width mismatch in `bitwuzla_conv.cpp:512` / `z3_conv.cpp:756`) | closed by [#4217](https://github.com/esbmc/esbmc/pull/4217) — but two crashes persist; see #4232 | — |
 | [#4232](https://github.com/esbmc/esbmc/issues/4232) | `mk_eq` / `to_solver_smt_ast` crash persists after #4217: bitfield-base struct + switch-case + member read (two variants: Crash A → `to_solver_smt_ast, smt_ast.h:111`; Crash B → `mk_eq, bitwuzla_conv.cpp:512`) | **fixed** by [#4233](https://github.com/esbmc/esbmc/pull/4233) (merged) — aggregate-init flatten for bitfield-base derived structs | (workaround removed for simple aggregate-init case; see #4234 for the `std::bit_cast` variant) |
-| [#4234](https://github.com/esbmc/esbmc/issues/4234) | `switch(static_cast<enum>(bit_cast member))` + `at()` in case body crashes `mk_eq` (`bitwuzla_conv.cpp:512`) when production headers include `pdk-mctp-platforms-router-plat.cpp` — distinct from #4232: trigger is `std::bit_cast<PktReq*>` in a packed struct, not aggregate-init | open | `VerifControl::call_on_set_endpoint_id()` inlines the same logic with if-else instead of switch (tagged `WORKAROUND esbmc#4234` in harness); repro in `esbmc_bug_repros/switch_bitcast_at_crash.cpp` |
+| [#4234](https://github.com/esbmc/esbmc/issues/4234) | `switch(static_cast<enum>(bit_cast member))` + `at()` in case body crashes `mk_eq` (`bitwuzla_conv.cpp:512`) — trigger is fall-through switch-case label not normalised in `adjust_switch_case_ops` | **fixed** by [#4235](https://github.com/esbmc/esbmc/pull/4235) — recurse into fall-through chain body before returning | (workaround removed; production switch now encodes correctly) |
+| [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-initialising `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111); `Derived d;` (default-init) works correctly | open | `VerifControl ctrl;` not `ctrl{}` in `mctp_dispatch_harness.cpp` (tagged `WORKAROUND esbmc#4237`); repro in `esbmc_bug_repros/struct_brace_init_crash.cpp` |
 
 Every workaround site is tagged `// WORKAROUND esbmc#<n>` pointing at the
 specific open issue listed in the table above. Removing a workaround is a
@@ -351,18 +341,18 @@ kept narrow so multiple fixes can be reaped independently.
 
 ## What was deferred and why
 
-- **Full Control dispatch path** — substantially upgraded. `platforms::Control
-  ctrl{}` now constructs cleanly (esbmc/esbmc#4214 fixed by PR #4215, merged
-  2026-04-29). The `mctp_dispatch` harness now uses a `VerifControl` thin
-  subclass that inlines `on_set_endpoint_id()` semantics with if-else (workaround
-  for esbmc/esbmc#4234), formally proving the full path without a code-inspection
-  caveat (224 VCC, VERIFICATION FAILED at `cur_eid.at(2)`). Calling
-  `ctrl.process()` directly is still blocked by a `dereference.cpp:1358`
-  assertion on the variable-index `_routing_map.at(entry_in_map)` loop in
-  `on_get_routing_table_entry` (dead code on a SetEpId packet but still inlined
-  by ESBMC). Once esbmc/esbmc#4234 is fixed, the if-else workaround in
-  `VerifControl` can be replaced with the production `on_set_endpoint_id()`
-  call directly (a mechanical one-line change).
+- **Full Control dispatch path** — fully upgraded. `platforms::Control ctrl{}`
+  constructs cleanly (esbmc/esbmc#4214 fixed by #4215). The `mctp_dispatch`
+  harness now compiles `pdk-mctp-platforms-control.cpp` as-is and calls the
+  production `on_set_endpoint_id()` directly via a `VerifControl` thin subclass
+  (esbmc/esbmc#4232 fixed by #4233; esbmc/esbmc#4234 fixed by #4235). One minor
+  remaining workaround: `VerifControl ctrl;` not `ctrl{}` due to
+  esbmc/esbmc#4237 (value-init of struct inheriting class crashes SMT encoding).
+  The proof now covers the full dispatch path end-to-end (275 VCC, VERIFICATION
+  FAILED at `cur_eid.at(2)`). Calling `ctrl.process()` directly is still
+  blocked by a `dereference.cpp:1358` assertion on the variable-index
+  `_routing_map.at(entry_in_map)` loop in `on_get_routing_table_entry` (dead
+  code on a SetEpId packet but still inlined by ESBMC).
 - **FreeRTOS-backed code** (`src/nv/ipc/queue.cpp`, `src/nv/ipc/event.cpp`,
   `src/nv/ipc/timer.cpp`) — the actual logic is in
   `src/sys/x86/sys/ipc/queue.cpp`, which delegates to `xQueueSendToBack`,
@@ -381,10 +371,10 @@ kept narrow so multiple fixes can be reaped independently.
    `unset_bit` on `std::array<uint8_t, NvMctpEventSupportedNum>` — matching the
    guard `get_bit` already carries. Low urgency (no current OOB call site), but
    straightforward one-line fix.
-3. **Simplify `mctp_dispatch` once esbmc#4234 is fixed**: replace the if-else
-   workaround in `VerifControl::call_on_set_endpoint_id()` with a direct call
-   to `ctrl.on_set_endpoint_id()` (one-line change). The full path is already
-   proven; this is a cleanup to eliminate the `WORKAROUND esbmc#4234` tag.
+3. **Simplify `mctp_dispatch` once esbmc#4237 is fixed**: change `VerifControl ctrl;`
+   to `VerifControl ctrl{}` (one-character change). The full path is already proven
+   via the production function; this is a cleanup to eliminate the
+   `WORKAROUND esbmc#4237` tag.
 4. Expand coverage to `nsm_type_3.cpp` — `is_temp_sensor_available`,
    `is_power_sensor_available`, `is_voltage_sensor_available` are the same
    linear-scan pattern as `validatePcieLinkResetValue`; platform sensor arrays

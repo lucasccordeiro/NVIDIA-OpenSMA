@@ -146,6 +146,7 @@ mctp_dispatch:
 	$(ESBMC) $(LANG_FLAGS) $(MCTP_INCS) \
 	  $(HARNESSES)/mctp_dispatch_harness.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-control.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
 	  2>&1 | tee $(RESULTS)/mctp_dispatch.log

@@ -2,8 +2,8 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.389s
-GOTO program processing time: 0.004s
+GOTO program creation time: 0.541s
+GOTO program processing time: 0.005s
 Starting Bounded Model Checking
 Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
 Unwinding loop 4 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
@@ -27,7 +27,7 @@ No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.000s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.001s
+Runtime decision procedure: 0.000s
 BMC program time: 0.020s
 
 VERIFICATION SUCCESSFUL

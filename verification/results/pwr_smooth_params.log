@@ -2,7 +2,7 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/pwr_smooth_params_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.384s
+GOTO program creation time: 0.648s
 GOTO program processing time: 0.004s
 Starting Bounded Model Checking
 Symex completed in: 0.010s (105 assignments)
@@ -11,7 +11,7 @@ Slicing time: 0.000s (removed 71 assignments)
 Generated 72 VCC(s), 14 remaining after simplification (33 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.001s
+Encoding to solver time: 0.000s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.000s
 BMC program time: 0.012s

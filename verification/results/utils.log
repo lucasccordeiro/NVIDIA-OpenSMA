@@ -2,10 +2,10 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/utils_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.935s
+GOTO program creation time: 0.932s
 GOTO program processing time: 0.007s
 Starting Bounded Model Checking
-Symex completed in: 0.028s (479 assignments)
+Symex completed in: 0.025s (479 assignments)
 Caching time: 0.000s (removed 7 assertions)
 Slicing time: 0.001s (removed 450 assignments)
 Generated 64 VCC(s), 15 remaining after simplification (22 assignments)
@@ -14,7 +14,7 @@ Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.000s
-BMC program time: 0.031s
+BMC program time: 0.027s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

@@ -70,7 +70,7 @@ for the full table; brief view:
 | [#4216](https://github.com/esbmc/esbmc/issues/4216) | `switch(static_cast<enum>(packed_field))` + second field read in case body crashes SMT encoding (`mk_eq` bitvector width mismatch) | closed by [#4217](https://github.com/esbmc/esbmc/pull/4217); see #4232/#4234 for variants | — |
 | [#4232](https://github.com/esbmc/esbmc/issues/4232) | `mk_eq`/`to_solver_smt_ast` crash persists after #4217: bitfield-base struct + aggregate-init + switch-case + member read | **fixed** by [#4233](https://github.com/esbmc/esbmc/pull/4233) | (removed) |
 | [#4234](https://github.com/esbmc/esbmc/issues/4234) | `switch(static_cast<enum>(bit_cast member))` + `at()` in case body crashes `mk_eq` — fall-through label not normalised in `adjust_switch_case_ops` | **fixed** by [#4235](https://github.com/esbmc/esbmc/pull/4235) (merged 2026-05-01) | (workaround removed; production switch encodes correctly) |
-| [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-init `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111) | open | `VerifControl ctrl;` not `ctrl{}` in harness (tagged `WORKAROUND esbmc#4237`); repro: `esbmc_bug_repros/struct_brace_init_crash.cpp` |
+| [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-init `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111) | **fixed** by [#4238](https://github.com/esbmc/esbmc/pull/4238) | (workaround removed; `ctrl{}` now constructs cleanly) |
 
 ## Findings
 

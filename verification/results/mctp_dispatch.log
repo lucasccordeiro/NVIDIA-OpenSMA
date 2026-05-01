@@ -1,7 +1,7 @@
 Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp
-In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:30:
+In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:31:
 In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-control.h:20:
 /Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
    16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
@@ -10,7 +10,7 @@ In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/ap
    23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
       |                                                                                              ^
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-control.cpp
-In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:30:
+In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:31:
 In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-control.h:20:
 /Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
    16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
@@ -19,7 +19,7 @@ In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/ap
    23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
       |                                                                                              ^
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp
-In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:30:
+In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:31:
 In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-control.h:20:
 /Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
    16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
@@ -28,7 +28,7 @@ In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/ap
    23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
       |                                                                                              ^
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
-In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:30:
+In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:31:
 In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-control.h:20:
 /Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
    16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
@@ -38,8 +38,8 @@ In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/ap
       |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.904s
-GOTO program processing time: 0.008s
+GOTO program creation time: 1.097s
+GOTO program processing time: 0.011s
 Starting Bounded Model Checking
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
@@ -133,29 +133,29 @@ WARNING: not checking alignment for access to packed struct struct pdk::mctp::pl
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::TransportHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
-Symex completed in: 0.110s (477 assignments)
+Symex completed in: 0.189s (593 assignments)
 Caching time: 0.001s (removed 1 assertions)
-Slicing time: 0.002s (removed 362 assignments)
-Generated 275 VCC(s), 16 remaining after simplification (114 assignments)
+Slicing time: 0.002s (removed 479 assignments)
+Generated 491 VCC(s), 16 remaining after simplification (113 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.009s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.002s
+Runtime decision procedure: 0.004s
 Building error trace
 
 [Counterexample]
 
 
-State 5 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp line 62 column 5 function main thread 0
+State 5 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp line 63 column 5 function main thread 0
 ----------------------------------------------------
   iface_val = 2 (00000010)
 
-State 7 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp line 83 column 24 function main thread 0
+State 7 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp line 84 column 24 function main thread 0
 ----------------------------------------------------
-  *return_value$_operator[]$9 = { .priv={ .packet_length = 0 }, .hdr={ .hdr_ver=1, .rsvd=0, .dst_eid=0, .src_eid=0, .msg_tag=0,
+  *return_value$_operator[]$18 = { .priv={ .packet_length = 0 }, .hdr={ .hdr_ver=1, .rsvd=0, .dst_eid=0, .src_eid=0, .msg_tag=0,
     .tag_owner=1, .pkt_seq=0, .eom=1,
-    .som=1 }, .msg={ .elems={ 0, 128, 1, 0, nondet_symbol(symex::nondet3), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } } }
+    .som=1 }, .msg={ .elems={ 0, 128, 1, 0, nondet_symbol(symex::nondet12), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } } }
 
 State 8 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 43 column 5 function set_packet_interface thread 0
 ----------------------------------------------------
@@ -163,7 +163,7 @@ State 8 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x
     .tag_owner=1, .pkt_seq=0, .eom=1,
     .som=1 }, .msg={ .elems={ 0, 128, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } } }
 
-State 9 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp line 87 column 5 function main thread 0
+State 9 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp line 88 column 5 function main thread 0
 ----------------------------------------------------
   valid = 1
 

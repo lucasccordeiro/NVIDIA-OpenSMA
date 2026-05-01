@@ -333,7 +333,7 @@ backed by an open issue.**
 | [#4216](https://github.com/esbmc/esbmc/issues/4216) | `switch (static_cast<enum>(packed_field))` + second field read in case body crashes SMT encoding (`mk_eq` bitvector width mismatch in `bitwuzla_conv.cpp:512` / `z3_conv.cpp:756`) | closed by [#4217](https://github.com/esbmc/esbmc/pull/4217) — but two crashes persist; see #4232 | — |
 | [#4232](https://github.com/esbmc/esbmc/issues/4232) | `mk_eq` / `to_solver_smt_ast` crash persists after #4217: bitfield-base struct + switch-case + member read (two variants: Crash A → `to_solver_smt_ast, smt_ast.h:111`; Crash B → `mk_eq, bitwuzla_conv.cpp:512`) | **fixed** by [#4233](https://github.com/esbmc/esbmc/pull/4233) (merged) — aggregate-init flatten for bitfield-base derived structs | (workaround removed for simple aggregate-init case; see #4234 for the `std::bit_cast` variant) |
 | [#4234](https://github.com/esbmc/esbmc/issues/4234) | `switch(static_cast<enum>(bit_cast member))` + `at()` in case body crashes `mk_eq` (`bitwuzla_conv.cpp:512`) — trigger is fall-through switch-case label not normalised in `adjust_switch_case_ops` | **fixed** by [#4235](https://github.com/esbmc/esbmc/pull/4235) — recurse into fall-through chain body before returning | (workaround removed; production switch now encodes correctly) |
-| [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-initialising `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111); `Derived d;` (default-init) works correctly | open | `VerifControl ctrl;` not `ctrl{}` in `mctp_dispatch_harness.cpp` (tagged `WORKAROUND esbmc#4237`); repro in `esbmc_bug_repros/struct_brace_init_crash.cpp` |
+| [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-initialising `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111); `Derived d;` (default-init) works correctly | **fixed** by [#4238](https://github.com/esbmc/esbmc/pull/4238) | (workaround removed; `ctrl{}` now constructs cleanly) |
 
 Every workaround site is tagged `// WORKAROUND esbmc#<n>` pointing at the
 specific open issue listed in the table above. Removing a workaround is a
@@ -342,14 +342,12 @@ kept narrow so multiple fixes can be reaped independently.
 
 ## What was deferred and why
 
-- **Full Control dispatch path** — fully upgraded. `platforms::Control ctrl{}`
-  constructs cleanly (esbmc/esbmc#4214 fixed by #4215). The `mctp_dispatch`
-  harness now compiles `pdk-mctp-platforms-control.cpp` as-is and calls the
+- **Full Control dispatch path** — fully upgraded, no workarounds. `VerifControl ctrl{}`
+  value-initialises cleanly (esbmc/esbmc#4237 fixed by #4238). The `mctp_dispatch`
+  harness compiles `pdk-mctp-platforms-control.cpp` as-is and calls the
   production `on_set_endpoint_id()` directly via a `VerifControl` thin subclass
-  (esbmc/esbmc#4232 fixed by #4233; esbmc/esbmc#4234 fixed by #4235). One minor
-  remaining workaround: `VerifControl ctrl;` not `ctrl{}` due to
-  esbmc/esbmc#4237 (value-init of struct inheriting class crashes SMT encoding).
-  The proof now covers the full dispatch path end-to-end (275 VCC, VERIFICATION
+  (esbmc/esbmc#4214 fixed by #4215; #4232 by #4233; #4234 by #4235; #4237 by #4238).
+  The proof covers the full dispatch path end-to-end (275 VCC, VERIFICATION
   FAILED at `cur_eid.at(2)`). Calling `ctrl.process()` directly is still
   blocked by a `dereference.cpp:1358` assertion on the variable-index
   `_routing_map.at(entry_in_map)` loop in `on_get_routing_table_entry` (dead
@@ -372,10 +370,7 @@ kept narrow so multiple fixes can be reaped independently.
    `unset_bit` on `std::array<uint8_t, NvMctpEventSupportedNum>` — matching the
    guard `get_bit` already carries. Low urgency (no current OOB call site), but
    straightforward one-line fix.
-3. **Simplify `mctp_dispatch` once esbmc#4237 is fixed**: change `VerifControl ctrl;`
-   to `VerifControl ctrl{}` (one-character change). The full path is already proven
-   via the production function; this is a cleanup to eliminate the
-   `WORKAROUND esbmc#4237` tag.
+3. ~~**Simplify `mctp_dispatch` once esbmc#4237 is fixed**~~ — **done** (`ctrl{}` workaround removed after esbmc/esbmc#4238 merged).
 4. ~~Expand coverage to `nsm_type_3.cpp`~~ — **done** (`nsm_type3` / `nsm_type3_func`, 37 VCC Phase 1, k=9 Phase 2).
 5. Stand up a CI hook that runs `make all` on every PR; verification must
    stay green and any failure must be triaged before merge.

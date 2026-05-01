@@ -22,9 +22,7 @@
 // protected on_set_endpoint_id() to public so the harness can call it directly.
 // The production source (pdk-mctp-platforms-control.cpp) is compiled as-is —
 // no if-else workaround needed since #4235 fixed the switch-case normalisation.
-// WORKAROUND esbmc#4237: `VerifControl ctrl;` (default-init) not `ctrl{}` —
-// value-initialising a struct that inherits from a class crashes
-// to_solver_smt_ast (smt_ast.h:111).
+// Value-init ctrl{} is safe since esbmc#4237 was fixed by #4238.
 //
 // Expected: VERIFICATION FAILED — "std::array::at out of range"
 
@@ -65,7 +63,7 @@ int main()
     uint8_t iface_val = nondet_u8();
     __ESBMC_assume(iface_val >= UsEnd && iface_val < IfEnd);
 
-    VerifControl ctrl;
+    VerifControl ctrl{};
     Validator    v{ctrl.router()};
 
     // Control SetEpId Request — the packet type that on_set_endpoint_id()

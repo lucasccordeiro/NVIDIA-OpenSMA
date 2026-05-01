@@ -43,6 +43,8 @@ ESBMC to produce a counterexample.
 | `mctp_dispatch` | F-1 reachability: `Validator::validate()` + production `on_set_endpoint_id()` | — | — | ✅ CEX: `iface_val=2`, `valid=true`, OOB at `cur_eid.at(2)` (275 VCC) |
 | `mctp_validator` | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | — |
 | `nsm_type_2` | `src/nv/mctp/nsm_type_2.cpp` (`validatePcieLinkResetValue`) | ✅ | ✅ k=12 | — |
+| `nsm_type3` | `src/nv/mctp/nsm_type_3.cpp` (`is_temp_sensor_available`, `is_power_sensor_available`, `is_voltage_sensor_available`) | ✅ 37 VCC | ✅ k=9 | — |
+| `telemetry` | `src/nv/telemetry/utils.h` (`getTelemIdFromTempSensorId`, `getTelemIdFromPowerSensorId`, `buffer_to_uint32`) | ✅ 80 VCC | ✅ k=11 | — |
 | `nsm_bitmask` | `src/nv/mctp/nsm_msg_bitmask.h` (`set_bit`/`unset_bit`/`get_bit`/`is_bit_set`) | ✅ 75 VCC | ✅ k=1 | ✅ CEX on `set_bit`/`unset_bit(arr8, pos≥64)` — F-5 |
 | `nsm_type5_validate` | `src/nv/mctp/nsm_type_5.cpp` (five field-validator functions) | ✅ 14 VCC | ✅ k=1 | — |
 | `spi_utils` | `src/nv/spi/utils.{h,cpp}` (buf_to_u16/u32, u16/u32_to_buf) | ✅ | ✅ k=9 | — |
@@ -69,7 +71,7 @@ for the full table; brief view:
 | [#4216](https://github.com/esbmc/esbmc/issues/4216) | `switch(static_cast<enum>(packed_field))` + second field read in case body crashes SMT encoding (`mk_eq` bitvector width mismatch) | closed by [#4217](https://github.com/esbmc/esbmc/pull/4217); see #4232/#4234 for variants | — |
 | [#4232](https://github.com/esbmc/esbmc/issues/4232) | `mk_eq`/`to_solver_smt_ast` crash persists after #4217: bitfield-base struct + aggregate-init + switch-case + member read | **fixed** by [#4233](https://github.com/esbmc/esbmc/pull/4233) | (removed) |
 | [#4234](https://github.com/esbmc/esbmc/issues/4234) | `switch(static_cast<enum>(bit_cast member))` + `at()` in case body crashes `mk_eq` — fall-through label not normalised in `adjust_switch_case_ops` | **fixed** by [#4235](https://github.com/esbmc/esbmc/pull/4235) (merged 2026-05-01) | (workaround removed; production switch encodes correctly) |
-| [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-init `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111) | open | `VerifControl ctrl;` not `ctrl{}` in harness (tagged `WORKAROUND esbmc#4237`); repro: `esbmc_bug_repros/struct_brace_init_crash.cpp` |
+| [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-init `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111) | **fixed** by [#4238](https://github.com/esbmc/esbmc/pull/4238) | (workaround removed; `ctrl{}` now constructs cleanly) |
 
 ## Findings
 
@@ -114,6 +116,8 @@ cd verification
 make all                                       # Phase 1 across every target
 make mctp_packet_func mctp_router_func \
      mctp_validator_func                       # Phase 2 (k-induction)
+make nsm_type3_func                            # ditto
+make telemetry_func                            # ditto
 make fixed_point_func utils_func               # ditto
 make mctp_packet_neg mctp_router_neg utils_neg # negative tests (expect FAILED)
 make mctp_dispatch                             # F-1 reachability proof (expect FAILED)

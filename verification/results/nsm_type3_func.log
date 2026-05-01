@@ -1,0 +1,486 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing harnesses/nsm_type3_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.351s
+Interval Analysis time: 0.007s
+GOTO program processing time: 0.011s
+Checking base case, k = 1
+Starting Bounded Model Checking
+Not unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Not unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.009s (139 assignments)
+Slicing time: 0.001s (removed 92 assignments)
+Generated 11 VCC(s), 2 remaining after simplification (47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+BMC program time: 0.014s
+No bug has been found in the base case
+Checking forward condition, k = 1
+Starting Bounded Model Checking
+Not unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Not unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.009s (137 assignments)
+Slicing time: 0.000s (removed 99 assignments)
+Generated 12 VCC(s), 4 remaining after simplification (38 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 2
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Not unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Not unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.012s (161 assignments)
+Slicing time: 0.001s (removed 108 assignments)
+Generated 19 VCC(s), 2 remaining after simplification (53 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.017s
+No bug has been found in the base case
+Checking forward condition, k = 2
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Not unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Not unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.012s (159 assignments)
+Slicing time: 0.000s (removed 117 assignments)
+Generated 20 VCC(s), 4 remaining after simplification (42 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 3
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Not unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Not unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.015s (183 assignments)
+Slicing time: 0.000s (removed 124 assignments)
+Generated 27 VCC(s), 2 remaining after simplification (59 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.020s
+No bug has been found in the base case
+Checking forward condition, k = 3
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Not unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Not unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.015s (181 assignments)
+Slicing time: 0.000s (removed 135 assignments)
+Generated 28 VCC(s), 4 remaining after simplification (46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 4
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.017s (192 assignments)
+Slicing time: 0.000s (removed 139 assignments)
+Generated 31 VCC(s), 2 remaining after simplification (53 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.021s
+No bug has been found in the base case
+Checking forward condition, k = 4
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.017s (190 assignments)
+Slicing time: 0.000s (removed 158 assignments)
+Generated 30 VCC(s), 2 remaining after simplification (32 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+The forward condition is unable to prove the property
+Checking base case, k = 5
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.017s (203 assignments)
+Slicing time: 0.001s (removed 147 assignments)
+Generated 35 VCC(s), 2 remaining after simplification (56 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.022s
+No bug has been found in the base case
+Checking forward condition, k = 5
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.018s (201 assignments)
+Slicing time: 0.001s (removed 167 assignments)
+Generated 34 VCC(s), 2 remaining after simplification (34 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+The forward condition is unable to prove the property
+Checking base case, k = 6
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.019s (214 assignments)
+Slicing time: 0.001s (removed 155 assignments)
+Generated 39 VCC(s), 2 remaining after simplification (59 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.024s
+No bug has been found in the base case
+Checking forward condition, k = 6
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.019s (212 assignments)
+Slicing time: 0.001s (removed 176 assignments)
+Generated 38 VCC(s), 2 remaining after simplification (36 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 7
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 7   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 7   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.021s (225 assignments)
+Slicing time: 0.001s (removed 163 assignments)
+Generated 43 VCC(s), 2 remaining after simplification (62 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.026s
+No bug has been found in the base case
+Checking forward condition, k = 7
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 7   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 7   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.021s (223 assignments)
+Slicing time: 0.000s (removed 185 assignments)
+Generated 42 VCC(s), 2 remaining after simplification (38 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 8
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 7   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 8   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 7   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 8   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.022s (236 assignments)
+Slicing time: 0.001s (removed 171 assignments)
+Generated 47 VCC(s), 2 remaining after simplification (65 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.027s
+No bug has been found in the base case
+Checking forward condition, k = 8
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 7   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 8   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 7   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Not unwinding loop 3 iteration 8   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.023s (234 assignments)
+Slicing time: 0.001s (removed 194 assignments)
+Generated 46 VCC(s), 2 remaining after simplification (40 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 9
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 7   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 8   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 7   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 8   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.022s (234 assignments)
+Slicing time: 0.001s (removed 186 assignments)
+Generated 47 VCC(s), 2 remaining after simplification (48 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+BMC program time: 0.027s
+No bug has been found in the base case
+Checking forward condition, k = 9
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 7   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 8   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 3 iteration 1   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 2   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 3   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 4   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 5   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 6   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 7   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 3 iteration 8   file harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
+Unwinding loop 4 iteration 1   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 2   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Unwinding loop 4 iteration 3   file harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
+Symex completed in: 0.024s (232 assignments)
+Slicing time: 0.000s (removed 224 assignments)
+Generated 44 VCC(s), 0 remaining after simplification (8 assignments)
+BMC program time: 0.024s
+
+VERIFICATION SUCCESSFUL
+
+Solution found by the forward condition; all states are reachable (k = 9)
+ESBMC version 8.2.0 64-bit aarch64 macos

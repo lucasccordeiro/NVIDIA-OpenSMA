@@ -1,0 +1,640 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing harnesses/telemetry_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.551s
+Interval Analysis time: 0.008s
+GOTO program processing time: 0.013s
+Checking base case, k = 1
+Starting Bounded Model Checking
+Not unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Not unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.015s (148 assignments)
+Slicing time: 0.000s (removed 97 assignments)
+Generated 36 VCC(s), 4 remaining after simplification (51 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+BMC program time: 0.021s
+No bug has been found in the base case
+Checking forward condition, k = 1
+Starting Bounded Model Checking
+Not unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Not unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.014s (144 assignments)
+Slicing time: 0.001s (removed 112 assignments)
+Generated 36 VCC(s), 4 remaining after simplification (32 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+The forward condition is unable to prove the property
+Checking base case, k = 2
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Not unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Not unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.019s (170 assignments)
+Slicing time: 0.000s (removed 113 assignments)
+Generated 52 VCC(s), 4 remaining after simplification (57 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.024s
+No bug has been found in the base case
+Checking forward condition, k = 2
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Not unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Not unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.019s (166 assignments)
+Slicing time: 0.000s (removed 130 assignments)
+Generated 52 VCC(s), 4 remaining after simplification (36 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 3
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Not unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Not unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.023s (192 assignments)
+Slicing time: 0.001s (removed 129 assignments)
+Generated 68 VCC(s), 4 remaining after simplification (63 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+BMC program time: 0.029s
+No bug has been found in the base case
+Checking forward condition, k = 3
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Not unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Not unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.023s (188 assignments)
+Slicing time: 0.001s (removed 148 assignments)
+Generated 68 VCC(s), 4 remaining after simplification (40 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+The forward condition is unable to prove the property
+Checking base case, k = 4
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.026s (201 assignments)
+Slicing time: 0.001s (removed 144 assignments)
+Generated 76 VCC(s), 4 remaining after simplification (57 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.031s
+No bug has been found in the base case
+Checking forward condition, k = 4
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.027s (197 assignments)
+Slicing time: 0.000s (removed 171 assignments)
+Generated 74 VCC(s), 2 remaining after simplification (26 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 5
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.028s (212 assignments)
+Slicing time: 0.001s (removed 152 assignments)
+Generated 84 VCC(s), 4 remaining after simplification (60 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+BMC program time: 0.034s
+No bug has been found in the base case
+Checking forward condition, k = 5
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.028s (208 assignments)
+Slicing time: 0.001s (removed 180 assignments)
+Generated 82 VCC(s), 2 remaining after simplification (28 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+The forward condition is unable to prove the property
+Checking base case, k = 6
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.031s (223 assignments)
+Slicing time: 0.001s (removed 160 assignments)
+Generated 92 VCC(s), 4 remaining after simplification (63 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+BMC program time: 0.037s
+No bug has been found in the base case
+Checking forward condition, k = 6
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.031s (219 assignments)
+Slicing time: 0.001s (removed 189 assignments)
+Generated 90 VCC(s), 2 remaining after simplification (30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 7
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.034s (234 assignments)
+Slicing time: 0.001s (removed 168 assignments)
+Generated 100 VCC(s), 4 remaining after simplification (66 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+BMC program time: 0.040s
+No bug has been found in the base case
+Checking forward condition, k = 7
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.033s (230 assignments)
+Slicing time: 0.001s (removed 198 assignments)
+Generated 98 VCC(s), 2 remaining after simplification (32 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+The forward condition is unable to prove the property
+Checking base case, k = 8
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.036s (245 assignments)
+Slicing time: 0.001s (removed 176 assignments)
+Generated 108 VCC(s), 4 remaining after simplification (69 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.042s
+No bug has been found in the base case
+Checking forward condition, k = 8
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.035s (241 assignments)
+Slicing time: 0.001s (removed 207 assignments)
+Generated 106 VCC(s), 2 remaining after simplification (34 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 9
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 9   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 9   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.037s (256 assignments)
+Slicing time: 0.001s (removed 184 assignments)
+Generated 116 VCC(s), 4 remaining after simplification (72 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.043s
+No bug has been found in the base case
+Checking forward condition, k = 9
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 9   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 9   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.038s (252 assignments)
+Slicing time: 0.001s (removed 216 assignments)
+Generated 114 VCC(s), 2 remaining after simplification (36 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 10
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 9   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 10   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 9   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 10   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.040s (267 assignments)
+Slicing time: 0.001s (removed 192 assignments)
+Generated 124 VCC(s), 4 remaining after simplification (75 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+BMC program time: 0.047s
+No bug has been found in the base case
+Checking forward condition, k = 10
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 9   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 10   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 9   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Not unwinding loop 3 iteration 10   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.041s (263 assignments)
+Slicing time: 0.000s (removed 225 assignments)
+Generated 122 VCC(s), 2 remaining after simplification (38 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+The forward condition is unable to prove the property
+Checking base case, k = 11
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 9   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 10   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 9   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 10   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.041s (265 assignments)
+Slicing time: 0.001s (removed 206 assignments)
+Generated 124 VCC(s), 4 remaining after simplification (59 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+BMC program time: 0.047s
+No bug has been found in the base case
+Checking forward condition, k = 11
+Starting Bounded Model Checking
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 9   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 10   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 3 iteration 1   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 2   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 3   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 4   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 5   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 6   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 7   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 8   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 9   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 3 iteration 10   file harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
+Unwinding loop 4 iteration 1   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 2   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Unwinding loop 4 iteration 3   file harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
+Symex completed in: 0.042s (261 assignments)
+Slicing time: 0.001s (removed 253 assignments)
+Generated 120 VCC(s), 0 remaining after simplification (8 assignments)
+BMC program time: 0.043s
+
+VERIFICATION SUCCESSFUL
+
+Solution found by the forward condition; all states are reachable (k = 11)
+ESBMC version 8.2.0 64-bit aarch64 macos

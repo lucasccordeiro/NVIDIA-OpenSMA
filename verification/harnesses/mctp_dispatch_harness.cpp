@@ -10,20 +10,22 @@
 //   set_cur_eid(_router, get_packet_interface(rx), crx.data[1])
 //   unconditionally for SetEidNormal/SetEidForced sub-commands.
 //
-// Status of the "full dispatch path" upgrade (post esbmc/esbmc#4215):
-//   - platforms::Control ctrl{} now constructs without crashing (#4214 fixed).
-//   - ctrl.process(rx, tx) crashes dereference.cpp:1358 in construct_from_
-//     const_struct_offset, triggered by on_get_routing_table_entry's variable-
-//     index loop (dead code on a SetEpId packet but still inlined by ESBMC).
-//   - ctrl.on_set_endpoint_id(rx, tx) (via VerifControl thin subclass) would
-//     crash mk_eq in bitwuzla_conv.cpp:512 with a bitvector-width mismatch:
-//     switch-on-static_cast<enum>(bit_cast member) + at() in case body
-//     (filed as esbmc/esbmc#4234; distinct from #4232 which was fixed by #4233).
+// Status of the "full dispatch path" upgrade (post esbmc/esbmc#4215,#4233,#4235):
+//   - platforms::Control ctrl{} constructs cleanly (esbmc#4214 fixed by #4215).
+//   - ctrl.on_set_endpoint_id(rx, tx) via VerifControl (using Control::on_set_endpoint_id)
+//     still crashes to_solver_smt_ast (smt_ast.h:111) even after #4235:
+//       switch(static_cast<SetEndpoint>(crx.data[0])) — the switch discriminant
+//       is a bit_cast member, and the SMT encoding produces a null AST pointer.
+//       #4235 fixed fall-through label normalisation but not the discriminant
+//       encoding crash.  This crash is currently untracked upstream.
+//   - ctrl.process(rx, tx) is also blocked by dereference.cpp:1358 on the
+//     variable-index _routing_map.at(entry_in_map) loop in
+//     on_get_routing_table_entry (dead code on a SetEpId packet, but inlined).
 //
-// WORKAROUND esbmc#4234: VerifControl::call_on_set_endpoint_id() inlines the
-// semantics of on_set_endpoint_id() with if-else instead of switch, which
-// avoids the SMT encoding crash and produces correct VERIFICATION FAILED (224
-// VCCs, counterexample: iface_val=2, valid=true, cur_eid.at(2) OOB).
+// WORKAROUND: VerifControl::call_on_set_endpoint_id() inlines the semantics of
+// on_set_endpoint_id() with if-else instead of switch, which avoids the SMT
+// crash and produces correct VERIFICATION FAILED (224 VCCs,
+// counterexample: iface_val=2, valid=true, cur_eid.at(2) OOB).
 //
 // Expected: VERIFICATION FAILED — "std::array::at out of range"
 
@@ -54,10 +56,11 @@ using pdk::mctp::platforms::set_cur_eid;
 using pdk::mctp::platforms::set_packet_interface;
 
 // Thin subclass to expose the protected on_set_endpoint_id() logic.
-// WORKAROUND esbmc#4234: production on_set_endpoint_id uses
-// switch(static_cast<SetEndpoint>(crx.data[0])) which crashes ESBMC's SMT
-// encoding (mk_eq assert, bitwuzla_conv.cpp:512) when combined with at() in
-// the case body.  This if-else is semantically equivalent.
+// WORKAROUND: production on_set_endpoint_id uses
+// switch(static_cast<SetEndpoint>(crx.data[0])) as the discriminant; with
+// crx obtained via std::bit_cast this crashes ESBMC's SMT encoding
+// (to_solver_smt_ast, smt_ast.h:111) even after #4233 and #4235.
+// This if-else is semantically equivalent and avoids the crash.
 struct VerifControl : Control {
     void call_on_set_endpoint_id(const Packet& rx, Packet& tx)
     {

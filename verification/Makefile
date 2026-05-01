@@ -168,14 +168,13 @@ nsm_type_2_func:
 	  2>&1 | tee $(RESULTS)/nsm_type_2_func.log
 
 # Phase 1+2: telemetry sensor-ID lookup functions + buffer_to_uint32 (fixed).
-# Uses --ub-shift-check (not --unsigned-overflow-check) because uint32_t<<24
-# triggers a false positive in ESBMC's unsigned-overflow model for the fixed
-# form; --ub-shift-check correctly accepts it.
-# Note: the production buffer_to_uint32 has a misplaced cast (F-6, latent UB):
-#   static_cast<uint32_t>(buffer[3] << 24)  should be
-#   static_cast<uint32_t>(buffer[3]) << 24
-# ESBMC cannot prove this because it models signed shifts as bitvector wrap
-# (same limitation as the retracted F-3). The harness verifies the fixed form.
+# Uses --ub-shift-check (not --unsigned-overflow-check): uint32_t<<24 through a
+# function-call boundary triggers a false positive in ESBMC's unsigned-overflow
+# model (loses the uint8_t range constraint after the cast).
+# Note: the production buffer_to_uint32 has a misplaced cast (F-6, retracted):
+#   static_cast<uint32_t>(buffer[3] << 24)  vs  static_cast<uint32_t>(buffer[3]) << 24
+# C++20 [expr.shift]/2 makes signed left-shift wrapping well-defined for all
+# inputs (same as the retracted F-3), so this is a style issue, not a bug.
 telemetry:
 	@mkdir -p $(RESULTS)
 	$(ESBMC) --std c++20 \

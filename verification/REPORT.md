@@ -14,13 +14,11 @@ reachable** (F-1) via `mctp_dispatch` — ESBMC finds a counterexample where a
 Control SetEpId Request with a gap interface triggers `set_cur_eid()` to
 OOB-index the 2-entry `cur_eid` array; code inspection confirms the production
 call-site `on_set_endpoint_id()` makes this call unconditionally. Two
-initially-claimed findings (F-2, F-3) **retracted on review**. Three further
-latent-UB findings: **F-4** in `literals.h::operator""_bit` (shift-count ≥ 64);
-**F-5** in `nsm_msg_bitmask.h::set_bit` / `unset_bit` on the 8-element event
-bitmask (index ≥ 64 reaches `std::array::at` OOB); and **F-6** in
-`telemetry/utils.cpp::buffer_to_uint32` (misplaced cast causes signed-shift
-UB for byte 3 ≥ 0x80, though the bit pattern is identical on two's-complement).
-None of F-4/F-5/F-6 have dangerous current call sites, but F-5 lacks the
+initially-claimed findings (F-2, F-3, **F-6**) **retracted on review**. Two
+confirmed latent-UB findings: **F-4** in `literals.h::operator""_bit`
+(shift-count ≥ 64) and **F-5** in `nsm_msg_bitmask.h::set_bit` / `unset_bit`
+on the 8-element event bitmask (index ≥ 64 reaches `std::array::at` OOB).
+Neither F-4 nor F-5 has a dangerous current call site, but F-5 lacks the
 runtime guard that sibling operations carry. Several ESBMC C++-frontend bugs filed against
 [esbmc/esbmc](https://github.com/esbmc/esbmc); most are now fixed and merged;
 workarounds removed where applicable.
@@ -253,29 +251,26 @@ Apply the same fix to `unset_bit`. Alternatively, make the precondition
 explicit in a `static_assert` or `constexpr` wrapper that limits `pos` to the
 representable range of the array.
 
-### F-6 — `buffer_to_uint32` misplaced cast (latent UB, no observable effect)
+### F-6 — RETRACTED (was: `buffer_to_uint32` misplaced cast)
 
 **File**: `src/nv/telemetry/utils.cpp:31`
 
 ```cpp
-return (static_cast<uint32_t>(buffer[0]) << Byte0)
-     | (static_cast<uint32_t>(buffer[1]) << Byte1)
-     | (static_cast<uint32_t>(buffer[2]) << Byte2)
-     | (static_cast<uint32_t>(buffer[3] << Byte3));  // ← bug: cast applied after shift
+| (static_cast<uint32_t>(buffer[3] << Byte3));  // cast after shift — initially flagged
 ```
 
-Bytes 0–2 are correctly `static_cast<uint32_t>(buffer[N]) << Byte` — the byte is widened to `uint32_t` before the shift. Byte 3 is `static_cast<uint32_t>(buffer[3] << 24)` — the byte is shifted as a promoted `int` before the cast. For `buffer[3] >= 0x80`, `int(buffer[3]) << 24` exceeds `INT_MAX`, which is UB under C++20 `[expr.shift]/1`.
+The cast is applied after the shift rather than before. Initially filed as "signed-shift UB for `buffer[3] >= 0x80` under C++20." **Retracted**: C++20 P0907R4/P1236R1 makes signed left-shift fully defined for all inputs — the result is the unique value congruent to `E1 × 2^E2` modulo `2^N` — removing both the negative-E1 and result-overflow UB clauses that existed in C++17. ESBMC's bitvector model was already correct; `--overflow-check` rightly generates no VCC for this expression under `--std c++20`.
 
-**Severity: low in practice.** On every two's-complement platform (all modern targets), the signed-overflow result equals the intended bit pattern: `int(255) << 24 = 0xFF000000` and `static_cast<uint32_t>(0xFF000000) = 4278190080`, the same value the correct form produces.
+This is the same standard-conformance question as the retracted F-3 (`buf_to_u32`). The REPORT.md entry for F-3 already quoted this rule correctly ("Under C++20+ `[expr.shift]/2`, signed left-shift `E1 << E2` is well-defined"); F-6 should have been retracted on the same grounds.
 
-**Why ESBMC cannot prove this** — ESBMC's arithmetic model uses unconditional bitvector wrap for signed types (equivalent to C++23 semantics), so it cannot distinguish the buggy C++20-UB form from the well-defined fixed form. `--overflow-check` and `--ub-shift-check` both miss it: the former generates no VCC for shift-result overflow; the latter only checks the shift *amount* (≥ 0, < type width), not the shift *result*. This gap is distinct from (and the mirror of) esbmc#4201, which addressed ESBMC being too strict — flagging C++20-defined shift behaviour as UB. Filed as **[esbmc#4240](https://github.com/esbmc/esbmc/issues/4240)**; repro: `esbmc_bug_repros/signed_shift_result_overflow.cpp`.
-
-**Fix**: move the closing paren of `static_cast<uint32_t>` to after the shift:
+The code pattern is still a **style/portability issue**: bytes 0–2 cast before shifting (`static_cast<uint32_t>(buffer[N]) << Byte`) while byte 3 casts after. The recommended fix (move the cast before the shift) makes the intent uniform and correct even under C++17:
 ```cpp
 | (static_cast<uint32_t>(buffer[3]) << Byte3)
 ```
 
-**What ESBMC verified** (`telemetry`, 80 VCC Phase 1 with `--ub-shift-check`, k=11 Phase 2): the fixed version is total over all 4-byte inputs and satisfies the little-endian decoding contract `result == b[0] | (b[1] << 8) | (b[2] << 16) | (b[3] << 24)`.
+**ESBMC issue filed as a consequence** — the misanalysis led to filing [esbmc#4240](https://github.com/esbmc/esbmc/issues/4240) ("ESBMC misses signed shl overflow UB under C++20"). That framing was wrong (no UB to miss), but esbmc#4240 uncovered a real ESBMC defect in the opposite direction: under `--std c++20`, `--overflow-check` and `--ub-shift-check` were still generating false-positive VCCs for signed shl (E1 with unknown sign, and E1 < 0 respectively). Fixed by [#4241](https://github.com/esbmc/esbmc/pull/4241). Repro retained at `esbmc_bug_repros/signed_shift_result_overflow.cpp`.
+
+**What ESBMC verified** (`telemetry`, 80 VCC Phase 1 with `--ub-shift-check`, k=11 Phase 2): both the buggy and fixed forms satisfy the little-endian decoding contract across all 4-byte inputs (the two expressions are structurally equivalent under C++20 semantics).
 
 ### F-3 — RETRACTED (was: `buf_to_u32` signed shift overflow)
 
@@ -361,6 +356,7 @@ backed by an open issue.**
 | [#4232](https://github.com/esbmc/esbmc/issues/4232) | `mk_eq` / `to_solver_smt_ast` crash persists after #4217: bitfield-base struct + switch-case + member read (two variants: Crash A → `to_solver_smt_ast, smt_ast.h:111`; Crash B → `mk_eq, bitwuzla_conv.cpp:512`) | **fixed** by [#4233](https://github.com/esbmc/esbmc/pull/4233) (merged) — aggregate-init flatten for bitfield-base derived structs | (workaround removed for simple aggregate-init case; see #4234 for the `std::bit_cast` variant) |
 | [#4234](https://github.com/esbmc/esbmc/issues/4234) | `switch(static_cast<enum>(bit_cast member))` + `at()` in case body crashes `mk_eq` (`bitwuzla_conv.cpp:512`) — trigger is fall-through switch-case label not normalised in `adjust_switch_case_ops` | **fixed** by [#4235](https://github.com/esbmc/esbmc/pull/4235) — recurse into fall-through chain body before returning | (workaround removed; production switch now encodes correctly) |
 | [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-initialising `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111); `Derived d;` (default-init) works correctly | **fixed** by [#4238](https://github.com/esbmc/esbmc/pull/4238) | (workaround removed; `ctrl{}` now constructs cleanly) |
+| [#4240](https://github.com/esbmc/esbmc/issues/4240) | `--overflow-check` / `--ub-shift-check` generating false-positive signed-shl VCCs under `--std c++20` (C++20 [expr.shift]/2 defines signed left-shift wrapping for all inputs; ESBMC was still applying pre-C++20 rules) | **fixed** by [#4241](https://github.com/esbmc/esbmc/pull/4241) | (no workaround needed; repro: `esbmc_bug_repros/signed_shift_result_overflow.cpp`) |
 
 Every workaround site is tagged `// WORKAROUND esbmc#<n>` pointing at the
 specific open issue listed in the table above. Removing a workaround is a

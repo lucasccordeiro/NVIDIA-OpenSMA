@@ -1,0 +1,594 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.799s
+Interval Analysis time: 0.013s
+GOTO program processing time: 0.022s
+Checking base case, k = 1
+Starting Bounded Model Checking
+Not unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Not unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Symex completed in: 0.009s (123 assignments)
+Slicing time: 0.000s (removed 108 assignments)
+Generated 11 VCC(s), 0 remaining after simplification (15 assignments)
+BMC program time: 0.009s
+No bug has been found in the base case
+Checking forward condition, k = 1
+Starting Bounded Model Checking
+Not unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Not unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Symex completed in: 0.008s (123 assignments)
+Slicing time: 0.000s (removed 108 assignments)
+Generated 16 VCC(s), 5 remaining after simplification (15 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 2
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Not unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Not unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Symex completed in: 0.013s (135 assignments)
+Slicing time: 0.000s (removed 115 assignments)
+Generated 20 VCC(s), 1 remaining after simplification (20 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+BMC program time: 0.015s
+No bug has been found in the base case
+Checking forward condition, k = 2
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Not unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Not unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Symex completed in: 0.012s (134 assignments)
+Slicing time: 0.000s (removed 120 assignments)
+Generated 23 VCC(s), 4 remaining after simplification (14 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+The forward condition is unable to prove the property
+Checking base case, k = 3
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Not unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Not unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Symex completed in: 0.015s (147 assignments)
+Slicing time: 0.000s (removed 116 assignments)
+Generated 28 VCC(s), 3 remaining after simplification (31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+BMC program time: 0.017s
+No bug has been found in the base case
+Checking forward condition, k = 3
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Not unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Not unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Symex completed in: 0.015s (145 assignments)
+Slicing time: 0.000s (removed 127 assignments)
+Generated 29 VCC(s), 4 remaining after simplification (18 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+The forward condition is unable to prove the property
+Checking base case, k = 4
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Not unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Not unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Symex completed in: 0.018s (155 assignments)
+Slicing time: 0.000s (removed 124 assignments)
+Generated 34 VCC(s), 3 remaining after simplification (31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+BMC program time: 0.020s
+No bug has been found in the base case
+Checking forward condition, k = 4
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Not unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Not unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Symex completed in: 0.017s (153 assignments)
+Slicing time: 0.001s (removed 135 assignments)
+Generated 35 VCC(s), 4 remaining after simplification (18 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 5
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 29 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Symex completed in: 0.050s (286 assignments)
+Slicing time: 0.001s (removed 185 assignments)
+Generated 144 VCC(s), 39 remaining after simplification (101 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.055s
+No bug has been found in the base case
+Checking forward condition, k = 5
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 29 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Symex completed in: 0.049s (272 assignments)
+Slicing time: 0.001s (removed 200 assignments)
+Generated 115 VCC(s), 26 remaining after simplification (72 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 6
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 29 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Symex completed in: 0.051s (288 assignments)
+Slicing time: 0.001s (removed 187 assignments)
+Generated 146 VCC(s), 39 remaining after simplification (101 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.056s
+No bug has been found in the base case
+Checking forward condition, k = 6
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 29 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Symex completed in: 0.049s (274 assignments)
+Slicing time: 0.001s (removed 202 assignments)
+Generated 117 VCC(s), 26 remaining after simplification (72 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 7
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 29 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Symex completed in: 0.051s (290 assignments)
+Slicing time: 0.001s (removed 189 assignments)
+Generated 148 VCC(s), 39 remaining after simplification (101 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.057s
+No bug has been found in the base case
+Checking forward condition, k = 7
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 29 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Symex completed in: 0.050s (276 assignments)
+Slicing time: 0.001s (removed 204 assignments)
+Generated 119 VCC(s), 26 remaining after simplification (72 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 8
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 29 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Symex completed in: 0.052s (292 assignments)
+Slicing time: 0.001s (removed 191 assignments)
+Generated 150 VCC(s), 39 remaining after simplification (101 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.058s
+No bug has been found in the base case
+Checking forward condition, k = 8
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Not unwinding loop 26 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 29 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Symex completed in: 0.051s (278 assignments)
+Slicing time: 0.001s (removed 206 assignments)
+Generated 121 VCC(s), 26 remaining after simplification (72 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+The forward condition is unable to prove the property
+Checking base case, k = 9
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 29 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Symex completed in: 0.053s (291 assignments)
+Slicing time: 0.001s (removed 191 assignments)
+Generated 150 VCC(s), 39 remaining after simplification (100 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+BMC program time: 0.058s
+No bug has been found in the base case
+Checking forward condition, k = 9
+Starting Bounded Model Checking
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 51 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
+Unwinding loop 29 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Unwinding loop 29 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 172 column 9 function f_decode_output_range
+Symex completed in: 0.051s (277 assignments)
+Slicing time: 0.001s (removed 206 assignments)
+Generated 120 VCC(s), 25 remaining after simplification (71 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+BMC program time: 0.055s
+
+VERIFICATION SUCCESSFUL
+
+Solution found by the forward condition; all states are reachable (k = 9)
+ESBMC version 8.2.0 64-bit aarch64 macos

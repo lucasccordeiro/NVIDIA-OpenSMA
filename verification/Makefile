@@ -67,8 +67,10 @@ FP_INCS := -I$(REPO)/src
         fixed_point fixed_point_func \
         utils utils_func utils_neg \
         ntc_table ntc_table_func \
+        pwr_smooth_params pwr_smooth_params_func \
+        fru_utils fru_utils_func \
         clean
-all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table
+all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
@@ -356,6 +358,38 @@ ntc_table_func:
 	  $(REPO)/src/nv/volt_mon/ntc_table.cpp \
 	  $(HARNESSES)/ntc_table_harness.cpp \
 	  2>&1 | tee $(RESULTS)/ntc_table_func.log
+
+# Phase 1+2: OverrideParam wire-format round-trips + is_valid_param_id characterisation.
+# All logic inlined — no production source file needed (no MCU deps).
+pwr_smooth_params:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  $(HARNESSES)/pwr_smooth_params_harness.cpp \
+	  2>&1 | tee $(RESULTS)/pwr_smooth_params.log
+
+pwr_smooth_params_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(FUNC_FLAGS) \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/pwr_smooth_params_harness.cpp \
+	  2>&1 | tee $(RESULTS)/pwr_smooth_params_func.log
+
+# Phase 1+2: FRU verify_checksum + decode_6bit_ascii (inlined — no I2C/logger deps).
+fru_utils:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  $(HARNESSES)/fru_utils_harness.cpp \
+	  2>&1 | tee $(RESULTS)/fru_utils.log
+
+fru_utils_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 \
+	  --overflow-check \
+	  --interval-analysis \
+	  --k-induction --k-step 1 --max-k-step 10 \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/fru_utils_harness.cpp \
+	  2>&1 | tee $(RESULTS)/fru_utils_func.log
 
 clean:
 	rm -rf $(RESULTS)

@@ -7,7 +7,7 @@
 
 ## TL;DR
 
-Eighteen modules verified end-to-end against language-level safety properties
+Twenty modules verified end-to-end against language-level safety properties
 (pointer/bounds/overflow/div-by-zero/memory-leak) and against module-specific
 functional contracts via k-induction. **One vulnerability formally proven
 reachable** (F-1) via `mctp_dispatch` — ESBMC finds a counterexample where a
@@ -48,6 +48,8 @@ workarounds removed where applicable.
 | Debug telemetry SMA | `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` (`DebugTelemetrySmaCh::evaluate` — 256-sample SMA; UFXP8_0 buffer; percent ∈ [0%, 150%]) | ✅ 261 VCC | ✅ k=1 (index bounded ∈ [0, 255] by bitwise-AND; output non-negative from zero state) | — |
 | PCA9555 GPIO expander emulator | `src/nv/emulation/pca9555.{h,cpp}` (`Pca9555` — 16-bit I2C GPIO expander; direction/input/output/inversion registers + interrupt-on-change logic) | ✅ 1292 VCC | ✅ k=2 (direction constraint with precondition req_in∩req_out=∅; input_update_masked; interrupt_default; output_propagation) | — |
 | EMC1812 temperature sensor driver | `src/nv/i2c/emc1812.{h,cpp}` (`Emc1812` — EMC1812 temp sensor driver; all public methods with nondet I2C stubs; `int8_t↔uint8_t` threshold cast round-trip verified for all six set/get pairs) | ✅ 52 VCC | ✅ k=1 (cast_roundtrip: `static_cast<int8_t>(static_cast<uint8_t>(t)) == t` for all `int8_t t`; threshold_symmetry: all four pairs) | — |
+| TMP1075 temperature sensor driver | `src/nv/i2c/tmp1075.{h,cpp}` (`Tmp1075` — 12-bit two's-complement temperature encoding: `int8_t → <<4 → int16_t → uint16_t → >>4 → int8_t` round-trip; `get_device_id`; `set/get_{low,high}_limit`) | ✅ 33 VCC | ✅ k=1 (12bit_roundtrip: `static_cast<int8_t>(static_cast<int16_t>(static_cast<uint16_t>(static_cast<int16_t>(t<<4)))>>4) == t` for all `int8_t t`; temp_read_cast well-defined) | — |
+| TMP461 temperature sensor driver | `src/nv/i2c/tmp461.{h,cpp}` (`Tmp461` / NCT72 — `int8_t↔uint8_t` threshold cast round-trip for four alert/therm set/get pairs; `get_configuration`) | ✅ 57 VCC | ✅ k=1 (cast_roundtrip + threshold_symmetry for all four pairs) | — |
 
 All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
@@ -411,7 +413,9 @@ kept narrow so multiple fixes can be reaped independently.
 9. ~~Expand coverage to `soc_pwr_smoothing/debug_telemetry_sma_ch.h`~~ — **done** (`debug_telemetry_sma` / `debug_telemetry_sma_func`, 261 VCC Phase 1, k=1 Phase 2: index-bounded and output-non-negative contracts).
 10. ~~Expand coverage to `nv/emulation/pca9555.{h,cpp}`~~ — **done** (`pca9555` / `pca9555_func`, 1292 VCC Phase 1, k=2 Phase 2: direction constraint, masked input update, interrupt default, output propagation).
 11. ~~Expand coverage to `nv/i2c/emc1812.{h,cpp}`~~ — **done** (`emc1812` / `emc1812_func`, 52 VCC Phase 1, k=1 Phase 2: `int8_t↔uint8_t` threshold cast round-trip identity for all four set/get pairs).
-12. Stand up a CI hook that runs `make all` on every PR; verification must
+12. ~~Expand coverage to `nv/i2c/tmp1075.{h,cpp}`~~ — **done** (`tmp1075` / `tmp1075_func`, 33 VCC Phase 1, k=1 Phase 2: 12-bit temperature encoding round-trip `int8_t → <<4 → uint16_t → >>4 → int8_t` and temp_read_cast).
+13. ~~Expand coverage to `nv/i2c/tmp461.{h,cpp}`~~ — **done** (`tmp461` / `tmp461_func`, 57 VCC Phase 1, k=1 Phase 2: `int8_t↔uint8_t` cast round-trip for all four threshold set/get pairs).
+14. Stand up a CI hook that runs `make all` on every PR; verification must
     stay green and any failure must be triaged before merge.
 
 ## Reproducing
@@ -432,6 +436,8 @@ make soc_sma_filter_func    # SocSmaFilterCh steady-state identity + output-boun
 make debug_telemetry_sma_func  # DebugTelemetrySmaCh index-bounded + output-nonneg (k=1)
 make pca9555_func           # Pca9555 direction constraint + masked input update + interrupt + output (k=2)
 make emc1812_func           # Emc1812 int8_t↔uint8_t cast round-trip identity (k=1)
+make tmp1075_func           # Tmp1075 12-bit encoding round-trip identity (k=1)
+make tmp461_func            # Tmp461 int8_t↔uint8_t cast round-trip identity (k=1)
 make mctp_packet_neg        # negative tests (expect VERIFICATION FAILED)
 make mctp_router_neg
 make mctp_dispatch          # F-1 reachability proof (expect VERIFICATION FAILED)

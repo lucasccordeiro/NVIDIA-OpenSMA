@@ -73,8 +73,10 @@ FP_INCS := -I$(REPO)/src
         debug_telemetry_sma debug_telemetry_sma_func \
         pca9555 pca9555_func \
         emc1812 emc1812_func \
+        tmp1075 tmp1075_func \
+        tmp461 tmp461_func \
         clean
-all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils soc_sma_filter debug_telemetry_sma pca9555 emc1812
+all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils soc_sma_filter debug_telemetry_sma pca9555 emc1812 tmp1075 tmp461
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
@@ -467,6 +469,46 @@ emc1812_func:
 	  $(HARNESSES)/emc1812_harness.cpp \
 	  $(REPO)/src/nv/i2c/emc1812.cpp \
 	  2>&1 | tee $(RESULTS)/emc1812_func.log
+
+# Phase 1+2: TMP1075 temperature sensor driver.
+# Verifies 12-bit encoding round-trip: int8_t → <<4 → uint16_t → >>4 → int8_t.
+# TempSensor base class stubbed via stubs/nv/i2c/sensor.h (nondet I2C).
+tmp1075:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  -I$(STUBS) -I$(STUBS)/nv/i2c -I$(REPO)/src \
+	  $(HARNESSES)/tmp1075_harness.cpp \
+	  $(REPO)/src/nv/i2c/tmp1075.cpp \
+	  2>&1 | tee $(RESULTS)/tmp1075.log
+
+tmp1075_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(FUNC_FLAGS) \
+	  -I$(STUBS) -I$(STUBS)/nv/i2c -I$(REPO)/src \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/tmp1075_harness.cpp \
+	  $(REPO)/src/nv/i2c/tmp1075.cpp \
+	  2>&1 | tee $(RESULTS)/tmp1075_func.log
+
+# Phase 1+2: TMP461 (/ NCT72) temperature sensor driver.
+# Verifies int8_t↔uint8_t threshold cast round-trip (same pattern as emc1812).
+# TempSensor base class stubbed via stubs/nv/i2c/sensor.h (nondet I2C).
+tmp461:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  -I$(STUBS) -I$(STUBS)/nv/i2c -I$(REPO)/src \
+	  $(HARNESSES)/tmp461_harness.cpp \
+	  $(REPO)/src/nv/i2c/tmp461.cpp \
+	  2>&1 | tee $(RESULTS)/tmp461.log
+
+tmp461_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(FUNC_FLAGS) \
+	  -I$(STUBS) -I$(STUBS)/nv/i2c -I$(REPO)/src \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/tmp461_harness.cpp \
+	  $(REPO)/src/nv/i2c/tmp461.cpp \
+	  2>&1 | tee $(RESULTS)/tmp461_func.log
 
 clean:
 	rm -rf $(RESULTS)

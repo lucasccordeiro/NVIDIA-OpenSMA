@@ -24,8 +24,14 @@ verification/
 
 `Makefile` exposes two ESBMC profiles per target:
 
-- `<target>` — language-level safety (default checks + `--memory-leak-check
-  --overflow-check --unsigned-overflow-check --nan-check --unwind 4`).
+- `<target>` — language-level safety (`--memory-leak-check --overflow-check
+  --unsigned-overflow-check --nan-check`). Most targets use the default
+  `--unwind 4`; targets whose internal arrays exceed four elements carry a
+  per-target override (see Makefile comments: `nsm_type_2` → 12,
+  `nsm_type3` → 9, `telemetry` → 11, `spi_utils` → 9, `i2c_crc8` → 257,
+  `fru_utils` → 9, `ntc_table` → 9). Loop exhaustion is formally checked via
+  ESBMC's default unwinding assertions — the harness fails if any loop
+  genuinely needs more than the stated bound.
 - `<target>_func` — functional contracts via `--k-induction --interval-analysis
   --k-step 1 --max-k-step 6` (validator uses `--max-k-step 16` for its branchier
   state machine), with `-DESBMC_FUNCTIONAL=1` enabling extra `__ESBMC_assert`
@@ -128,7 +134,7 @@ cd verification
 make all                                       # Phase 1 across every target
 make mctp_packet_func mctp_router_func \
      mctp_validator_func                       # Phase 2 (k-induction)
-make nsm_type3_func                            # ditto
+make nsm_type_2_func nsm_type3_func            # ditto
 make telemetry_func                            # ditto
 make fixed_point_func utils_func               # ditto
 make ntc_table_func                            # ditto

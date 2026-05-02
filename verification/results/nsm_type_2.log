@@ -2,23 +2,30 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.379s
+GOTO program creation time: 0.730s
 GOTO program processing time: 0.004s
 Starting Bounded Model Checking
 Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 4 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
 Unwinding loop 4 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Not unwinding loop 4 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
-Symex completed in: 0.006s (89 assignments)
+Unwinding loop 4 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
+Unwinding loop 4 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
+Unwinding loop 4 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
+Unwinding loop 4 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
+Unwinding loop 4 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
+Unwinding loop 4 iteration 9   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
+Unwinding loop 4 iteration 10   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
+Unwinding loop 4 iteration 11   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
+Symex completed in: 0.011s (116 assignments)
 Caching time: 0.000s (removed 1 assertions)
-Slicing time: 0.001s (removed 67 assignments)
-Generated 14 VCC(s), 5 remaining after simplification (21 assignments)
+Slicing time: 0.001s (removed 103 assignments)
+Generated 28 VCC(s), 5 remaining after simplification (12 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.001s
+Encoding to solver time: 0.000s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.000s
-BMC program time: 0.008s
+Runtime decision procedure: 0.001s
+BMC program time: 0.013s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

@@ -21,8 +21,7 @@ LANG_FLAGS := \
   --overflow-check \
   --unsigned-overflow-check \
   --nan-check \
-  --unwind 4 \
-  --no-unwinding-assertions
+  --unwind 4
 
 # utils.h::align_to uses `value + alignment - 1` (left-to-right), so
 # `value + alignment` can overflow for value = alignment = 2^31 even though
@@ -35,8 +34,7 @@ UTILS_LANG_FLAGS := \
   --overflow-check \
   --ub-shift-check \
   --nan-check \
-  --unwind 4 \
-  --no-unwinding-assertions
+  --unwind 4
 
 # Functional / inductive profile. Restored to k-induction with
 # --interval-analysis after esbmc#4184 cleared the qualified-constexpr
@@ -163,9 +161,11 @@ mctp_dispatch:
 	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
 	  2>&1 | tee $(RESULTS)/mctp_dispatch.log
 
+# pciLinkValidDevices[11] → loop iterates 11 times; need unwind 12 to close.
 nsm_type_2:
 	@mkdir -p $(RESULTS)
-	$(ESBMC) $(LANG_FLAGS) \
+	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --unwind 12 \
 	  $(HARNESSES)/nsm_type_2_harness.cpp \
 	  2>&1 | tee $(RESULTS)/nsm_type_2.log
 
@@ -185,6 +185,8 @@ nsm_type_2_func:
 #   static_cast<uint32_t>(buffer[3] << 24)  vs  static_cast<uint32_t>(buffer[3]) << 24
 # C++20 [expr.shift]/2 makes signed left-shift wrapping well-defined for all
 # inputs (same as the retracted F-3), so this is a style issue, not a bug.
+# TempSensorIdToTelemIdMapping[10] → loop iterates 10 times; need unwind 11.
+# (Also uses --ub-shift-check instead of --unsigned-overflow-check; see comment above.)
 telemetry:
 	@mkdir -p $(RESULTS)
 	$(ESBMC) --std c++20 \
@@ -192,8 +194,7 @@ telemetry:
 	  --overflow-check \
 	  --ub-shift-check \
 	  --nan-check \
-	  --unwind 4 \
-	  --no-unwinding-assertions \
+	  --unwind 11 \
 	  $(HARNESSES)/telemetry_harness.cpp \
 	  2>&1 | tee $(RESULTS)/telemetry.log
 
@@ -207,9 +208,11 @@ telemetry_func:
 
 # Phase 1+2: NSM Type-3 sensor availability functions (inlined verbatim,
 # testrunner platform config: 8 temp sensors, 3 power sensors, 0 voltage sensors).
+# mcuTemperatureSensors[8] → loop iterates 8 times; need unwind 9 to close.
 nsm_type3:
 	@mkdir -p $(RESULTS)
-	$(ESBMC) $(LANG_FLAGS) \
+	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --unwind 9 \
 	  $(HARNESSES)/nsm_type3_harness.cpp \
 	  2>&1 | tee $(RESULTS)/nsm_type3.log
 
@@ -221,9 +224,11 @@ nsm_type3_func:
 	  $(HARNESSES)/nsm_type3_harness.cpp \
 	  2>&1 | tee $(RESULTS)/nsm_type3_func.log
 
+# Harness fills BufN=8 arrays; init loops iterate 8 times → unwind 9.
 spi_utils:
 	@mkdir -p $(RESULTS)
-	$(ESBMC) $(LANG_FLAGS) -I$(STUBS) \
+	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --unwind 9 -I$(STUBS) \
 	  $(HARNESSES)/spi_utils_harness.cpp \
 	  2>&1 | tee $(RESULTS)/spi_utils.log
 
@@ -235,9 +240,12 @@ spi_utils_func:
 	  $(HARNESSES)/spi_utils_harness.cpp \
 	  2>&1 | tee $(RESULTS)/spi_utils_func.log
 
+# LookupTable is static const std::array<uint8_t,256>; ESBMC models the
+# aggregate initialiser as a loop → needs unwind 257 to prove exhaustion.
 i2c_crc8:
 	@mkdir -p $(RESULTS)
-	$(ESBMC) $(LANG_FLAGS) -I$(STUBS) \
+	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --unwind 257 -I$(STUBS) \
 	  $(HARNESSES)/i2c_crc8_harness.cpp \
 	  2>&1 | tee $(RESULTS)/i2c_crc8.log
 
@@ -347,7 +355,6 @@ ntc_table:
 	  --unsigned-overflow-check \
 	  --nan-check \
 	  --unwind 9 \
-	  --no-unwinding-assertions \
 	  -I$(REPO)/src \
 	  $(REPO)/src/nv/volt_mon/ntc_table.cpp \
 	  $(HARNESSES)/ntc_table_harness.cpp \
@@ -381,9 +388,11 @@ pwr_smooth_params_func:
 	  2>&1 | tee $(RESULTS)/pwr_smooth_params_func.log
 
 # Phase 1+2: FRU verify_checksum + decode_6bit_ascii (inlined — no I2C/logger deps).
+# verify_checksum iterates over buf[8]; need unwind 9 to close.
 fru_utils:
 	@mkdir -p $(RESULTS)
-	$(ESBMC) $(LANG_FLAGS) \
+	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --unwind 9 \
 	  $(HARNESSES)/fru_utils_harness.cpp \
 	  2>&1 | tee $(RESULTS)/fru_utils.log
 

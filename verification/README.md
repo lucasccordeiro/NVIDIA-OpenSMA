@@ -94,6 +94,7 @@ for the full table; brief view:
 | [#4243](https://github.com/esbmc/esbmc/issues/4243) | bundled `<array>` value-init (`{}`) does not zero-initialise `elems` — elements are nondet; false-positive overflow VCCs on SMA filter accumulators | **fixed** by [#4244](https://github.com/esbmc/esbmc/pull/4244) (merged 2026-05-02) | `<array>` shim retained (pending ESBMC version bump) |
 | [#4247](https://github.com/esbmc/esbmc/issues/4247) | bundled `<bit>` pointer-to-pointer `bit_cast` overload uses `reinterpret_cast`, rejecting const `From` (residual gap after #4191/#4192) | **fixed** by [#4250](https://github.com/esbmc/esbmc/pull/4250) (merged 2026-05-02) | (`stubs/bit` removed) |
 | [#4248](https://github.com/esbmc/esbmc/issues/4248) | bundled `<span>` does not transitively include `<bit>`; production code relies on that transitive include for `std::bit_cast` | **fixed** by [#4249](https://github.com/esbmc/esbmc/pull/4249) (merged 2026-05-02) | (`stubs/span` removed) |
+| [#4251](https://github.com/esbmc/esbmc/issues/4251) | bundled `<algorithm>` lacks `std::clamp` (C++17/20); also `const T&` shim return loses materialised value in GOTO IR (use-after-scope) | open | `stubs/algorithm` shim provides `std::clamp` returning `T` by value |
 | [#2789](https://github.com/esbmc/esbmc/issues/2789) | negative shift distance (`x << y`, `y < 0`) not flagged under `--overflow-check`; only caught by `--ub-shift-check` | **fixed** by [#4242](https://github.com/esbmc/esbmc/pull/4242) (merged 2026-05-02) | — |
 
 ## Findings

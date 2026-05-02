@@ -1,6 +1,6 @@
 // Thin <algorithm> shim for ESBMC verification.
-// Tracks: ESBMC bundled <algorithm> lacks std::clamp (C++17/20). This shim
-// includes the bundled header and adds the missing template.
+// WORKAROUND esbmc#4251 — bundled <algorithm> lacks std::clamp (C++17/20).
+// Remove once the ESBMC binary on $PATH includes the fix.
 #pragma once
 #include_next <algorithm>
 

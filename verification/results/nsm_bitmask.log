@@ -2,16 +2,16 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.498s
+GOTO program creation time: 0.639s
 GOTO program processing time: 0.008s
 Starting Bounded Model Checking
 Symex completed in: 0.029s (374 assignments)
-Caching time: 0.003s (removed 8 assertions)
-Slicing time: 0.003s (removed 177 assignments)
+Caching time: 0.004s (removed 8 assertions)
+Slicing time: 0.002s (removed 177 assignments)
 Generated 135 VCC(s), 87 remaining after simplification (189 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.007s
+Encoding to solver time: 0.006s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.016s
 BMC program time: 0.058s

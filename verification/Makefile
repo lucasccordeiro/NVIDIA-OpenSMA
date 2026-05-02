@@ -71,8 +71,10 @@ FP_INCS := -I$(REPO)/src
         fru_utils fru_utils_func \
         soc_sma_filter soc_sma_filter_func \
         debug_telemetry_sma debug_telemetry_sma_func \
+        pca9555 pca9555_func \
+        emc1812 emc1812_func \
         clean
-all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils soc_sma_filter debug_telemetry_sma
+all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils soc_sma_filter debug_telemetry_sma pca9555 emc1812
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
@@ -424,6 +426,47 @@ debug_telemetry_sma_func:
 	  -DESBMC_FUNCTIONAL=1 \
 	  $(HARNESSES)/debug_telemetry_sma_harness.cpp \
 	  2>&1 | tee $(RESULTS)/debug_telemetry_sma_func.log
+
+# Phase 1+2: PCA9555 16-bit I2C GPIO expander emulator (Pca9555).
+# Pure bit-manipulation state machine; only dep is sys/i2c/i2c_slave.h
+# (for I2cSlaveBufferSize) and nv/nv.h (logging, no-op stubbed).
+# Both stubs live under stubs/sys/i2c/ and stubs/nv/ respectively.
+pca9555:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  -I$(STUBS) -I$(STUBS)/sys/i2c -I$(REPO)/src \
+	  $(HARNESSES)/pca9555_harness.cpp \
+	  $(REPO)/src/nv/emulation/pca9555.cpp \
+	  2>&1 | tee $(RESULTS)/pca9555.log
+
+pca9555_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(FUNC_FLAGS) \
+	  -I$(STUBS) -I$(STUBS)/sys/i2c -I$(REPO)/src \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/pca9555_harness.cpp \
+	  $(REPO)/src/nv/emulation/pca9555.cpp \
+	  2>&1 | tee $(RESULTS)/pca9555_func.log
+
+# Phase 1+2: EMC1812 temperature sensor driver (Emc1812).
+# Verifies signed/unsigned register cast round-trip and safety.
+# TempSensor base class stubbed via stubs/nv/i2c/sensor.h (nondet I2C).
+emc1812:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  -I$(STUBS) -I$(STUBS)/nv/i2c -I$(REPO)/src \
+	  $(HARNESSES)/emc1812_harness.cpp \
+	  $(REPO)/src/nv/i2c/emc1812.cpp \
+	  2>&1 | tee $(RESULTS)/emc1812.log
+
+emc1812_func:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(FUNC_FLAGS) \
+	  -I$(STUBS) -I$(STUBS)/nv/i2c -I$(REPO)/src \
+	  -DESBMC_FUNCTIONAL=1 \
+	  $(HARNESSES)/emc1812_harness.cpp \
+	  $(REPO)/src/nv/i2c/emc1812.cpp \
+	  2>&1 | tee $(RESULTS)/emc1812_func.log
 
 clean:
 	rm -rf $(RESULTS)

@@ -1,0 +1,71 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/pca9555_harness.cpp
+Parsing /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.674s
+Interval Analysis time: 0.019s
+GOTO program processing time: 0.029s
+Checking base case, k = 1
+Starting Bounded Model Checking
+Not unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp line 142 column 5 function i2c_write
+Not unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp line 142 column 5 function i2c_write
+Not unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp line 142 column 5 function i2c_write
+Symex completed in: 0.383s (1696 assignments)
+Slicing time: 0.009s (removed 903 assignments)
+Generated 1345 VCC(s), 242 remaining after simplification (793 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.032s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+BMC program time: 0.442s
+No bug has been found in the base case
+Checking forward condition, k = 1
+Starting Bounded Model Checking
+Not unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp line 142 column 5 function i2c_write
+Not unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp line 142 column 5 function i2c_write
+Not unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp line 142 column 5 function i2c_write
+Symex completed in: 0.374s (1578 assignments)
+Slicing time: 0.007s (removed 1039 assignments)
+Generated 1170 VCC(s), 127 remaining after simplification (539 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.027s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+The forward condition is unable to prove the property
+Checking base case, k = 2
+Starting Bounded Model Checking
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp line 142 column 5 function i2c_write
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp line 142 column 5 function i2c_write
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp line 142 column 5 function i2c_write
+Symex completed in: 0.379s (1693 assignments)
+Slicing time: 0.010s (removed 813 assignments)
+Generated 1345 VCC(s), 242 remaining after simplification (880 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.055s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.016s
+BMC program time: 0.460s
+No bug has been found in the base case
+Checking forward condition, k = 2
+Starting Bounded Model Checking
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp line 142 column 5 function i2c_write
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp line 142 column 5 function i2c_write
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp line 142 column 5 function i2c_write
+Symex completed in: 0.376s (1575 assignments)
+Slicing time: 0.008s (removed 1009 assignments)
+Generated 1167 VCC(s), 124 remaining after simplification (566 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.033s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+BMC program time: 0.426s
+
+VERIFICATION SUCCESSFUL
+
+Solution found by the forward condition; all states are reachable (k = 2)
+ESBMC version 8.2.0 64-bit aarch64 macos

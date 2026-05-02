@@ -7,7 +7,7 @@
 
 ## TL;DR
 
-Sixteen modules verified end-to-end against language-level safety properties
+Eighteen modules verified end-to-end against language-level safety properties
 (pointer/bounds/overflow/div-by-zero/memory-leak) and against module-specific
 functional contracts via k-induction. **One vulnerability formally proven
 reachable** (F-1) via `mctp_dispatch` — ESBMC finds a counterexample where a
@@ -46,6 +46,8 @@ workarounds removed where applicable.
 | FRU utilities | `src/nv/fru/fru.cpp` (`verify_checksum`, `decode_6bit_ascii`) | ✅ 76 VCC | ✅ k=9 (checksum true iff sum≡0 mod 256, decode output ∈ [0x20, 0x5F]) | — |
 | SoC SMA filter | `src/nv/soc_pwr_smoothing/soc_sma_filter_ch.h` (`SocSmaFilterCh::evaluate` — 4-sample sliding-window SMA over SFXP22_10) | ✅ 504 VCC | ✅ k=1 (steady-state: 4 equal inputs → output == input; output ∈ [0, input]) | — |
 | Debug telemetry SMA | `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` (`DebugTelemetrySmaCh::evaluate` — 256-sample SMA; UFXP8_0 buffer; percent ∈ [0%, 150%]) | ✅ 261 VCC | ✅ k=1 (index bounded ∈ [0, 255] by bitwise-AND; output non-negative from zero state) | — |
+| PCA9555 GPIO expander emulator | `src/nv/emulation/pca9555.{h,cpp}` (`Pca9555` — 16-bit I2C GPIO expander; direction/input/output/inversion registers + interrupt-on-change logic) | ✅ 1292 VCC | ✅ k=2 (direction constraint with precondition req_in∩req_out=∅; input_update_masked; interrupt_default; output_propagation) | — |
+| EMC1812 temperature sensor driver | `src/nv/i2c/emc1812.{h,cpp}` (`Emc1812` — EMC1812 temp sensor driver; all public methods with nondet I2C stubs; `int8_t↔uint8_t` threshold cast round-trip verified for all six set/get pairs) | ✅ 52 VCC | ✅ k=1 (cast_roundtrip: `static_cast<int8_t>(static_cast<uint8_t>(t)) == t` for all `int8_t t`; threshold_symmetry: all four pairs) | — |
 
 All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
@@ -407,7 +409,9 @@ kept narrow so multiple fixes can be reaped independently.
 7. ~~Expand coverage to `fru.cpp`~~ — **done** (`fru_utils` / `fru_utils_func`, 76 VCC Phase 1, k=9 Phase 2: checksum contract and 6-bit ASCII decode output-range invariant).
 8. ~~Expand coverage to `soc_pwr_smoothing/soc_sma_filter_ch.h`~~ — **done** (`soc_sma_filter` / `soc_sma_filter_func`, 504 VCC Phase 1, k=1 Phase 2: steady-state identity and output-bounded contracts).
 9. ~~Expand coverage to `soc_pwr_smoothing/debug_telemetry_sma_ch.h`~~ — **done** (`debug_telemetry_sma` / `debug_telemetry_sma_func`, 261 VCC Phase 1, k=1 Phase 2: index-bounded and output-non-negative contracts).
-10. Stand up a CI hook that runs `make all` on every PR; verification must
+10. ~~Expand coverage to `nv/emulation/pca9555.{h,cpp}`~~ — **done** (`pca9555` / `pca9555_func`, 1292 VCC Phase 1, k=2 Phase 2: direction constraint, masked input update, interrupt default, output propagation).
+11. ~~Expand coverage to `nv/i2c/emc1812.{h,cpp}`~~ — **done** (`emc1812` / `emc1812_func`, 52 VCC Phase 1, k=1 Phase 2: `int8_t↔uint8_t` threshold cast round-trip identity for all four set/get pairs).
+12. Stand up a CI hook that runs `make all` on every PR; verification must
     stay green and any failure must be triaged before merge.
 
 ## Reproducing
@@ -426,6 +430,8 @@ make pwr_smooth_params_func # OverrideParam round-trips + is_valid_param_id char
 make fru_utils_func         # checksum contract + decode_6bit_ascii output-range invariant (k=9)
 make soc_sma_filter_func    # SocSmaFilterCh steady-state identity + output-bounded (k=1)
 make debug_telemetry_sma_func  # DebugTelemetrySmaCh index-bounded + output-nonneg (k=1)
+make pca9555_func           # Pca9555 direction constraint + masked input update + interrupt + output (k=2)
+make emc1812_func           # Emc1812 int8_t↔uint8_t cast round-trip identity (k=1)
 make mctp_packet_neg        # negative tests (expect VERIFICATION FAILED)
 make mctp_router_neg
 make mctp_dispatch          # F-1 reachability proof (expect VERIFICATION FAILED)

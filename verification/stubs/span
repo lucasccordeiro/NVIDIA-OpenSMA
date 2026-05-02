@@ -1,9 +1,9 @@
 // Thin std::span shim for ESBMC verification.
-// Tracks: esbmc#4248 — the bundled <span> (added in esbmc#4190 / #4194)
-// does not transitively #include <bit>, which production code relies on
-// for std::bit_cast (pdk-mctp-app-packet.h). This shim provides std::span
-// and explicitly includes our <bit> shim so the transitive dependency is
-// satisfied.
+// WORKAROUND esbmc#4248 — fixed upstream by esbmc#4249 (merged 2026-05-02);
+// remove this shim once the ESBMC binary on $PATH includes that fix.
+// Root cause: bundled <span> (added in #4190/#4194) did not transitively
+// include <bit>; production code (pdk-mctp-app-packet.h) relies on that
+// transitive include for std::bit_cast.
 #pragma once
 #include <cstddef>
 #include <bit>  // production code uses <span>'s transitive <bit> for std::bit_cast

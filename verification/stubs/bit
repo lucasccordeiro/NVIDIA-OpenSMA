@@ -1,11 +1,9 @@
 // Thin <bit> shim for ESBMC verification.
-// Tracks: esbmc#4247 — the bundled <bit> shim added in #4192 fixes the
-// symex aliasing bug (#4191), but its pointer-to-pointer `bit_cast`
-// overload uses `reinterpret_cast<To>(src)`, which fails to compile when
-// `From` is const (e.g. `bit_cast<uint8_t*>(this)` inside a const
-// method). std::bit_cast per the standard has no const obligation.
-// This thin replacement uses a C-cast for the pointer specialisation,
-// which preserves both the aliasing fix and standard semantics.
+// WORKAROUND esbmc#4247 — fixed upstream by esbmc#4250 (merged 2026-05-02);
+// remove this shim once the ESBMC binary on $PATH includes that fix.
+// Root cause: the bundled <bit> pointer-to-pointer bit_cast overload used
+// reinterpret_cast<To>(src), failing when From is const.  This replacement
+// uses a C-cast for the pointer specialisation.
 #pragma once
 #include "cstdint"
 #include "type_traits"

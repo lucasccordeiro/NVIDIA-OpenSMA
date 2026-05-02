@@ -1,0 +1,39 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f6_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.535s
+GOTO program processing time: 0.004s
+Starting Bounded Model Checking
+Symex completed in: 0.002s (49 assignments)
+Caching time: 0.000s (removed 1 assertions)
+Slicing time: 0.000s (removed 41 assignments)
+Generated 7 VCC(s), 3 remaining after simplification (7 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Building error trace
+
+[Counterexample]
+
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f6_harness.cpp line 40 column 5 function main thread 0
+----------------------------------------------------
+  request_mode = 255 (11111111)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f6_harness.cpp line 62 column 5 function main thread 0
+----------------------------------------------------
+  errorInjectionModeResponse.mode = { .mode=255 }
+
+State 4 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f6_harness.cpp line 66 column 5 function main thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f6_harness.cpp line 66 column 5 function main
+  F-6: errorInjectionModeResponse.mode must be Disable or Enable
+  (signed int)errorInjectionModeResponse.mode == 0 || (signed int)errorInjectionModeResponse.mode == 1
+
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit aarch64 macos

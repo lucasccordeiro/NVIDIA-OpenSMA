@@ -1,0 +1,85 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f7_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.571s
+GOTO program processing time: 0.006s
+Starting Bounded Model Checking
+WARNING: not checking alignment for access to packed struct struct PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct PortRecoveryPayload
+Symex completed in: 0.006s (67 assignments)
+Caching time: 0.000s (removed 1 assertions)
+Slicing time: 0.000s (removed 45 assignments)
+Generated 21 VCC(s), 6 remaining after simplification (21 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Building error trace
+
+[Counterexample]
+
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f7_harness.cpp line 71 column 5 function main thread 0
+----------------------------------------------------
+  incoming.offset = { .offset=(unsigned int)main#::$tmp::return_value$_nondet_u8$1?1!0&0#1, .error_injection_id=0,
+    .error_type=0, .l1_recovery_bitmap=0,
+    .l2_recovery_bitmap=0, .l3_recovery_bitmap=0,
+    .reserved_1=0 }
+
+State 3 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f7_harness.cpp line 72 column 5 function main thread 0
+----------------------------------------------------
+  incoming.error_injection_id = { .offset=0, .error_injection_id=1, .error_type=0, .l1_recovery_bitmap=0,
+    .l2_recovery_bitmap=0, .l3_recovery_bitmap=0,
+    .reserved_1=0 }
+
+State 4 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f7_harness.cpp line 73 column 5 function main thread 0
+----------------------------------------------------
+  incoming.error_type = { .offset=0, .error_injection_id=1, .error_type=0, .l1_recovery_bitmap=0,
+    .l2_recovery_bitmap=0, .l3_recovery_bitmap=0,
+    .reserved_1=0 }
+
+State 5 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f7_harness.cpp line 74 column 35 function main thread 0
+----------------------------------------------------
+  incoming.l1_recovery_bitmap = { .offset=0, .error_injection_id=1, .error_type=0, .l1_recovery_bitmap=0,
+    .l2_recovery_bitmap=0, .l3_recovery_bitmap=0,
+    .reserved_1=0 }
+
+State 6 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f7_harness.cpp line 75 column 35 function main thread 0
+----------------------------------------------------
+  incoming.l2_recovery_bitmap = { .offset=0, .error_injection_id=1, .error_type=0, .l1_recovery_bitmap=0,
+    .l2_recovery_bitmap=0, .l3_recovery_bitmap=0,
+    .reserved_1=0 }
+
+State 7 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f7_harness.cpp line 76 column 35 function main thread 0
+----------------------------------------------------
+  incoming.l3_recovery_bitmap = { .offset=0, .error_injection_id=1, .error_type=0, .l1_recovery_bitmap=0,
+    .l2_recovery_bitmap=0, .l3_recovery_bitmap=0,
+    .reserved_1=0 }
+
+State 8 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f7_harness.cpp line 77 column 35 function main thread 0
+----------------------------------------------------
+  incoming.reserved_1 = { .offset=0, .error_injection_id=1, .error_type=0, .l1_recovery_bitmap=0,
+    .l2_recovery_bitmap=0, .l3_recovery_bitmap=0,
+    .reserved_1=0 }
+
+State 12 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f7_harness.cpp line 89 column 5 function main thread 0
+----------------------------------------------------
+  valid = 0
+
+State 13 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f7_harness.cpp line 94 column 9 function main thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f7_harness.cpp line 94 column 9 function main
+  F-7: portRecoveryResp must be zero-initialised on validation failure (no rollback)
+  return_value$_is_zero_initialised$5
+
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit aarch64 macos

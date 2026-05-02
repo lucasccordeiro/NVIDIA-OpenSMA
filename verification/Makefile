@@ -79,6 +79,7 @@ FP_INCS := -I$(REPO)/src
         nsm_type3 nsm_type3_func nsm_type3_volatile \
         nsm_bitmask nsm_bitmask_func nsm_bitmask_neg nsm_bitmask_volatile \
         nsm_type5_validate nsm_type5_validate_func nsm_type5_validate_volatile \
+        nsm_type5_f6_neg nsm_type5_f7_neg nsm_type5_f8_neg \
         telemetry telemetry_func telemetry_volatile \
         spi_utils spi_utils_func spi_utils_volatile \
         i2c_crc8 i2c_crc8_func i2c_crc8_volatile \
@@ -86,11 +87,14 @@ FP_INCS := -I$(REPO)/src
         fixed_point fixed_point_func fixed_point_volatile \
         utils utils_func utils_neg utils_volatile \
         ntc_table ntc_table_func ntc_table_volatile \
+        nsm_type3_f10_neg \
         pwr_smooth_params pwr_smooth_params_func pwr_smooth_params_volatile \
         fru_utils fru_utils_func fru_utils_volatile \
         soc_sma_filter soc_sma_filter_func soc_sma_filter_volatile \
         debug_telemetry_sma debug_telemetry_sma_func debug_telemetry_sma_volatile \
+        debug_telemetry_f13_neg \
         pca9555 pca9555_func pca9555_volatile \
+        pca9555_f14_neg \
         emc1812 emc1812_func emc1812_volatile \
         tmp1075 tmp1075_func tmp1075_volatile \
         tmp461 tmp461_func tmp461_volatile \
@@ -540,6 +544,72 @@ tmp461_func:
 	  $(HARNESSES)/tmp461_harness.cpp \
 	  $(REPO)/src/nv/i2c/tmp461.cpp \
 	  2>&1 | tee $(RESULTS)/tmp461_func.log
+
+# =============================================================================
+# Security findings (negative targets) — expected: VERIFICATION FAILED.
+# These are not part of 'all' or 'volatile'; run individually or as a group.
+# Each harness is self-contained (no production source files needed).
+# =============================================================================
+
+# F-6: SetErrorInjectionMode stores nrx.data[0] without a range check, accepting
+# any uint8_t mode value instead of only Disable (0x00) or Enable (0x01).
+nsm_type5_f6_neg:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  $(HARNESSES)/nsm_type5_f6_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_type5_f6_neg.log
+
+# F-7: on_dev_cfg_submit_ErrorInjectionPayload writes portRecoveryResp before
+# validating; on failure it returns without resetting the field (no rollback),
+# unlike the FatalError and USBBridgeEmulation paths which zero the field first.
+nsm_type5_f7_neg:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  $(HARNESSES)/nsm_type5_f7_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_type5_f7_neg.log
+
+# F-8: validateGpioSpoofingErrorInjectionPayload iterates up to ei_gpio_number
+# with no bounds check; gpio_ei_entries has 16 slots. OOB access at
+# gpio_ei_entries[i] for i >= 16. The caller guards this but the validator itself
+# does not, so any direct call with ei_gpio_number > 16 is unsafe.
+# Fill and validator loops both iterate ≤17 times → unwind 17.
+nsm_type5_f8_neg:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --unwind 17 \
+	  $(HARNESSES)/nsm_type5_f8_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_type5_f8_neg.log
+
+# F-10: set_busbar_temperature_threshold silently substitutes 125°C when
+# ntc_temperature_to_resistance returns 0 (out-of-range temperature), then
+# returns Ccode::Success instead of an error code.
+nsm_type3_f10_neg:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) $(FP_INCS) \
+	  $(REPO)/src/nv/volt_mon/ntc_table.cpp \
+	  $(HARNESSES)/nsm_type3_f10_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_type3_f10_neg.log
+
+# F-13: DebugTelemetrySmaCh::evaluate() casts SFXP32_0 to UFXP8_0 (uint8_t)
+# without checking for negative values; a negative percent wraps modulo 256,
+# corrupting the SMA buffer (e.g., -1% → sfxp32_0 = -1 → uint8_t = 255).
+debug_telemetry_f13_neg:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) -I$(STUBS) -I$(REPO)/src \
+	  $(HARNESSES)/debug_telemetry_f13_harness.cpp \
+	  2>&1 | tee $(RESULTS)/debug_telemetry_f13_neg.log
+
+# F-14: Pca9555::i2c_write bare `return` on Input command — production code
+# confirmation that the write leaves output state unchanged (VERIFICATION SUCCESSFUL).
+# CommandRegister is fixed per call (cmd_byte/2); Input case has no body; return and
+# break are observably equivalent. F-14 is a code-quality note, not a security finding.
+pca9555_f14_neg:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  -I$(STUBS) -I$(STUBS)/sys/i2c -I$(REPO)/src \
+	  $(REPO)/src/nv/emulation/pca9555.cpp \
+	  $(HARNESSES)/pca9555_f14_harness.cpp \
+	  2>&1 | tee $(RESULTS)/pca9555_f14_neg.log
 
 # =============================================================================
 # Phase: volatile — all Phase 1 targets with --volatile-check added.

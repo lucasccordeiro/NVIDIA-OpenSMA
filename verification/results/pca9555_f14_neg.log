@@ -1,0 +1,23 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/pca9555_f14_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.652s
+GOTO program processing time: 0.008s
+Starting Bounded Model Checking
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp line 142 column 5 function i2c_write
+Unwinding loop 4 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/emulation/pca9555.cpp line 142 column 5 function i2c_write
+Symex completed in: 0.125s (602 assignments)
+Caching time: 0.014s (removed 1 assertions)
+Slicing time: 0.004s (removed 240 assignments)
+Generated 405 VCC(s), 127 remaining after simplification (361 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.028s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.006s
+BMC program time: 0.182s
+
+VERIFICATION SUCCESSFUL
+ESBMC version 8.2.0 64-bit aarch64 macos

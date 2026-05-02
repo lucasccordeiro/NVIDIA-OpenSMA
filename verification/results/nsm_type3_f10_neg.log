@@ -1,0 +1,52 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_f10_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.410s
+GOTO program processing time: 0.005s
+Starting Bounded Model Checking
+Symex completed in: 0.005s (95 assignments)
+Caching time: 0.003s (removed 1 assertions)
+Slicing time: 0.000s (removed 54 assignments)
+Generated 22 VCC(s), 19 remaining after simplification (40 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+Building error trace
+
+[Counterexample]
+
+
+State 4 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_f10_harness.cpp line 74 column 5 function main thread 0
+----------------------------------------------------
+  threshold = 255 (11111111)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_f10_harness.cpp line 78 column 5 function main thread 0
+----------------------------------------------------
+  tempCelsius = 255 (00000000 11111111)
+
+State 7 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_f10_harness.cpp line 82 column 5 function main thread 0
+----------------------------------------------------
+  r = 0 (00000000 00000000 00000000 00000000)
+
+State 9 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_f10_harness.cpp line 53 column 5 function set_busbar_temperature_threshold thread 0
+----------------------------------------------------
+  tempCelsius = 255 (00000000 11111111)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_f10_harness.cpp line 55 column 5 function set_busbar_temperature_threshold thread 0
+----------------------------------------------------
+  resistanceOhm = 0 (00000000 00000000 00000000 00000000)
+
+State 17 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_f10_harness.cpp line 87 column 5 function main thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_f10_harness.cpp line 87 column 5 function main
+  F-10: set_busbar_temperature_threshold must return error for out-of-range temperature
+  (signed int)result != 0
+
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit aarch64 macos

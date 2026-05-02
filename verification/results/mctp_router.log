@@ -1,38 +1,16 @@
 Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_router_harness.cpp
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp
-In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_router_harness.cpp:17:
-In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-router-plat.h:19:
-In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router.h:25:
-In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet.h:19:
-In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
-/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
-   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
-      |                                                                                           ^
-/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
-   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
-      |                                                                                              ^
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
-In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_router_harness.cpp:17:
-In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-router-plat.h:19:
-In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router.h:25:
-In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet.h:19:
-In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
-/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
-   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
-      |                                                                                           ^
-/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
-   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
-      |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.691s
-GOTO program processing time: 0.007s
+GOTO program creation time: 1.315s
+GOTO program processing time: 0.008s
 Starting Bounded Model Checking
 WARNING: no body for function here#
-Symex completed in: 0.017s (180 assignments)
+Symex completed in: 0.017s (182 assignments)
 Caching time: 0.000s (removed 1 assertions)
-Slicing time: 0.001s (removed 152 assignments)
+Slicing time: 0.001s (removed 154 assignments)
 Generated 70 VCC(s), 12 remaining after simplification (27 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic

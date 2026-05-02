@@ -482,15 +482,8 @@ an issue not yet resolved in the ESBMC binary on `$PATH`. It is tagged
 `// WORKAROUND esbmc#<n>` where applicable. Removing a shim is a mechanical
 step once the corresponding ESBMC version is bumped.
 
-Two previously active shims (`stubs/bit`, `stubs/span`) are now fixed
-upstream (esbmc#4247 by [#4250](https://github.com/esbmc/esbmc/pull/4250),
-esbmc#4248 by [#4249](https://github.com/esbmc/esbmc/pull/4249), both
-merged 2026-05-02) but remain in tree until the binary is updated.
-
 | Issue | Description | Workaround in tree |
 |---|---|---|
-| [#4247](https://github.com/esbmc/esbmc/issues/4247) | Bundled `<bit>` pointer overload uses `reinterpret_cast`, breaking `bit_cast<T*>(this)` in const methods. **Fixed** by [#4250](https://github.com/esbmc/esbmc/pull/4250). | `stubs/bit` shim retained pending binary bump |
-| [#4248](https://github.com/esbmc/esbmc/issues/4248) | Bundled `<span>` does not transitively include `<bit>`. **Fixed** by [#4249](https://github.com/esbmc/esbmc/pull/4249). | `stubs/span` shim retained pending binary bump |
 | (no upstream issue yet) | Bundled `<algorithm>` lacks `std::clamp` (C++17/20); used by `offset_policy.h` and `soc_state_of_charge_dev.h`. Also: `const T&` return from a clamp shim causes ESBMC to lose the materialized result in GOTO IR when the calling function returns (use-after-scope). | `stubs/algorithm` shim provides `std::clamp` returning `T` by value. |
 
 ### Closed issues
@@ -511,8 +504,8 @@ resolved with no remaining workarounds in the tree:
 [#4240](https://github.com/esbmc/esbmc/issues/4240) (fixed by [#4241](https://github.com/esbmc/esbmc/pull/4241)),
 [#4243](https://github.com/esbmc/esbmc/issues/4243) (fixed by [#4244](https://github.com/esbmc/esbmc/pull/4244)),
 [#4245](https://github.com/esbmc/esbmc/issues/4245) (fixed by [#4246](https://github.com/esbmc/esbmc/pull/4246)),
-[#4247](https://github.com/esbmc/esbmc/issues/4247) (fixed by [#4250](https://github.com/esbmc/esbmc/pull/4250) — bundled `<bit>` pointer overload must accept const From; `stubs/bit` retained pending binary bump),
-[#4248](https://github.com/esbmc/esbmc/issues/4248) (fixed by [#4249](https://github.com/esbmc/esbmc/pull/4249) — bundled `<span>` must transitively include `<bit>`; `stubs/span` retained pending binary bump),
+[#4247](https://github.com/esbmc/esbmc/issues/4247) (fixed by [#4250](https://github.com/esbmc/esbmc/pull/4250) — bundled `<bit>` pointer overload must accept const From; `stubs/bit` removed),
+[#4248](https://github.com/esbmc/esbmc/issues/4248) (fixed by [#4249](https://github.com/esbmc/esbmc/pull/4249) — bundled `<span>` must transitively include `<bit>`; `stubs/span` removed),
 [#2789](https://github.com/esbmc/esbmc/issues/2789) (fixed by [#4242](https://github.com/esbmc/esbmc/pull/4242)).
 
 ## What was deferred and why

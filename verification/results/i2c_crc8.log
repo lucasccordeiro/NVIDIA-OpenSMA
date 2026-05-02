@@ -2,8 +2,8 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/i2c_crc8_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.708s
-GOTO program processing time: 0.007s
+GOTO program creation time: 0.676s
+GOTO program processing time: 0.008s
 Starting Bounded Model Checking
 Unwinding loop 9 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
 Unwinding loop 9 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
@@ -37,16 +37,16 @@ Unwinding loop 8 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harn
 Unwinding loop 8 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
 Unwinding loop 8 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
 Unwinding loop 8 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 59 column 5 function crc8
-Symex completed in: 0.073s (543 assignments)
-Caching time: 0.002s (removed 7 assertions)
-Slicing time: 0.002s (removed 377 assignments)
-Generated 374 VCC(s), 72 remaining after simplification (159 assignments)
+Symex completed in: 0.080s (545 assignments)
+Caching time: 0.003s (removed 7 assertions)
+Slicing time: 0.002s (removed 379 assignments)
+Generated 454 VCC(s), 72 remaining after simplification (159 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.009s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.025s
-BMC program time: 0.113s
+Runtime decision procedure: 0.026s
+BMC program time: 0.121s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

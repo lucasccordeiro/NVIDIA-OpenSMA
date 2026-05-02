@@ -3,7 +3,7 @@ Parsing /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_f10_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.410s
+GOTO program creation time: 0.562s
 GOTO program processing time: 0.005s
 Starting Bounded Model Checking
 Symex completed in: 0.005s (95 assignments)

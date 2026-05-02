@@ -1,44 +1,12 @@
 Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp
-In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:31:
-In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-control.h:20:
-/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
-   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
-      |                                                                                           ^
-/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
-   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
-      |                                                                                              ^
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-control.cpp
-In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:31:
-In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-control.h:20:
-/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
-   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
-      |                                                                                           ^
-/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
-   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
-      |                                                                                              ^
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp
-In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:31:
-In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-control.h:20:
-/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
-   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
-      |                                                                                           ^
-/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
-   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
-      |                                                                                              ^
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
-In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:31:
-In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-control.h:20:
-/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
-   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
-      |                                                                                           ^
-/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
-   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
-      |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 1.097s
+GOTO program creation time: 1.280s
 GOTO program processing time: 0.011s
 Starting Bounded Model Checking
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
@@ -47,9 +15,9 @@ WARNING: no body for function hide#
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 44 column 9 function validate
+Unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 44 column 9 function validate
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
-Unwinding loop 4 iteration 2   file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 44 column 9 function validate
+Unwinding loop 7 iteration 2   file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 44 column 9 function validate
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
@@ -133,15 +101,15 @@ WARNING: not checking alignment for access to packed struct struct pdk::mctp::pl
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::TransportHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
-Symex completed in: 0.189s (593 assignments)
+Symex completed in: 0.202s (659 assignments)
 Caching time: 0.001s (removed 1 assertions)
-Slicing time: 0.002s (removed 479 assignments)
-Generated 491 VCC(s), 16 remaining after simplification (113 assignments)
+Slicing time: 0.002s (removed 545 assignments)
+Generated 496 VCC(s), 16 remaining after simplification (113 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.009s
+Encoding to solver time: 0.008s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.004s
+Runtime decision procedure: 0.003s
 Building error trace
 
 [Counterexample]
@@ -155,7 +123,7 @@ State 7 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_har
 ----------------------------------------------------
   *return_value$_operator[]$18 = { .priv={ .packet_length = 0 }, .hdr={ .hdr_ver=1, .rsvd=0, .dst_eid=0, .src_eid=0, .msg_tag=0,
     .tag_owner=1, .pkt_seq=0, .eom=1,
-    .som=1 }, .msg={ .elems={ 0, 128, 1, 0, nondet_symbol(symex::nondet12), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } } }
+    .som=1 }, .msg={ .elems={ 0, 128, 1, 0, nondet_symbol(symex::nondet18), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } } }
 
 State 8 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 43 column 5 function set_packet_interface thread 0
 ----------------------------------------------------
@@ -167,12 +135,12 @@ State 9 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_har
 ----------------------------------------------------
   valid = 1
 
-State 10 file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 40 column 9 function at thread 0
+State 10 file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-1fa3-5689-8b55/array line 40 column 5 function at thread 0
 ----------------------------------------------------
 Violated property:
-  file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 40 column 9 function at
-  std::array::at out of range
-  i::0 < 2
+  file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-1fa3-5689-8b55/array line 40 column 5 function at
+  Index out of bounds
+  index::0 < 2
 
 
 VERIFICATION FAILED

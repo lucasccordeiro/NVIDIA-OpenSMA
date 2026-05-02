@@ -2,8 +2,8 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/spi_utils_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.543s
-GOTO program processing time: 0.006s
+GOTO program creation time: 0.751s
+GOTO program processing time: 0.005s
 Starting Bounded Model Checking
 Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/spi_utils_harness.cpp line 88 column 5 function f_buf_to_u16_total
 Unwinding loop 4 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/spi_utils_harness.cpp line 88 column 5 function f_buf_to_u16_total
@@ -29,7 +29,7 @@ Unwinding loop 6 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harn
 Unwinding loop 6 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/spi_utils_harness.cpp line 162 column 5 function f_oob_idx_no_write
 Unwinding loop 6 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/spi_utils_harness.cpp line 162 column 5 function f_oob_idx_no_write
 Unwinding loop 6 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/spi_utils_harness.cpp line 162 column 5 function f_oob_idx_no_write
-Symex completed in: 0.052s (462 assignments)
+Symex completed in: 0.053s (462 assignments)
 Caching time: 0.003s (removed 1 assertions)
 Slicing time: 0.002s (removed 270 assignments)
 Generated 336 VCC(s), 80 remaining after simplification (191 assignments)
@@ -38,7 +38,7 @@ Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.006s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.013s
-BMC program time: 0.077s
+BMC program time: 0.078s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

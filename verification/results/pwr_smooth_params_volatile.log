@@ -2,7 +2,7 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/pwr_smooth_params_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.500s
+GOTO program creation time: 0.745s
 GOTO program processing time: 0.005s
 Starting Bounded Model Checking
 Symex completed in: 0.010s (105 assignments)

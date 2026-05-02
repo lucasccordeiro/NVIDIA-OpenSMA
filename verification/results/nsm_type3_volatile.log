@@ -2,7 +2,7 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.365s
+GOTO program creation time: 0.703s
 GOTO program processing time: 0.004s
 Starting Bounded Model Checking
 Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_harness.cpp line 72 column 5 function is_temp_sensor_available
@@ -27,16 +27,16 @@ Unwinding loop 4 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harn
 Unwinding loop 5 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
 Unwinding loop 5 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
 Unwinding loop 5 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type3_harness.cpp line 83 column 5 function is_power_sensor_available
-Symex completed in: 0.024s (239 assignments)
+Symex completed in: 0.025s (239 assignments)
 Caching time: 0.000s (removed 1 assertions)
 Slicing time: 0.001s (removed 224 assignments)
 Generated 53 VCC(s), 8 remaining after simplification (14 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.000s
+Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.000s
-BMC program time: 0.026s
+BMC program time: 0.027s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

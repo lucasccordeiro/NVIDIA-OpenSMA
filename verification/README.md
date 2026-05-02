@@ -36,37 +36,40 @@ verification/
   --k-step 1 --max-k-step 6` (validator uses `--max-k-step 16` for its branchier
   state machine), with `-DESBMC_FUNCTIONAL=1` enabling extra `__ESBMC_assert`
   in the harness.
+- `<target>_volatile` — Phase 1 flags plus `--volatile-check`, run as a
+  separate phase so volatile findings do not block the Phase 1 CI gate.
+  Run all with `make volatile`.
 
 Negative tests (`<target>_neg`) deliberately drive the unsafe path and expect
 ESBMC to produce a counterexample.
 
 ## Targets
 
-| Target | Source | Phase 1 | Phase 2 | Negative |
-|---|---|:-:|:-:|:-:|
-| `mctp_packet` | `corepdk/.../app/pdk-mctp-app-packet.cpp` | ✅ | ✅ | ✅ |
-| `mctp_router` | `corepdk/.../platforms/x86/pdk-mctp-platforms-router-plat.cpp` | ✅ | ✅ | ✅ |
-| `mctp_dispatch` | F-1 reachability: `Validator::validate()` + production `on_set_endpoint_id()` | — | — | ✅ CEX: `iface_val=2`, `valid=true`, OOB at `cur_eid.at(2)` (275 VCC) |
-| `mctp_validator` | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | — |
-| `nsm_type_2` | `src/nv/mctp/nsm_type_2.cpp` (`validatePcieLinkResetValue`) | ✅ | ✅ k=12 | — |
-| `nsm_type3` | `src/nv/mctp/nsm_type_3.cpp` (`is_temp_sensor_available`, `is_power_sensor_available`, `is_voltage_sensor_available`) | ✅ 37 VCC | ✅ k=9 | — |
-| `telemetry` | `src/nv/telemetry/utils.h` (`getTelemIdFromTempSensorId`, `getTelemIdFromPowerSensorId`, `buffer_to_uint32`) | ✅ 80 VCC | ✅ k=11 | — |
-| `nsm_bitmask` | `src/nv/mctp/nsm_msg_bitmask.h` (`set_bit`/`unset_bit`/`get_bit`/`is_bit_set`) | ✅ 75 VCC | ✅ k=1 | ✅ CEX on `set_bit`/`unset_bit(arr8, pos≥64)` — F-5 |
-| `nsm_type5_validate` | `src/nv/mctp/nsm_type_5.cpp` (five field-validator functions) | ✅ 14 VCC | ✅ k=1 | — |
-| `spi_utils` | `src/nv/spi/utils.{h,cpp}` (buf_to_u16/u32, u16/u32_to_buf) | ✅ | ✅ k=9 | — |
-| `i2c_crc8` | `src/nv/i2c/helper.cpp` (crc8) | ✅ | ✅ k=5 | — |
-| `literals` | `src/nv/common/literals.h` (UDL truncation + shift) | ✅ | ✅ k=1 | ✅ CEX on `_bit(i≥64)` — F-4 |
-| `fixed_point` | `src/nv/common/fixed_point.h` | ✅ | ✅ | — |
-| `utils` | `src/nv/common/utils.h` (saturating add/sub/mul/align_to) | ✅ | ✅ | ⚠ (ESBMC strict unsigned-wrap demo, not a bug) |
-| `ntc_table` | `src/nv/volt_mon/ntc_table.{h,cpp}` (binary search + linear interpolation on 166-entry NTC thermistor table; `ntc_resistance_to_temperature`, `ntc_voltage_to_temperature`, `ntc_adc_to_temperature`, `ntc_temperature_to_resistance`, `ntc_temp_to_adc_value`) | ✅ 227 VCC | ✅ k=9 | — |
-| `pwr_smooth_params` | `src/nv/soc_pwr_smoothing/presets.{h,cpp}` (`OverrideParam::to_uint32`, `OverrideParam::from_uint32`, `is_valid_param_id`) | ✅ 72 VCC | ✅ k=1 | — |
-| `fru_utils` | `src/nv/fru/fru.cpp` (`verify_checksum`, `decode_6bit_ascii`) | ✅ 76 VCC | ✅ k=9 | — |
-| `soc_sma_filter` | `src/nv/soc_pwr_smoothing/soc_sma_filter_ch.h` (`SocSmaFilterCh::evaluate` — 4-sample sliding-window SMA over SFXP22_10) | ✅ 504 VCC | ✅ k=1 | — |
-| `debug_telemetry_sma` | `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` (`DebugTelemetrySmaCh::evaluate` — 256-sample SMA; uint8_t buffer; percent ∈ [0%, 150%]) | ✅ 261 VCC | ✅ k=1 | — |
-| `pca9555` | `src/nv/emulation/pca9555.{h,cpp}` (`Pca9555` — 16-bit I2C GPIO expander emulator; direction/input/output/inversion registers + interrupt logic) | ✅ 1292 VCC | ✅ k=2 | — |
-| `emc1812` | `src/nv/i2c/emc1812.{h,cpp}` (`Emc1812` — EMC1812 temp sensor driver; `int8_t↔uint8_t` threshold cast round-trip) | ✅ 52 VCC | ✅ k=1 | — |
-| `tmp1075` | `src/nv/i2c/tmp1075.{h,cpp}` (`Tmp1075` — TMP1075 sensor driver; 12-bit temperature encoding: `int8_t → <<4 → uint16_t → >>4 → int8_t` round-trip) | ✅ 33 VCC | ✅ k=1 | — |
-| `tmp461` | `src/nv/i2c/tmp461.{h,cpp}` (`Tmp461` / NCT72 — sensor driver; `int8_t↔uint8_t` threshold cast round-trip for four set/get pairs) | ✅ 57 VCC | ✅ k=1 | — |
+| Target | Source | Phase 1 | Phase 2 | Volatile | Negative |
+|---|---|:-:|:-:|:-:|:-:|
+| `mctp_packet` | `corepdk/.../app/pdk-mctp-app-packet.cpp` | ✅ | ✅ | ✅ | ✅ |
+| `mctp_router` | `corepdk/.../platforms/x86/pdk-mctp-platforms-router-plat.cpp` | ✅ | ✅ | ✅ | ✅ |
+| `mctp_dispatch` | F-1 reachability: `Validator::validate()` + production `on_set_endpoint_id()` | — | — | — | ✅ CEX: `iface_val=2`, `valid=true`, OOB at `cur_eid.at(2)` (275 VCC) |
+| `mctp_validator` | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | ✅ | — |
+| `nsm_type_2` | `src/nv/mctp/nsm_type_2.cpp` (`validatePcieLinkResetValue`) | ✅ | ✅ k=12 | ✅ | — |
+| `nsm_type3` | `src/nv/mctp/nsm_type_3.cpp` (`is_temp_sensor_available`, `is_power_sensor_available`, `is_voltage_sensor_available`) | ✅ 37 VCC | ✅ k=9 | ✅ | — |
+| `telemetry` | `src/nv/telemetry/utils.h` (`getTelemIdFromTempSensorId`, `getTelemIdFromPowerSensorId`, `buffer_to_uint32`) | ✅ 80 VCC | ✅ k=11 | ✅ | — |
+| `nsm_bitmask` | `src/nv/mctp/nsm_msg_bitmask.h` (`set_bit`/`unset_bit`/`get_bit`/`is_bit_set`) | ✅ 75 VCC | ✅ k=1 | ✅ | ✅ CEX on `set_bit`/`unset_bit(arr8, pos≥64)` — F-5 |
+| `nsm_type5_validate` | `src/nv/mctp/nsm_type_5.cpp` (five field-validator functions) | ✅ 14 VCC | ✅ k=1 | ✅ | — |
+| `spi_utils` | `src/nv/spi/utils.{h,cpp}` (buf_to_u16/u32, u16/u32_to_buf) | ✅ | ✅ k=9 | ✅ | — |
+| `i2c_crc8` | `src/nv/i2c/helper.cpp` (crc8) | ✅ | ✅ k=5 | ✅ | — |
+| `literals` | `src/nv/common/literals.h` (UDL truncation + shift) | ✅ | ✅ k=1 | ✅ | ✅ CEX on `_bit(i≥64)` — F-4 |
+| `fixed_point` | `src/nv/common/fixed_point.h` | ✅ | ✅ | ✅ | — |
+| `utils` | `src/nv/common/utils.h` (saturating add/sub/mul/align_to) | ✅ | ✅ | ✅ | ⚠ (ESBMC strict unsigned-wrap demo, not a bug) |
+| `ntc_table` | `src/nv/volt_mon/ntc_table.{h,cpp}` (binary search + linear interpolation on 166-entry NTC thermistor table; `ntc_resistance_to_temperature`, `ntc_voltage_to_temperature`, `ntc_adc_to_temperature`, `ntc_temperature_to_resistance`, `ntc_temp_to_adc_value`) | ✅ 227 VCC | ✅ k=9 | ✅ | — |
+| `pwr_smooth_params` | `src/nv/soc_pwr_smoothing/presets.{h,cpp}` (`OverrideParam::to_uint32`, `OverrideParam::from_uint32`, `is_valid_param_id`) | ✅ 72 VCC | ✅ k=1 | ✅ | — |
+| `fru_utils` | `src/nv/fru/fru.cpp` (`verify_checksum`, `decode_6bit_ascii`) | ✅ 76 VCC | ✅ k=9 | ✅ | — |
+| `soc_sma_filter` | `src/nv/soc_pwr_smoothing/soc_sma_filter_ch.h` (`SocSmaFilterCh::evaluate` — 4-sample sliding-window SMA over SFXP22_10) | ✅ 504 VCC | ✅ k=1 | ✅ | — |
+| `debug_telemetry_sma` | `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` (`DebugTelemetrySmaCh::evaluate` — 256-sample SMA; uint8_t buffer; percent ∈ [0%, 150%]) | ✅ 261 VCC | ✅ k=1 | ✅ | — |
+| `pca9555` | `src/nv/emulation/pca9555.{h,cpp}` (`Pca9555` — 16-bit I2C GPIO expander emulator; direction/input/output/inversion registers + interrupt logic) | ✅ 1292 VCC | ✅ k=2 | ✅ | — |
+| `emc1812` | `src/nv/i2c/emc1812.{h,cpp}` (`Emc1812` — EMC1812 temp sensor driver; `int8_t↔uint8_t` threshold cast round-trip) | ✅ 52 VCC | ✅ k=1 | ✅ | — |
+| `tmp1075` | `src/nv/i2c/tmp1075.{h,cpp}` (`Tmp1075` — TMP1075 sensor driver; 12-bit temperature encoding: `int8_t → <<4 → uint16_t → >>4 → int8_t` round-trip) | ✅ 33 VCC | ✅ k=1 | ✅ | — |
+| `tmp461` | `src/nv/i2c/tmp461.{h,cpp}` (`Tmp461` / NCT72 — sensor driver; `int8_t↔uint8_t` threshold cast round-trip for four set/get pairs) | ✅ 57 VCC | ✅ k=1 | ✅ | — |
 
 ## ESBMC issues filed
 
@@ -142,6 +145,7 @@ make pwr_smooth_params_func fru_utils_func     # ditto
 make soc_sma_filter_func debug_telemetry_sma_func  # ditto
 make pca9555_func emc1812_func                     # ditto
 make tmp1075_func tmp461_func                      # ditto
+make volatile                                  # volatile-check phase (all 22 targets)
 make mctp_packet_neg mctp_router_neg utils_neg # negative tests (expect FAILED)
 make mctp_dispatch                             # F-1 reachability proof (expect FAILED)
 make nsm_bitmask_neg                           # F-5 OOB proof (expect FAILED)

@@ -7,14 +7,24 @@
 
 ## TL;DR
 
-Twenty modules verified end-to-end against language-level safety properties
+Twenty-two modules verified end-to-end against language-level safety properties
 (pointer/bounds/overflow/div-by-zero/memory-leak) and against module-specific
 functional contracts via k-induction. **One vulnerability formally proven
 reachable** (F-1) via `mctp_dispatch` — ESBMC finds a counterexample where a
 Control SetEpId Request with a gap interface triggers `set_cur_eid()` to
-OOB-index the 2-entry `cur_eid` array; code inspection confirms the production
-call-site `on_set_endpoint_id()` makes this call unconditionally. Two
-initially-claimed findings (F-2, F-3, **F-6**) **retracted on review**. Two
+OOB-index the 2-entry `cur_eid` array. **Five additional security findings
+formally confirmed** by ESBMC (VERIFICATION FAILED on dedicated negative
+harnesses) and independently reproduced by native execution under address /
+undefined-behaviour sanitizers: **F-6** (unchecked mode byte in
+`on_dev_cfg_set_errorInjectionMode`), **F-7** (no rollback after
+`PortRecoveryPayload` validation failure), **F-8** (OOB in
+`validateGpioSpoofingErrorInjectionPayload`), **F-10** (silent 125 °C
+substitution in `set_busbar_temperature_threshold`), **F-13** (negative percent
+wrap in `DebugTelemetrySmaCh`). Three findings retracted after ESBMC returned
+VERIFICATION SUCCESSFUL (**F-9** — shift defined under C++20, **F-12** — mask
+correctly bounds 6-bit ASCII decode output, **F-14** — bare `return` and `break`
+observably equivalent for Input-register writes in `Pca9555::i2c_write`). Two
+initially-claimed findings (F-2, F-3) **retracted on review**. Two
 confirmed latent-UB findings: **F-4** in `literals.h::operator""_bit`
 (shift-count ≥ 64) and **F-5** in `nsm_msg_bitmask.h::set_bit` / `unset_bit`
 on the 8-element event bitmask (index ≥ 64 reaches `std::array::at` OOB).
@@ -34,19 +44,19 @@ workarounds removed where applicable.
 | Saturating arithmetic | `src/nv/common/utils.h` | ✅ 20 VCC | ✅ k=1 | ⚠ ESBMC strict unsigned-overflow demo (not a bug) |
 | MCTP validator state machine | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | — |
 | NSM type 2 (PCIe-link reset validator) | `src/nv/mctp/nsm_type_2.cpp` (`validatePcieLinkResetValue`) | ✅ | ✅ k=12 (membership iff + below-range rejection) | — |
-| NSM type 3 sensor availability | `src/nv/mctp/nsm_type_3.cpp` (`is_temp_sensor_available`, `is_power_sensor_available`, `is_voltage_sensor_available`) | ✅ 37 VCC | ✅ k=9 (membership iff, busbar-unavailable exclusion, voltage always-false) | — |
+| NSM type 3 sensor availability | `src/nv/mctp/nsm_type_3.cpp` (`is_temp_sensor_available`, `is_power_sensor_available`, `is_voltage_sensor_available`) | ✅ 37 VCC | ✅ k=9 (membership iff, busbar-unavailable exclusion, voltage always-false) | ✅ **F-10** CEX: `threshold=254` → Success returned for out-of-range temperature |
 | Telemetry sensor-ID lookup + LE deserialiser | `src/nv/telemetry/utils.h` (`getTelemIdFromTempSensorId`, `getTelemIdFromPowerSensorId`, `buffer_to_uint32`) | ✅ 80 VCC | ✅ k=11 (mapping iff, MaxItem for non-members, LE byte-order contract) | — |
 | SPI byte-buffer (de)serialisation | `src/nv/spi/utils.{h,cpp}` (`buf_to_u{16,32}`, `u{16,32}_to_buf`) | ✅ | ✅ k=9 (round-trip + big-endian + OOB-no-write) | — |
 | I2C CRC-8 helpers | `src/nv/i2c/helper.cpp` (`crc8`) | ✅ | ✅ k=5 (incrementality + init-zero invariant) | — |
 | User-defined integer literals | `src/nv/common/literals.h` (`_u8`/`_u16`/`_u32`/`_i8`/`_i16`/`_i32`/`_bits_sizeof`/`_bit`) | ✅ | ✅ k=1 (mask agreement, signed/unsigned truncation parity, `bits/8`, `1ULL << i`) | ✅ CEX on `_bit(i≥64)` via `--ub-shift-check` — **F-4** |
 | NSM bitmask operations | `src/nv/mctp/nsm_msg_bitmask.h` (`set_bit`/`unset_bit`/`get_bit`/`is_bit_set`) | ✅ 75 VCC | ✅ k=1 (set→get non-zero; unset→get zero; is_bit_set iff get_bit≠0) | ✅ CEX on `set_bit`/`unset_bit(arr8, pos≥64)` — **F-5** |
-| NSM type 5 field validators | `src/nv/mctp/nsm_type_5.cpp` (`validateFatalErrorInjectionPayload`, `validateDeviceIndex{GpuDegradeMode,PowerSupply}`, `validateAction{GpuDegradeMode}`, `validateModePowerSupply`) | ✅ 14 VCC | ✅ k=1 (exact characterisation: accepted iff bitmask∈{0,1,2}, index/mode in documented ranges) | — |
+| NSM type 5 field validators | `src/nv/mctp/nsm_type_5.cpp` (`validateFatalErrorInjectionPayload`, `validateDeviceIndex{GpuDegradeMode,PowerSupply}`, `validateAction{GpuDegradeMode}`, `validateModePowerSupply`) | ✅ 14 VCC | ✅ k=1 (exact characterisation: accepted iff bitmask∈{0,1,2}, index/mode in documented ranges) | ✅ **F-6** CEX: `mode=0xFF` stored; **F-7** CEX: dirty `portRecoveryResp` on validation failure; **F-8** CEX: `gpio_ei_entries[16]` OOB |
 | NTC thermistor table | `src/nv/volt_mon/ntc_table.{h,cpp}` (`ntc_resistance_to_temperature`, `ntc_voltage_to_temperature`, `ntc_adc_to_temperature`, `ntc_temperature_to_resistance`, `ntc_temp_to_adc_value`) | ✅ 227 VCC | ✅ k=9 (exact table lookup, range clamping, round-trip identity) | — |
 | Power-smoothing params | `src/nv/soc_pwr_smoothing/presets.{h,cpp}` (`OverrideParam::to_uint32`, `::from_uint32`, `is_valid_param_id`) | ✅ 72 VCC | ✅ k=1 (round-trip pack↔unpack identity, param-id exact characterisation) | — |
 | FRU utilities | `src/nv/fru/fru.cpp` (`verify_checksum`, `decode_6bit_ascii`) | ✅ 76 VCC | ✅ k=9 (checksum true iff sum≡0 mod 256, decode output ∈ [0x20, 0x5F]) | — |
 | SoC SMA filter | `src/nv/soc_pwr_smoothing/soc_sma_filter_ch.h` (`SocSmaFilterCh::evaluate` — 4-sample sliding-window SMA over SFXP22_10) | ✅ 504 VCC | ✅ k=1 (steady-state: 4 equal inputs → output == input; output ∈ [0, input]) | — |
-| Debug telemetry SMA | `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` (`DebugTelemetrySmaCh::evaluate` — 256-sample SMA; UFXP8_0 buffer; percent ∈ [0%, 150%]) | ✅ 261 VCC | ✅ k=1 (index bounded ∈ [0, 255] by bitwise-AND; output non-negative from zero state) | — |
-| PCA9555 GPIO expander emulator | `src/nv/emulation/pca9555.{h,cpp}` (`Pca9555` — 16-bit I2C GPIO expander; direction/input/output/inversion registers + interrupt-on-change logic) | ✅ 1292 VCC | ✅ k=2 (direction constraint with precondition req_in∩req_out=∅; input_update_masked; interrupt_default; output_propagation) | — |
+| Debug telemetry SMA | `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` (`DebugTelemetrySmaCh::evaluate` — 256-sample SMA; UFXP8_0 buffer; percent ∈ [0%, 150%]) | ✅ 261 VCC | ✅ k=1 (index bounded ∈ [0, 255] by bitwise-AND; output non-negative from zero state) | ✅ **F-13** CEX: `percent=-1024` → `stored=255` (negative wrap) |
+| PCA9555 GPIO expander emulator | `src/nv/emulation/pca9555.{h,cpp}` (`Pca9555` — 16-bit I2C GPIO expander; direction/input/output/inversion registers + interrupt-on-change logic) | ✅ 1292 VCC | ✅ k=2 (direction constraint with precondition req_in∩req_out=∅; input_update_masked; interrupt_default; output_propagation) | ✅ VERIFICATION SUCCESSFUL (405 VCC, production `pca9555.cpp`): output state unchanged after Input-register write — **F-14 retracted** (bare `return` and `break` observably equivalent; code-quality note) |
 | EMC1812 temperature sensor driver | `src/nv/i2c/emc1812.{h,cpp}` (`Emc1812` — EMC1812 temp sensor driver; all public methods with nondet I2C stubs; `int8_t↔uint8_t` threshold cast round-trip verified for all six set/get pairs) | ✅ 52 VCC | ✅ k=1 (cast_roundtrip: `static_cast<int8_t>(static_cast<uint8_t>(t)) == t` for all `int8_t t`; threshold_symmetry: all four pairs) | — |
 | TMP1075 temperature sensor driver | `src/nv/i2c/tmp1075.{h,cpp}` (`Tmp1075` — 12-bit two's-complement temperature encoding: `int8_t → <<4 → int16_t → uint16_t → >>4 → int8_t` round-trip; `get_device_id`; `set/get_{low,high}_limit`) | ✅ 33 VCC | ✅ k=1 (12bit_roundtrip: `static_cast<int8_t>(static_cast<int16_t>(static_cast<uint16_t>(static_cast<int16_t>(t<<4)))>>4) == t` for all `int8_t t`; temp_read_cast well-defined) | — |
 | TMP461 temperature sensor driver | `src/nv/i2c/tmp461.{h,cpp}` (`Tmp461` / NCT72 — `int8_t↔uint8_t` threshold cast round-trip for four alert/therm set/get pairs; `get_configuration`) | ✅ 57 VCC | ✅ k=1 (cast_roundtrip + threshold_symmetry for all four pairs) | — |
@@ -263,7 +273,197 @@ Apply the same fix to `unset_bit`. Alternatively, make the precondition
 explicit in a `static_assert` or `constexpr` wrapper that limits `pos` to the
 representable range of the array.
 
-### F-6 — RETRACTED (was: `buffer_to_uint32` misplaced cast)
+### F-6 — `on_dev_cfg_set_errorInjectionMode` stores unchecked mode byte
+
+**File**: `src/nv/mctp/nsm_type_5.cpp:777–803`
+
+```cpp
+Ccode on_dev_cfg_set_errorInjectionMode(const NsmRequest& nrx)
+{
+    ...
+    type5_data.errorInjectionModeResponse.mode = nrx.data[0];  // no range check
+    ...
+}
+```
+
+`nrx.data[0]` is an arbitrary byte from the network. `NsmDevCfgEnablingMode` has only two valid values (`Disable = 0x00`, `Enable = 0x01`), but the field is stored without validation. Any out-of-range value (e.g. `0xFF`) is accepted and persisted.
+
+**What ESBMC proved** (`nsm_type5_f6_neg`, VERIFICATION FAILED):
+
+Nondet `request_mode` constrained to `request_mode != Disable && request_mode != Enable` (i.e. any value other than 0 or 1). The harness asserts `mode ∈ {Disable, Enable}` after the write. CEX: `mode = 0xFF` stored.
+
+**Rigor note**: the harness inlines the production logic verbatim (confirmed line-for-line against `nsm_type_5.cpp:777–803`). Full compilation of `nsm_type_5.cpp` with ESBMC is blocked by esbmc#4245 (`<optional>` and `<chrono>` missing from ESBMC's bundled C++ library) and by hardware-specific headers (`mbedtls/ctr_drbg.h`, `sys/adc/adc.h`).
+
+**Runtime confirmation**: sanitizer run (`-fsanitize=address,undefined`) with `request_mode = 0xFF` triggers `assert(mode == Disable || mode == Enable)` → SIGABRT. `ctest/f6/`.
+
+**Recommendation**: add a range check before the assignment:
+```cpp
+if (nrx.data[0] != Disable && nrx.data[0] != Enable)
+    return Ccode::ErrorInvalidData;
+type5_data.errorInjectionModeResponse.mode = nrx.data[0];
+```
+
+---
+
+### F-7 — `on_dev_cfg_set_portRecoveryErrorInjection` writes before validating (no rollback)
+
+**File**: `src/nv/mctp/nsm_type_5.cpp:1085–1108`
+
+```cpp
+static Ccode on_dev_cfg_set_portRecoveryErrorInjection(const NsmRequest& nrx)
+{
+    memcpy(&portRecoveryEIPayload, nrx.data, sizeof(portRecoveryEIPayload));  // write first
+    if (!validatePortRecoveryErrorInjectionPayload(...)) {
+        // portRecoveryEIPayload already corrupted — no rollback
+        return Ccode::ErrorInvalidData;
+    }
+    ...
+}
+```
+
+The handler copies the incoming payload into `portRecoveryEIPayload` (persistent state) **before** validating it. If validation fails, the function returns an error but `portRecoveryEIPayload` already holds the invalid data. A subsequent read of `portRecoveryEIPayload` will observe the corrupted value.
+
+**What ESBMC proved** (`nsm_type5_f7_neg`, VERIFICATION FAILED):
+
+Nondet `incoming` payload, nondet validator constrained to fail (`!valid`). After the failed write, harness asserts `is_zero_initialised(stored)` — that `portRecoveryEIPayload` is unchanged from its zero-initialised state. CEX: `incoming.offset = 42`, validator returns false, `stored.offset = 42`.
+
+**Runtime confirmation**: sanitizer run with `incoming.offset = 42` and validator forced to return false → assertion fires. `ctest/f7/`.
+
+**Recommendation**: validate before writing, or save and restore on failure:
+```cpp
+// Option A: validate-then-write
+if (!validatePortRecoveryErrorInjectionPayload(...))
+    return Ccode::ErrorInvalidData;
+memcpy(&portRecoveryEIPayload, nrx.data, sizeof(portRecoveryEIPayload));
+```
+
+---
+
+### F-8 — `validateGpioSpoofingErrorInjectionPayload` lacks bounds check on `ei_gpio_entries` (latent)
+
+**File**: `src/nv/mctp/nsm_type_5.cpp:298–333`
+
+```cpp
+for (uint8_t i = 0; i < gpioSpoofingPayload.header.ei_gpio_number; i++) {
+    auto gpio_entry = gpioSpoofingPayload.data.ei_gpio_entries[i];  // no bounds check
+    ...
+}
+```
+
+`ei_gpio_entries` is sized `MaxGPIOSpoofingEntries = 16`. The loop iterates `ei_gpio_number` times without first checking `ei_gpio_number <= MaxGPIOSpoofingEntries`. A crafted payload with `ei_gpio_number = 17` would access `ei_gpio_entries[16]`, one element past the array end.
+
+**What ESBMC proved** (`nsm_type5_f8_neg`, `--unwind 17`, VERIFICATION FAILED):
+
+Nondet `n` constrained to `n > MaxGPIOSpoofingEntries`; loop runs to `i = 16`. CEX: `ei_gpio_entries[16]` OOB access at `i = 16`.
+
+**Classification: latent issue.** The call site at `nsm_type_5.cpp:1147–1150` includes a guard:
+```cpp
+if (gpioSpoofingHeader.ei_gpio_number > MaxGPIOSpoofingEntries)
+    return Ccode::ErrorInvalidData;
+```
+This guard prevents the OOB from being directly reachable in the current codebase. The finding is latent: the validator itself is unsafe and could be called from a future call site without the guard.
+
+**Recommendation**: add the bounds check inside `validateGpioSpoofingErrorInjectionPayload` so the invariant is self-contained and does not depend on caller discipline:
+```cpp
+if (gpioSpoofingPayload.header.ei_gpio_number > MaxGPIOSpoofingEntries)
+    return false;
+```
+
+---
+
+### F-10 — `set_busbar_temperature_threshold` silently substitutes 125 °C for out-of-range input
+
+**File**: `src/nv/mctp/nsm_type_3.cpp:445–491`
+
+```cpp
+uint32_t resistanceOhm = volt_mon::ntc_temperature_to_resistance(tempCelsius);
+if (resistanceOhm == 0) {
+    // Invalid temperature, use default max temp (125°C)   <-- silent substitution
+    resistanceOhm = volt_mon::ntc_temperature_to_resistance(volt_mon::NtcTempMax);
+    // falls through — returns Ccode::Success
+}
+```
+
+`request.threshold` is a `uint8_t` (0–255) cast to `int16_t`. Values 126–255 exceed `NtcTempMax (125)`, so `ntc_temperature_to_resistance` returns 0 (out-of-range sentinel). The code silently substitutes 125 °C and returns `Ccode::Success` instead of an error, making the threshold-set appear to succeed when it applied a clamped value the caller did not request.
+
+**What ESBMC proved** (`nsm_type3_f10_neg`, VERIFICATION FAILED):
+
+The harness **directly compiles `src/nv/volt_mon/ntc_table.cpp`** (production code — 166-entry real NTC lookup table, not a model). ESBMC traces through the actual `ntc_temperature_to_resistance` implementation. Nondet `threshold` constrained to the out-of-range region (`tempCelsius > NtcTempMax`); harness confirms the real NTC function returns 0 on this path, then asserts the function must not return `Ccode::Success`. CEX: `threshold = 255` → `ntc_temperature_to_resistance(255) = 0` → function returns `Success`.
+
+**Rigor note (F-1 style)**: `ntc_table.cpp` is compiled from production source without modification. The `set_busbar_temperature_threshold` logic is inlined verbatim (confirmed line-for-line against `nsm_type_3.cpp:445–491`); only the hardware `BusbarTemp` singleton (ADC interaction) is stubbed. Full compilation of `nsm_type_3.cpp` with ESBMC is blocked by esbmc#4245 and hardware headers (`sys/adc/adc.h`).
+
+**Config-level note**: the testrunner `config.h` sets `BusBarTempSensorNum = 0`, which compiles away the entire if-constexpr block and makes this code path unreachable in the testrunner build. On production hardware `BusBarTempSensorNum > 0` and the path is live.
+
+**Runtime confirmation**: sanitizer run with `threshold = 254` → assertion `result != Ccode::Success` fires. `ctest/f10/`.
+
+**Recommendation**: return an error instead of silently substituting:
+```cpp
+if (resistanceOhm == 0) {
+    nv::warn("%s() out-of-range threshold %d°C\n", __func__, tempCelsius);
+    return Ccode::ErrorInvalidData;
+}
+```
+
+---
+
+### F-13 — `DebugTelemetrySmaCh::evaluate` wraps negative percent to unsigned
+
+**File**: `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h`
+
+```cpp
+// sfxp22_10_to_sfxp32_0 converts SFXP22.10 → SFXP32.0 (i.e. >> 10, signed)
+const auto percent_int = sfxp22_10_to_sfxp32_0(ports.percent);   // SFXP32.0
+static_cast<UFXP8_0>(percent_int)                                  // → uint8_t
+// stored in SMA buffer
+```
+
+`ports.percent` is a signed fixed-point value. `sfxp22_10_to_sfxp32_0` applies a signed right-shift (`>> 10`). If the resulting `SFXP32_0` integer is negative (e.g. `-1`), `static_cast<UFXP8_0>` (which is `uint8_t`) wraps modulo 256: `-1 → 255`. The SMA buffer then stores `255` when the true value was `−1` (≈ `-0.001%`), corrupting any downstream smoothed-percentage computation.
+
+**What ESBMC proved** (`debug_telemetry_f13_neg`, VERIFICATION FAILED):
+
+Harness includes the **production header** `nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` and calls `filter.evaluate(ports)` directly. Nondet `percent` constrained to `x < 0`. Asserts `stored <= 150`. CEX: `percent = -1024` → `sfxp32_0 = -1` → `stored = 255 > 150`.
+
+**Runtime confirmation**: sanitizer run with `x = -1024` → assertion fires. `ctest/f13/`.
+
+**Recommendation**: guard against negative percent before cast:
+```cpp
+if (percent_int < 0)
+    return;                     // or clamp to 0
+static_cast<UFXP8_0>(percent_int);
+```
+
+---
+
+### F-14 — RETRACTED: `Pca9555::i2c_write` bare `return` on Input command (code-quality observation)
+
+**File**: `src/nv/emulation/pca9555.cpp:142–175`
+
+```cpp
+CommandRegister = cmd_byte / 2;           // fixed for all iterations
+for (uint8_t i = start_index; i < data_length; i++) {
+    switch (CommandRegister) {
+        case Input:
+            return;    // bare return — but Input case has no body
+        case Output: ...
+    }
+}
+```
+
+**Initially filed** based on an inline-model harness (not compiling the production source) that asserted `completed == expected` iterations and found a CEX. That analysis was incorrect.
+
+**Why it was wrong**: `CommandRegister` is computed *once* before the loop as `cmd_byte / 2` and does not change across iterations. For any Input-register write (`cmd_byte ∈ {0, 1}`), `CommandRegister == Input` on every iteration. The `case Input` body is empty — there are no state mutations in that case. Therefore the bare `return` and a `break` produce **identical observable state**: `_gpio_output`, `_gpio_direction`, and `_gpio_inversion` are all unchanged either way. The commented-out `nv::warn("trying to write to PCA9555 input pin")` confirms the author treated this as an intentional caller-error path.
+
+**What the upgraded harness confirmed** (`pca9555_f14_neg`, **VERIFICATION SUCCESSFUL — 405 VCC**):
+
+The harness was rewritten to call the **actual production `Pca9555::i2c_write()`** from `pca9555.cpp` compiled by ESBMC (same rigor as F-1). It snapshots `output_before`, calls `dev.i2c_write(buf, 3)` with `buf[0]=0x00` (Input register) and nondet data bytes, then asserts `output_after == output_before`. ESBMC explored 405 verification conditions and found no violation. The production code path through `pca9555.cpp:142` was confirmed reachable and safe.
+
+**Classification**: code-quality / documentation issue. The bare `return` is not wrong — it is observably equivalent to `break` for Input registers — but `break` would communicate intent more clearly, and the commented-out warn() line suggests the intent was never documented.
+
+**Recommendation** (style only, not a security fix): replace `return` with `break` and uncomment or add a brief comment explaining that Input registers are hardware-read-only and writes are silently ignored.
+
+---
+
+### Former F-6 (retracted) — `buffer_to_uint32` misplaced cast
 
 **File**: `src/nv/telemetry/utils.cpp:31`
 
@@ -370,6 +570,7 @@ backed by an open issue.**
 | [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-initialising `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111); `Derived d;` (default-init) works correctly | **fixed** by [#4238](https://github.com/esbmc/esbmc/pull/4238) | (workaround removed; `ctrl{}` now constructs cleanly) |
 | [#4240](https://github.com/esbmc/esbmc/issues/4240) | `--overflow-check` / `--ub-shift-check` generating false-positive signed-shl VCCs under `--std c++20` (C++20 [expr.shift]/2 defines signed left-shift wrapping for all inputs; ESBMC was still applying pre-C++20 rules) | **fixed** by [#4241](https://github.com/esbmc/esbmc/pull/4241) | (no workaround needed; repro: `esbmc_bug_repros/signed_shift_result_overflow.cpp`) |
 | [#4243](https://github.com/esbmc/esbmc/issues/4243) | bundled `<array>` value-init (`{}`) does not zero-initialise `elems` — two violations: (1) bundled `class array` with `private: elems[N]` is not an aggregate, violating [array.overview]; (2) ESBMC skips the zero-init step of value-initialisation for non-user-provided default constructors ([dcl.init.general]/8), leaving elements as nondet and causing false-positive overflow VCCs on SMA filter accumulators | **fixed** by [#4244](https://github.com/esbmc/esbmc/pull/4244) — `elems` made `public`, restoring aggregate status (merged 2026-05-02) | `<array>` shim retained (pending ESBMC version bump) |
+| [#4245](https://github.com/esbmc/esbmc/issues/4245) | `[C++ OM] Missing bundled headers: <optional> and <chrono>` — ESBMC's bundled C++ library (`src/cpp/library/`) does not provide `<optional>` (C++17) or `<chrono>` (C++11); `<ratio>` and `<variant>` are also absent. Blocks direct compilation of `nsm_type_3.cpp` and `nsm_type_5.cpp` from production source. | **open** (filed 2026-05-02) | thin `stubs/optional` and `stubs/chrono` shims added; harnesses for F-6/F-7/F-8/F-10 use inline-model approach for the logic blocked by these headers |
 | [#2789](https://github.com/esbmc/esbmc/issues/2789) | negative shift distance (`x << y`, `y < 0`) not flagged under `--overflow-check`; only caught by `--ub-shift-check` | **fixed** by [#4242](https://github.com/esbmc/esbmc/pull/4242) (merged 2026-05-02) — extends negative-shift-distance UB check to fire under `--overflow-check` | — |
 
 Every workaround site is tagged `// WORKAROUND esbmc#<n>` pointing at the
@@ -451,6 +652,12 @@ make mctp_packet_neg        # negative tests (expect VERIFICATION FAILED)
 make mctp_router_neg
 make mctp_dispatch          # F-1 reachability proof (expect VERIFICATION FAILED)
 make nsm_bitmask_neg        # F-5: set_bit OOB on 8-element array (expect VERIFICATION FAILED)
+make nsm_type5_f6_neg       # F-6: unchecked mode byte stored (expect VERIFICATION FAILED)
+make nsm_type5_f7_neg       # F-7: no rollback after validation failure (expect VERIFICATION FAILED)
+make nsm_type5_f8_neg       # F-8: gpio ei_entries[16] OOB (expect VERIFICATION FAILED)
+make nsm_type3_f10_neg      # F-10: silent 125°C substitution — real ntc_table.cpp (expect VERIFICATION FAILED)
+make debug_telemetry_f13_neg  # F-13: negative percent wrap to uint8 (expect VERIFICATION FAILED)
+make pca9555_f14_neg        # F-14: retracted — production pca9555.cpp (expect VERIFICATION SUCCESSFUL)
 ```
 
 ESBMC 8.2.0 on `$PATH`, or pass `ESBMC=/path/to/esbmc make ...`.

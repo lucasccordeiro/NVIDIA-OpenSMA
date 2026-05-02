@@ -1,0 +1,297 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.526s
+GOTO program processing time: 0.004s
+Starting Bounded Model Checking
+Unwinding loop 5 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 9   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 10   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 11   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 12   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 13   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 14   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 15   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+Unwinding loop 5 iteration 16   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 72 column 5 function main
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 9   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 10   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 11   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 12   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 13   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 14   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 15   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Unwinding loop 4 iteration 16   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct GpioSpoofingEntry
+Not unwinding loop 4 iteration 17   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 51 column 5 function validateGpioSpoofingErrorInjectionPayload
+Symex completed in: 0.055s (231 assignments)
+Caching time: 0.001s (removed 2 assertions)
+Slicing time: 0.001s (removed 108 assignments)
+Generated 184 VCC(s), 36 remaining after simplification (121 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.009s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Building error trace
+
+[Counterexample]
+
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 67 column 5 function main thread 0
+----------------------------------------------------
+  n = 65535 (11111111 11111111)
+
+State 4 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 69 column 5 function main thread 0
+----------------------------------------------------
+  payload.gpio_spoofing_header.ei_gpio_number = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=n?1!0&0#1 }, .gpio_ei_entries={ { .gpioIndex = 0 }, { .gpioIndex = 0 }, { .gpioIndex = 0 }, { .gpioIndex = 0 }, { .gpioIndex = 0 }, { .gpioIndex = 0 }, { .gpioIndex = 0 }, { .gpioIndex = 0 }, { .gpioIndex = 0 }, { .gpioIndex = 0 }, { .gpioIndex = 0 }, { .gpioIndex = 0 }, { .gpioIndex = 0 }, { .gpioIndex = 0 }, { .gpioIndex = 0 }, { .gpioIndex = 0 } } }
+
+State 5 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 6 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 7 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 9 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 10 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 11 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 13 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 14 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 15 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 17 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 18 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 19 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 21 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 22 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 23 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 25 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 26 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 27 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 29 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 30 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 31 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 33 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 34 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 35 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 37 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 38 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 39 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 41 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 42 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 43 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 45 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 46 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 47 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 49 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 50 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 51 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 53 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 54 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 55 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 57 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 58 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 59 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 61 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 62 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 63 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 65 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 73 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].gpioIndex = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 66 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 74 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].activated = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 67 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 75 column 9 function main thread 0
+----------------------------------------------------
+  payload.gpio_ei_entries[(signed long int)j].polarity = { .gpio_spoofing_header={ .offset=0, .error_injection_id=0, .ei_gpio_number=65535 }, .gpio_ei_entries={ .gpioIndex = 0 } }
+
+State 85 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 54 column 9 function validateGpioSpoofingErrorInjectionPayload thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f8_harness.cpp line 54 column 9 function validateGpioSpoofingErrorInjectionPayload
+  dereference failure: Access to object out of bounds
+
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit aarch64 macos

@@ -1,10 +1,10 @@
 // Thin std::span shim for ESBMC verification.
-// Tracks: residual gaps under esbmc#4190 — bundled <span> (added in #4194)
-// is otherwise fine, but it (a) does not transitively #include <bit>, which
-// production code relies on for std::bit_cast, and (b) drags the bundled
-// <array> in, colliding with our own <array> shim that's still required
-// for the aggregate-init divergence (also #4190). This thin replacement
-// keeps the bundled <bit> and provides only std::span.
+// Tracks: residual gap under esbmc#4191 — the bundled <span> (added in
+// esbmc#4190 / #4194) does not transitively #include <bit>, which production
+// code relies on for std::bit_cast (pdk-mctp-app-packet.h). This shim
+// provides std::span and explicitly includes our <bit> shim so the transitive
+// dependency is satisfied. The earlier <array>-collision reason is resolved
+// by esbmc#4190 being fixed; only the transitive-<bit> gap remains.
 #pragma once
 #include <cstddef>
 #include <bit>  // production code uses <span>'s transitive <bit> for std::bit_cast

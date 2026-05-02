@@ -458,16 +458,15 @@ Full analysis for each retraction is in [NOTES.md](NOTES.md).
 
 ### Active workarounds
 
-Three thin header shims remain in `verification/stubs/` as workarounds for
+Two thin header shims remain in `verification/stubs/` as workarounds for
 issues not yet fully resolved in the ESBMC binary on `$PATH`. Each is tagged
 `// WORKAROUND esbmc#<n>`. Removing a shim is a mechanical step once the
 corresponding ESBMC version is bumped.
 
 | Issue | Description | Workaround in tree |
 |---|---|---|
-| [#4190](https://github.com/esbmc/esbmc/issues/4190) | Bundled `<array>` is a `class`, not an aggregate; value-initialisation diverges. Zero-init fix (#4244, merged 2026-05-02) pending version bump. | `stubs/array` shim retained |
 | [#4191](https://github.com/esbmc/esbmc/issues/4191) + [#4192](https://github.com/esbmc/esbmc/pull/4192) | Bundled `<bit>` pointer overload uses `reinterpret_cast`, breaking `bit_cast<T*>(this)` in const methods. | `stubs/bit` shim retained (const-aware C-cast for pointer specialisation) |
-| [#4194](https://github.com/esbmc/esbmc/pull/4194) | Thin `<span>` replacement needed to avoid bundled-`<array>` collision and provide transitive `<bit>`. | `stubs/span` shim retained |
+| [#4191](https://github.com/esbmc/esbmc/issues/4191) | Bundled `<span>` does not transitively include `<bit>`; production code (`pdk-mctp-app-packet.h`) relies on that transitive include for `std::bit_cast`. The earlier `<array>`-collision reason is resolved by esbmc#4190 being fixed. | `stubs/span` shim retained (provides transitive `<bit>` only) |
 
 ### Closed issues
 
@@ -475,6 +474,7 @@ The following ESBMC issues were surfaced during this work and are now fully
 resolved with no remaining workarounds in the tree:
 
 [#4180](https://github.com/esbmc/esbmc/issues/4180) (umbrella; split into #4183/#4184),
+[#4190](https://github.com/esbmc/esbmc/issues/4190) (fixed by [#4192](https://github.com/esbmc/esbmc/pull/4192) + [#4194](https://github.com/esbmc/esbmc/pull/4194) + [#4244](https://github.com/esbmc/esbmc/pull/4244) — `<bit>`, `<span>`, `<type_traits>`, and `<array>` aggregate; `stubs/array` removed),
 [#4182](https://github.com/esbmc/esbmc/issues/4182) (fixed by [#4187](https://github.com/esbmc/esbmc/pull/4187)),
 [#4183](https://github.com/esbmc/esbmc/issues/4183) (fixed by [#4188](https://github.com/esbmc/esbmc/pull/4188)),
 [#4195](https://github.com/esbmc/esbmc/issues/4195) (fixed by [#4204](https://github.com/esbmc/esbmc/pull/4204)),

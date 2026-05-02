@@ -1,0 +1,46 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/emc1812_harness.cpp
+Parsing /Users/user/NVIDIA-OpenSMA/src/nv/i2c/emc1812.cpp
+In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/emc1812_harness.cpp:28:
+In file included from /Users/user/NVIDIA-OpenSMA/src/nv/i2c/emc1812.h:18:
+In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/nv/i2c/sensor.h:11:
+In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
+/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
+   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
+      |                                                                                           ^
+/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
+   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
+      |                                                                                              ^
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.561s
+Interval Analysis time: 0.008s
+GOTO program processing time: 0.012s
+Checking base case, k = 1
+Starting Bounded Model Checking
+Symex completed in: 0.010s (176 assignments)
+Slicing time: 0.001s (removed 136 assignments)
+Generated 51 VCC(s), 15 remaining after simplification (40 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+BMC program time: 0.012s
+No bug has been found in the base case
+Checking forward condition, k = 1
+Starting Bounded Model Checking
+Symex completed in: 0.009s (171 assignments)
+Slicing time: 0.001s (removed 146 assignments)
+Generated 46 VCC(s), 10 remaining after simplification (25 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+BMC program time: 0.011s
+
+VERIFICATION SUCCESSFUL
+
+Solution found by the forward condition; all states are reachable (k = 1)
+ESBMC version 8.2.0 64-bit aarch64 macos

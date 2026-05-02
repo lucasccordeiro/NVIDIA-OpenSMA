@@ -57,6 +57,8 @@ ESBMC to produce a counterexample.
 | `fru_utils` | `src/nv/fru/fru.cpp` (`verify_checksum`, `decode_6bit_ascii`) | ✅ 76 VCC | ✅ k=9 | — |
 | `soc_sma_filter` | `src/nv/soc_pwr_smoothing/soc_sma_filter_ch.h` (`SocSmaFilterCh::evaluate` — 4-sample sliding-window SMA over SFXP22_10) | ✅ 504 VCC | ✅ k=1 | — |
 | `debug_telemetry_sma` | `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` (`DebugTelemetrySmaCh::evaluate` — 256-sample SMA; uint8_t buffer; percent ∈ [0%, 150%]) | ✅ 261 VCC | ✅ k=1 | — |
+| `pca9555` | `src/nv/emulation/pca9555.{h,cpp}` (`Pca9555` — 16-bit I2C GPIO expander emulator; direction/input/output/inversion registers + interrupt logic) | ✅ 1292 VCC | ✅ k=2 | — |
+| `emc1812` | `src/nv/i2c/emc1812.{h,cpp}` (`Emc1812` — EMC1812 temp sensor driver; `int8_t↔uint8_t` threshold cast round-trip) | ✅ 52 VCC | ✅ k=1 | — |
 
 ## ESBMC issues filed
 
@@ -130,6 +132,7 @@ make fixed_point_func utils_func               # ditto
 make ntc_table_func                            # ditto
 make pwr_smooth_params_func fru_utils_func     # ditto
 make soc_sma_filter_func debug_telemetry_sma_func  # ditto
+make pca9555_func emc1812_func                     # ditto
 make mctp_packet_neg mctp_router_neg utils_neg # negative tests (expect FAILED)
 make mctp_dispatch                             # F-1 reachability proof (expect FAILED)
 make nsm_bitmask_neg                           # F-5 OOB proof (expect FAILED)

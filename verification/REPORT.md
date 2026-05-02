@@ -20,16 +20,15 @@ undefined-behaviour sanitizers: **F-6** (unchecked mode byte in
 `PortRecoveryPayload` validation failure), **F-8** (OOB in
 `validateGpioSpoofingErrorInjectionPayload`), **F-10** (silent 125 °C
 substitution in `set_busbar_temperature_threshold`), **F-13** (negative percent
-wrap in `DebugTelemetrySmaCh`). Three findings retracted after ESBMC returned
-VERIFICATION SUCCESSFUL (**F-9** — shift defined under C++20, **F-12** — mask
-correctly bounds 6-bit ASCII decode output, **F-14** — bare `return` and `break`
-observably equivalent for Input-register writes in `Pca9555::i2c_write`). Two
-initially-claimed findings (F-2, F-3) **retracted on review**. Two
-confirmed latent-UB findings: **F-4** in `literals.h::operator""_bit`
-(shift-count ≥ 64) and **F-5** in `nsm_msg_bitmask.h::set_bit` / `unset_bit`
-on the 8-element event bitmask (index ≥ 64 reaches `std::array::at` OOB).
-Neither F-4 nor F-5 has a dangerous current call site, but F-5 lacks the
-runtime guard that sibling operations carry. Several ESBMC C++-frontend bugs filed against
+wrap in `DebugTelemetrySmaCh`). Six findings retracted: three after ESBMC
+returned VERIFICATION SUCCESSFUL (**F-9**, **F-12**, **F-14**) and three on
+initial review (**F-2**, **F-3**, **former F-6**) — see [Retracted findings](#retracted-findings)
+and [Appendix A](#appendix-a--retraction-details). Two confirmed latent-UB
+findings: **F-4** in `literals.h::operator""_bit` (shift-count ≥ 64) and
+**F-5** in `nsm_msg_bitmask.h::set_bit` / `unset_bit` on the 8-element event
+bitmask (index ≥ 64 reaches `std::array::at` OOB). Neither F-4 nor F-5 has a
+dangerous current call site, but F-5 lacks the runtime guard that sibling
+operations carry. Several ESBMC C++-frontend bugs filed against
 [esbmc/esbmc](https://github.com/esbmc/esbmc); most are now fixed and merged;
 workarounds removed where applicable.
 
@@ -434,102 +433,6 @@ static_cast<UFXP8_0>(percent_int);
 
 ---
 
-### F-14 — RETRACTED: `Pca9555::i2c_write` bare `return` on Input command (code-quality observation)
-
-**File**: `src/nv/emulation/pca9555.cpp:142–175`
-
-```cpp
-CommandRegister = cmd_byte / 2;           // fixed for all iterations
-for (uint8_t i = start_index; i < data_length; i++) {
-    switch (CommandRegister) {
-        case Input:
-            return;    // bare return — but Input case has no body
-        case Output: ...
-    }
-}
-```
-
-**Initially filed** based on an inline-model harness (not compiling the production source) that asserted `completed == expected` iterations and found a CEX. That analysis was incorrect.
-
-**Why it was wrong**: `CommandRegister` is computed *once* before the loop as `cmd_byte / 2` and does not change across iterations. For any Input-register write (`cmd_byte ∈ {0, 1}`), `CommandRegister == Input` on every iteration. The `case Input` body is empty — there are no state mutations in that case. Therefore the bare `return` and a `break` produce **identical observable state**: `_gpio_output`, `_gpio_direction`, and `_gpio_inversion` are all unchanged either way. The commented-out `nv::warn("trying to write to PCA9555 input pin")` confirms the author treated this as an intentional caller-error path.
-
-**What the upgraded harness confirmed** (`pca9555_f14_neg`, **VERIFICATION SUCCESSFUL — 405 VCC**):
-
-The harness was rewritten to call the **actual production `Pca9555::i2c_write()`** from `pca9555.cpp` compiled by ESBMC (same rigor as F-1). It snapshots `output_before`, calls `dev.i2c_write(buf, 3)` with `buf[0]=0x00` (Input register) and nondet data bytes, then asserts `output_after == output_before`. ESBMC explored 405 verification conditions and found no violation. The production code path through `pca9555.cpp:142` was confirmed reachable and safe.
-
-**Classification**: code-quality / documentation issue. The bare `return` is not wrong — it is observably equivalent to `break` for Input registers — but `break` would communicate intent more clearly, and the commented-out warn() line suggests the intent was never documented.
-
-**Recommendation** (style only, not a security fix): replace `return` with `break` and uncomment or add a brief comment explaining that Input registers are hardware-read-only and writes are silently ignored.
-
----
-
-### Former F-6 (retracted) — `buffer_to_uint32` misplaced cast
-
-**File**: `src/nv/telemetry/utils.cpp:31`
-
-```cpp
-| (static_cast<uint32_t>(buffer[3] << Byte3));  // cast after shift — initially flagged
-```
-
-The cast is applied after the shift rather than before. Initially filed as "signed-shift UB for `buffer[3] >= 0x80` under C++20." **Retracted**: C++20 P0907R4/P1236R1 makes signed left-shift fully defined for all inputs — the result is the unique value congruent to `E1 × 2^E2` modulo `2^N` — removing both the negative-E1 and result-overflow UB clauses that existed in C++17. ESBMC's bitvector model was already correct; `--overflow-check` rightly generates no VCC for this expression under `--std c++20`.
-
-This is the same standard-conformance question as the retracted F-3 (`buf_to_u32`). The REPORT.md entry for F-3 already quoted this rule correctly ("Under C++20+ `[expr.shift]/2`, signed left-shift `E1 << E2` is well-defined"); F-6 should have been retracted on the same grounds.
-
-The code pattern is still a **style/portability issue**: bytes 0–2 cast before shifting (`static_cast<uint32_t>(buffer[N]) << Byte`) while byte 3 casts after. The recommended fix (move the cast before the shift) makes the intent uniform and correct even under C++17:
-```cpp
-| (static_cast<uint32_t>(buffer[3]) << Byte3)
-```
-
-**ESBMC issue filed as a consequence** — the misanalysis led to filing [esbmc#4240](https://github.com/esbmc/esbmc/issues/4240) ("ESBMC misses signed shl overflow UB under C++20"). That framing was wrong (no UB to miss), but esbmc#4240 uncovered a real ESBMC defect in the opposite direction: under `--std c++20`, `--overflow-check` and `--ub-shift-check` were still generating false-positive VCCs for signed shl (E1 with unknown sign, and E1 < 0 respectively). Fixed by [#4241](https://github.com/esbmc/esbmc/pull/4241). Repro retained at `esbmc_bug_repros/signed_shift_result_overflow.cpp`.
-
-**What ESBMC verified** (`telemetry`, 80 VCC Phase 1 with `--ub-shift-check`, k=11 Phase 2): both the buggy and fixed forms satisfy the little-endian decoding contract across all 4-byte inputs (the two expressions are structurally equivalent under C++20 semantics).
-
-### F-3 — RETRACTED (was: `buf_to_u32` signed shift overflow)
-
-ESBMC's `--overflow-check` flagged `buf[start_idx] << ByteShift3` (i.e. `int(byte) << 24`) as an arithmetic-overflow violation when `byte >= 0x80`. Investigated:
-
-- Production builds with `-std=c++23`. Under C++20+ ([expr.shift]/2), signed left-shift `E1 << E2` is well-defined: the value is the unique result congruent to `E1 × 2^E2` modulo `2^N` where `N` is the width of the result type. For `int(128) << 24`, that's `INT_MIN`; the surrounding `static_cast<uint32_t>(...)` then recovers the correct `0x80000000` bit pattern. **No UB.**
-- Empirically validated: ESBMC's BMC proves `prod_form(b0, b1, b2, b3) == fixed_form(b0, b1, b2, b3)` for all four input bytes (0 VCCs after simplification — equivalence is structural). See `verification/ctest/f3/`.
-
-Not a defect in OpenSMA. The standard-conformance gap that surfaced this — the default `--overflow-check` applying pre-C++20 UB rules irrespective of `--std` — was filed as [esbmc/esbmc#4201](https://github.com/esbmc/esbmc/issues/4201). [PR #4203](https://github.com/esbmc/esbmc/pull/4203) was merged then reverted by [#4208](https://github.com/esbmc/esbmc/pull/4208) the same day: the skip condition was too broad. P0907 (merged into C++20) only made signed left-shift modular when `E1` is non-negative; for negative `E1` the shift remains UB, and #4203 would have suppressed that case too. The replacement [PR #4211](https://github.com/esbmc/esbmc/pull/4211) is open with the refined fix: a type-driven non-negativity predicate on `E1` (covers `uint8_t`/`uint16_t`-promoted operands — the OpenSMA case — without symbolic reasoning), `--std c++20+` discrimination via a hand-rolled non-throwing parser bounded to `[20, 50]` so legacy `c++98`/`c++03` spellings stay strict, and 7 CORE regressions covering both halves. Symbolic non-negativity via `--interval-analysis` for arbitrary signed `int` is deferred as layer 2. Until #4211 merges, the spi_utils harness keeps the parenthesisation workaround on mainline ESBMC; the equivalence ctest at `verification/ctest/f3/` is retained as a regression sentinel for the underlying defined-behaviour claim.
-
-### F-2 — RETRACTED (was: `align_to()` overflow)
-
-I initially claimed `align_to` had a real overflow bug. **It does not.**
-The retraction is empirically validated via ESBMC's
-`--branch-coverage --generate-ctest-testcase` on an equivalence harness
-(`verification/ctest/f2/align_equiv.cpp`) that asserts
-`align_buggy(v, A) == align_fixed(v, A)` for all inputs. ESBMC's BMC
-explored the full input space without finding a counterexample to the
-equivalence, and all 5 generated runtime test cases pass at execution time
-(`100% tests passed, 0 tests failed`).
-
-For unsigned arithmetic, `(value + alignment) - 1` and
-`value + (alignment - 1)` are identically equal modulo 2³² because
-addition and subtraction are modular and the operations cancel. Concretely,
-for `value = alignment = 0x80000000`:
-
-- `(0x80000000 + 0x80000000) - 1 = 0 - 1 = 0xffffffff (mod 2³²)`
-- `0x80000000 + 0x7fffffff = 0xffffffff`
-
-Both then go through `& ~(alignment - 1) = & 0x80000000` → `0x80000000`,
-which is the correct aligned result. ESBMC's `--unsigned-overflow-check`
-flagged the intermediate wrap on `value + alignment`, but unsigned wrap is
-**defined behaviour** in C++ — the flag catches *unintended* wraps for
-review, not bugs.
-
-The `make utils_neg` harness still produces a counterexample (the wrap is
-real, just benign); the harness is retained as a demonstrator of ESBMC's
-strict unsigned-overflow flag, not as a regression sentinel for a defect.
-The "fix" applied in `utils_harness.cpp` (parenthesising as
-`value + (alignment - 1)`) is a readability/intent improvement that makes
-the arithmetic match the guard's expression — adoption is a style choice,
-not a correctness one.
-
-**Lesson**: when ESBMC reports an `--unsigned-overflow-check` violation,
-verify whether the wrap matters for the function's *output*. A wrap that
-is reverted by a subsequent inverse operation is an artefact, not a bug.
-
 ### Items checked, no defects
 
 - Packed-struct alignment access in `Packet::to_span()` and `Packet::from()`
@@ -538,58 +441,55 @@ is reverted by a subsequent inverse operation is an artefact, not a bug.
 - All `nv::fixed_point` conversion functions are total over their declared
   input ranges; no overflow under the documented preconditions.
 
+### Retracted findings
+
+| ID | Original claim | Retraction reason | ESBMC result |
+|---|---|---|---|
+| F-2 | `align_to()` intermediate unsigned overflow | Unsigned wrap is benign; `(v + a) - 1` and `v + (a - 1)` are identical modulo 2³² — the intermediate wrap is cancelled by the subsequent mask. | VERIFICATION SUCCESSFUL (equivalence harness + 5 ctests) |
+| F-3 | `buf_to_u32` signed left-shift overflow (`int(byte) << 24`) | C++20 [expr.shift]/2 defines signed left-shift for all inputs; no UB. Structural equivalence to the parenthesised form proven by ESBMC. Triggered esbmc#4201, fixed by [#4211](https://github.com/esbmc/esbmc/pull/4211). | VERIFICATION SUCCESSFUL |
+| Former F-6 | `buffer_to_uint32` cast-after-shift (`buffer[3] << Byte3`) | Same C++20 reason as F-3; style/portability issue only. Triggered esbmc#4240, fixed by [#4241](https://github.com/esbmc/esbmc/pull/4241). | VERIFICATION SUCCESSFUL |
+| F-9 | Shift in `decode_6bit_ascii` | ESBMC returned VERIFICATION SUCCESSFUL. Shift is well-defined under C++20. | VERIFICATION SUCCESSFUL |
+| F-12 | `decode_6bit_ascii` output bounds (`decode_6bit_ascii` returning values outside [0x20, 0x5F]) | ESBMC returned VERIFICATION SUCCESSFUL; mask correctly bounds output to [0x20, 0x5F] for all inputs. | VERIFICATION SUCCESSFUL |
+| F-14 | `Pca9555::i2c_write` bare `return` on Input command drops bytes | `CommandRegister` is fixed per call (`cmd_byte / 2`); `case Input` body is empty; `return` and `break` are observably equivalent. Production `pca9555.cpp` compiled by ESBMC confirms no state change. Code-quality note only. | VERIFICATION SUCCESSFUL (405 VCC) |
+
+Full analysis for each retraction is in [Appendix A](#appendix-a--retraction-details).
+
 ## Tooling-level findings (ESBMC bugs)
 
-Five C++ frontend bugs surfaced while building the harnesses. Each has a
-freestanding minimal reproducer under `verification/esbmc_bug_repros/`
-and is filed upstream. **Every workaround currently in this tree is
-backed by an open issue.**
+### Active workarounds
 
-| Issue | Title | State | Workaround in tree |
-|---|---|---|---|
-| [#4180](https://github.com/esbmc/esbmc/issues/4180) | Original umbrella (array crash + qualified constexpr) | **closed** — split into #4183 (still open) and fixed via #4184 | n/a |
-| [#4182](https://github.com/esbmc/esbmc/issues/4182) | `using ns::T;` for class / enum types fails conversion | **fixed** by [#4187](https://github.com/esbmc/esbmc/pull/4187) (merged 2026-04-26) | (workarounds removed; harnesses now use plain `using ns::T;`) |
-| [#4183](https://github.com/esbmc/esbmc/issues/4183) | `std::array<T,N>` crashes `gen_vptr_initializations` | **fixed** by [#4188](https://github.com/esbmc/esbmc/pull/4188) (merged 2026-04-26) | (crash gone; `<array>` shim retained for the unrelated aggregate-init divergence — see #4190 below) |
-| [#4190](https://github.com/esbmc/esbmc/issues/4190) | bundled libc++ missing `<span>`, `<bit>`, parts of `<type_traits>`; bundled `<array>` is a `class` not an aggregate | partial — [#4194](https://github.com/esbmc/esbmc/pull/4194) bundled `<span>` + most traits; [#4213](https://github.com/esbmc/esbmc/pull/4213) added `std::underlying_type`/`underlying_type_t`; aggregate-`<array>` still missing | thin `<span>` shim (transitive `<bit>` + avoids bundled-`<array>` collision); `<array>` shim retained for aggregate-init |
-| [#4191](https://github.com/esbmc/esbmc/issues/4191) | spurious CEX on aliased `*std::bit_cast<T*>(...)` round-trip | fixed by [#4192](https://github.com/esbmc/esbmc/pull/4192) — but the bundled pointer overload uses `reinterpret_cast` (drops const → compile error on `bit_cast<uint8_t*>(this)` in const methods) | thin `<bit>` shim that keeps the pointer aliasing fix and uses C-cast for the pointer specialisation (preserves `std::bit_cast`'s const-agnostic semantics); follow-up commented on #4191 |
-| [#4195](https://github.com/esbmc/esbmc/issues/4195) | C++20 `using enum X;` (`UsingEnumDecl`) not handled | fixed by [#4204](https://github.com/esbmc/esbmc/pull/4204) (merged 2026-04-28) | (sed-patch dropped; validator.cpp compiles directly from upstream) |
-| [#4201](https://github.com/esbmc/esbmc/issues/4201) | `--overflow-check` flags signed left-shift wrap that is defined under C++20+ | resolved — [#4203](https://github.com/esbmc/esbmc/pull/4203) merged then reverted by [#4208](https://github.com/esbmc/esbmc/pull/4208) (skip too broad); refined replacement [#4211](https://github.com/esbmc/esbmc/pull/4211) **merged** with a type-driven non-negativity predicate on `E1` | spi_utils harness uses production form directly (parenthesisation workaround removed) |
-| [#4184](https://github.com/esbmc/esbmc/pull/4184) | `getAsType` guard for namespace-qualified constexpr | merged 2026-04-26 | (workarounds removed) |
-| [#4188](https://github.com/esbmc/esbmc/pull/4188) | tag-id mismatch in `annotate_class_method` | merged 2026-04-26 | (crash gone; see #4190 row for the residual `<array>` shim reason) |
-| [#4187](https://github.com/esbmc/esbmc/pull/4187) | `UsingType` handling for clang ≥ 22 | merged 2026-04-26 | (workarounds removed) |
-| [#4192](https://github.com/esbmc/esbmc/pull/4192) | bundle `<bit>` with pointer-aware `bit_cast` | merged 2026-04-27 | validator Phase 2 ungated; packet overlay deleted; `<bit>` shim retained as thin const-aware override |
-| [#4194](https://github.com/esbmc/esbmc/pull/4194) | bundle `<span>` and complete `<type_traits>` | merged 2026-04-27 | `<span>` shim retained as thin replacement (transitive `<bit>` + avoid bundled-`<array>` collision); utils.h still inlined for residual `underlying_type_t` gap |
-| [#4203](https://github.com/esbmc/esbmc/pull/4203) | skip signed-shl overflow claim under C++20+ | merged 2026-04-28, **reverted by [#4208](https://github.com/esbmc/esbmc/pull/4208)** the same day (skip condition too broad — would suppress still-UB negative-`E1` case) | spi_utils workaround restored |
-| [#4204](https://github.com/esbmc/esbmc/pull/4204) | handle `UsingEnumDecl` (C++20 `using enum`) | merged 2026-04-28 | (sed-patch dropped; validator.cpp compiles directly) |
-| [#4211](https://github.com/esbmc/esbmc/pull/4211) | replacement for #4203: skip signed-shl overflow only when `E1` is provably non-negative (type-driven predicate); standard-aware via `--std c++20+` parsing; legacy spellings (`98`, `03`) and pre-C++20 unaffected | **merged** (7 CORE regressions, paired with the OpenSMA harness restoration) | spi_utils parenthesisation workaround removed |
-| [#4213](https://github.com/esbmc/esbmc/pull/4213) | add `std::underlying_type` and `underlying_type_t` to bundled `<type_traits>` (SFINAE-guarded via `__underlying_type(T)` builtin; `::type` only present for enum types) | **merged** (2 CORE regressions: positive and negative) | `utils.h` workaround removed; harness now includes production header directly |
-| [#4214](https://github.com/esbmc/esbmc/issues/4214) | `platforms::Control` default-construction triggers assertion `new_comp.size() == ops.size()` in `clang_c_adjust_expr.cpp:158`; ESBMC aborts during GOTO program creation | **fixed** by [#4215](https://github.com/esbmc/esbmc/pull/4215) (merged 2026-04-29) | (workaround note updated; `ctrl{}` now constructs cleanly) |
-| [#4216](https://github.com/esbmc/esbmc/issues/4216) | `switch (static_cast<enum>(packed_field))` + second field read in case body crashes SMT encoding (`mk_eq` bitvector width mismatch in `bitwuzla_conv.cpp:512` / `z3_conv.cpp:756`) | closed by [#4217](https://github.com/esbmc/esbmc/pull/4217) — but two crashes persist; see #4232 | — |
-| [#4232](https://github.com/esbmc/esbmc/issues/4232) | `mk_eq` / `to_solver_smt_ast` crash persists after #4217: bitfield-base struct + switch-case + member read (two variants: Crash A → `to_solver_smt_ast, smt_ast.h:111`; Crash B → `mk_eq, bitwuzla_conv.cpp:512`) | **fixed** by [#4233](https://github.com/esbmc/esbmc/pull/4233) (merged) — aggregate-init flatten for bitfield-base derived structs | (workaround removed for simple aggregate-init case; see #4234 for the `std::bit_cast` variant) |
-| [#4234](https://github.com/esbmc/esbmc/issues/4234) | `switch(static_cast<enum>(bit_cast member))` + `at()` in case body crashes `mk_eq` (`bitwuzla_conv.cpp:512`) — trigger is fall-through switch-case label not normalised in `adjust_switch_case_ops` | **fixed** by [#4235](https://github.com/esbmc/esbmc/pull/4235) — recurse into fall-through chain body before returning | (workaround removed; production switch now encodes correctly) |
-| [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-initialising `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111); `Derived d;` (default-init) works correctly | **fixed** by [#4238](https://github.com/esbmc/esbmc/pull/4238) | (workaround removed; `ctrl{}` now constructs cleanly) |
-| [#4240](https://github.com/esbmc/esbmc/issues/4240) | `--overflow-check` / `--ub-shift-check` generating false-positive signed-shl VCCs under `--std c++20` (C++20 [expr.shift]/2 defines signed left-shift wrapping for all inputs; ESBMC was still applying pre-C++20 rules) | **fixed** by [#4241](https://github.com/esbmc/esbmc/pull/4241) | (no workaround needed; repro: `esbmc_bug_repros/signed_shift_result_overflow.cpp`) |
-| [#4243](https://github.com/esbmc/esbmc/issues/4243) | bundled `<array>` value-init (`{}`) does not zero-initialise `elems` — two violations: (1) bundled `class array` with `private: elems[N]` is not an aggregate, violating [array.overview]; (2) ESBMC skips the zero-init step of value-initialisation for non-user-provided default constructors ([dcl.init.general]/8), leaving elements as nondet and causing false-positive overflow VCCs on SMA filter accumulators | **fixed** by [#4244](https://github.com/esbmc/esbmc/pull/4244) — `elems` made `public`, restoring aggregate status (merged 2026-05-02) | `<array>` shim retained (pending ESBMC version bump) |
-| [#4245](https://github.com/esbmc/esbmc/issues/4245) | `[C++ OM] Missing bundled headers: <optional> and <chrono>` — ESBMC's bundled C++ library (`src/cpp/library/`) does not provide `<optional>` (C++17) or `<chrono>` (C++11); `<ratio>` and `<variant>` are also absent. Blocks direct compilation of `nsm_type_3.cpp` and `nsm_type_5.cpp` from production source. | **fixed** by [#4246](https://github.com/esbmc/esbmc/pull/4246) (merged 2026-05-02) — bundled `<optional>` and `<chrono>` shims added to ESBMC's cpp library | (`stubs/optional` and `stubs/chrono` removed; ESBMC now bundles both headers natively; F-6/F-7/F-8 inline-model approach retained — hardware headers `mbedtls/ctr_drbg.h` and `sys/adc/adc.h` still block full `nsm_type_5.cpp` compilation) |
-| [#2789](https://github.com/esbmc/esbmc/issues/2789) | negative shift distance (`x << y`, `y < 0`) not flagged under `--overflow-check`; only caught by `--ub-shift-check` | **fixed** by [#4242](https://github.com/esbmc/esbmc/pull/4242) (merged 2026-05-02) — extends negative-shift-distance UB check to fire under `--overflow-check` | — |
+Three thin header shims remain in `verification/stubs/` as workarounds for
+issues not yet fully resolved in the ESBMC binary on `$PATH`. Each is tagged
+`// WORKAROUND esbmc#<n>`. Removing a shim is a mechanical step once the
+corresponding ESBMC version is bumped.
 
-Every workaround site is tagged `// WORKAROUND esbmc#<n>` pointing at the
-specific open issue listed in the table above. Removing a workaround is a
-mechanical `grep` once the corresponding upstream fix lands; the tags are
-kept narrow so multiple fixes can be reaped independently.
+| Issue | Description | Workaround in tree |
+|---|---|---|
+| [#4190](https://github.com/esbmc/esbmc/issues/4190) | Bundled `<array>` is a `class`, not an aggregate; value-initialisation diverges. Zero-init fix (#4244, merged 2026-05-02) pending version bump. | `stubs/array` shim retained |
+| [#4191](https://github.com/esbmc/esbmc/issues/4191) + [#4192](https://github.com/esbmc/esbmc/pull/4192) | Bundled `<bit>` pointer overload uses `reinterpret_cast`, breaking `bit_cast<T*>(this)` in const methods. | `stubs/bit` shim retained (const-aware C-cast for pointer specialisation) |
+| [#4194](https://github.com/esbmc/esbmc/pull/4194) | Thin `<span>` replacement needed to avoid bundled-`<array>` collision and provide transitive `<bit>`. | `stubs/span` shim retained |
+
+### Closed issues
+
+The following ESBMC issues were surfaced during this work and are now fully
+resolved with no remaining workarounds in the tree:
+
+[#4180](https://github.com/esbmc/esbmc/issues/4180) (umbrella; split into #4183/#4184),
+[#4182](https://github.com/esbmc/esbmc/issues/4182) (fixed by [#4187](https://github.com/esbmc/esbmc/pull/4187)),
+[#4183](https://github.com/esbmc/esbmc/issues/4183) (fixed by [#4188](https://github.com/esbmc/esbmc/pull/4188)),
+[#4195](https://github.com/esbmc/esbmc/issues/4195) (fixed by [#4204](https://github.com/esbmc/esbmc/pull/4204)),
+[#4201](https://github.com/esbmc/esbmc/issues/4201) (resolved via [#4211](https://github.com/esbmc/esbmc/pull/4211)),
+[#4213](https://github.com/esbmc/esbmc/pull/4213) (merged; `underlying_type` added to bundled `<type_traits>`),
+[#4214](https://github.com/esbmc/esbmc/issues/4214) (fixed by [#4215](https://github.com/esbmc/esbmc/pull/4215)),
+[#4216](https://github.com/esbmc/esbmc/issues/4216) (closed by #4217; residual crashes fixed by [#4233](https://github.com/esbmc/esbmc/pull/4233) and [#4235](https://github.com/esbmc/esbmc/pull/4235)),
+[#4237](https://github.com/esbmc/esbmc/issues/4237) (fixed by [#4238](https://github.com/esbmc/esbmc/pull/4238)),
+[#4240](https://github.com/esbmc/esbmc/issues/4240) (fixed by [#4241](https://github.com/esbmc/esbmc/pull/4241)),
+[#4243](https://github.com/esbmc/esbmc/issues/4243) (fixed by [#4244](https://github.com/esbmc/esbmc/pull/4244)),
+[#4245](https://github.com/esbmc/esbmc/issues/4245) (fixed by [#4246](https://github.com/esbmc/esbmc/pull/4246)),
+[#2789](https://github.com/esbmc/esbmc/issues/2789) (fixed by [#4242](https://github.com/esbmc/esbmc/pull/4242)).
 
 ## What was deferred and why
 
-- **Full Control dispatch path** — fully upgraded, no workarounds. `VerifControl ctrl{}`
-  value-initialises cleanly (esbmc/esbmc#4237 fixed by #4238). The `mctp_dispatch`
-  harness compiles `pdk-mctp-platforms-control.cpp` as-is and calls the
-  production `on_set_endpoint_id()` directly via a `VerifControl` thin subclass
-  (esbmc/esbmc#4214 fixed by #4215; #4232 by #4233; #4234 by #4235; #4237 by #4238).
-  The proof covers the full dispatch path end-to-end (275 VCC, VERIFICATION
-  FAILED at `cur_eid.at(2)`). Calling `ctrl.process()` directly is still
-  blocked by a `dereference.cpp:1358` assertion on the variable-index
-  `_routing_map.at(entry_in_map)` loop in `on_get_routing_table_entry` (dead
-  code on a SetEpId packet but still inlined by ESBMC).
 - **FreeRTOS-backed code** (`src/nv/ipc/queue.cpp`, `src/nv/ipc/event.cpp`,
   `src/nv/ipc/timer.cpp`) — the actual logic is in
   `src/sys/x86/sys/ipc/queue.cpp`, which delegates to `xQueueSendToBack`,
@@ -600,33 +500,17 @@ kept narrow so multiple fixes can be reaped independently.
 
 ## Suggested next steps
 
-1. **Fix F-1**: add the `interface >= UsEnd` guard to `set_cur_eid()` (or
-   tighten `Validator::validate()` to reject `>= UsEnd`). F-1 is confirmed
-   reachable — a Control SetEpId Request with `priv.packet_interface ∈ [2, 17]`
-   will abort the firmware under `-fno-exceptions`.
-2. **Fix F-5**: add the `byte_index >= bitmask.size()` guard to `set_bit` and
-   `unset_bit` on `std::array<uint8_t, NvMctpEventSupportedNum>` — matching the
-   guard `get_bit` already carries. Low urgency (no current OOB call site), but
-   straightforward one-line fix.
-3. ~~**Simplify `mctp_dispatch` once esbmc#4237 is fixed**~~ — **done** (`ctrl{}` workaround removed after esbmc/esbmc#4238 merged).
-4. ~~Expand coverage to `nsm_type_3.cpp`~~ — **done** (`nsm_type3` / `nsm_type3_func`, 37 VCC Phase 1, k=9 Phase 2).
-5. ~~Expand coverage to `ntc_table.{h,cpp}`~~ — **done** (`ntc_table` / `ntc_table_func`, 227 VCC Phase 1, k=9 Phase 2, all five conversion functions verified).
-6. ~~Expand coverage to `soc_pwr_smoothing/presets.{h,cpp}`~~ — **done** (`pwr_smooth_params` / `pwr_smooth_params_func`, 72 VCC Phase 1, k=1 Phase 2: round-trip identity and param-id characterisation).
-7. ~~Expand coverage to `fru.cpp`~~ — **done** (`fru_utils` / `fru_utils_func`, 76 VCC Phase 1, k=9 Phase 2: checksum contract and 6-bit ASCII decode output-range invariant).
-8. ~~Expand coverage to `soc_pwr_smoothing/soc_sma_filter_ch.h`~~ — **done** (`soc_sma_filter` / `soc_sma_filter_func`, 504 VCC Phase 1, k=1 Phase 2: steady-state identity and output-bounded contracts).
-9. ~~Expand coverage to `soc_pwr_smoothing/debug_telemetry_sma_ch.h`~~ — **done** (`debug_telemetry_sma` / `debug_telemetry_sma_func`, 261 VCC Phase 1, k=1 Phase 2: index-bounded and output-non-negative contracts).
-10. ~~Expand coverage to `nv/emulation/pca9555.{h,cpp}`~~ — **done** (`pca9555` / `pca9555_func`, 1292 VCC Phase 1, k=2 Phase 2: direction constraint, masked input update, interrupt default, output propagation).
-11. ~~Expand coverage to `nv/i2c/emc1812.{h,cpp}`~~ — **done** (`emc1812` / `emc1812_func`, 52 VCC Phase 1, k=1 Phase 2: `int8_t↔uint8_t` threshold cast round-trip identity for all four set/get pairs).
-12. ~~Expand coverage to `nv/i2c/tmp1075.{h,cpp}`~~ — **done** (`tmp1075` / `tmp1075_func`, 33 VCC Phase 1, k=1 Phase 2: 12-bit temperature encoding round-trip `int8_t → <<4 → uint16_t → >>4 → int8_t` and temp_read_cast).
-13. ~~Expand coverage to `nv/i2c/tmp461.{h,cpp}`~~ — **done** (`tmp461` / `tmp461_func`, 57 VCC Phase 1, k=1 Phase 2: `int8_t↔uint8_t` cast round-trip for all four threshold set/get pairs).
-14. ~~Drop `--no-unwinding-assertions` and set per-target loop bounds~~ —
-    **done**. Removed the flag from all Phase 1 targets; per-target `--unwind N`
-    set to the exact array/table size (`nsm_type_2` → 12, `nsm_type3` → 9,
-    `telemetry` → 11, `spi_utils` → 9, `i2c_crc8` → 257, `fru_utils` → 9;
-    `ntc_table` already at 9). All 22 targets in `make all` pass with
-    unwinding assertions active — no new bugs found.
-15. Stand up a CI hook that runs `make all` on every PR; verification must
-    stay green and any failure must be triaged before merge.
+1. **Fix F-1** — add the `interface >= UsEnd` guard to `set_cur_eid()` (or
+   tighten `Validator::validate()` to reject `>= UsEnd`). Confirmed abort path
+   for any Control SetEpId Request with `priv.packet_interface ∈ [2, 17]`.
+2. **Fix F-6, F-7, F-8, F-10, F-13** — each section above contains a
+   specific one- or two-line recommendation. F-8 is latent (existing call site
+   has a guard); the other four are directly reachable.
+3. **Fix F-5** — add the `byte_index >= bitmask.size()` guard to `set_bit`
+   and `unset_bit` on the 8-element bitmask, matching the guard `get_bit`
+   already carries. Low urgency (no current dangerous call site).
+4. **Stand up a CI hook** — run `make all` on every PR; verification must
+   stay green and any failure must be triaged before merge.
 
 ## Reproducing
 
@@ -676,3 +560,107 @@ esbmc --std c++20 -I../../stubs --branch-coverage --generate-ctest-testcase arra
 mkdir -p build && cd build && cmake .. && cmake --build .
 ./test_case_1   # expect SIGABRT (exit 134)
 ```
+
+---
+
+## Appendix A — Retraction details
+
+### F-14 — `Pca9555::i2c_write` bare `return` on Input command
+
+**File**: `src/nv/emulation/pca9555.cpp:142–175`
+
+```cpp
+CommandRegister = cmd_byte / 2;           // fixed for all iterations
+for (uint8_t i = start_index; i < data_length; i++) {
+    switch (CommandRegister) {
+        case Input:
+            return;    // bare return — but Input case has no body
+        case Output: ...
+    }
+}
+```
+
+**Initially filed** based on an inline-model harness (not compiling the production source) that asserted `completed == expected` iterations and found a CEX. That analysis was incorrect.
+
+**Why it was wrong**: `CommandRegister` is computed *once* before the loop as `cmd_byte / 2` and does not change across iterations. For any Input-register write (`cmd_byte ∈ {0, 1}`), `CommandRegister == Input` on every iteration. The `case Input` body is empty — there are no state mutations in that case. Therefore the bare `return` and a `break` produce **identical observable state**: `_gpio_output`, `_gpio_direction`, and `_gpio_inversion` are all unchanged either way. The commented-out `nv::warn("trying to write to PCA9555 input pin")` confirms the author treated this as an intentional caller-error path.
+
+**What the upgraded harness confirmed** (`pca9555_f14_neg`, **VERIFICATION SUCCESSFUL — 405 VCC**):
+
+The harness was rewritten to call the **actual production `Pca9555::i2c_write()`** from `pca9555.cpp` compiled by ESBMC (same rigor as F-1). It snapshots `output_before`, calls `dev.i2c_write(buf, 3)` with `buf[0]=0x00` (Input register) and nondet data bytes, then asserts `output_after == output_before`. ESBMC explored 405 verification conditions and found no violation. The production code path through `pca9555.cpp:142` was confirmed reachable and safe.
+
+**Classification**: code-quality / documentation issue. The bare `return` is not wrong — it is observably equivalent to `break` for Input registers — but `break` would communicate intent more clearly, and the commented-out warn() line suggests the intent was never documented.
+
+**Recommendation** (style only): replace `return` with `break` and add a comment explaining that Input registers are hardware-read-only and writes are silently ignored.
+
+---
+
+### Former F-6 — `buffer_to_uint32` cast-after-shift
+
+**File**: `src/nv/telemetry/utils.cpp:31`
+
+```cpp
+| (static_cast<uint32_t>(buffer[3] << Byte3));  // cast after shift — initially flagged
+```
+
+The cast is applied after the shift rather than before. Initially filed as "signed-shift UB for `buffer[3] >= 0x80` under C++20." **Retracted**: C++20 P0907R4/P1236R1 makes signed left-shift fully defined for all inputs — the result is the unique value congruent to `E1 × 2^E2` modulo `2^N` — removing both the negative-E1 and result-overflow UB clauses that existed in C++17. ESBMC's bitvector model was already correct; `--overflow-check` rightly generates no VCC for this expression under `--std c++20`.
+
+This is the same standard-conformance question as the retracted F-3 (`buf_to_u32`).
+
+The code pattern is still a **style/portability issue**: bytes 0–2 cast before shifting (`static_cast<uint32_t>(buffer[N]) << Byte`) while byte 3 casts after. The recommended fix (move the cast before the shift) makes the intent uniform and correct even under C++17:
+```cpp
+| (static_cast<uint32_t>(buffer[3]) << Byte3)
+```
+
+**ESBMC issue filed as a consequence**: the misanalysis led to filing [esbmc#4240](https://github.com/esbmc/esbmc/issues/4240). That framing was wrong (no UB to miss), but #4240 uncovered a real ESBMC defect in the opposite direction: `--overflow-check` and `--ub-shift-check` were generating false-positive VCCs for signed shl under `--std c++20`. Fixed by [#4241](https://github.com/esbmc/esbmc/pull/4241). Repro retained at `esbmc_bug_repros/signed_shift_result_overflow.cpp`.
+
+**What ESBMC verified** (`telemetry`, 80 VCC Phase 1 with `--ub-shift-check`, k=11 Phase 2): both the buggy and fixed forms satisfy the little-endian decoding contract across all 4-byte inputs.
+
+---
+
+### F-3 — `buf_to_u32` signed shift overflow
+
+ESBMC's `--overflow-check` flagged `buf[start_idx] << ByteShift3` (i.e. `int(byte) << 24`) as an arithmetic-overflow violation when `byte >= 0x80`. Investigated:
+
+- Production builds with `-std=c++23`. Under C++20+ ([expr.shift]/2), signed left-shift `E1 << E2` is well-defined: the value is the unique result congruent to `E1 × 2^E2` modulo `2^N` where `N` is the width of the result type. For `int(128) << 24`, that's `INT_MIN`; the surrounding `static_cast<uint32_t>(...)` then recovers the correct `0x80000000` bit pattern. **No UB.**
+- Empirically validated: ESBMC's BMC proves `prod_form(b0, b1, b2, b3) == fixed_form(b0, b1, b2, b3)` for all four input bytes (0 VCCs after simplification — equivalence is structural). See `verification/ctest/f3/`.
+
+Not a defect in OpenSMA. The standard-conformance gap that surfaced this — the default `--overflow-check` applying pre-C++20 UB rules irrespective of `--std` — was filed as [esbmc/esbmc#4201](https://github.com/esbmc/esbmc/issues/4201). The fix ([#4211](https://github.com/esbmc/esbmc/pull/4211)) uses a type-driven non-negativity predicate on `E1` (covers `uint8_t`/`uint16_t`-promoted operands — the OpenSMA case — without symbolic reasoning), with `--std c++20+` discrimination so legacy spellings stay strict. The equivalence ctest at `verification/ctest/f3/` is retained as a regression sentinel.
+
+---
+
+### F-2 — `align_to()` overflow
+
+Initially claimed `align_to` had a real overflow bug. **It does not.**
+The retraction is empirically validated via ESBMC's
+`--branch-coverage --generate-ctest-testcase` on an equivalence harness
+(`verification/ctest/f2/align_equiv.cpp`) that asserts
+`align_buggy(v, A) == align_fixed(v, A)` for all inputs. ESBMC's BMC
+explored the full input space without finding a counterexample to the
+equivalence, and all 5 generated runtime test cases pass at execution time
+(`100% tests passed, 0 tests failed`).
+
+For unsigned arithmetic, `(value + alignment) - 1` and
+`value + (alignment - 1)` are identically equal modulo 2³² because
+addition and subtraction are modular and the operations cancel. Concretely,
+for `value = alignment = 0x80000000`:
+
+- `(0x80000000 + 0x80000000) - 1 = 0 - 1 = 0xffffffff (mod 2³²)`
+- `0x80000000 + 0x7fffffff = 0xffffffff`
+
+Both then go through `& ~(alignment - 1) = & 0x80000000` → `0x80000000`,
+which is the correct aligned result. ESBMC's `--unsigned-overflow-check`
+flagged the intermediate wrap on `value + alignment`, but unsigned wrap is
+**defined behaviour** in C++ — the flag catches *unintended* wraps for
+review, not bugs.
+
+The `make utils_neg` harness still produces a counterexample (the wrap is
+real, just benign); the harness is retained as a demonstrator of ESBMC's
+strict unsigned-overflow flag, not as a regression sentinel for a defect.
+The "fix" applied in `utils_harness.cpp` (parenthesising as
+`value + (alignment - 1)`) is a readability/intent improvement that makes
+the arithmetic match the guard's expression — adoption is a style choice,
+not a correctness one.
+
+**Lesson**: when ESBMC reports an `--unsigned-overflow-check` violation,
+verify whether the wrap matters for the function's *output*. A wrap that
+is reverted by a subsequent inverse operation is an artefact, not a bug.

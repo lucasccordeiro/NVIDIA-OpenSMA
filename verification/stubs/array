@@ -6,6 +6,11 @@
 // pdk-mctp-platforms-config.h for the SupportedType table — fails to
 // parse against the bundled header).
 //
+// Also tracks: esbmc#4243 (bundled class array with private elems[N] does
+// not model value-init zero-initialisation — elements are left as nondet,
+// producing false-positive overflow VCCs on SMA filter accumulators).
+// Both issues are fixed by this aggregate struct shim.
+//
 // The earlier reason for this shim (esbmc#4183, gen_vptr_initializations
 // crash on std::array<T,N>) was fixed by esbmc/esbmc#4188 on 2026-04-26.
 // The aggregate-init divergence is what keeps the shim necessary now.

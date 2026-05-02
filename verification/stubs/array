@@ -9,7 +9,8 @@
 // Also tracks: esbmc#4243 (bundled class array with private elems[N] does
 // not model value-init zero-initialisation — elements are left as nondet,
 // producing false-positive overflow VCCs on SMA filter accumulators).
-// Both issues are fixed by this aggregate struct shim.
+// Fixed upstream by esbmc/esbmc#4244 (elems made public; merged 2026-05-02).
+// This shim can be removed once ESBMC is bumped past that commit.
 //
 // The earlier reason for this shim (esbmc#4183, gen_vptr_initializations
 // crash on std::array<T,N>) was fixed by esbmc/esbmc#4188 on 2026-04-26.

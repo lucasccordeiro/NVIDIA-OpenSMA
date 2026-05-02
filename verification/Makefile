@@ -599,6 +599,23 @@ debug_telemetry_f13_neg:
 	  $(HARNESSES)/debug_telemetry_f13_harness.cpp \
 	  2>&1 | tee $(RESULTS)/debug_telemetry_f13_neg.log
 
+# F-13 system-level: PowerManager::run_iteration() with nondet ADC + nondet GPIO.
+# Verifies that DebugTelemetrySmaCh receives only non-negative inputs under all
+# hardware states — upstream std::clamp in StateOfChargeDev::soc_voltage_to_percent()
+# and OffsetPolicy clamps all three channels to [0%, 100%].
+# Stubs: sys/adc (nondet pop_fifo_conv_value), sys/dac (no-op set),
+#        sys/gpio (nondet read for thermal-warn), power_manager_config.h.
+# Expected: VERIFICATION SUCCESSFUL — F-13 is a latent defect unreachable from
+# current production data flow; the function is unsafe but the system is safe.
+debug_telemetry_f13_system:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  -I$(STUBS) -I$(STUBS)/sys/adc -I$(STUBS)/sys/dac -I$(STUBS)/sys/gpio \
+	  -I$(REPO)/src \
+	  -DNV_IPC_CONFIG_H=\"power_manager_config.h\" \
+	  $(HARNESSES)/debug_telemetry_f13_system_harness.cpp \
+	  2>&1 | tee $(RESULTS)/debug_telemetry_f13_system.log
+
 # F-14: Pca9555::i2c_write bare `return` on Input command — production code
 # confirmation that the write leaves output state unchanged (VERIFICATION SUCCESSFUL).
 # CommandRegister is fixed per call (cmd_byte/2); Input case has no body; return and

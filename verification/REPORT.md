@@ -54,7 +54,7 @@ workarounds removed where applicable.
 | Power-smoothing params | `src/nv/soc_pwr_smoothing/presets.{h,cpp}` (`OverrideParam::to_uint32`, `::from_uint32`, `is_valid_param_id`) | ✅ 72 VCC | ✅ k=1 (round-trip pack↔unpack identity, param-id exact characterisation) | — |
 | FRU utilities | `src/nv/fru/fru.cpp` (`verify_checksum`, `decode_6bit_ascii`) | ✅ 76 VCC | ✅ k=9 (checksum true iff sum≡0 mod 256, decode output ∈ [0x20, 0x5F]) | — |
 | SoC SMA filter | `src/nv/soc_pwr_smoothing/soc_sma_filter_ch.h` (`SocSmaFilterCh::evaluate` — 4-sample sliding-window SMA over SFXP22_10) | ✅ 504 VCC | ✅ k=1 (steady-state: 4 equal inputs → output == input; output ∈ [0, input]) | — |
-| Debug telemetry SMA | `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` (`DebugTelemetrySmaCh::evaluate` — 256-sample SMA; UFXP8_0 buffer; percent ∈ [0%, 150%]) | ✅ 261 VCC | ✅ k=1 (index bounded ∈ [0, 255] by bitwise-AND; output non-negative from zero state) | ✅ **F-13** CEX: `percent=-1024` → `stored=255` (negative wrap) |
+| Debug telemetry SMA | `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` (`DebugTelemetrySmaCh::evaluate` — 256-sample SMA; UFXP8_0 buffer; percent ∈ [0%, 150%]) | ✅ 261 VCC | ✅ k=1 (index bounded ∈ [0, 255] by bitwise-AND; output non-negative from zero state) | ✅ **F-13** CEX: `percent=-1024` → `stored=255` (negative wrap); ✅ **F-13 system** VERIFICATION SUCCESSFUL (2081 VCC, 284 post-simplification): upstream `std::clamp` in `soc_voltage_to_percent` and `OffsetPolicy::run_policy` prevents negative inputs from ever reaching `DebugTelemetrySmaCh` — latent defect, unreachable in production |
 | PCA9555 GPIO expander emulator | `src/nv/emulation/pca9555.{h,cpp}` (`Pca9555` — 16-bit I2C GPIO expander; direction/input/output/inversion registers + interrupt-on-change logic) | ✅ 1292 VCC | ✅ k=2 (direction constraint with precondition req_in∩req_out=∅; input_update_masked; interrupt_default; output_propagation) | ✅ VERIFICATION SUCCESSFUL (405 VCC, production `pca9555.cpp`): output state unchanged after Input-register write — **F-14 retracted** (bare `return` and `break` observably equivalent; code-quality note) |
 | EMC1812 temperature sensor driver | `src/nv/i2c/emc1812.{h,cpp}` (`Emc1812` — EMC1812 temp sensor driver; all public methods with nondet I2C stubs; `int8_t↔uint8_t` threshold cast round-trip verified for all six set/get pairs) | ✅ 52 VCC | ✅ k=1 (cast_roundtrip: `static_cast<int8_t>(static_cast<uint8_t>(t)) == t` for all `int8_t t`; threshold_symmetry: all four pairs) | — |
 | TMP1075 temperature sensor driver | `src/nv/i2c/tmp1075.{h,cpp}` (`Tmp1075` — 12-bit two's-complement temperature encoding: `int8_t → <<4 → int16_t → uint16_t → >>4 → int8_t` round-trip; `get_device_id`; `set/get_{low,high}_limit`) | ✅ 33 VCC | ✅ k=1 (12bit_roundtrip: `static_cast<int8_t>(static_cast<int16_t>(static_cast<uint16_t>(static_cast<int16_t>(t<<4)))>>4) == t` for all `int8_t t`; temp_read_cast well-defined) | — |
@@ -431,6 +431,25 @@ if (percent_int < 0)
 static_cast<UFXP8_0>(percent_int);
 ```
 
+**Reachability proof** (`debug_telemetry_f13_system`, VERIFICATION SUCCESSFUL — 2081 VCC, 284 post-simplification):
+
+System-level harness calls the real `PowerManager::run_iteration()` (production code, not an inline model) with nondet ADC reading and nondet GPIO (thermal warning asserted/deasserted). All three `DebugTelemetrySmaCh` outputs are asserted non-negative:
+
+```
+__ESBMC_assert(
+    pm.public_connectors.soc_percent_avg  >= static_cast<SFXP22_10>(0)
+ && pm.public_connectors.edpp_offset_avg  >= static_cast<SFXP22_10>(0)
+ && pm.public_connectors.isink_offset_avg >= static_cast<SFXP22_10>(0), ...);
+```
+
+ESBMC proves no counterexample exists for any hardware input. The three upstream paths each prevent negative values from reaching `DebugTelemetrySmaCh::evaluate()`:
+
+- `soc_percent_filtered`: `StateOfChargeDev::soc_voltage_to_percent()` applies `std::clamp(%, 0, 100)` before the value enters the SMA.
+- `edpp_offset`: `OffsetPolicy::run_policy<Edpp>` returns `std::clamp(critical+residency, 0, 100)`; reset paths return `0`.
+- `isink_offset`: `OffsetPolicy::run_policy<Isink>` returns `100 - std::clamp(…)` ∈ [0, 100]; reset paths return `100` or `0`.
+
+**Conclusion**: F-13 is a **latent defect**. The function `DebugTelemetrySmaCh::evaluate()` is unsafe when called with negative input, but the current data flow prevents that from ever happening. The recommendation above remains valid as a defensive hardening.
+
 ---
 
 ### Items checked, no defects
@@ -467,6 +486,7 @@ corresponding ESBMC version is bumped.
 |---|---|---|
 | [#4247](https://github.com/esbmc/esbmc/issues/4247) | Bundled `<bit>` pointer overload uses `reinterpret_cast`, breaking `bit_cast<T*>(this)` in const methods (residual gap after #4191/#4192). | `stubs/bit` shim retained (const-aware C-cast for pointer specialisation) |
 | [#4248](https://github.com/esbmc/esbmc/issues/4248) | Bundled `<span>` does not transitively include `<bit>`; production code (`pdk-mctp-app-packet.h`) relies on that transitive include for `std::bit_cast`. | `stubs/span` shim retained (provides transitive `<bit>` only) |
+| (no upstream issue yet) | Bundled `<algorithm>` lacks `std::clamp` (C++17/20); used by `offset_policy.h` and `soc_state_of_charge_dev.h`. Also: `const T&` return from a clamp shim causes ESBMC to lose the materialized result in GOTO IR when the calling function returns (use-after-scope). | `stubs/algorithm` shim provides `std::clamp` returning `T` by value. |
 
 ### Closed issues
 
@@ -540,8 +560,9 @@ make nsm_type5_f6_neg       # F-6: unchecked mode byte stored (expect VERIFICATI
 make nsm_type5_f7_neg       # F-7: no rollback after validation failure (expect VERIFICATION FAILED)
 make nsm_type5_f8_neg       # F-8: gpio ei_entries[16] OOB (expect VERIFICATION FAILED)
 make nsm_type3_f10_neg      # F-10: silent 125°C substitution — real ntc_table.cpp (expect VERIFICATION FAILED)
-make debug_telemetry_f13_neg  # F-13: negative percent wrap to uint8 (expect VERIFICATION FAILED)
-make pca9555_f14_neg        # F-14: retracted — production pca9555.cpp (expect VERIFICATION SUCCESSFUL)
+make debug_telemetry_f13_neg     # F-13: negative percent wrap to uint8 (expect VERIFICATION FAILED)
+make debug_telemetry_f13_system  # F-13 reachability proof via PowerManager::run_iteration() (expect VERIFICATION SUCCESSFUL)
+make pca9555_f14_neg             # F-14: retracted — production pca9555.cpp (expect VERIFICATION SUCCESSFUL)
 ```
 
 ESBMC 8.2.0 on `$PATH`, or pass `ESBMC=/path/to/esbmc make ...`.

@@ -36,6 +36,26 @@ UTILS_LANG_FLAGS := \
   --nan-check \
   --unwind 4
 
+# Volatile-check profile: LANG_FLAGS + --volatile-check.
+# Kept as a separate phase so volatile findings do not block the Phase 1 CI gate.
+VOLATILE_FLAGS := \
+  --std c++20 \
+  --memory-leak-check \
+  --overflow-check \
+  --unsigned-overflow-check \
+  --nan-check \
+  --volatile-check \
+  --unwind 4
+
+UTILS_VOLATILE_FLAGS := \
+  --std c++20 \
+  --memory-leak-check \
+  --overflow-check \
+  --ub-shift-check \
+  --nan-check \
+  --volatile-check \
+  --unwind 4
+
 # Functional / inductive profile. Restored to k-induction with
 # --interval-analysis after esbmc#4184 cleared the qualified-constexpr
 # blocker. Works on all current targets because the verification-only
@@ -50,31 +70,33 @@ FUNC_FLAGS := \
 
 FP_INCS := -I$(REPO)/src
 
-.PHONY: all mctp_packet mctp_packet_func mctp_packet_neg \
-        mctp_router mctp_router_func mctp_router_neg \
-        mctp_validator mctp_validator_func \
+.PHONY: all volatile \
+        mctp_packet mctp_packet_func mctp_packet_neg mctp_packet_volatile \
+        mctp_router mctp_router_func mctp_router_neg mctp_router_volatile \
+        mctp_validator mctp_validator_func mctp_validator_volatile \
         mctp_dispatch \
-        nsm_type_2 nsm_type_2_func \
-        nsm_type3 nsm_type3_func \
-        nsm_bitmask nsm_bitmask_func nsm_bitmask_neg \
-        nsm_type5_validate nsm_type5_validate_func \
-        telemetry telemetry_func \
-        spi_utils spi_utils_func \
-        i2c_crc8 i2c_crc8_func \
-        literals literals_func literals_neg \
-        fixed_point fixed_point_func \
-        utils utils_func utils_neg \
-        ntc_table ntc_table_func \
-        pwr_smooth_params pwr_smooth_params_func \
-        fru_utils fru_utils_func \
-        soc_sma_filter soc_sma_filter_func \
-        debug_telemetry_sma debug_telemetry_sma_func \
-        pca9555 pca9555_func \
-        emc1812 emc1812_func \
-        tmp1075 tmp1075_func \
-        tmp461 tmp461_func \
+        nsm_type_2 nsm_type_2_func nsm_type_2_volatile \
+        nsm_type3 nsm_type3_func nsm_type3_volatile \
+        nsm_bitmask nsm_bitmask_func nsm_bitmask_neg nsm_bitmask_volatile \
+        nsm_type5_validate nsm_type5_validate_func nsm_type5_validate_volatile \
+        telemetry telemetry_func telemetry_volatile \
+        spi_utils spi_utils_func spi_utils_volatile \
+        i2c_crc8 i2c_crc8_func i2c_crc8_volatile \
+        literals literals_func literals_neg literals_volatile \
+        fixed_point fixed_point_func fixed_point_volatile \
+        utils utils_func utils_neg utils_volatile \
+        ntc_table ntc_table_func ntc_table_volatile \
+        pwr_smooth_params pwr_smooth_params_func pwr_smooth_params_volatile \
+        fru_utils fru_utils_func fru_utils_volatile \
+        soc_sma_filter soc_sma_filter_func soc_sma_filter_volatile \
+        debug_telemetry_sma debug_telemetry_sma_func debug_telemetry_sma_volatile \
+        pca9555 pca9555_func pca9555_volatile \
+        emc1812 emc1812_func emc1812_volatile \
+        tmp1075 tmp1075_func tmp1075_volatile \
+        tmp461 tmp461_func tmp461_volatile \
         clean
 all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils soc_sma_filter debug_telemetry_sma pca9555 emc1812 tmp1075 tmp461
+volatile: mctp_packet_volatile mctp_router_volatile mctp_validator_volatile nsm_type_2_volatile nsm_type3_volatile nsm_bitmask_volatile nsm_type5_validate_volatile telemetry_volatile spi_utils_volatile i2c_crc8_volatile literals_volatile fixed_point_volatile utils_volatile ntc_table_volatile pwr_smooth_params_volatile fru_utils_volatile soc_sma_filter_volatile debug_telemetry_sma_volatile pca9555_volatile emc1812_volatile tmp1075_volatile tmp461_volatile
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
@@ -518,6 +540,177 @@ tmp461_func:
 	  $(HARNESSES)/tmp461_harness.cpp \
 	  $(REPO)/src/nv/i2c/tmp461.cpp \
 	  2>&1 | tee $(RESULTS)/tmp461_func.log
+
+# =============================================================================
+# Phase: volatile — all Phase 1 targets with --volatile-check added.
+# Run with: make volatile
+# Separate from Phase 1 so volatile findings do not block the CI gate.
+# =============================================================================
+
+mctp_packet_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) $(MCTP_INCS) \
+	  $(HARNESSES)/mctp_packet_harness.cpp \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
+	  2>&1 | tee $(RESULTS)/mctp_packet_volatile.log
+
+mctp_router_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) $(MCTP_INCS) \
+	  $(HARNESSES)/mctp_router_harness.cpp \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
+	  2>&1 | tee $(RESULTS)/mctp_router_volatile.log
+
+mctp_validator_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) $(MCTP_INCS) \
+	  $(HARNESSES)/mctp_validator_harness.cpp \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
+	  $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp \
+	  2>&1 | tee $(RESULTS)/mctp_validator_volatile.log
+
+nsm_type_2_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --volatile-check --unwind 12 \
+	  $(HARNESSES)/nsm_type_2_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_type_2_volatile.log
+
+nsm_type3_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --volatile-check --unwind 9 \
+	  $(HARNESSES)/nsm_type3_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_type3_volatile.log
+
+nsm_bitmask_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) -I$(REPO)/src \
+	  $(HARNESSES)/nsm_bitmask_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_bitmask_volatile.log
+
+nsm_type5_validate_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) \
+	  $(HARNESSES)/nsm_type5_validate_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_type5_validate_volatile.log
+
+telemetry_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 \
+	  --memory-leak-check \
+	  --overflow-check \
+	  --ub-shift-check \
+	  --nan-check \
+	  --volatile-check \
+	  --unwind 11 \
+	  $(HARNESSES)/telemetry_harness.cpp \
+	  2>&1 | tee $(RESULTS)/telemetry_volatile.log
+
+spi_utils_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --volatile-check --unwind 9 -I$(STUBS) \
+	  $(HARNESSES)/spi_utils_harness.cpp \
+	  2>&1 | tee $(RESULTS)/spi_utils_volatile.log
+
+i2c_crc8_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --volatile-check --unwind 257 -I$(STUBS) \
+	  $(HARNESSES)/i2c_crc8_harness.cpp \
+	  2>&1 | tee $(RESULTS)/i2c_crc8_volatile.log
+
+literals_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) \
+	  $(HARNESSES)/literals_harness.cpp \
+	  2>&1 | tee $(RESULTS)/literals_volatile.log
+
+fixed_point_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) $(FP_INCS) \
+	  $(HARNESSES)/fixed_point_harness.cpp \
+	  2>&1 | tee $(RESULTS)/fixed_point_volatile.log
+
+utils_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(UTILS_VOLATILE_FLAGS) $(FP_INCS) -I$(STUBS) \
+	  $(HARNESSES)/utils_harness.cpp \
+	  2>&1 | tee $(RESULTS)/utils_volatile.log
+
+ntc_table_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 \
+	  --memory-leak-check \
+	  --overflow-check \
+	  --unsigned-overflow-check \
+	  --nan-check \
+	  --volatile-check \
+	  --unwind 9 \
+	  -I$(REPO)/src \
+	  $(REPO)/src/nv/volt_mon/ntc_table.cpp \
+	  $(HARNESSES)/ntc_table_harness.cpp \
+	  2>&1 | tee $(RESULTS)/ntc_table_volatile.log
+
+pwr_smooth_params_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) \
+	  $(HARNESSES)/pwr_smooth_params_harness.cpp \
+	  2>&1 | tee $(RESULTS)/pwr_smooth_params_volatile.log
+
+fru_utils_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --volatile-check --unwind 9 \
+	  $(HARNESSES)/fru_utils_harness.cpp \
+	  2>&1 | tee $(RESULTS)/fru_utils_volatile.log
+
+soc_sma_filter_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) -I$(STUBS) -I$(REPO)/src \
+	  $(HARNESSES)/soc_sma_filter_harness.cpp \
+	  2>&1 | tee $(RESULTS)/soc_sma_filter_volatile.log
+
+debug_telemetry_sma_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) -I$(STUBS) -I$(REPO)/src \
+	  $(HARNESSES)/debug_telemetry_sma_harness.cpp \
+	  2>&1 | tee $(RESULTS)/debug_telemetry_sma_volatile.log
+
+pca9555_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) \
+	  -I$(STUBS) -I$(STUBS)/sys/i2c -I$(REPO)/src \
+	  $(HARNESSES)/pca9555_harness.cpp \
+	  $(REPO)/src/nv/emulation/pca9555.cpp \
+	  2>&1 | tee $(RESULTS)/pca9555_volatile.log
+
+emc1812_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) \
+	  -I$(STUBS) -I$(STUBS)/nv/i2c -I$(REPO)/src \
+	  $(HARNESSES)/emc1812_harness.cpp \
+	  $(REPO)/src/nv/i2c/emc1812.cpp \
+	  2>&1 | tee $(RESULTS)/emc1812_volatile.log
+
+tmp1075_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) \
+	  -I$(STUBS) -I$(STUBS)/nv/i2c -I$(REPO)/src \
+	  $(HARNESSES)/tmp1075_harness.cpp \
+	  $(REPO)/src/nv/i2c/tmp1075.cpp \
+	  2>&1 | tee $(RESULTS)/tmp1075_volatile.log
+
+tmp461_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) \
+	  -I$(STUBS) -I$(STUBS)/nv/i2c -I$(REPO)/src \
+	  $(HARNESSES)/tmp461_harness.cpp \
+	  $(REPO)/src/nv/i2c/tmp461.cpp \
+	  2>&1 | tee $(RESULTS)/tmp461_volatile.log
 
 clean:
 	rm -rf $(RESULTS)

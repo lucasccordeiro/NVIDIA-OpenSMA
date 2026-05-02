@@ -2,7 +2,7 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.377s
+GOTO program creation time: 0.686s
 GOTO program processing time: 0.004s
 Starting Bounded Model Checking
 Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId

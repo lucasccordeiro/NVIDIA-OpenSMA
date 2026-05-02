@@ -26,7 +26,7 @@ In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
       |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.914s
+GOTO program creation time: 0.612s
 GOTO program processing time: 0.004s
 Starting Bounded Model Checking
 WARNING: no body for function here#

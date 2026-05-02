@@ -2,18 +2,18 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_f13_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 1.055s
-GOTO program processing time: 0.008s
+GOTO program creation time: 1.337s
+GOTO program processing time: 0.011s
 Starting Bounded Model Checking
-Symex completed in: 0.021s (489 assignments)
-Caching time: 0.003s (removed 30 assertions)
-Slicing time: 0.001s (removed 403 assignments)
-Generated 131 VCC(s), 41 remaining after simplification (56 assignments)
+Symex completed in: 0.023s (555 assignments)
+Caching time: 0.002s (removed 30 assertions)
+Slicing time: 0.001s (removed 468 assignments)
+Generated 133 VCC(s), 42 remaining after simplification (57 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.009s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.002s
+Runtime decision procedure: 0.001s
 Building error trace
 
 [Counterexample]
@@ -27,19 +27,19 @@ State 39 file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetr
 ----------------------------------------------------
   this->_sum = { ._buffer={ .elems = { 0 } }, ._index=0, ._sum=-2096897 }
 
-State 41 file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h line 51 column 9 function evaluate thread 0
+State 42 file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h line 51 column 9 function evaluate thread 0
 ----------------------------------------------------
   *return_value$_operator[]$3 = ( class nv::soc_pwr_smoothing::DebugTelemetrySmaCh {  struct std::array<unsigned char, 256> { unsigned char [256] elems; }_buffer; unsigned int _index; signed int _sum; })(byte_update_little_endian((unsigned _ExtInt(2112))({ ._buffer={ .elems = { 0 } }, ._index=0, ._sum=-2096897 }), 0, 255))
 
-State 44 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_f13_harness.cpp line 52 column 5 function main thread 0
+State 45 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_f13_harness.cpp line 52 column 5 function main thread 0
 ----------------------------------------------------
   percent_int = -2096897 (11111111 11100000 00000000 11111111)
 
-State 45 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_f13_harness.cpp line 53 column 5 function main thread 0
+State 46 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_f13_harness.cpp line 53 column 5 function main thread 0
 ----------------------------------------------------
   stored = 255 (11111111)
 
-State 46 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_f13_harness.cpp line 57 column 5 function main thread 0
+State 47 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_f13_harness.cpp line 57 column 5 function main thread 0
 ----------------------------------------------------
 Violated property:
   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_f13_harness.cpp line 57 column 5 function main

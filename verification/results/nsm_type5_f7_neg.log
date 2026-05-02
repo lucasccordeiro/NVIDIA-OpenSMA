@@ -2,8 +2,8 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f7_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.571s
-GOTO program processing time: 0.006s
+GOTO program creation time: 0.533s
+GOTO program processing time: 0.005s
 Starting Bounded Model Checking
 WARNING: not checking alignment for access to packed struct struct PortRecoveryPayload
 WARNING: not checking alignment for access to packed struct struct PortRecoveryPayload
@@ -20,7 +20,7 @@ No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.001s
+Runtime decision procedure: 0.002s
 Building error trace
 
 [Counterexample]

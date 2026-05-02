@@ -1,19 +1,10 @@
 Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
-In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp:15:
-In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-packet.h:19:
-In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
-/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:16:91: warning: non-type template parameter declared with incompatible types in different translation units ('typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type' vs. 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type') [-Wodr]
-   16 |           typename enable_if<is_pointer<To>::value && is_pointer<From>::value, int>::type = 0>
-      |                                                                                           ^
-/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:23:94: note: declared here with type 'typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type'
-   23 |           typename enable_if<!(is_pointer<To>::value && is_pointer<From>::value), int>::type = 0>
-      |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.697s
-GOTO program processing time: 0.007s
+GOTO program creation time: 0.762s
+GOTO program processing time: 0.008s
 Starting Bounded Model Checking
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
@@ -21,16 +12,16 @@ WARNING: not checking alignment for access to packed struct struct pdk::mctp::pl
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
-Symex completed in: 0.018s (206 assignments)
-Caching time: 0.000s (removed 1 assertions)
-Slicing time: 0.001s (removed 189 assignments)
-Generated 68 VCC(s), 9 remaining after simplification (16 assignments)
+Symex completed in: 0.018s (208 assignments)
+Caching time: 0.001s (removed 1 assertions)
+Slicing time: 0.000s (removed 191 assignments)
+Generated 72 VCC(s), 9 remaining after simplification (16 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.001s
+Encoding to solver time: 0.000s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.000s
-BMC program time: 0.020s
+Runtime decision procedure: 0.001s
+BMC program time: 0.021s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

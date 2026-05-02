@@ -2,7 +2,7 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_f6_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.535s
+GOTO program creation time: 0.472s
 GOTO program processing time: 0.004s
 Starting Bounded Model Checking
 Symex completed in: 0.002s (49 assignments)

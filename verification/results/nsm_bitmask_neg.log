@@ -2,17 +2,16 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_negative_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.655s
-GOTO program processing time: 0.007s
+GOTO program creation time: 0.704s
+GOTO program processing time: 0.008s
 Starting Bounded Model Checking
-WARNING: no body for function array#
-Symex completed in: 0.006s (145 assignments)
+Symex completed in: 0.006s (146 assignments)
 Caching time: 0.001s (removed 3 assertions)
-Slicing time: 0.000s (removed 114 assignments)
-Generated 24 VCC(s), 13 remaining after simplification (28 assignments)
+Slicing time: 0.000s (removed 113 assignments)
+Generated 26 VCC(s), 15 remaining after simplification (30 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.000s
+Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.001s
 Building error trace
@@ -24,10 +23,10 @@ State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_negat
 ----------------------------------------------------
   pos = 248 (11111000)
 
-State 7 file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-543d-ff03-0006/array line 43 column 5 function at thread 0
+State 7 file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-58d1-2c92-e96e/array line 40 column 5 function at thread 0
 ----------------------------------------------------
 Violated property:
-  file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-543d-ff03-0006/array line 43 column 5 function at
+  file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-58d1-2c92-e96e/array line 40 column 5 function at
   Index out of bounds
   index::0 < 8
 

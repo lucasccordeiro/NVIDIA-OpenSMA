@@ -2,7 +2,7 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/spi_utils_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.750s
+GOTO program creation time: 0.580s
 GOTO program processing time: 0.005s
 Starting Bounded Model Checking
 Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/spi_utils_harness.cpp line 88 column 5 function f_buf_to_u16_total

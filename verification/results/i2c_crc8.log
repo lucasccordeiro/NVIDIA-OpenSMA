@@ -2,8 +2,8 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/i2c_crc8_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.774s
-GOTO program processing time: 0.004s
+GOTO program creation time: 0.560s
+GOTO program processing time: 0.005s
 Starting Bounded Model Checking
 Unwinding loop 6 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
 Unwinding loop 6 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/i2c_crc8_harness.cpp line 75 column 5 function f_crc8_simple_total
@@ -43,10 +43,10 @@ Slicing time: 0.002s (removed 313 assignments)
 Generated 374 VCC(s), 72 remaining after simplification (159 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.010s
+Encoding to solver time: 0.009s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.024s
-BMC program time: 0.102s
+Runtime decision procedure: 0.025s
+BMC program time: 0.103s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

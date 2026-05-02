@@ -2,7 +2,7 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.518s
+GOTO program creation time: 0.715s
 GOTO program processing time: 0.004s
 Starting Bounded Model Checking
 Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 91 column 5 function getTelemIdFromTempSensorId
@@ -31,9 +31,9 @@ Unwinding loop 4 iteration 10   file /Users/user/NVIDIA-OpenSMA/verification/har
 Unwinding loop 5 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
 Unwinding loop 5 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
 Unwinding loop 5 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/telemetry_harness.cpp line 101 column 5 function getTelemIdFromPowerSensorId
-Symex completed in: 0.041s (257 assignments)
+Symex completed in: 0.040s (257 assignments)
 Caching time: 0.000s (removed 0 assertions)
-Slicing time: 0.000s (removed 257 assignments)
+Slicing time: 0.001s (removed 257 assignments)
 Generated 128 VCC(s), 0 remaining after simplification (0 assignments)
 BMC program time: 0.041s
 

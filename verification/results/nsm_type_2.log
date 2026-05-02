@@ -2,7 +2,7 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.730s
+GOTO program creation time: 0.542s
 GOTO program processing time: 0.004s
 Starting Bounded Model Checking
 Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type_2_harness.cpp line 48 column 5 function validatePcieLinkResetValue
@@ -24,8 +24,8 @@ No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.000s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.001s
-BMC program time: 0.013s
+Runtime decision procedure: 0.000s
+BMC program time: 0.012s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

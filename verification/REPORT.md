@@ -61,6 +61,9 @@ All BMC runs solved sub-second on Bitwuzla 0.8.2.
 - arithmetic over/underflow (signed and unsigned)
 - memory-leak
 - NaN propagation
+- loop exhaustion (unwinding assertions — default ESBMC behaviour; each
+  target's `--unwind N` is set to the exact loop bound so the assertion
+  closes, not cut off)
 
 **Phase 2 — functional contracts** via `--k-induction --k-step 1
 --max-k-step 6`:
@@ -415,7 +418,13 @@ kept narrow so multiple fixes can be reaped independently.
 11. ~~Expand coverage to `nv/i2c/emc1812.{h,cpp}`~~ — **done** (`emc1812` / `emc1812_func`, 52 VCC Phase 1, k=1 Phase 2: `int8_t↔uint8_t` threshold cast round-trip identity for all four set/get pairs).
 12. ~~Expand coverage to `nv/i2c/tmp1075.{h,cpp}`~~ — **done** (`tmp1075` / `tmp1075_func`, 33 VCC Phase 1, k=1 Phase 2: 12-bit temperature encoding round-trip `int8_t → <<4 → uint16_t → >>4 → int8_t` and temp_read_cast).
 13. ~~Expand coverage to `nv/i2c/tmp461.{h,cpp}`~~ — **done** (`tmp461` / `tmp461_func`, 57 VCC Phase 1, k=1 Phase 2: `int8_t↔uint8_t` cast round-trip for all four threshold set/get pairs).
-14. Stand up a CI hook that runs `make all` on every PR; verification must
+14. ~~Drop `--no-unwinding-assertions` and set per-target loop bounds~~ —
+    **done**. Removed the flag from all Phase 1 targets; per-target `--unwind N`
+    set to the exact array/table size (`nsm_type_2` → 12, `nsm_type3` → 9,
+    `telemetry` → 11, `spi_utils` → 9, `i2c_crc8` → 257, `fru_utils` → 9;
+    `ntc_table` already at 9). All 22 targets in `make all` pass with
+    unwinding assertions active — no new bugs found.
+15. Stand up a CI hook that runs `make all` on every PR; verification must
     stay green and any failure must be triaged before merge.
 
 ## Reproducing

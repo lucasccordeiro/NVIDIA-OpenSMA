@@ -13,19 +13,19 @@ In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
       |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.501s
-GOTO program processing time: 0.007s
+GOTO program creation time: 0.551s
+GOTO program processing time: 0.004s
 Starting Bounded Model Checking
-Symex completed in: 0.012s (177 assignments)
+Symex completed in: 0.010s (177 assignments)
 Caching time: 0.000s (removed 1 assertions)
-Slicing time: 0.000s (removed 148 assignments)
+Slicing time: 0.001s (removed 148 assignments)
 Generated 52 VCC(s), 15 remaining after simplification (28 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.000s
+Encoding to solver time: 0.001s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.001s
-BMC program time: 0.018s
+Runtime decision procedure: 0.000s
+BMC program time: 0.012s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

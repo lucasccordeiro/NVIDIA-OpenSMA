@@ -465,8 +465,8 @@ corresponding ESBMC version is bumped.
 
 | Issue | Description | Workaround in tree |
 |---|---|---|
-| [#4191](https://github.com/esbmc/esbmc/issues/4191) + [#4192](https://github.com/esbmc/esbmc/pull/4192) | Bundled `<bit>` pointer overload uses `reinterpret_cast`, breaking `bit_cast<T*>(this)` in const methods. | `stubs/bit` shim retained (const-aware C-cast for pointer specialisation) |
-| [#4191](https://github.com/esbmc/esbmc/issues/4191) | Bundled `<span>` does not transitively include `<bit>`; production code (`pdk-mctp-app-packet.h`) relies on that transitive include for `std::bit_cast`. The earlier `<array>`-collision reason is resolved by esbmc#4190 being fixed. | `stubs/span` shim retained (provides transitive `<bit>` only) |
+| [#4247](https://github.com/esbmc/esbmc/issues/4247) | Bundled `<bit>` pointer overload uses `reinterpret_cast`, breaking `bit_cast<T*>(this)` in const methods (residual gap after #4191/#4192). | `stubs/bit` shim retained (const-aware C-cast for pointer specialisation) |
+| [#4248](https://github.com/esbmc/esbmc/issues/4248) | Bundled `<span>` does not transitively include `<bit>`; production code (`pdk-mctp-app-packet.h`) relies on that transitive include for `std::bit_cast`. | `stubs/span` shim retained (provides transitive `<bit>` only) |
 
 ### Closed issues
 

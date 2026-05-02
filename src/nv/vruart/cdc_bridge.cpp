@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: Copyright (c) 2025 NVIDIA CORPORATION & AFFILIATES.
+ * SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES.
  * All rights reserved.
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -19,11 +19,8 @@
 #include <cstdint>
 #include <cstring>
 
-#include "nv/vruart/bridge.h"
+#include "nv/vruart/cdc_bridge.h"
 #include "sys/uart/bridge.h"
-
-static_assert(nv::vruart::Bridge::Buffsz == 2U + sys::uart::edmaXferBufSize,
-              "Buffer size must be 2 + UART RX eDMA payload size");
 
 #include "nv/common/preproc.h"
 #include "nv/ctimer/ctimer.h"
@@ -45,41 +42,41 @@ using namespace std::chrono_literals;
 namespace nv::vruart {
 
 // Global instances (single core access only, no need for NV_SHARED)
-Bridge bridge;  // NOLINT(*-non-const-global-variables)
+CdcBridge cdc_bridge;  // NOLINT(*-non-const-global-variables)
 static sys::uart::Bridge
     uart_impl;  // NOLINT(*-non-const-global-variables,misc-use-anonymous-namespace)
 
-Bridge& Bridge::inst()
+CdcBridge& CdcBridge::inst()
 {
-    return bridge;
+    return cdc_bridge;
 }
 
 // UART interface - forward to uart_impl
-Status Bridge::init(Instance      uartInstance,
-                    const Signal& tx,
-                    const Signal& rx,
-                    Baudrate      baudrate,
-                    EdmaInst      edmaInstance,
-                    EdmaChn       edmaTxChn,
-                    EdmaChn       edmaRxChn)
+Status CdcBridge::init(Instance      uartInstance,
+                       const Signal& tx,
+                       const Signal& rx,
+                       Baudrate      baudrate,
+                       EdmaInst      edmaInstance,
+                       EdmaChn       edmaTxChn,
+                       EdmaChn       edmaRxChn)
 {
     auto status = uart_impl.init(
         uartInstance, tx, rx, baudrate, edmaInstance, edmaTxChn, edmaRxChn);
     return (status == sys::uart::Status::Ok) ? Status::Ok : Status::NotInit;
 }
 
-Status Bridge::tx(std::span<uint8_t> data)
+Status CdcBridge::tx(std::span<uint8_t> data)
 {
     auto status = uart_impl.tx(data);
     return (status == sys::uart::Status::Ok) ? Status::Ok : Status::TxFail;
 }
 
-bool Bridge::ready() const
+bool CdcBridge::ready() const
 {
     return uart_impl.ready();
 }
 
-uint8_t Bridge::usb_rx_callback(uint8_t* data, uint32_t length)
+uint8_t CdcBridge::usb_rx_callback(uint8_t* data, uint32_t length)
 {
     if (length == 0) {
         // ZLP - just re-arm
@@ -90,20 +87,20 @@ uint8_t Bridge::usb_rx_callback(uint8_t* data, uint32_t length)
     if constexpr (ipc::EnableNcsi) {
         // Dual-core mode: Copy data immediately to avoid race condition
         // In dual-core, 'data' may point to shared buffer that can be overwritten
-        if (length > Bridge::inst().rx_buf.size()) {
-            length = Bridge::inst().rx_buf.size();
+        if (length > CdcBridge::inst().rx_buf.size()) {
+            length = CdcBridge::inst().rx_buf.size();
         }
-        std::memcpy(Bridge::inst().rx_buf.data(), data, length);
-        Bridge::inst().pending_usb_data = Bridge::inst().rx_buf.data();
-        Bridge::inst().pending_usb_len  = length;
+        std::memcpy(CdcBridge::inst().rx_buf.data(), data, length);
+        CdcBridge::inst().pending_usb_data = CdcBridge::inst().rx_buf.data();
+        CdcBridge::inst().pending_usb_len  = length;
 
         // Re-arm immediately in dual-core mode (no backpressure from USB side)
         sys::usb::Driver::vcom_rearm_rx(sys::usb::Driver::get_vcom_handle(), data);
     }
     else {
         // Single-core mode: Save pointer, don't re-arm USB (provides backpressure)
-        Bridge::inst().pending_usb_data = data;
-        Bridge::inst().pending_usb_len  = length;
+        CdcBridge::inst().pending_usb_data = data;
+        CdcBridge::inst().pending_usb_len  = length;
     }
 
     // Notify task
@@ -114,26 +111,26 @@ uint8_t Bridge::usb_rx_callback(uint8_t* data, uint32_t length)
 
 // Event setters (called from ISR or task context)
 // Event::set() automatically handles ISR context via xPortIsInsideInterrupt()
-void Bridge::set_usb_rx_done_event()
+void CdcBridge::set_usb_rx_done_event()
 {
     auto& event = Event::make(EventId::UartBridgeEvent);
     (void)event.set(UsbRxDoneBit);
 }
 
-void Bridge::set_uart_rx_done_event()
+void CdcBridge::set_uart_rx_done_event()
 {
     auto& event = Event::make(EventId::UartBridgeEvent);
     (void)event.set(UartRxDoneBit);
 }
 
-void Bridge::set_uart_tx_done_event()
+void CdcBridge::set_uart_tx_done_event()
 {
     auto& event = Event::make(EventId::UartBridgeEvent);
     (void)event.set(UartTxDoneBit);
 }
 
 // Flush pending TX queue (called when USB port is closed to avoid stale data)
-void Bridge::flush_tx_queue()
+void CdcBridge::flush_tx_queue()
 {
     auto&            queue = Queue::make(QueueId::UbridgeTx);
     ipc::Queue::Item item;
@@ -144,7 +141,7 @@ void Bridge::flush_tx_queue()
 }
 
 // Enqueue UART RX data for USB TX (called from ISR)
-uint8_t Bridge::enqueue(const uint8_t* data, uint32_t length)
+uint8_t CdcBridge::enqueue(const uint8_t* data, uint32_t length)
 {
     if (data == nullptr || length == 0) {
         return 1;
@@ -186,7 +183,7 @@ uint8_t Bridge::enqueue(const uint8_t* data, uint32_t length)
 }
 
 // Event-driven task loop
-[[noreturn]] void Bridge::main()
+[[noreturn]] void CdcBridge::main()
 {
     auto&            tx_queue = Queue::make(QueueId::UbridgeTx);
     auto&            event    = Event::make(EventId::UartBridgeEvent);

@@ -35,8 +35,8 @@ In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
       |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.950s
-GOTO program processing time: 0.007s
+GOTO program creation time: 0.672s
+GOTO program processing time: 0.006s
 Starting Bounded Model Checking
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
 WARNING: no body for function hide#
@@ -125,16 +125,16 @@ WARNING: not checking alignment for access to packed struct struct pdk::mctp::ap
 WARNING: no body for function hide#
 WARNING: no body for function hide#
 WARNING: no body for function hide#
-Symex completed in: 0.068s (371 assignments)
-Caching time: 0.000s (removed 1 assertions)
+Symex completed in: 0.067s (371 assignments)
+Caching time: 0.001s (removed 1 assertions)
 Slicing time: 0.001s (removed 332 assignments)
 Generated 216 VCC(s), 11 remaining after simplification (38 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.003s
+Encoding to solver time: 0.002s
 Solving with solver Bitwuzla 0.8.2
 Runtime decision procedure: 0.000s
-BMC program time: 0.072s
+BMC program time: 0.071s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

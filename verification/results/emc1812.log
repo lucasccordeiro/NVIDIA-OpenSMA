@@ -13,12 +13,12 @@ In file included from /Users/user/NVIDIA-OpenSMA/verification/stubs/span:10:
       |                                                                                              ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.562s
-GOTO program processing time: 0.005s
+GOTO program creation time: 0.506s
+GOTO program processing time: 0.004s
 Starting Bounded Model Checking
 Symex completed in: 0.010s (177 assignments)
 Caching time: 0.000s (removed 1 assertions)
-Slicing time: 0.001s (removed 148 assignments)
+Slicing time: 0.000s (removed 148 assignments)
 Generated 52 VCC(s), 15 remaining after simplification (28 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic

@@ -18,8 +18,8 @@
 // the hardware-specific BusbarTemp singleton stubbed to return Ok, matching F-1 rigor
 // for the critical NTC path.
 //
-// Full compilation of nsm_type_3.cpp is blocked by esbmc#4245 (<optional>, <chrono>
-// missing from ESBMC bundled library) and hardware headers (sys/adc/adc.h).
+// Full compilation of nsm_type_3.cpp is blocked by the hardware header sys/adc/adc.h.
+// The earlier <optional>/<chrono> blocker (esbmc#4245) is resolved by #4246.
 //
 // Expected: VERIFICATION FAILED — the function returns Success even when the threshold
 // causes ntc_temperature_to_resistance to return 0 (silent 125°C substitution).

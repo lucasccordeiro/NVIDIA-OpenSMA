@@ -2,8 +2,8 @@ Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.404s
-GOTO program processing time: 0.006s
+GOTO program creation time: 0.604s
+GOTO program processing time: 0.007s
 Starting Bounded Model Checking
 Unwinding loop 26 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
 Unwinding loop 26 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 42 column 5 function verify_checksum
@@ -32,16 +32,16 @@ Unwinding loop 28 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/har
 Unwinding loop 28 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
 Unwinding loop 28 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
 Unwinding loop 28 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/fru_utils_harness.cpp line 61 column 5 function decode_6bit_ascii
-Symex completed in: 0.060s (322 assignments)
-Caching time: 0.002s (removed 7 assertions)
-Slicing time: 0.002s (removed 181 assignments)
+Symex completed in: 0.061s (322 assignments)
+Caching time: 0.003s (removed 7 assertions)
+Slicing time: 0.001s (removed 181 assignments)
 Generated 194 VCC(s), 69 remaining after simplification (134 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.004s
+Encoding to solver time: 0.003s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.003s
-BMC program time: 0.071s
+Runtime decision procedure: 0.004s
+BMC program time: 0.073s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

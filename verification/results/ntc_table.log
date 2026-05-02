@@ -3,7 +3,7 @@ Parsing /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 0.724s
+GOTO program creation time: 0.416s
 GOTO program processing time: 0.005s
 Starting Bounded Model Checking
 Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
@@ -11,16 +11,16 @@ Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/n
 Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
 Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
 Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
-Symex completed in: 0.033s (533 assignments)
-Caching time: 0.010s (removed 1 assertions)
-Slicing time: 0.005s (removed 188 assignments)
+Symex completed in: 0.035s (533 assignments)
+Caching time: 0.011s (removed 1 assertions)
+Slicing time: 0.004s (removed 188 assignments)
 Generated 227 VCC(s), 199 remaining after simplification (344 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
 Encoding to solver time: 0.008s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 1.260s
-BMC program time: 1.316s
+Runtime decision procedure: 1.448s
+BMC program time: 1.507s
 
 VERIFICATION SUCCESSFUL
 ESBMC version 8.2.0 64-bit aarch64 macos

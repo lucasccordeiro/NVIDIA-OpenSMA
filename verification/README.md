@@ -119,9 +119,11 @@ for the full table; brief view:
   in `src/nv/mctp/nsm_msg_bitmask.h` call `bitmask.at(pos/8)` without a bounds
   guard. `get_bit` carries `if (byte_index < bitmask.size())` but the write
   operations do not. For `pos ≥ 64`, `byte_index ≥ 8` is OOB on a size-8 array
-  (ESBMC CEX: `pos=248`, `byte_index=31`). All current call sites use constants
-  4 and 5, so no runtime exposure today. Fix: add the same guard that `get_bit`
-  already carries to both write operations.
+  (ESBMC CEX: `pos=248`, `byte_index=31`). Exhaustive call-graph trace: all 3
+  production call sites use compile-time enum constants (≤ 5); no packet handler
+  passes a runtime value to this overload — confirmed latent, no current
+  packet-driven path. Fix: add the same guard that `get_bit` already carries to
+  both write operations.
 - **F-6** (confirmed): `on_dev_cfg_set_errorInjectionMode` stores an unchecked
   `mode` byte — any value passes; no enum validation. ESBMC CEX: `mode=0xFF`
   stored unguarded.

@@ -1,0 +1,443 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_f7_system_harness.cpp
+In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_f7_system_harness.cpp:28:
+In file included from /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h:41:
+/Users/user/NVIDIA-OpenSMA/verification/stubs/sys/common/error-inject.h:10:65: warning: function declared 'noreturn' should not return [-Winvalid-noreturn]
+   10 |     [[noreturn]] static void trigger_HardFault()     { abort(); }
+      |                                                                 ^
+/Users/user/NVIDIA-OpenSMA/verification/stubs/sys/common/error-inject.h:11:65: warning: function declared 'noreturn' should not return [-Winvalid-noreturn]
+   11 |     [[noreturn]] static void trigger_BusFault()      { abort(); }
+      |                                                                 ^
+/Users/user/NVIDIA-OpenSMA/verification/stubs/sys/common/error-inject.h:12:65: warning: function declared 'noreturn' should not return [-Winvalid-noreturn]
+   12 |     [[noreturn]] static void trigger_UsageFault()    { abort(); }
+      |                                                                 ^
+/Users/user/NVIDIA-OpenSMA/verification/stubs/sys/common/error-inject.h:13:65: warning: function declared 'noreturn' should not return [-Winvalid-noreturn]
+   13 |     [[noreturn]] static void trigger_SecureFault()   { abort(); }
+      |                                                                 ^
+/Users/user/NVIDIA-OpenSMA/verification/stubs/sys/common/error-inject.h:14:65: warning: function declared 'noreturn' should not return [-Winvalid-noreturn]
+   14 |     [[noreturn]] static void trigger_WatchdogReset() { abort(); }
+      |                                                                 ^
+/Users/user/NVIDIA-OpenSMA/verification/stubs/sys/common/error-inject.h:15:65: warning: function declared 'noreturn' should not return [-Winvalid-noreturn]
+   15 |     [[noreturn]] static void trigger_MemManageFault(){ abort(); }
+      |                                                                 ^
+Converting
+Generating GOTO Program
+GOTO program creation time: 2.520s
+GOTO program processing time: 0.055s
+Starting Bounded Model Checking
+WARNING: no body for function tuple#
+WARNING: no body for function tuple#
+WARNING: no body for function tuple#
+WARNING: no body for function tuple#
+WARNING: no body for function tuple#
+WARNING: no body for function tuple#
+WARNING: no body for function tuple#
+WARNING: no body for function tuple#
+WARNING: no body for function tuple#
+WARNING: no body for function tuple#
+WARNING: no body for function tuple#
+WARNING: no body for function tuple#
+WARNING: no body for function tuple#
+Unwinding loop 47 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 47 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 47 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 47 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 47 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 47 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 47 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 47 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 46 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1390 column 9 function count_events_in_bitmask
+Unwinding loop 47 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 47 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 47 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 47 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 47 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 47 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 47 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 47 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#c#
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S1_#1
+WARNING: no body for function Packet#&S1_#1
+Unwinding loop 27 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 98 column 5 function operator==
+Unwinding loop 27 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 98 column 5 function operator==
+Unwinding loop 27 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 98 column 5 function operator==
+Unwinding loop 27 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 98 column 5 function operator==
+Unwinding loop 27 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 98 column 5 function operator==
+Unwinding loop 27 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 98 column 5 function operator==
+Unwinding loop 27 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 98 column 5 function operator==
+Unwinding loop 27 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 98 column 5 function operator==
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S1_#1
+WARNING: no body for function Packet#&S1_#1
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#&S1_#1
+WARNING: no body for function Packet#&S1_#1
+Unwinding loop 29 iteration 1   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-72be-6894-dd23/algorithm line 548 column 3 function copy
+Unwinding loop 29 iteration 2   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-72be-6894-dd23/algorithm line 548 column 3 function copy
+Unwinding loop 29 iteration 3   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-72be-6894-dd23/algorithm line 548 column 3 function copy
+Unwinding loop 29 iteration 4   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-72be-6894-dd23/algorithm line 548 column 3 function copy
+Unwinding loop 29 iteration 5   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-72be-6894-dd23/algorithm line 548 column 3 function copy
+Unwinding loop 29 iteration 6   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-72be-6894-dd23/algorithm line 548 column 3 function copy
+Unwinding loop 29 iteration 7   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-72be-6894-dd23/algorithm line 548 column 3 function copy
+Unwinding loop 29 iteration 8   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-72be-6894-dd23/algorithm line 548 column 3 function copy
+WARNING: no body for function Packet#&S1_#1
+WARNING: no body for function Packet#&S1_#1
+WARNING: no body for function Packet#c#
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 32 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 406 column 9 function isErrorInjectionIdBitmapSupported
+Unwinding loop 32 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 406 column 9 function isErrorInjectionIdBitmapSupported
+Unwinding loop 32 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 406 column 9 function isErrorInjectionIdBitmapSupported
+Unwinding loop 32 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 406 column 9 function isErrorInjectionIdBitmapSupported
+Unwinding loop 32 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 406 column 9 function isErrorInjectionIdBitmapSupported
+Unwinding loop 32 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 406 column 9 function isErrorInjectionIdBitmapSupported
+Unwinding loop 32 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 406 column 9 function isErrorInjectionIdBitmapSupported
+Unwinding loop 32 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 406 column 9 function isErrorInjectionIdBitmapSupported
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 10   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 11   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 12   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 56 iteration 13   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function notifyIoxSpoofingState#b#
+Unwinding loop 48 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 883 column 5 function on_dev_cfg_set_currentErrorInjectionTypes
+Unwinding loop 48 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 883 column 5 function on_dev_cfg_set_currentErrorInjectionTypes
+Unwinding loop 48 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 883 column 5 function on_dev_cfg_set_currentErrorInjectionTypes
+Unwinding loop 48 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 883 column 5 function on_dev_cfg_set_currentErrorInjectionTypes
+Unwinding loop 48 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 883 column 5 function on_dev_cfg_set_currentErrorInjectionTypes
+Unwinding loop 48 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 883 column 5 function on_dev_cfg_set_currentErrorInjectionTypes
+Unwinding loop 48 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 883 column 5 function on_dev_cfg_set_currentErrorInjectionTypes
+Unwinding loop 48 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 883 column 5 function on_dev_cfg_set_currentErrorInjectionTypes
+WARNING: no body for function Packet#&S1_#1
+WARNING: no body for function Packet#&S1_#1
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 10   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 11   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 12   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 56 iteration 13   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#&S1_#1
+WARNING: no body for function Packet#&S1_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#c#
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 10   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 11   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 12   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 10   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 11   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 12   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 10   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 11   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 12   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 10   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 11   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 12   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 56 iteration 13   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S1_#1
+WARNING: no body for function Packet#&S1_#1
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#c#
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 10   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 11   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 12   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#c#
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 10   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 11   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 12   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#c#
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 10   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 11   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 12   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#c#
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 10   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 11   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 12   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 56 iteration 13   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 53 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+Unwinding loop 53 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+Unwinding loop 53 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+Unwinding loop 53 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+Unwinding loop 53 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+Unwinding loop 53 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+Unwinding loop 53 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+Unwinding loop 53 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+Unwinding loop 53 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+Unwinding loop 53 iteration 10   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+Unwinding loop 53 iteration 11   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+Unwinding loop 53 iteration 12   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+Not unwinding loop 53 iteration 13   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 10   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 11   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 12   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 56 iteration 13   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 49 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 49 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 49 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 49 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 49 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 49 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 49 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 49 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 49 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 49 iteration 10   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 49 iteration 11   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 49 iteration 12   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Not unwinding loop 49 iteration 13   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S1_#1
+WARNING: no body for function Packet#&S1_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function fill_build_type#&c#S
+Unwinding loop 56 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 56 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 50 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 50 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 50 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 50 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 50 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 50 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 50 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 50 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 50 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 50 iteration 10   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 50 iteration 11   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Unwinding loop 50 iteration 12   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: no body for function get_gpio_default_value#s#&c#
+Not unwinding loop 50 iteration 13   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+Unwinding loop 51 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+Unwinding loop 51 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+Unwinding loop 51 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+Unwinding loop 51 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+Unwinding loop 51 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+Unwinding loop 51 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+Unwinding loop 51 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+Unwinding loop 51 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+Unwinding loop 51 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+Unwinding loop 51 iteration 10   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+Unwinding loop 51 iteration 11   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+Unwinding loop 51 iteration 12   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+Not unwinding loop 51 iteration 13   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+WARNING: no body for function GpioEventSource#S
+Unwinding loop 52 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 285 column 5 function triggerGpioSpoofingEvents
+WARNING: no body for function GpioEventSource#S
+Unwinding loop 52 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 285 column 5 function triggerGpioSpoofingEvents
+WARNING: no body for function GpioEventSource#S
+Unwinding loop 52 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 285 column 5 function triggerGpioSpoofingEvents
+WARNING: no body for function GpioEventSource#S
+Unwinding loop 52 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 285 column 5 function triggerGpioSpoofingEvents
+WARNING: no body for function GpioEventSource#S
+Unwinding loop 52 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 285 column 5 function triggerGpioSpoofingEvents
+WARNING: no body for function GpioEventSource#S
+Unwinding loop 52 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 285 column 5 function triggerGpioSpoofingEvents
+WARNING: no body for function GpioEventSource#S
+Unwinding loop 52 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 285 column 5 function triggerGpioSpoofingEvents
+WARNING: no body for function notifyIoxSpoofingState#b#
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+Symex completed in: 4.657s (5052 assignments)
+Caching time: 0.042s (removed 152 assertions)
+Slicing time: 0.050s (removed 3431 assignments)
+Generated 2035 VCC(s), 522 remaining after simplification (1469 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.351s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.052s
+BMC program time: 5.159s
+
+VERIFICATION SUCCESSFUL
+ESBMC version 8.2.0 64-bit aarch64 macos

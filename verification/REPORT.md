@@ -28,11 +28,17 @@ findings: **F-4** in `literals.h::operator""_bit` (shift-count ≥ 64) and
 **F-5** in `nsm_msg_bitmask.h::set_bit` / `unset_bit` on the 8-element event
 bitmask (index ≥ 64 reaches `std::array::at` OOB). Neither F-4 nor F-5 has a
 dangerous current call site, but F-5 lacks the runtime guard that sibling
-operations carry. A subsequent exhaustive call-graph trace confirmed that every
-`set_bit(8-element, pos)` call site in the production tree uses a compile-time
-enum constant; no packet handler passes a runtime value to the unguarded
-overload — F-5 is confirmed latent with no current packet-driven path. Several
-ESBMC C++-frontend bugs filed against
+operations carry. An exhaustive call-graph trace confirmed that every
+`set_bit(8-element, pos)` call site uses a compile-time enum constant — F-5 is
+confirmed latent with no current packet-driven path. A third latent-OOB finding,
+**F-15**, confirms the same asymmetric-guard pattern on the read path:
+`is_event_source_enable()` reads `type0/6_event_enable_bitmask.at(event_id/8)`
+without a bounds check (ESBMC CEX: `event_id=248`, `ByteIndex=31`, OOB on
+size-8 array). A concurrent sweep of the DCD GPIO handlers (`on_dcd_get_gpio` /
+`on_dcd_set_gpio`) produced VERIFICATION SUCCESSFUL (536 VCC): the
+`(offset+length) > GpioNum` guard is sufficient to keep all `GpioSetup.at()`
+and `gpio_resp.gpio.at()` accesses in bounds. Several ESBMC C++-frontend bugs
+filed against
 [esbmc/esbmc](https://github.com/esbmc/esbmc); most are now fixed and merged;
 workarounds removed where applicable.
 
@@ -63,6 +69,8 @@ workarounds removed where applicable.
 | EMC1812 temperature sensor driver | `src/nv/i2c/emc1812.{h,cpp}` (`Emc1812` — EMC1812 temp sensor driver; all public methods with nondet I2C stubs; `int8_t↔uint8_t` threshold cast round-trip verified for all six set/get pairs) | ✅ 52 VCC | ✅ k=1 (cast_roundtrip: `static_cast<int8_t>(static_cast<uint8_t>(t)) == t` for all `int8_t t`; threshold_symmetry: all four pairs) | — |
 | TMP1075 temperature sensor driver | `src/nv/i2c/tmp1075.{h,cpp}` (`Tmp1075` — 12-bit two's-complement temperature encoding: `int8_t → <<4 → int16_t → uint16_t → >>4 → int8_t` round-trip; `get_device_id`; `set/get_{low,high}_limit`) | ✅ 33 VCC | ✅ k=1 (12bit_roundtrip: `static_cast<int8_t>(static_cast<int16_t>(static_cast<uint16_t>(static_cast<int16_t>(t<<4)))>>4) == t` for all `int8_t t`; temp_read_cast well-defined) | — |
 | TMP461 temperature sensor driver | `src/nv/i2c/tmp461.{h,cpp}` (`Tmp461` / NCT72 — `int8_t↔uint8_t` threshold cast round-trip for four alert/therm set/get pairs; `get_configuration`) | ✅ 57 VCC | ✅ k=1 (cast_roundtrip + threshold_symmetry for all four pairs) | — |
+| `is_event_source_enable` OOB check (F-15) | `src/nv/mctp/nsm.cpp:761` — `type0/6_event_enable_bitmask.at(event_id/8)` without bounds guard; same asymmetric-guard pattern as F-5 but on the read path | — | — | ✅ VERIFICATION FAILED — CEX: `event_id=248`, `ByteIndex=31`, OOB at `at()` on size-8 array — **F-15** |
+| DCD GPIO safety proof | `src/nv/mctp/nsm.cpp:3389,3482` — `on_dcd_get_gpio` / `on_dcd_set_gpio`; guard `(offset+length) > GpioNum` keeps all `GpioSetup.at()` and `gpio_resp.gpio.at()` in bounds | — | — | ✅ VERIFICATION SUCCESSFUL (536 VCC) — **no defect** |
 
 All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
@@ -482,6 +490,108 @@ ESBMC proves no counterexample exists for any hardware input. The three upstream
 
 ---
 
+### F-15 — `is_event_source_enable` missing bounds check on `event_id`
+
+**File**: `src/nv/mctp/nsm.cpp:761–799`
+
+```cpp
+bool Nsm::is_event_source_enable(NsmMsgType msg_type, uint8_t event_id) const
+{
+    const size_t ByteIndex = event_id / 8;
+    const size_t BitOffset = event_id % 8;
+
+    if (msg_type == NsmMsgType::DeviceCapabilityDiscovery)
+        return (type0_event_enable_bitmask.at(ByteIndex) & (1U << BitOffset)) != 0;
+    else
+        return (type6_event_enable_bitmask.at(ByteIndex) & (1U << BitOffset)) != 0;
+}
+```
+
+`type0_event_enable_bitmask` and `type6_event_enable_bitmask` are both
+`std::array<uint8_t, NvMctpEventSupportedNum=8>`. For `event_id ∈ [64, 255]`,
+`ByteIndex = event_id/8 ∈ [8, 31]` — out of range for a size-8 array.
+`std::array::at()` calls `abort()` under production `-fno-exceptions`. No bounds
+guard is present, unlike `get_bit()` in `nsm_msg_bitmask.h` which carries
+`if (byte_index < bitmask.size()) ...`.
+
+This is the same asymmetric-guard pattern as F-5 (`set_bit`/`unset_bit` missing
+guard) but on the read path.
+
+**What ESBMC proved** (`nsm_event_source_f15_neg`, `LANG_FLAGS`, nondet `event_id ≥ 64`):
+
+```
+State 2   event_id = 248
+State 5   ByteIndex = 31
+State 9   Violated: Index out of bounds
+          index::0 < 8    (ByteIndex=31 on a size-8 array)
+VERIFICATION FAILED
+```
+
+**Severity: low in practice.** The function is called from two sites:
+
+- `nsm_event.cpp:53` (`PrepareEventMessage`): `eventId` originates from IPC queue
+  field `Cmd.data2` — an internal message between firmware tasks, not a raw packet
+  field. Range of `eventId` in production is bounded by the event-type enum
+  (`NsmFwEvent`, values 0–15), well below 64.
+- `driver.cpp:807` (`is_event_source_enable`): called in a `switch` with only
+  known enum values.
+
+No current call site passes a runtime value that can reach ≥ 64. The risk is
+latent: a future handler that passes an unvalidated `uint8_t` from a packet or
+IPC field to `is_event_source_enable` would trigger the abort path.
+
+**Recommendation**: add the same guard that `get_bit` already carries:
+
+```cpp
+bool Nsm::is_event_source_enable(NsmMsgType msg_type, uint8_t event_id) const
+{
+    const size_t ByteIndex = event_id / 8;
+    if (ByteIndex >= type0_event_enable_bitmask.size())
+        return false;
+    const size_t BitOffset = event_id % 8;
+    if (msg_type == NsmMsgType::DeviceCapabilityDiscovery)
+        return (type0_event_enable_bitmask.at(ByteIndex) & (1U << BitOffset)) != 0;
+    else
+        return (type6_event_enable_bitmask.at(ByteIndex) & (1U << BitOffset)) != 0;
+}
+```
+
+---
+
+### DCD GPIO handlers — structural safety proof
+
+**Files**: `src/nv/mctp/nsm.cpp:3389` (`on_dcd_get_gpio`), `nsm.cpp:3482` (`on_dcd_set_gpio`)
+
+Both handlers apply an early-exit guard:
+
+```cpp
+if ((offset + length) > nv::ipc::GpioNum) {
+    fill_error_packet(Ccode::ErrorInvalidData, rx, tx);
+    return;
+}
+```
+
+The subsequent loop iterates `i ∈ [0, length)` and accesses:
+
+- `GpioSetup.at(gpio_index)` where `gpio_index = offset + i`
+- `gpio_resp.gpio.at(byte_index)` where `byte_index = i / 8`
+
+**Structural invariant**: after the guard, `offset + length ≤ GpioNum`, so
+`gpio_index < GpioNum = GpioSetup.size()`. `GpioBytes = (GpioNum+7)/8`, so
+`byte_index = i/8 < GpioBytes = gpio_resp.gpio.size()`. Both `.at()` calls are
+provably in bounds for any valid `(offset, length)` pair.
+
+**What ESBMC proved** (`nsm_gpio_safety`, `GpioNum=66` (p3957_cxx production value),
+`--unwind 67`, VERIFICATION SUCCESSFUL, 536 VCC):
+
+All 536 verification conditions discharged. No counterexample exists for any
+`offset`, `length` pair that passes the guard, including the discover-all
+special case (`offset=0, length=0 → length=GpioNum`).
+
+**Conclusion**: the DCD GPIO handlers are structurally safe. No finding.
+
+---
+
 ### Items checked, no defects
 
 - Packed-struct alignment access in `Packet::to_span()` and `Packet::from()`
@@ -556,16 +666,18 @@ resolved with no remaining workarounds in the tree:
 2. **Fix F-6, F-7, F-8, F-10, F-13** — each section above contains a
    specific one- or two-line recommendation. F-8 is latent (existing call site
    has a guard); the other four are directly reachable.
-3. **Fix F-5** — add the `byte_index >= bitmask.size()` guard to `set_bit`
-   and `unset_bit` on the 8-element bitmask, matching the guard `get_bit`
-   already carries. Low urgency: call-graph trace confirmed no current
-   packet-driven path (all 3 call sites use compile-time constants ≤ 5);
-   the risk is from future callers only.
-4. **Fresh sweep of unverified packet handlers** — search for the validator-gap
-   pattern that made F-1 exploitable: any handler that takes a packet-provided
-   integer and uses it as an array index (`.at(x)` or `arr[x]`) or a shift
-   count (`1 << x`) without a prior bounds check. Priority targets: `nsm.cpp`
-   dispatch handlers not yet covered (DCD commands, event subscription,
+3. **Fix F-5 and F-15** — both stem from the same asymmetric-guard pattern
+   in `nsm_msg_bitmask.h` and `nsm.cpp` respectively. Add the
+   `byte_index >= bitmask.size()` guard to `set_bit` / `unset_bit` (F-5),
+   and an equivalent `ByteIndex >= bitmask.size()` guard to
+   `is_event_source_enable` (F-15). Low urgency: call-graph traces confirm no
+   current packet-driven path for either (all call sites use compile-time
+   constants); the risk is from future callers only.
+4. **Continue fresh sweep of unverified packet handlers** — search for the
+   validator-gap pattern that made F-1 exploitable: any handler that takes a
+   packet-provided integer and uses it as an array index (`.at(x)` or `arr[x]`)
+   or a shift count (`1 << x`) without a prior bounds check. Priority targets:
+   `nsm.cpp` dispatch handlers not yet covered (event subscription,
    GetSupportedDeviceModes), and any `nsm_type_*.cpp` handler outside the
    already-verified field-validator subset.
 5. **Stand up a CI hook** — run `make all` on every PR; verification must
@@ -603,6 +715,8 @@ make nsm_type3_f10_neg      # F-10: silent 125°C substitution — real ntc_tabl
 make debug_telemetry_f13_neg     # F-13: negative percent wrap to uint8 (expect VERIFICATION FAILED)
 make debug_telemetry_f13_system  # F-13 reachability proof via PowerManager::run_iteration() (expect VERIFICATION SUCCESSFUL)
 make pca9555_f14_neg             # F-14: retracted — production pca9555.cpp (expect VERIFICATION SUCCESSFUL)
+make nsm_event_source_f15_neg   # F-15: is_event_source_enable OOB on event_id≥64 (expect VERIFICATION FAILED)
+make nsm_gpio_safety            # DCD GPIO structural safety proof (expect VERIFICATION SUCCESSFUL)
 ```
 
 ESBMC 8.2.0 on `$PATH`, or pass `ESBMC=/path/to/esbmc make ...`.

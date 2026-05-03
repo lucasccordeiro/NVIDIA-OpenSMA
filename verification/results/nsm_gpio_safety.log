@@ -1,0 +1,154 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.815s
+GOTO program processing time: 0.007s
+Starting Bounded Model Checking
+Unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 9   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 10   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 11   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 12   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 13   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 14   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 15   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 16   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 17   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 18   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 19   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 20   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 21   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 22   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 23   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 24   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 25   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 26   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 27   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 28   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 29   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 30   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 31   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 32   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 33   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 34   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 35   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 36   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 37   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 38   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 39   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 40   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 41   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 42   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 43   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 44   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 45   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 46   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 47   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 48   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 49   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 50   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 51   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 52   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 53   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 54   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 55   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 56   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 57   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 58   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 59   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 60   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 61   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 62   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 63   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 64   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 65   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 7 iteration 66   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Not unwinding loop 7 iteration 67   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 50 column 5 function main
+Unwinding loop 8 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 9   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 10   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 11   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 12   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 13   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 14   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 15   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 16   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 17   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 18   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 19   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 20   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 21   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 22   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 23   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 24   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 25   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 26   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 27   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 28   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 29   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 30   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 31   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 32   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 33   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 34   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 35   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 36   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 37   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 38   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 39   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 40   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 41   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 42   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 43   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 44   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 45   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 46   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 47   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 48   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 49   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 50   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 51   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 52   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 53   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 54   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 55   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 56   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 57   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 58   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 59   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 60   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 61   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 62   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 63   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 64   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 65   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 66   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Not unwinding loop 8 iteration 67   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_gpio_safety_harness.cpp line 62 column 5 function main
+Symex completed in: 0.220s (1998 assignments)
+Caching time: 0.096s (removed 2 assertions)
+Slicing time: 0.070s (removed 1182 assignments)
+Generated 1150 VCC(s), 536 remaining after simplification (814 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.034s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.023s
+BMC program time: 0.444s
+
+VERIFICATION SUCCESSFUL
+ESBMC version 8.2.0 64-bit aarch64 macos

@@ -1,6 +1,6 @@
 # OpenSMA ESBMC Verification — Initial Report
 
-**Date**: 2026-04-25 (updated 2026-05-02)
+**Date**: 2026-04-25 (updated 2026-05-03)
 **Tool**: ESBMC 8.2.0 (aarch64-macos)
 **Scope**: bounded model checking of selected modules in
 [NVIDIA/OpenSMA](https://github.com/NVIDIA/OpenSMA)
@@ -28,7 +28,11 @@ findings: **F-4** in `literals.h::operator""_bit` (shift-count ≥ 64) and
 **F-5** in `nsm_msg_bitmask.h::set_bit` / `unset_bit` on the 8-element event
 bitmask (index ≥ 64 reaches `std::array::at` OOB). Neither F-4 nor F-5 has a
 dangerous current call site, but F-5 lacks the runtime guard that sibling
-operations carry. Several ESBMC C++-frontend bugs filed against
+operations carry. A subsequent exhaustive call-graph trace confirmed that every
+`set_bit(8-element, pos)` call site in the production tree uses a compile-time
+enum constant; no packet handler passes a runtime value to the unguarded
+overload — F-5 is confirmed latent with no current packet-driven path. Several
+ESBMC C++-frontend bugs filed against
 [esbmc/esbmc](https://github.com/esbmc/esbmc); most are now fixed and merged;
 workarounds removed where applicable.
 
@@ -271,6 +275,26 @@ static constexpr void set_bit(std::array<uint8_t, NvMctpEventSupportedNum>& bitm
 Apply the same fix to `unset_bit`. Alternatively, make the precondition
 explicit in a `static_assert` or `constexpr` wrapper that limits `pos` to the
 representable range of the array.
+
+**Call graph investigation — confirmed latent, no packet-driven path**: An
+exhaustive trace of every `set_bit(NvMctpEventSupportedNum=8, pos)` call site
+in the production source tree found three locations, all using compile-time
+enum constants:
+
+| Call site | File | `pos` value |
+|---|---|---|
+| `gen_type5_supported_errors_injection_bitmask()` | `nsm_type_5.h:125` | `DeviceError = 4` |
+| `gen_type5_supported_errors_injection_bitmask()` | `nsm_type_5.h:126` | `GpioSpoofing = 5` |
+| `gen_type6_event_bitmask()` | `nsm.h:1379` | `NsmFwEvent::RotStateInformationChangeEvent = 1` |
+
+Packet handlers that write to 8-element bitmasks bypass `set_bit` entirely:
+`on_dev_cfg_set_currentErrorInjectionTypes` (`nsm_type_5.cpp:755`) copies the
+8-byte payload with `memcpy` and then iterates with `at(index)` for `index ∈
+[0, 7]`; `on_dcd_set_current_event_srcs` (`nsm.cpp:983`) does the same.
+Neither calls `set_bit` at runtime. A Tier 2 system-level harness for F-5
+would therefore produce VERIFICATION SUCCESSFUL (confirmed latent), not FAILED.
+F-5 cannot be reported at F-1's level of certainty without a future code change
+that routes an unvalidated `pos` value through the write path.
 
 ### F-6 — `on_dev_cfg_set_errorInjectionMode` stores unchecked mode byte
 
@@ -534,8 +558,17 @@ resolved with no remaining workarounds in the tree:
    has a guard); the other four are directly reachable.
 3. **Fix F-5** — add the `byte_index >= bitmask.size()` guard to `set_bit`
    and `unset_bit` on the 8-element bitmask, matching the guard `get_bit`
-   already carries. Low urgency (no current dangerous call site).
-4. **Stand up a CI hook** — run `make all` on every PR; verification must
+   already carries. Low urgency: call-graph trace confirmed no current
+   packet-driven path (all 3 call sites use compile-time constants ≤ 5);
+   the risk is from future callers only.
+4. **Fresh sweep of unverified packet handlers** — search for the validator-gap
+   pattern that made F-1 exploitable: any handler that takes a packet-provided
+   integer and uses it as an array index (`.at(x)` or `arr[x]`) or a shift
+   count (`1 << x`) without a prior bounds check. Priority targets: `nsm.cpp`
+   dispatch handlers not yet covered (DCD commands, event subscription,
+   GetSupportedDeviceModes), and any `nsm_type_*.cpp` handler outside the
+   already-verified field-validator subset.
+5. **Stand up a CI hook** — run `make all` on every PR; verification must
    stay green and any failure must be triaged before merge.
 
 ## Reproducing

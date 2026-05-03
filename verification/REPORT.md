@@ -293,7 +293,7 @@ Nondet `request_mode` constrained to `request_mode != Disable && request_mode !=
 
 **System-level proof** (`nsm_f6_system`, VERIFICATION FAILED):
 
-The real `Nsm::process_device_configuration()` compiled from production `nsm_type_5.cpp` (not an inline copy). Nondet `nrx.data[0]`; no constraint. CEX traces `nondet_symbol` from `nrx.data[0]` (harness:49) through `process_device_configuration` (nsm_type_5.cpp:647) → `on_dev_cfg_set_errorInjectionMode` (nsm_type_5.cpp:801) to `type5_data.errorInjectionModeResponse.mode`. Assertion `mode ∈ {Disable, Enable}` violated with `mode = 3` (`--unwind 9 --no-align-check`; `--no-align-check` suppresses a false positive on the `[[gnu::packed]]` bitfield constructor).
+The real `Nsm::process_device_configuration()` compiled from production `nsm_type_5.cpp` (not an inline copy). Nondet `nrx.data[0]`; no constraint. CEX traces `nondet_symbol` from `nrx.data[0]` (harness:49) through `process_device_configuration` (nsm_type_5.cpp:647) → `on_dev_cfg_set_errorInjectionMode` (nsm_type_5.cpp:801) to `type5_data.errorInjectionModeResponse.mode`. Assertion `mode ∈ {Disable, Enable}` violated with `mode = 3` (`--unwind 9 --no-align-check`; `--no-align-check` suppresses a false positive on the `[[gnu::packed]]` bitfield constructor — esbmc#4267).
 
 **Runtime confirmation**: sanitizer run (`-fsanitize=address,undefined`) with `request_mode = 0xFF` triggers `assert(mode == Disable || mode == Enable)` → SIGABRT. `ctest/f6/`.
 

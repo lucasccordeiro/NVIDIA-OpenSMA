@@ -1,0 +1,63 @@
+// ESBMC verification stub for <span>.
+// ESBMC's bundled <span> does #include "array" with a relative path, which
+// causes ESBMC's own bundled <array> to be loaded before our constexpr-patched
+// stubs/array can shadow it.  This minimal stub provides std::span without
+// including ESBMC's array, leaving our stubs/array definition intact.
+#pragma once
+#include <cstddef>
+
+namespace std {
+
+inline constexpr std::size_t dynamic_extent = static_cast<std::size_t>(-1);
+
+template <typename T, std::size_t Extent = dynamic_extent>
+class span {
+public:
+    using element_type    = T;
+    using value_type      = T;
+    using pointer         = T*;
+    using const_pointer   = const T*;
+    using reference       = T&;
+    using const_reference = const T&;
+    using size_type       = std::size_t;
+
+    constexpr span() noexcept : _ptr(nullptr), _size(0) {}
+    constexpr span(pointer ptr, size_type count) noexcept : _ptr(ptr), _size(count) {}
+    constexpr span(pointer first, pointer last) noexcept
+        : _ptr(first), _size(static_cast<size_type>(last - first)) {}
+
+    template <std::size_t N>
+    constexpr span(T (&arr)[N]) noexcept : _ptr(arr), _size(N) {}
+
+    // Contiguous-container constructor (matches std::array, std::vector, etc.).
+    // SFINAE: enabled only when Container::data() and Container::size() exist.
+    template <
+        typename Container,
+        typename = decltype(static_cast<pointer>(
+            static_cast<Container*>(nullptr)->data())),
+        typename = decltype(static_cast<size_type>(
+            static_cast<Container*>(nullptr)->size()))>
+    constexpr span(Container& c) noexcept : _ptr(c.data()), _size(c.size()) {}
+
+    constexpr pointer   data()  const noexcept { return _ptr; }
+    constexpr size_type size()  const noexcept { return _size; }
+    constexpr bool      empty() const noexcept { return _size == 0; }
+
+    constexpr pointer begin() const noexcept { return _ptr; }
+    constexpr pointer end()   const noexcept { return _ptr + _size; }
+
+    constexpr reference operator[](size_type i) const { return _ptr[i]; }
+    constexpr reference front() const { return _ptr[0]; }
+    constexpr reference back()  const { return _ptr[_size - 1]; }
+
+    constexpr span<T> subspan(size_type offset, size_type count = dynamic_extent) const noexcept
+    {
+        return span<T>(_ptr + offset, count == dynamic_extent ? _size - offset : count);
+    }
+
+private:
+    pointer   _ptr;
+    size_type _size;
+};
+
+}  // namespace std

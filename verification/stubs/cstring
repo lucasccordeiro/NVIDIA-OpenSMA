@@ -1,0 +1,19 @@
+// ESBMC verification shim for <cstring>
+// ESBMC's bundled <cstring> exposes C-linkage memcpy/memset/memmove in the
+// global namespace but not in std::, causing errors when production headers
+// call std::memcpy.  This shim pulls the C header and injects the names into
+// std:: so that both call forms resolve (esbmc issue).
+#pragma once
+#include <string.h>
+
+namespace std {
+    using ::memcpy;
+    using ::memmove;
+    using ::memset;
+    using ::memcmp;
+    using ::strlen;
+    using ::strcpy;
+    using ::strncpy;
+    using ::strcmp;
+    using ::strncmp;
+}

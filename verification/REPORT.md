@@ -484,7 +484,7 @@ step once the corresponding ESBMC version is bumped.
 
 | Issue | Description | Workaround in tree |
 |---|---|---|
-| (no upstream issue yet) | Bundled `<algorithm>` lacks `std::clamp` (C++17/20); used by `offset_policy.h` and `soc_state_of_charge_dev.h`. Also: `const T&` return from a clamp shim causes ESBMC to lose the materialized result in GOTO IR when the calling function returns (use-after-scope). | `stubs/algorithm` shim provides `std::clamp` returning `T` by value. |
+| [#4251](https://github.com/esbmc/esbmc/issues/4251) | Bundled `<algorithm>` lacks `std::clamp` (C++17/20); used by `offset_policy.h` and `devices.h`. Also: `const T&` return from a clamp shim causes ESBMC to lose the materialized result in GOTO IR when the calling function returns (use-after-scope). | `stubs/algorithm` shim provides `std::clamp` returning `T` by value. |
 
 ### Closed issues
 

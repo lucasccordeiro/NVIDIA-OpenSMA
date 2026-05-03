@@ -11,8 +11,9 @@ verification/
 ├── run.sh                            # thin wrapper: ./run.sh mctp_packet
 ├── harnesses/                        # *_harness.cpp per target (Phase 1 + Phase 2)
 ├── stubs/                            # verification-only header shims
-│   ├── array                         # esbmc#4190 (aggregate-init divergence)
-│   ├── span, bit                     # thin replacements over post-#4194/#4192 bundled
+│   ├── algorithm                     # esbmc#4251 (std::clamp missing from bundled <algorithm>)
+│   ├── power_manager_config.h        # NV_IPC_CONFIG_H substitute for F-13 system harness
+│   ├── sys/{adc,dac,gpio}/           # hardware stubs for F-13 system harness
 │   ├── pdk-cmn-flowcontrol.h         # drops upstream Ada/log dep
 │   └── pdk/cmn/log/log.h             # no-op log shim
 ├── ctest/{f1,f2,f3}/                 # ESBMC --generate-ctest-testcase outputs
@@ -52,10 +53,10 @@ ESBMC to produce a counterexample.
 | `mctp_dispatch` | F-1 reachability: `Validator::validate()` + production `on_set_endpoint_id()` | — | — | — | ✅ CEX: `iface_val=2`, `valid=true`, OOB at `cur_eid.at(2)` (275 VCC) |
 | `mctp_validator` | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | ✅ | — |
 | `nsm_type_2` | `src/nv/mctp/nsm_type_2.cpp` (`validatePcieLinkResetValue`) | ✅ | ✅ k=12 | ✅ | — |
-| `nsm_type3` | `src/nv/mctp/nsm_type_3.cpp` (`is_temp_sensor_available`, `is_power_sensor_available`, `is_voltage_sensor_available`) | ✅ 37 VCC | ✅ k=9 | ✅ | — |
+| `nsm_type3` | `src/nv/mctp/nsm_type_3.cpp` (`is_temp_sensor_available`, `is_power_sensor_available`, `is_voltage_sensor_available`) | ✅ 37 VCC | ✅ k=9 | ✅ | ✅ **F-10** CEX: `threshold=254` → Success returned for out-of-range temperature |
 | `telemetry` | `src/nv/telemetry/utils.h` (`getTelemIdFromTempSensorId`, `getTelemIdFromPowerSensorId`, `buffer_to_uint32`) | ✅ 80 VCC | ✅ k=11 | ✅ | — |
 | `nsm_bitmask` | `src/nv/mctp/nsm_msg_bitmask.h` (`set_bit`/`unset_bit`/`get_bit`/`is_bit_set`) | ✅ 75 VCC | ✅ k=1 | ✅ | ✅ CEX on `set_bit`/`unset_bit(arr8, pos≥64)` — F-5 |
-| `nsm_type5_validate` | `src/nv/mctp/nsm_type_5.cpp` (five field-validator functions) | ✅ 14 VCC | ✅ k=1 | ✅ | — |
+| `nsm_type5_validate` | `src/nv/mctp/nsm_type_5.cpp` (five field-validator functions) | ✅ 14 VCC | ✅ k=1 | ✅ | ✅ **F-6** CEX: `mode=0xFF` stored; **F-7** CEX: dirty `portRecoveryResp` on validation failure; **F-8** CEX: `gpio_ei_entries[16]` OOB |
 | `spi_utils` | `src/nv/spi/utils.{h,cpp}` (buf_to_u16/u32, u16/u32_to_buf) | ✅ | ✅ k=9 | ✅ | — |
 | `i2c_crc8` | `src/nv/i2c/helper.cpp` (crc8) | ✅ | ✅ k=5 | ✅ | — |
 | `literals` | `src/nv/common/literals.h` (UDL truncation + shift) | ✅ | ✅ k=1 | ✅ | ✅ CEX on `_bit(i≥64)` — F-4 |
@@ -65,8 +66,9 @@ ESBMC to produce a counterexample.
 | `pwr_smooth_params` | `src/nv/soc_pwr_smoothing/presets.{h,cpp}` (`OverrideParam::to_uint32`, `OverrideParam::from_uint32`, `is_valid_param_id`) | ✅ 72 VCC | ✅ k=1 | ✅ | — |
 | `fru_utils` | `src/nv/fru/fru.cpp` (`verify_checksum`, `decode_6bit_ascii`) | ✅ 76 VCC | ✅ k=9 | ✅ | — |
 | `soc_sma_filter` | `src/nv/soc_pwr_smoothing/soc_sma_filter_ch.h` (`SocSmaFilterCh::evaluate` — 4-sample sliding-window SMA over SFXP22_10) | ✅ 504 VCC | ✅ k=1 | ✅ | — |
-| `debug_telemetry_sma` | `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` (`DebugTelemetrySmaCh::evaluate` — 256-sample SMA; uint8_t buffer; percent ∈ [0%, 150%]) | ✅ 261 VCC | ✅ k=1 | ✅ | — |
-| `pca9555` | `src/nv/emulation/pca9555.{h,cpp}` (`Pca9555` — 16-bit I2C GPIO expander emulator; direction/input/output/inversion registers + interrupt logic) | ✅ 1292 VCC | ✅ k=2 | ✅ | — |
+| `debug_telemetry_sma` | `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` (`DebugTelemetrySmaCh::evaluate` — 256-sample SMA; uint8_t buffer; percent ∈ [0%, 150%]) | ✅ 261 VCC | ✅ k=1 | ✅ | ✅ **F-13** CEX: `percent=-1024` → `stored=255` (negative wrap) |
+| `debug_telemetry_f13_system` | F-13 reachability: `PowerManager::run_iteration()` with nondet ADC + GPIO (production code) | — | — | — | ✅ SUCCESSFUL (2081 VCC): upstream `std::clamp` prevents negative inputs from reaching `DebugTelemetrySmaCh` — **F-13 latent defect** |
+| `pca9555` | `src/nv/emulation/pca9555.{h,cpp}` (`Pca9555` — 16-bit I2C GPIO expander emulator; direction/input/output/inversion registers + interrupt logic) | ✅ 1292 VCC | ✅ k=2 | ✅ | ✅ SUCCESSFUL (405 VCC, production `pca9555.cpp`) — **F-14 retracted** (bare `return` and `break` observably equivalent) |
 | `emc1812` | `src/nv/i2c/emc1812.{h,cpp}` (`Emc1812` — EMC1812 temp sensor driver; `int8_t↔uint8_t` threshold cast round-trip) | ✅ 52 VCC | ✅ k=1 | ✅ | — |
 | `tmp1075` | `src/nv/i2c/tmp1075.{h,cpp}` (`Tmp1075` — TMP1075 sensor driver; 12-bit temperature encoding: `int8_t → <<4 → uint16_t → >>4 → int8_t` round-trip) | ✅ 33 VCC | ✅ k=1 | ✅ | — |
 | `tmp461` | `src/nv/i2c/tmp461.{h,cpp}` (`Tmp461` / NCT72 — sensor driver; `int8_t↔uint8_t` threshold cast round-trip for four set/get pairs) | ✅ 57 VCC | ✅ k=1 | ✅ | — |
@@ -80,8 +82,8 @@ for the full table; brief view:
 |---|---|---|
 | [#4180](https://github.com/esbmc/esbmc/issues/4180) | closed (split + fixed) | — |
 | [#4182](https://github.com/esbmc/esbmc/issues/4182) | fixed by [#4187](https://github.com/esbmc/esbmc/pull/4187) | (removed) |
-| [#4183](https://github.com/esbmc/esbmc/issues/4183) | fixed by [#4188](https://github.com/esbmc/esbmc/pull/4188) | (crash gone; `<array>` shim retained for #4190 reasons) |
-| [#4190](https://github.com/esbmc/esbmc/issues/4190) | partial — [#4194](https://github.com/esbmc/esbmc/pull/4194) merged; [#4213](https://github.com/esbmc/esbmc/pull/4213) added `underlying_type_t`; aggregate-`<array>` still missing | thin `<span>` shim (avoids bundled-`<array>` collision); `<array>` shim retained for aggregate-init |
+| [#4183](https://github.com/esbmc/esbmc/issues/4183) | fixed by [#4188](https://github.com/esbmc/esbmc/pull/4188) | (removed) |
+| [#4190](https://github.com/esbmc/esbmc/issues/4190) | fully fixed — [#4194](https://github.com/esbmc/esbmc/pull/4194) + [#4213](https://github.com/esbmc/esbmc/pull/4213) + [#4244](https://github.com/esbmc/esbmc/pull/4244) (`<bit>`, `<span>`, `<type_traits>`, `<array>` aggregate) | (`stubs/array` removed) |
 | [#4191](https://github.com/esbmc/esbmc/issues/4191) | fixed by [#4192](https://github.com/esbmc/esbmc/pull/4192); const-pointer follow-up tracked as #4247 | (see #4247) |
 | [#4195](https://github.com/esbmc/esbmc/issues/4195) | fixed by [#4204](https://github.com/esbmc/esbmc/pull/4204) | (workaround removed) |
 | [#4201](https://github.com/esbmc/esbmc/issues/4201) | resolved — [#4211](https://github.com/esbmc/esbmc/pull/4211) **merged** with a type-driven non-negativity predicate on `E1` (7 CORE regressions) | spi_utils harness uses production form directly (workaround removed) |
@@ -91,9 +93,10 @@ for the full table; brief view:
 | [#4234](https://github.com/esbmc/esbmc/issues/4234) | `switch(static_cast<enum>(bit_cast member))` + `at()` in case body crashes `mk_eq` — fall-through label not normalised in `adjust_switch_case_ops` | **fixed** by [#4235](https://github.com/esbmc/esbmc/pull/4235) (merged 2026-05-01) | (workaround removed; production switch encodes correctly) |
 | [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-init `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111) | **fixed** by [#4238](https://github.com/esbmc/esbmc/pull/4238) | (workaround removed; `ctrl{}` now constructs cleanly) |
 | [#4240](https://github.com/esbmc/esbmc/issues/4240) | `--overflow-check` / `--ub-shift-check` generating false-positive signed-shl VCCs under `--std c++20` (C++20 [expr.shift]/2 makes signed left-shift fully defined; ESBMC was still applying pre-C++20 rules) | **fixed** by [#4241](https://github.com/esbmc/esbmc/pull/4241) | (no workaround needed; repro: `esbmc_bug_repros/signed_shift_result_overflow.cpp`) |
-| [#4243](https://github.com/esbmc/esbmc/issues/4243) | bundled `<array>` value-init (`{}`) does not zero-initialise `elems` — elements are nondet; false-positive overflow VCCs on SMA filter accumulators | **fixed** by [#4244](https://github.com/esbmc/esbmc/pull/4244) (merged 2026-05-02) | `<array>` shim retained (pending ESBMC version bump) |
+| [#4243](https://github.com/esbmc/esbmc/issues/4243) | bundled `<array>` value-init (`{}`) does not zero-initialise `elems` — elements are nondet; false-positive overflow VCCs on SMA filter accumulators | **fixed** by [#4244](https://github.com/esbmc/esbmc/pull/4244) (merged 2026-05-02) | (`stubs/array` removed) |
 | [#4247](https://github.com/esbmc/esbmc/issues/4247) | bundled `<bit>` pointer-to-pointer `bit_cast` overload uses `reinterpret_cast`, rejecting const `From` (residual gap after #4191/#4192) | **fixed** by [#4250](https://github.com/esbmc/esbmc/pull/4250) (merged 2026-05-02) | (`stubs/bit` removed) |
 | [#4248](https://github.com/esbmc/esbmc/issues/4248) | bundled `<span>` does not transitively include `<bit>`; production code relies on that transitive include for `std::bit_cast` | **fixed** by [#4249](https://github.com/esbmc/esbmc/pull/4249) (merged 2026-05-02) | (`stubs/span` removed) |
+| [#4251](https://github.com/esbmc/esbmc/issues/4251) | bundled `<algorithm>` lacks `std::clamp` (C++17/20); also `const T&` shim return loses materialised value in GOTO IR | open | `stubs/algorithm` shim provides `std::clamp` returning `T` by value |
 | [#2789](https://github.com/esbmc/esbmc/issues/2789) | negative shift distance (`x << y`, `y < 0`) not flagged under `--overflow-check`; only caught by `--ub-shift-check` | **fixed** by [#4242](https://github.com/esbmc/esbmc/pull/4242) (merged 2026-05-02) | — |
 
 ## Findings
@@ -119,6 +122,30 @@ for the full table; brief view:
   (ESBMC CEX: `pos=248`, `byte_index=31`). All current call sites use constants
   4 and 5, so no runtime exposure today. Fix: add the same guard that `get_bit`
   already carries to both write operations.
+- **F-6** (confirmed): `on_dev_cfg_set_errorInjectionMode` stores an unchecked
+  `mode` byte — any value passes; no enum validation. ESBMC CEX: `mode=0xFF`
+  stored unguarded.
+- **F-7** (confirmed): `on_dev_cfg_set_portRecoveryErrorInjection` writes to
+  `portRecoveryResp` before validating the payload — no rollback on failure.
+  ESBMC CEX: dirty response field left in output buffer on invalid input.
+- **F-8** (latent OOB): `validateGpioSpoofingErrorInjectionPayload` uses
+  `ei_gpio_entries[16]` (fixed index) on an array whose size is the
+  nondet-bounded `num_of_gpio_entries`. ESBMC CEX: `gpio_ei_entries[16]` OOB.
+  Current call site passes a compile-time bound, so not currently exploitable.
+- **F-10** (confirmed): `set_busbar_temperature_threshold` silently substitutes
+  125 °C when the input is out of range instead of returning an error.
+  ESBMC CEX: `threshold=254` → Success returned with silently clamped value.
+- **F-13** (latent defect): `DebugTelemetrySmaCh::evaluate` casts `SFXP32_0
+  percent` (int32_t) to `UFXP8_0` (uint8_t) without a negative-value guard —
+  negative inputs wrap modulo 256. ESBMC CEX: `percent=-1024` → `stored=255`.
+  System-level proof (`debug_telemetry_f13_system`, VERIFICATION SUCCESSFUL,
+  2081 VCC) shows upstream `std::clamp` in `soc_voltage_to_percent` and
+  `OffsetPolicy::run_policy` prevents any negative value from reaching this
+  function in production — the defect is unreachable from current data flow.
+- **F-14** *retracted*: `Pca9555::i2c_write` bare `return` on the Input command
+  was suspected to drop bytes. Production `pca9555.cpp` compiled by ESBMC
+  (VERIFICATION SUCCESSFUL, 405 VCC) confirms output state is unchanged — bare
+  `return` and `break` are observably equivalent. Code-quality note only.
 - **F-2** *retracted*: initially claimed overflow in `align_to`; on
   review, the unsigned wrap is mathematically benign (cancels exactly
   under the subsequent mask). ESBMC's `--unsigned-overflow-check` flagged
@@ -148,9 +175,15 @@ make soc_sma_filter_func debug_telemetry_sma_func  # ditto
 make pca9555_func emc1812_func                     # ditto
 make tmp1075_func tmp461_func                      # ditto
 make volatile                                  # volatile-check phase (all 22 targets)
-make mctp_packet_neg mctp_router_neg utils_neg # negative tests (expect FAILED)
+make mctp_packet_neg mctp_router_neg           # negative tests (expect FAILED)
 make mctp_dispatch                             # F-1 reachability proof (expect FAILED)
-make nsm_bitmask_neg                           # F-5 OOB proof (expect FAILED)
+make literals_neg                              # F-4: _bit(i≥64) UB (expect FAILED)
+make nsm_bitmask_neg                           # F-5: set_bit OOB (expect FAILED)
+make nsm_type5_f6_neg nsm_type5_f7_neg nsm_type5_f8_neg  # F-6/7/8 (expect FAILED)
+make nsm_type3_f10_neg                         # F-10: silent 125°C substitution (expect FAILED)
+make debug_telemetry_f13_neg                   # F-13: negative percent wrap (expect FAILED)
+make debug_telemetry_f13_system                # F-13 reachability proof (expect SUCCESSFUL)
+make pca9555_f14_neg                           # F-14: retracted (expect SUCCESSFUL)
 ```
 
 Requires ESBMC on `$PATH` (current `master` recommended), or pass

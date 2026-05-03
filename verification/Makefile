@@ -98,6 +98,7 @@ FP_INCS := -I$(REPO)/src
         emc1812 emc1812_func emc1812_volatile \
         tmp1075 tmp1075_func tmp1075_volatile \
         tmp461 tmp461_func tmp461_volatile \
+        nsm_f6_system \
         clean
 all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils soc_sma_filter debug_telemetry_sma pca9555 emc1812 tmp1075 tmp461
 volatile: mctp_packet_volatile mctp_router_volatile mctp_validator_volatile nsm_type_2_volatile nsm_type3_volatile nsm_bitmask_volatile nsm_type5_validate_volatile telemetry_volatile spi_utils_volatile i2c_crc8_volatile literals_volatile fixed_point_volatile utils_volatile ntc_table_volatile pwr_smooth_params_volatile fru_utils_volatile soc_sma_filter_volatile debug_telemetry_sma_volatile pca9555_volatile emc1812_volatile tmp1075_volatile tmp461_volatile
@@ -798,6 +799,27 @@ tmp461_volatile:
 	  $(HARNESSES)/tmp461_harness.cpp \
 	  $(REPO)/src/nv/i2c/tmp461.cpp \
 	  2>&1 | tee $(RESULTS)/tmp461_volatile.log
+
+# F-6 system-level reachability proof: Nsm::process_device_configuration() with
+# nondet nrx.data[0] compiled from the real nsm_type_5.cpp production source.
+# Stubs intercept all IPC/FreeRTOS/flash/logger dependencies; only the F-6
+# code path (process_device_configuration → on_dev_cfg_set_errorInjectionMode)
+# is verified. Expected: VERIFICATION FAILED — mode stored without range check.
+# count_events_in_bitmask iterates NvMctpEventSupportedNum=8 times; outer for
+# and inner while each need at most 8 iterations → --unwind 9 to close both.
+nsm_f6_system:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --unwind 9 \
+	  --no-align-check \
+	  -I$(STUBS) \
+	  -I$(REPO) \
+	  -I$(REPO)/src \
+	  -I$(REPO)/corepdk/modules/mctp-cpp/src \
+	  -I$(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86 \
+	  -DNV_IPC_CONFIG_H=\"nsm_f6_config.h\" \
+	  $(HARNESSES)/nsm_f6_system_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_f6_system.log
 
 clean:
 	rm -rf $(RESULTS)

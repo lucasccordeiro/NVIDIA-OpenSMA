@@ -49,7 +49,7 @@ workarounds removed where applicable.
 | I2C CRC-8 helpers | `src/nv/i2c/helper.cpp` (`crc8`) | ✅ | ✅ k=5 (incrementality + init-zero invariant) | — |
 | User-defined integer literals | `src/nv/common/literals.h` (`_u8`/`_u16`/`_u32`/`_i8`/`_i16`/`_i32`/`_bits_sizeof`/`_bit`) | ✅ | ✅ k=1 (mask agreement, signed/unsigned truncation parity, `bits/8`, `1ULL << i`) | ✅ CEX on `_bit(i≥64)` via `--ub-shift-check` — **F-4** |
 | NSM bitmask operations | `src/nv/mctp/nsm_msg_bitmask.h` (`set_bit`/`unset_bit`/`get_bit`/`is_bit_set`) | ✅ 75 VCC | ✅ k=1 (set→get non-zero; unset→get zero; is_bit_set iff get_bit≠0) | ✅ CEX on `set_bit`/`unset_bit(arr8, pos≥64)` — **F-5** |
-| NSM type 5 field validators | `src/nv/mctp/nsm_type_5.cpp` (`validateFatalErrorInjectionPayload`, `validateDeviceIndex{GpuDegradeMode,PowerSupply}`, `validateAction{GpuDegradeMode}`, `validateModePowerSupply`) | ✅ 14 VCC | ✅ k=1 (exact characterisation: accepted iff bitmask∈{0,1,2}, index/mode in documented ranges) | ✅ **F-6** CEX: `mode=0xFF` stored; **F-7** CEX: dirty `portRecoveryResp` on validation failure; **F-8** CEX: `gpio_ei_entries[16]` OOB |
+| NSM type 5 field validators | `src/nv/mctp/nsm_type_5.cpp` (`validateFatalErrorInjectionPayload`, `validateDeviceIndex{GpuDegradeMode,PowerSupply}`, `validateAction{GpuDegradeMode}`, `validateModePowerSupply`) | ✅ 14 VCC | ✅ k=1 (exact characterisation: accepted iff bitmask∈{0,1,2}, index/mode in documented ranges) | ✅ **F-6** CEX: `mode=0xFF` stored; system-level: real `process_device_configuration` compiled, `mode=3` stored — **nsm_f6_system** FAILED; **F-7** CEX: dirty `portRecoveryResp` on validation failure; **F-8** CEX: `gpio_ei_entries[16]` OOB |
 | NTC thermistor table | `src/nv/volt_mon/ntc_table.{h,cpp}` (`ntc_resistance_to_temperature`, `ntc_voltage_to_temperature`, `ntc_adc_to_temperature`, `ntc_temperature_to_resistance`, `ntc_temp_to_adc_value`) | ✅ 227 VCC | ✅ k=9 (exact table lookup, range clamping, round-trip identity) | — |
 | Power-smoothing params | `src/nv/soc_pwr_smoothing/presets.{h,cpp}` (`OverrideParam::to_uint32`, `::from_uint32`, `is_valid_param_id`) | ✅ 72 VCC | ✅ k=1 (round-trip pack↔unpack identity, param-id exact characterisation) | — |
 | FRU utilities | `src/nv/fru/fru.cpp` (`verify_checksum`, `decode_6bit_ascii`) | ✅ 76 VCC | ✅ k=9 (checksum true iff sum≡0 mod 256, decode output ∈ [0x20, 0x5F]) | — |
@@ -291,7 +291,9 @@ Ccode on_dev_cfg_set_errorInjectionMode(const NsmRequest& nrx)
 
 Nondet `request_mode` constrained to `request_mode != Disable && request_mode != Enable` (i.e. any value other than 0 or 1). The harness asserts `mode ∈ {Disable, Enable}` after the write. CEX: `mode = 0xFF` stored.
 
-**Rigor note**: the harness inlines the production logic verbatim (confirmed line-for-line against `nsm_type_5.cpp:777–803`). Full compilation of `nsm_type_5.cpp` with ESBMC is blocked by hardware-specific headers (`mbedtls/ctr_drbg.h`, `sys/adc/adc.h`). The earlier `<optional>`/`<chrono>` blocker (esbmc#4245) is resolved by [#4246](https://github.com/esbmc/esbmc/pull/4246) (merged 2026-05-02).
+**System-level proof** (`nsm_f6_system`, VERIFICATION FAILED):
+
+The real `Nsm::process_device_configuration()` compiled from production `nsm_type_5.cpp` (not an inline copy). Nondet `nrx.data[0]`; no constraint. CEX traces `nondet_symbol` from `nrx.data[0]` (harness:49) through `process_device_configuration` (nsm_type_5.cpp:647) → `on_dev_cfg_set_errorInjectionMode` (nsm_type_5.cpp:801) to `type5_data.errorInjectionModeResponse.mode`. Assertion `mode ∈ {Disable, Enable}` violated with `mode = 3` (`--unwind 9 --no-align-check`; `--no-align-check` suppresses a false positive on the `[[gnu::packed]]` bitfield constructor — esbmc#4267).
 
 **Runtime confirmation**: sanitizer run (`-fsanitize=address,undefined`) with `request_mode = 0xFF` triggers `assert(mode == Disable || mode == Enable)` → SIGABRT. `ctest/f6/`.
 

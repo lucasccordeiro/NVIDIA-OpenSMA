@@ -21,4 +21,7 @@ inline void warn([[maybe_unused]] const char* fmt, [[maybe_unused]] Args&&... ar
 template <typename... Args>
 inline void error([[maybe_unused]] const char* fmt, [[maybe_unused]] Args&&... args) {}
 
+// always_assert: no-op in verification (assertions are modelled separately).
+inline void always_assert([[maybe_unused]] bool cond) {}
+
 }  // namespace nv

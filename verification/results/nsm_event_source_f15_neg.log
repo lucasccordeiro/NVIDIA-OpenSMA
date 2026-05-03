@@ -1,0 +1,43 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_event_source_f15_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 1.172s
+GOTO program processing time: 0.012s
+Starting Bounded Model Checking
+Symex completed in: 0.007s (133 assignments)
+Caching time: 0.000s (removed 1 assertions)
+Slicing time: 0.001s (removed 108 assignments)
+Generated 18 VCC(s), 13 remaining after simplification (24 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+Building error trace
+
+[Counterexample]
+
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_event_source_f15_harness.cpp line 30 column 5 function main thread 0
+----------------------------------------------------
+  event_id = 248 (11111000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_event_source_f15_harness.cpp line 33 column 5 function main thread 0
+----------------------------------------------------
+  ByteIndex = 31 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00011111)
+
+State 7 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_event_source_f15_harness.cpp line 34 column 5 function main thread 0
+----------------------------------------------------
+  BitOffset = 0 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 9 file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-a359-7318-260f/array line 40 column 5 function at thread 0
+----------------------------------------------------
+Violated property:
+  file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-a359-7318-260f/array line 40 column 5 function at
+  Index out of bounds
+  index::0 < 8
+
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit aarch64 macos

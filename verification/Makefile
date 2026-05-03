@@ -100,6 +100,8 @@ FP_INCS := -I$(REPO)/src
         tmp461 tmp461_func tmp461_volatile \
         nsm_f6_system \
         nsm_f7_system \
+        nsm_event_source_f15_neg \
+        nsm_gpio_safety \
         clean
 all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils soc_sma_filter debug_telemetry_sma pca9555 emc1812 tmp1075 tmp461
 volatile: mctp_packet_volatile mctp_router_volatile mctp_validator_volatile nsm_type_2_volatile nsm_type3_volatile nsm_bitmask_volatile nsm_type5_validate_volatile telemetry_volatile spi_utils_volatile i2c_crc8_volatile literals_volatile fixed_point_volatile utils_volatile ntc_table_volatile pwr_smooth_params_volatile fru_utils_volatile soc_sma_filter_volatile debug_telemetry_sma_volatile pca9555_volatile emc1812_volatile tmp1075_volatile tmp461_volatile
@@ -844,6 +846,27 @@ nsm_f7_system:
 	  -DNV_IPC_CONFIG_H=\"nsm_f6_config.h\" \
 	  $(HARNESSES)/nsm_f7_system_harness.cpp \
 	  2>&1 | tee $(RESULTS)/nsm_f7_system.log
+
+# F-15: is_event_source_enable reads type0/6_event_enable_bitmask.at(event_id/8)
+# without a bounds guard. For event_id ∈ [64, 255], ByteIndex ∈ [8, 31] is OOB
+# on a size-8 array (NvMctpEventSupportedNum=8). No loop → default --unwind 4 ok.
+# Expected: VERIFICATION FAILED ("Index out of bounds") on either msg_type branch.
+nsm_event_source_f15_neg:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) -I$(REPO)/src \
+	  $(HARNESSES)/nsm_event_source_f15_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_event_source_f15_neg.log
+
+# DCD GPIO safety proof: on_dcd_get_gpio / on_dcd_set_gpio structural harness.
+# GpioNum = 66 (p3957_cxx: 8+11+10+18+11+8); main loop iterates ≤ 66 times.
+# Invariant: (offset + length) ≤ GpioNum ensures all .at() calls are in bounds.
+# Expected: VERIFICATION SUCCESSFUL.
+nsm_gpio_safety:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --unwind 67 \
+	  $(HARNESSES)/nsm_gpio_safety_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_gpio_safety.log
 
 clean:
 	rm -rf $(RESULTS)

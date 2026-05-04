@@ -120,9 +120,7 @@ namespace nv::ipc {
 // GPIO setup: 192 (GpioNum) entries, all default (InvalidGpioPort/Pin) as
 // nsm_type_5.cpp only checks .size() and guards with bounds checks before use.
 using Gpios = std::tuple<nv::gpio::GpioPort, nv::gpio::GpioPin>;
-// inline const instead of constexpr: std::tuple is not a literal type in
-// ESBMC's bundled headers (esbmc issue).
-inline const std::array<Gpios, GpioNum> GpioSetup{};
+constexpr inline std::array<Gpios, GpioNum> GpioSetup{};
 
 // GPIO NSM event masks: all zero — no GPIO events configured in verification.
 // Size must equal sys::gpio::PortsNumber + 1 = 7 (checked by static_assert in

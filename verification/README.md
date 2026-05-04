@@ -11,7 +11,6 @@ verification/
 ├── run.sh                            # thin wrapper: ./run.sh mctp_packet
 ├── harnesses/                        # *_harness.cpp per target (Phase 1 + Phase 2)
 ├── stubs/                            # verification-only header shims
-│   ├── algorithm                     # esbmc#4251 (std::clamp missing from bundled <algorithm>)
 │   ├── power_manager_config.h        # NV_IPC_CONFIG_H substitute for F-13 system harness
 │   ├── sys/{adc,dac,gpio}/           # hardware stubs for F-13 system harness
 │   ├── pdk-cmn-flowcontrol.h         # drops upstream Ada/log dep
@@ -96,9 +95,16 @@ for the full table; brief view:
 | [#4237](https://github.com/esbmc/esbmc/issues/4237) | Value-init `struct Derived : class Base` via `{}` crashes `to_solver_smt_ast` (smt_ast.h:111) | **fixed** by [#4238](https://github.com/esbmc/esbmc/pull/4238) | (workaround removed; `ctrl{}` now constructs cleanly) |
 | [#4240](https://github.com/esbmc/esbmc/issues/4240) | `--overflow-check` / `--ub-shift-check` generating false-positive signed-shl VCCs under `--std c++20` (C++20 [expr.shift]/2 makes signed left-shift fully defined; ESBMC was still applying pre-C++20 rules) | **fixed** by [#4241](https://github.com/esbmc/esbmc/pull/4241) | (no workaround needed; repro: `esbmc_bug_repros/signed_shift_result_overflow.cpp`) |
 | [#4243](https://github.com/esbmc/esbmc/issues/4243) | bundled `<array>` value-init (`{}`) does not zero-initialise `elems` — elements are nondet; false-positive overflow VCCs on SMA filter accumulators | **fixed** by [#4244](https://github.com/esbmc/esbmc/pull/4244) (merged 2026-05-02) | (`stubs/array` removed) |
-| [#4247](https://github.com/esbmc/esbmc/issues/4247) | bundled `<bit>` pointer-to-pointer `bit_cast` overload uses `reinterpret_cast`, rejecting const `From` (residual gap after #4191/#4192) | **fixed** by [#4250](https://github.com/esbmc/esbmc/pull/4250) (merged 2026-05-02) | (`stubs/bit` removed) |
-| [#4248](https://github.com/esbmc/esbmc/issues/4248) | bundled `<span>` does not transitively include `<bit>`; production code relies on that transitive include for `std::bit_cast` | **fixed** by [#4249](https://github.com/esbmc/esbmc/pull/4249) (merged 2026-05-02) | (`stubs/span` removed) |
-| [#4251](https://github.com/esbmc/esbmc/issues/4251) | bundled `<algorithm>` lacks `std::clamp` (C++17/20); also `const T&` shim return loses materialised value in GOTO IR | open | `stubs/algorithm` shim provides `std::clamp` returning `T` by value |
+| [#4247](https://github.com/esbmc/esbmc/issues/4247) | bundled `<bit>` pointer-to-pointer `bit_cast` overload uses `reinterpret_cast`, rejecting const `From` (residual gap after #4191/#4192) | **fixed** | (`stubs/bit` removed) |
+| [#4248](https://github.com/esbmc/esbmc/issues/4248) | bundled `<span>` does not transitively include `<bit>`; production code relies on that transitive include for `std::bit_cast` | **fixed** | (resolved) |
+| [#4249](https://github.com/esbmc/esbmc/issues/4249) | bundled `<span>` uses relative `#include "array"`, bypassing `-I stubs/` and pulling in the un-patched bundled `<array>` before the stub | **fixed** | (`stubs/span` removed) |
+| [#4251](https://github.com/esbmc/esbmc/issues/4251) | bundled `<algorithm>` lacks `std::clamp` (C++17/20); also `const T&` shim return loses materialised value in GOTO IR | **fixed** | (`stubs/algorithm` removed) |
+| [#4264](https://github.com/esbmc/esbmc/issues/4264) | `chrono::duration::max()` did not compile in ESBMC's bundled `<chrono>` | **fixed** | — |
+| [#4267](https://github.com/esbmc/esbmc/issues/4267) | `--overflow-check` false-positive misaligned-access on `[[gnu::packed]]` bitfield struct constructor | **partially fixed** (packed-bitfield-constructor case remains) | `--no-align-check` on `nsm_f6_system` / `nsm_f7_system` |
+| [#4269](https://github.com/esbmc/esbmc/issues/4269) | bundled `<array>` missing `constexpr operator[]` and `at()` | **fixed** | (`stubs/array` removed) |
+| [#4270](https://github.com/esbmc/esbmc/issues/4270) | bundled `<span>` relative `#include "array"` path bypasses stub shadowing | **fixed** | (`stubs/span` removed) |
+| [#4271](https://github.com/esbmc/esbmc/issues/4271) | `using Base::Base` (ConstructorUsingShadow) not handled in ESBMC's Clang frontend | **fixed** | — |
+| [#4272](https://github.com/esbmc/esbmc/issues/4272) | `std::tuple` not treated as a literal type in bundled `<tuple>` — prevents `constexpr std::array<std::tuple<…>, N>` | **fixed** | (`inline const` workarounds in stubs removed) |
 | [#2789](https://github.com/esbmc/esbmc/issues/2789) | negative shift distance (`x << y`, `y < 0`) not flagged under `--overflow-check`; only caught by `--ub-shift-check` | **fixed** by [#4242](https://github.com/esbmc/esbmc/pull/4242) (merged 2026-05-02) | — |
 
 ## Findings

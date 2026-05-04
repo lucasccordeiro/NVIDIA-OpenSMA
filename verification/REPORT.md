@@ -622,7 +622,7 @@ propagated to the ESBMC binary in use:
 
 | Issue | Description | Workaround in tree |
 |---|---|---|
-| [#4267](https://github.com/esbmc/esbmc/issues/4267) | `--overflow-check` flags a false-positive misaligned-access on `[[gnu::packed]]` bitfield struct constructors (e.g. `NsmDevCfgErrorInjectionModeResponse()`). The packed-struct alignment suppression fix is present upstream but the specific packed-bitfield-constructor case persists in the current binary. | `--no-align-check` on `nsm_f6_system` and `nsm_f7_system` targets. |
+| [#4281](https://github.com/esbmc/esbmc/issues/4281) | `[[gnu::packed]]` bitfield member-initialiser in a constructor triggers a false-positive bounds/alignment check (`dereference failure: Access to object out of bounds` / `Misaligned access to struct field`). Reproduced on `NsmDevCfgErrorInjectionModeResponse()` — a packed struct with a `uint8_t` field followed by two bitfield members. | `--no-align-check` on `nsm_f6_system` and `nsm_f7_system` targets. Repro: `esbmc_bug_repros/packed_bitfield_ctor_bounds_fp.cpp`. |
 
 ### Closed issues
 
@@ -647,6 +647,7 @@ resolved with no remaining workarounds in the tree:
 [#4249](https://github.com/esbmc/esbmc/issues/4249) (fixed — bundled `<span>` relative `#include "array"` replaced; `stubs/span` removed),
 [#4251](https://github.com/esbmc/esbmc/issues/4251) (fixed — bundled `<algorithm>` now provides `std::clamp`; `stubs/algorithm` removed),
 [#4264](https://github.com/esbmc/esbmc/issues/4264) (fixed — `chrono::duration::max()` now compiles correctly in ESBMC's bundled `<chrono>`),
+[#4267](https://github.com/esbmc/esbmc/issues/4267) (partially fixed — general packed-struct alignment suppression landed; residual packed-bitfield-constructor case re-filed as [#4281](https://github.com/esbmc/esbmc/issues/4281)),
 [#4269](https://github.com/esbmc/esbmc/issues/4269) (fixed — bundled `<array>` now exposes `constexpr operator[]` and `at()`; `stubs/array` removed),
 [#4270](https://github.com/esbmc/esbmc/issues/4270) (fixed — bundled `<span>` relative `#include "array"` path corrected; `stubs/span` removed),
 [#4271](https://github.com/esbmc/esbmc/issues/4271) (fixed — `using Base::Base` (ConstructorUsingShadow) now handled correctly by ESBMC's Clang frontend),

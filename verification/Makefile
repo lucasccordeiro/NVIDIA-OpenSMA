@@ -808,6 +808,9 @@ tmp461_volatile:
 # is verified. Expected: VERIFICATION FAILED — mode stored without range check.
 # count_events_in_bitmask iterates NvMctpEventSupportedNum=8 times; outer for
 # and inner while each need at most 8 iterations → --unwind 9 to close both.
+# --no-align-check: suppresses false-positive "Misaligned access" on
+# NsmDevCfgErrorInjectionModeResponse() [[gnu::packed]] bitfield constructor
+# (WORKAROUND esbmc#4281).
 nsm_f6_system:
 	@mkdir -p $(RESULTS)
 	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
@@ -831,6 +834,8 @@ nsm_f6_system:
 # sizeof(PortRecoveryPayload)=12 bytes — 12 iterations dominates → --unwind 13.
 # Expected: VERIFICATION SUCCESSFUL — validator never returns false, so the
 # write-before-validate no-rollback path is dead code in current production code.
+# --no-align-check: same [[gnu::packed]] bitfield workaround as nsm_f6_system
+# (WORKAROUND esbmc#4281).
 nsm_f7_system:
 	@mkdir -p $(RESULTS)
 	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \

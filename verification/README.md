@@ -110,67 +110,67 @@ for the full table; brief view:
 
 ## Findings
 
-- **F-1** (confirmed reachable):
+Ordered by proof rigor (highest first). See `REPORT.md` for the tier definitions.
+
+- **F-1** *(Tier A — confirmed reachable, full dispatch chain proven)*:
   `Validator::validate()` guards `interface >= Interface::End` (18) but
   `RoutingTable::ec.cur_eid` has size `Interface::UsEnd` (2). Any interface
   in `[2, 17]` passes validation and then OOBs in `set_cur_eid()`. ESBMC
-  proves this with a concrete counterexample (`iface_val=2`, `valid=true`,
-  `cur_eid.at(2)` fails). Production builds with `-fno-exceptions`, so the
-  OOB hits `abort()`. Fix: add an `interface >= UsEnd` guard to
-  `set_cur_eid()`, or tighten `validate()` to reject `>= UsEnd`.
-- **F-4** (latent UB, low severity):
-  `operator""_bit(unsigned long long i)` in `src/nv/common/literals.h`
-  computes `1ULL << i` with no guard — UB when `i >= 64` per
-  `[expr.shift]/1`. All current call sites use compile-time constants ≤ 5, so
-  no runtime exposure today. Fix: change `constexpr` → `consteval`.
-- **F-5** (latent UB, low severity):
+  proves this end-to-end from a crafted Control SetEpId Request through the
+  production dispatch chain (`iface_val=2`, `valid=true`, `cur_eid.at(2)`
+  fails). Production builds with `-fno-exceptions`, so the OOB hits `abort()`.
+  Fix: add an `interface >= UsEnd` guard to `set_cur_eid()`.
+- **F-6** *(Tier B — confirmed, production source compiled)*:
+  `on_dev_cfg_set_errorInjectionMode` stores an unchecked `mode` byte — any
+  value passes; no enum validation. System-level harness compiles production
+  `nsm_type_5.cpp` unchanged. ESBMC CEX: `mode=3` stored via
+  `process_device_configuration`.
+- **F-13** *(Tier C — latent, system-level proof)*:
+  `DebugTelemetrySmaCh::evaluate` casts `SFXP32_0 percent` (int32_t) to
+  `UFXP8_0` (uint8_t) without a negative-value guard — negative inputs wrap
+  modulo 256. ESBMC CEX: `percent=-1024` → `stored=255`. System-level proof
+  (`debug_telemetry_f13_system`, VERIFICATION SUCCESSFUL, 2081 VCC) confirms
+  upstream `std::clamp` blocks all negative inputs in current production —
+  latent defect, unreachable from current data flow.
+- **F-7** *(Tier C — latent, system-level proof)*:
+  `on_dev_cfg_set_portRecoveryErrorInjection` writes to `portRecoveryResp`
+  before validating the payload — no rollback on failure. System-level harness
+  compiles production `nsm_type_5.cpp` (VERIFICATION SUCCESSFUL): validator
+  always returns `true` (stub), so the failure path is dead code today.
+- **F-8** *(Tier D — latent, existing call-site guard)*:
+  `validateGpioSpoofingErrorInjectionPayload` loops over `ei_gpio_entries`
+  without a bounds check on `ei_gpio_number`. ESBMC CEX: `ei_gpio_entries[16]`
+  OOB. Current call site carries an explicit guard, so not currently
+  exploitable. Fix: add the check inside the validator.
+- **F-5** *(Tier E — latent, exhaustive call-graph trace)*:
   `set_bit` and `unset_bit` on `std::array<uint8_t, NvMctpEventSupportedNum=8>`
-  in `src/nv/mctp/nsm_msg_bitmask.h` call `bitmask.at(pos/8)` without a bounds
-  guard. `get_bit` carries `if (byte_index < bitmask.size())` but the write
-  operations do not. For `pos ≥ 64`, `byte_index ≥ 8` is OOB on a size-8 array
-  (ESBMC CEX: `pos=248`, `byte_index=31`). Exhaustive call-graph trace: all 3
-  production call sites use compile-time enum constants (≤ 5); no packet handler
-  passes a runtime value to this overload — confirmed latent, no current
-  packet-driven path. Fix: add the same guard that `get_bit` already carries to
-  both write operations.
-- **F-15** (latent OOB, low severity):
-  `is_event_source_enable(NsmMsgType, uint8_t event_id)` in `nsm.cpp:761`
-  computes `ByteIndex = event_id/8` and calls `type0/6_event_enable_bitmask.at(ByteIndex)`
-  without a bounds check. Same asymmetric-guard pattern as F-5 but on the read
-  path. For `event_id ≥ 64`, `ByteIndex ≥ 8` is OOB on the size-8 array
-  (ESBMC CEX: `event_id=248`, `ByteIndex=31`). Current call sites use
-  IPC-internal event IDs bounded well below 64. Fix: add
-  `if (ByteIndex >= bitmask.size()) return false;` before the `.at()` calls.
-- **F-16** (latent OOB, low severity):
-  `is_event_ack_enable(NsmMsgType, uint8_t event_id)` in `nsm.cpp:1089` —
-  sibling function to F-15 with the identical missing-bounds-check pattern.
-  Reads `type0/6_event_ack_bitmask.at(event_id/8)` on the same size-8 arrays.
-  ESBMC CEX: `event_id=248`, `ByteIndex=31`, OOB. Call site: `nsm_event.cpp:96`
-  (`PrepareEventMessage`), reached via `Driver::on_receive_event`. Fix: same
-  `if (ByteIndex >= bitmask.size()) return false;` guard.
-- **F-6** (confirmed): `on_dev_cfg_set_errorInjectionMode` stores an unchecked
-  `mode` byte — any value passes; no enum validation. ESBMC CEX: `mode=0xFF`
-  stored unguarded.
-- **F-7** (confirmed): `on_dev_cfg_set_portRecoveryErrorInjection` writes to
-  `portRecoveryResp` before validating the payload — no rollback on failure.
-  ESBMC CEX: dirty response field left in output buffer on invalid input.
-- **F-8** (latent OOB): `validateGpioSpoofingErrorInjectionPayload` uses
-  `ei_gpio_entries[16]` (fixed index) on an array whose size is the
-  nondet-bounded `num_of_gpio_entries`. ESBMC CEX: `gpio_ei_entries[16]` OOB.
-  Current call site passes a compile-time bound, so not currently exploitable.
-- **F-10** (latent — dead code in all current builds): `set_busbar_temperature_threshold`
-  silently substitutes 125 °C for out-of-range input instead of returning an error.
-  ESBMC CEX: `threshold=254` → Success returned with silently clamped value.
-  `BusBarTempSensorNum = 0` on every known platform config; the `if constexpr` gate
-  compiles away the NTC-lookup body in production. The fix should be applied
-  preemptively before any platform enables busbar sensors.
-- **F-13** (latent defect): `DebugTelemetrySmaCh::evaluate` casts `SFXP32_0
-  percent` (int32_t) to `UFXP8_0` (uint8_t) without a negative-value guard —
-  negative inputs wrap modulo 256. ESBMC CEX: `percent=-1024` → `stored=255`.
-  System-level proof (`debug_telemetry_f13_system`, VERIFICATION SUCCESSFUL,
-  2081 VCC) shows upstream `std::clamp` in `soc_voltage_to_percent` and
-  `OffsetPolicy::run_policy` prevents any negative value from reaching this
-  function in production — the defect is unreachable from current data flow.
+  call `bitmask.at(pos/8)` without a bounds guard (`get_bit` carries one). For
+  `pos ≥ 64`, OOB on size-8 array (ESBMC CEX: `pos=248`, `byte_index=31`).
+  Exhaustive call-graph trace: all 3 production call sites use compile-time
+  constants (≤ 5) — no current packet-driven path. Fix: add the same guard
+  `get_bit` already carries to both write operations.
+- **F-15** *(Tier F — latent, no dangerous call site)*:
+  `is_event_source_enable` in `nsm.cpp:761` calls
+  `type0/6_event_enable_bitmask.at(event_id/8)` without a bounds check. For
+  `event_id ≥ 64`, OOB on size-8 array (ESBMC CEX: `event_id=248`,
+  `ByteIndex=31`). IPC event IDs are bounded well below 64 today. Fix:
+  `if (ByteIndex >= bitmask.size()) return false;`.
+- **F-16** *(Tier F — latent, no dangerous call site)*:
+  `is_event_ack_enable` in `nsm.cpp:1089` — sibling to F-15, identical
+  pattern on the ack bitmask. ESBMC CEX: `event_id=248`, `ByteIndex=31`, OOB.
+  Call site: `nsm_event.cpp:96` via `Driver::on_receive_event`. Same one-line
+  fix as F-15.
+- **F-4** *(Tier F — latent UB, no dangerous call site)*:
+  `operator""_bit(unsigned long long i)` in `src/nv/common/literals.h`
+  computes `1ULL << i` — UB when `i >= 64` per `[expr.shift]/1`. All current
+  call sites use compile-time constants ≤ 5. Fix: change `constexpr` →
+  `consteval`.
+- **F-10** *(Tier G — latent, dead code in all current builds)*:
+  `set_busbar_temperature_threshold` silently substitutes 125 °C for
+  out-of-range input instead of returning an error. ESBMC CEX: `threshold=254`
+  → Success returned with silently clamped value. `BusBarTempSensorNum = 0` on
+  every known platform config; the `if constexpr` gate compiles away the
+  NTC-lookup body in production. Apply the fix preemptively.
 - **F-14** *retracted*: `Pca9555::i2c_write` bare `return` on the Input command
   was suspected to drop bytes. Production `pca9555.cpp` compiled by ESBMC
   (VERIFICATION SUCCESSFUL, 405 VCC) confirms output state is unchanged — bare

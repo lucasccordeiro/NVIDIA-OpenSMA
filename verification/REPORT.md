@@ -105,7 +105,24 @@ All BMC runs solved sub-second on Bitwuzla 0.8.2.
 
 ## Findings
 
-### F-1 — `set_cur_eid()` lacks bounds check (reachability formally proven)
+### Proof tiers
+
+Findings are ordered from highest to lowest proof rigor.
+
+| Tier | Criteria | Findings |
+|---|---|---|
+| **A** | Production source compiled end-to-end; full packet dispatch chain proven from network input; runtime abort confirmed | F-1 |
+| **B** | Production source compiled; handler-level CEX proven; directly reachable | F-6 |
+| **C** | Structural CEX + sanitizer-confirmed + system-level latency proof (production code compiled) | F-13, F-7 |
+| **D** | Structural CEX + sanitizer-confirmed; latent (existing call site carries a guard) | F-8 |
+| **E** | Structural CEX; latent; exhaustive call-graph trace confirms no current packet-driven path | F-5 |
+| **F** | Structural CEX; latent; no current dangerous call site | F-15, F-16, F-4 |
+| **G** | Structural (partial production source compiled); dead code in all current builds | F-10 |
+
+---
+
+
+### F-1 — `set_cur_eid()` lacks bounds check (reachability formally proven) *(Tier A)*
 
 **File**: `corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp:34`
 
@@ -175,62 +192,158 @@ routing_table.ec.cur_eid.at(interface) = eid;
 Alternatively, tighten `Validator::validate()` to reject `interface >=
 Interface::UsEnd` instead of `>= Interface::End`.
 
-### F-4 — `operator""_bit` missing precondition guard on shift count
+### F-6 — `on_dev_cfg_set_errorInjectionMode` stores unchecked mode byte *(Tier B)*
 
-**File**: `src/nv/common/literals.h:61`
+**File**: `src/nv/mctp/nsm_type_5.cpp:777–803`
 
 ```cpp
-constexpr auto operator""_bit(unsigned long long i)
+Ccode on_dev_cfg_set_errorInjectionMode(const NsmRequest& nrx)
 {
-    return static_cast<decltype(i)>(1) << i;
+    ...
+    type5_data.errorInjectionModeResponse.mode = nrx.data[0];  // no range check
+    ...
 }
 ```
 
-`1ULL << i` is undefined behaviour when `i >= 64` — the shift count equals or
-exceeds the width of `unsigned long long` (`[expr.shift]/1`). The function is
-`constexpr` but not `consteval`, so a runtime invocation with an out-of-range
-argument is valid C++ that silently invokes UB.
+`nrx.data[0]` is an arbitrary byte from the network. `NsmDevCfgEnablingMode` has only two valid values (`Disable = 0x00`, `Enable = 0x01`), but the field is stored without validation. Any out-of-range value (e.g. `0xFF`) is accepted and persisted.
 
-**What ESBMC proved** (`literals_neg`, `--ub-shift-check`, nondet `i ∈ [64, 128)`):
+**What ESBMC proved** (`nsm_type5_f6_neg`, VERIFICATION FAILED):
 
+Nondet `request_mode` constrained to `request_mode != Disable && request_mode != Enable` (i.e. any value other than 0 or 1). The harness asserts `mode ∈ {Disable, Enable}` after the write. CEX: `mode = 0xFF` stored.
+
+**System-level proof** (`nsm_f6_system`, VERIFICATION FAILED):
+
+The real `Nsm::process_device_configuration()` compiled from production `nsm_type_5.cpp` (not an inline copy). Nondet `nrx.data[0]`; no constraint. CEX traces `nondet_symbol` from `nrx.data[0]` (harness:49) through `process_device_configuration` (nsm_type_5.cpp:647) → `on_dev_cfg_set_errorInjectionMode` (nsm_type_5.cpp:801) to `type5_data.errorInjectionModeResponse.mode`. Assertion `mode ∈ {Disable, Enable}` violated with `mode = 3` (`--unwind 9`, `--no-align-check` — the latter suppresses a residual false positive on the `[[gnu::packed]]` bitfield constructor `NsmDevCfgErrorInjectionModeResponse()`, tracked as esbmc#4267).
+
+**Runtime confirmation**: sanitizer run (`-fsanitize=address,undefined`) with `request_mode = 0xFF` triggers `assert(mode == Disable || mode == Enable)` → SIGABRT. `ctest/f6/`.
+
+**Recommendation**: add a range check before the assignment:
+```cpp
+if (nrx.data[0] != Disable && nrx.data[0] != Enable)
+    return Ccode::ErrorInvalidData;
+type5_data.errorInjectionModeResponse.mode = nrx.data[0];
 ```
-State 1  i = 64
-State 3  Violated: undefined behavior on shift operation shl
-         i::0 < 64  (shift count must be < type width)
-VERIFICATION FAILED
-```
 
-**Severity: low in practice.** Every production call site uses a small
-compile-time constant as the UDL operand (e.g. `1_bit`, `2_bit`, `3_bit` in
-enum class definitions across `spi_edma.h`, `ssif.h`, `i2c_types.h`, etc.).
-The compiler evaluates those at compile time and would diagnose any
-out-of-range literal. No current call site passes a runtime value.
+---
 
-The risk is latent: a future caller that loops over bit positions (e.g.
-`for (int b = 0; b < N; ++b) mask |= nv::operator""_bit(b)`) would silently
-invoke UB once `b >= 64`.
+### F-13 — `DebugTelemetrySmaCh::evaluate` wraps negative percent to unsigned *(Tier C)*
 
-**Recommendation**: change `constexpr` to `consteval` — this locks the
-operator to compile-time-only use at zero runtime cost and eliminates the
-concern entirely:
+**File**: `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h`
 
 ```cpp
-consteval auto operator""_bit(unsigned long long i)
+// sfxp22_10_to_sfxp32_0 converts SFXP22.10 → SFXP32.0 (i.e. >> 10, signed)
+const auto percent_int = sfxp22_10_to_sfxp32_0(ports.percent);   // SFXP32.0
+static_cast<UFXP8_0>(percent_int)                                  // → uint8_t
+// stored in SMA buffer
+```
+
+`ports.percent` is a signed fixed-point value. `sfxp22_10_to_sfxp32_0` applies a signed right-shift (`>> 10`). If the resulting `SFXP32_0` integer is negative (e.g. `-1`), `static_cast<UFXP8_0>` (which is `uint8_t`) wraps modulo 256: `-1 → 255`. The SMA buffer then stores `255` when the true value was `−1` (≈ `-0.001%`), corrupting any downstream smoothed-percentage computation.
+
+**What ESBMC proved** (`debug_telemetry_f13_neg`, VERIFICATION FAILED):
+
+Harness includes the **production header** `nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` and calls `filter.evaluate(ports)` directly. Nondet `percent` constrained to `x < 0`. Asserts `stored <= 150`. CEX: `percent = -1024` → `sfxp32_0 = -1` → `stored = 255 > 150`.
+
+**Runtime confirmation**: sanitizer run with `x = -1024` → assertion fires. `ctest/f13/`.
+
+**Recommendation**: guard against negative percent before cast:
+```cpp
+if (percent_int < 0)
+    return;                     // or clamp to 0
+static_cast<UFXP8_0>(percent_int);
+```
+
+**Reachability proof** (`debug_telemetry_f13_system`, VERIFICATION SUCCESSFUL — 2081 VCC, 284 post-simplification):
+
+System-level harness calls the real `PowerManager::run_iteration()` (production code, not an inline model) with nondet ADC reading and nondet GPIO (thermal warning asserted/deasserted). All three `DebugTelemetrySmaCh` outputs are asserted non-negative:
+
+```
+__ESBMC_assert(
+    pm.public_connectors.soc_percent_avg  >= static_cast<SFXP22_10>(0)
+ && pm.public_connectors.edpp_offset_avg  >= static_cast<SFXP22_10>(0)
+ && pm.public_connectors.isink_offset_avg >= static_cast<SFXP22_10>(0), ...);
+```
+
+ESBMC proves no counterexample exists for any hardware input. The three upstream paths each prevent negative values from reaching `DebugTelemetrySmaCh::evaluate()`:
+
+- `soc_percent_filtered`: `StateOfChargeDev::soc_voltage_to_percent()` applies `std::clamp(%, 0, 100)` before the value enters the SMA.
+- `edpp_offset`: `OffsetPolicy::run_policy<Edpp>` returns `std::clamp(critical+residency, 0, 100)`; reset paths return `0`.
+- `isink_offset`: `OffsetPolicy::run_policy<Isink>` returns `100 - std::clamp(…)` ∈ [0, 100]; reset paths return `100` or `0`.
+
+**Conclusion**: F-13 is a **latent defect**. The function `DebugTelemetrySmaCh::evaluate()` is unsafe when called with negative input, but the current data flow prevents that from ever happening. The recommendation above remains valid as a defensive hardening.
+
+---
+
+### F-7 — `on_dev_cfg_set_portRecoveryErrorInjection` writes before validating (no rollback) *(Tier C)*
+
+**File**: `src/nv/mctp/nsm_type_5.cpp:1085–1108`
+
+```cpp
+static Ccode on_dev_cfg_set_portRecoveryErrorInjection(const NsmRequest& nrx)
 {
-    return static_cast<decltype(i)>(1) << i;
+    memcpy(&portRecoveryEIPayload, nrx.data, sizeof(portRecoveryEIPayload));  // write first
+    if (!validatePortRecoveryErrorInjectionPayload(...)) {
+        // portRecoveryEIPayload already corrupted — no rollback
+        return Ccode::ErrorInvalidData;
+    }
+    ...
 }
 ```
 
-If runtime use is ever intentionally needed, add a guard:
+The handler copies the incoming payload into `portRecoveryEIPayload` (persistent state) **before** validating it. If validation fails, the function returns an error but `portRecoveryEIPayload` already holds the invalid data. A subsequent read of `portRecoveryEIPayload` will observe the corrupted value.
+
+**What ESBMC proved** (`nsm_type5_f7_neg`, VERIFICATION FAILED):
+
+Nondet `incoming` payload, nondet validator constrained to fail (`!valid`). After the failed write, harness asserts `is_zero_initialised(stored)` — that `portRecoveryEIPayload` is unchanged from its zero-initialised state. CEX: `incoming.offset = 42`, validator returns false, `stored.offset = 42`.
+
+**System-level proof** (`nsm_f7_system`, VERIFICATION SUCCESSFUL):
+
+The real `Nsm::process_device_configuration()` compiled from production `nsm_type_5.cpp` (not an inline copy). Packet crafted with `SetErrorInjectionPayload` / `PortRecoveryErrors` (OCP v2, DeviceError id, nondet bitmaps). ESBMC reports **VERIFICATION SUCCESSFUL** (`--unwind 13`, same `--no-align-check` workaround as F-6 system): all reachable paths are memory-safe and overflow-free; the validation-failure branch is dead code because `validatePortRecoveryErrorInjectionPayload` always returns `true` (production TODO stub, nsm_type_5.cpp:206–210). This closes gap-1 (real `PortRecoveryPayload`/`NsmDevCfgPersistentData` types) and gap-2 (real dispatch logic) from the structural harness. Gap-3 (validator as nondet bool) cannot be closed without production code changes — the validator must be completed before F-7 becomes reachable. **Confirmed latent in current production code.**
+
+**Runtime confirmation**: sanitizer run with `incoming.offset = 42` and validator forced to return false → assertion fires. `ctest/f7/`.
+
+**Recommendation**: validate before writing, or save and restore on failure:
+```cpp
+// Option A: validate-then-write
+if (!validatePortRecoveryErrorInjectionPayload(...))
+    return Ccode::ErrorInvalidData;
+memcpy(&portRecoveryEIPayload, nrx.data, sizeof(portRecoveryEIPayload));
+```
+
+---
+
+### F-8 — `validateGpioSpoofingErrorInjectionPayload` lacks bounds check on `ei_gpio_entries` (latent) *(Tier D)*
+
+**File**: `src/nv/mctp/nsm_type_5.cpp:298–333`
 
 ```cpp
-constexpr auto operator""_bit(unsigned long long i)
-{
-    return i < 64 ? static_cast<decltype(i)>(1) << i : 0ULL;
+for (uint8_t i = 0; i < gpioSpoofingPayload.header.ei_gpio_number; i++) {
+    auto gpio_entry = gpioSpoofingPayload.data.ei_gpio_entries[i];  // no bounds check
+    ...
 }
 ```
 
-### F-5 — `set_bit` / `unset_bit` missing bounds guard on the 8-element event bitmask
+`ei_gpio_entries` is sized `MaxGPIOSpoofingEntries = 16`. The loop iterates `ei_gpio_number` times without first checking `ei_gpio_number <= MaxGPIOSpoofingEntries`. A crafted payload with `ei_gpio_number = 17` would access `ei_gpio_entries[16]`, one element past the array end.
+
+**What ESBMC proved** (`nsm_type5_f8_neg`, `--unwind 17`, VERIFICATION FAILED):
+
+Nondet `n` constrained to `n > MaxGPIOSpoofingEntries`; loop runs to `i = 16`. CEX: `ei_gpio_entries[16]` OOB access at `i = 16`.
+
+**Classification: latent issue.** The call site at `nsm_type_5.cpp:1147–1150` includes a guard:
+```cpp
+if (gpioSpoofingHeader.ei_gpio_number > MaxGPIOSpoofingEntries)
+    return Ccode::ErrorInvalidData;
+```
+This guard prevents the OOB from being directly reachable in the current codebase. The finding is latent: the validator itself is unsafe and could be called from a future call site without the guard.
+
+**Recommendation**: add the bounds check inside `validateGpioSpoofingErrorInjectionPayload` so the invariant is self-contained and does not depend on caller discipline:
+```cpp
+if (gpioSpoofingPayload.header.ei_gpio_number > MaxGPIOSpoofingEntries)
+    return false;
+```
+
+---
+
+### F-5 — `set_bit` / `unset_bit` missing bounds guard on the 8-element event bitmask *(Tier E)*
 
 **File**: `src/nv/mctp/nsm_msg_bitmask.h`
 
@@ -311,195 +424,7 @@ would therefore produce VERIFICATION SUCCESSFUL (confirmed latent), not FAILED.
 F-5 cannot be reported at F-1's level of certainty without a future code change
 that routes an unvalidated `pos` value through the write path.
 
-### F-6 — `on_dev_cfg_set_errorInjectionMode` stores unchecked mode byte
-
-**File**: `src/nv/mctp/nsm_type_5.cpp:777–803`
-
-```cpp
-Ccode on_dev_cfg_set_errorInjectionMode(const NsmRequest& nrx)
-{
-    ...
-    type5_data.errorInjectionModeResponse.mode = nrx.data[0];  // no range check
-    ...
-}
-```
-
-`nrx.data[0]` is an arbitrary byte from the network. `NsmDevCfgEnablingMode` has only two valid values (`Disable = 0x00`, `Enable = 0x01`), but the field is stored without validation. Any out-of-range value (e.g. `0xFF`) is accepted and persisted.
-
-**What ESBMC proved** (`nsm_type5_f6_neg`, VERIFICATION FAILED):
-
-Nondet `request_mode` constrained to `request_mode != Disable && request_mode != Enable` (i.e. any value other than 0 or 1). The harness asserts `mode ∈ {Disable, Enable}` after the write. CEX: `mode = 0xFF` stored.
-
-**System-level proof** (`nsm_f6_system`, VERIFICATION FAILED):
-
-The real `Nsm::process_device_configuration()` compiled from production `nsm_type_5.cpp` (not an inline copy). Nondet `nrx.data[0]`; no constraint. CEX traces `nondet_symbol` from `nrx.data[0]` (harness:49) through `process_device_configuration` (nsm_type_5.cpp:647) → `on_dev_cfg_set_errorInjectionMode` (nsm_type_5.cpp:801) to `type5_data.errorInjectionModeResponse.mode`. Assertion `mode ∈ {Disable, Enable}` violated with `mode = 3` (`--unwind 9`, `--no-align-check` — the latter suppresses a residual false positive on the `[[gnu::packed]]` bitfield constructor `NsmDevCfgErrorInjectionModeResponse()`, tracked as esbmc#4267).
-
-**Runtime confirmation**: sanitizer run (`-fsanitize=address,undefined`) with `request_mode = 0xFF` triggers `assert(mode == Disable || mode == Enable)` → SIGABRT. `ctest/f6/`.
-
-**Recommendation**: add a range check before the assignment:
-```cpp
-if (nrx.data[0] != Disable && nrx.data[0] != Enable)
-    return Ccode::ErrorInvalidData;
-type5_data.errorInjectionModeResponse.mode = nrx.data[0];
-```
-
----
-
-### F-7 — `on_dev_cfg_set_portRecoveryErrorInjection` writes before validating (no rollback)
-
-**File**: `src/nv/mctp/nsm_type_5.cpp:1085–1108`
-
-```cpp
-static Ccode on_dev_cfg_set_portRecoveryErrorInjection(const NsmRequest& nrx)
-{
-    memcpy(&portRecoveryEIPayload, nrx.data, sizeof(portRecoveryEIPayload));  // write first
-    if (!validatePortRecoveryErrorInjectionPayload(...)) {
-        // portRecoveryEIPayload already corrupted — no rollback
-        return Ccode::ErrorInvalidData;
-    }
-    ...
-}
-```
-
-The handler copies the incoming payload into `portRecoveryEIPayload` (persistent state) **before** validating it. If validation fails, the function returns an error but `portRecoveryEIPayload` already holds the invalid data. A subsequent read of `portRecoveryEIPayload` will observe the corrupted value.
-
-**What ESBMC proved** (`nsm_type5_f7_neg`, VERIFICATION FAILED):
-
-Nondet `incoming` payload, nondet validator constrained to fail (`!valid`). After the failed write, harness asserts `is_zero_initialised(stored)` — that `portRecoveryEIPayload` is unchanged from its zero-initialised state. CEX: `incoming.offset = 42`, validator returns false, `stored.offset = 42`.
-
-**System-level proof** (`nsm_f7_system`, VERIFICATION SUCCESSFUL):
-
-The real `Nsm::process_device_configuration()` compiled from production `nsm_type_5.cpp` (not an inline copy). Packet crafted with `SetErrorInjectionPayload` / `PortRecoveryErrors` (OCP v2, DeviceError id, nondet bitmaps). ESBMC reports **VERIFICATION SUCCESSFUL** (`--unwind 13`, same `--no-align-check` workaround as F-6 system): all reachable paths are memory-safe and overflow-free; the validation-failure branch is dead code because `validatePortRecoveryErrorInjectionPayload` always returns `true` (production TODO stub, nsm_type_5.cpp:206–210). This closes gap-1 (real `PortRecoveryPayload`/`NsmDevCfgPersistentData` types) and gap-2 (real dispatch logic) from the structural harness. Gap-3 (validator as nondet bool) cannot be closed without production code changes — the validator must be completed before F-7 becomes reachable. **Confirmed latent in current production code.**
-
-**Runtime confirmation**: sanitizer run with `incoming.offset = 42` and validator forced to return false → assertion fires. `ctest/f7/`.
-
-**Recommendation**: validate before writing, or save and restore on failure:
-```cpp
-// Option A: validate-then-write
-if (!validatePortRecoveryErrorInjectionPayload(...))
-    return Ccode::ErrorInvalidData;
-memcpy(&portRecoveryEIPayload, nrx.data, sizeof(portRecoveryEIPayload));
-```
-
----
-
-### F-8 — `validateGpioSpoofingErrorInjectionPayload` lacks bounds check on `ei_gpio_entries` (latent)
-
-**File**: `src/nv/mctp/nsm_type_5.cpp:298–333`
-
-```cpp
-for (uint8_t i = 0; i < gpioSpoofingPayload.header.ei_gpio_number; i++) {
-    auto gpio_entry = gpioSpoofingPayload.data.ei_gpio_entries[i];  // no bounds check
-    ...
-}
-```
-
-`ei_gpio_entries` is sized `MaxGPIOSpoofingEntries = 16`. The loop iterates `ei_gpio_number` times without first checking `ei_gpio_number <= MaxGPIOSpoofingEntries`. A crafted payload with `ei_gpio_number = 17` would access `ei_gpio_entries[16]`, one element past the array end.
-
-**What ESBMC proved** (`nsm_type5_f8_neg`, `--unwind 17`, VERIFICATION FAILED):
-
-Nondet `n` constrained to `n > MaxGPIOSpoofingEntries`; loop runs to `i = 16`. CEX: `ei_gpio_entries[16]` OOB access at `i = 16`.
-
-**Classification: latent issue.** The call site at `nsm_type_5.cpp:1147–1150` includes a guard:
-```cpp
-if (gpioSpoofingHeader.ei_gpio_number > MaxGPIOSpoofingEntries)
-    return Ccode::ErrorInvalidData;
-```
-This guard prevents the OOB from being directly reachable in the current codebase. The finding is latent: the validator itself is unsafe and could be called from a future call site without the guard.
-
-**Recommendation**: add the bounds check inside `validateGpioSpoofingErrorInjectionPayload` so the invariant is self-contained and does not depend on caller discipline:
-```cpp
-if (gpioSpoofingPayload.header.ei_gpio_number > MaxGPIOSpoofingEntries)
-    return false;
-```
-
----
-
-### F-10 — `set_busbar_temperature_threshold` silently substitutes 125 °C for out-of-range input *(latent — dead code in all current builds)*
-
-**Status**: dead code. `BusBarTempSensorNum = 0` in all known platform configs (`p3957_cxx`, `testrunner`, `mcxn547helloworld`). The `if constexpr (nv::ipc::voltage_monitor_config::BusBarTempSensorNum > 0)` gate at `nsm_type_3.cpp:447` compiles away the entire NTC-lookup body; `set_busbar_temperature_threshold` is an unconditional `return Ccode::Success` in every current production build. The bug would activate only if a future platform sets `BusBarTempSensorNum > 0`.
-
-**File**: `src/nv/mctp/nsm_type_3.cpp:445–491`
-
-```cpp
-uint32_t resistanceOhm = volt_mon::ntc_temperature_to_resistance(tempCelsius);
-if (resistanceOhm == 0) {
-    // Invalid temperature, use default max temp (125°C)   <-- silent substitution
-    resistanceOhm = volt_mon::ntc_temperature_to_resistance(volt_mon::NtcTempMax);
-    // falls through — returns Ccode::Success
-}
-```
-
-`request.threshold` is a `uint8_t` (0–255) cast to `int16_t`. Values 126–255 exceed `NtcTempMax (125)`, so `ntc_temperature_to_resistance` returns 0 (out-of-range sentinel). The code silently substitutes 125 °C and returns `Ccode::Success` instead of an error, making the threshold-set appear to succeed when it applied a clamped value the caller did not request.
-
-**What ESBMC proved** (`nsm_type3_f10_neg`, VERIFICATION FAILED):
-
-The harness **directly compiles `src/nv/volt_mon/ntc_table.cpp`** (production code — 166-entry real NTC lookup table, not a model). ESBMC traces through the actual `ntc_temperature_to_resistance` implementation. Nondet `threshold` constrained to the out-of-range region (`tempCelsius > NtcTempMax`); harness confirms the real NTC function returns 0 on this path, then asserts the function must not return `Ccode::Success`. CEX: `threshold = 255` → `ntc_temperature_to_resistance(255) = 0` → function returns `Success`.
-
-**Rigor note**: `ntc_table.cpp` is compiled from production source without modification; ESBMC traces the real 166-entry NTC lookup. The `set_busbar_temperature_threshold` logic is inlined verbatim from `nsm_type_3.cpp:445–491` (Tier 1 — not F-1 level). Compiling `nsm_type_3.cpp` directly would require stubs for its transitive hardware headers (`nv/volt_mon/busbar_temp.h`, `nv/volt_mon/leak_detect.h`, `nv/i2c/emc1812.h`, etc.) and a config with `BusBarTempSensorNum > 0` to make the bug path live — a system-harness effort comparable to F-6/F-7. Not pursued because the bug path is dead code in all current builds.
-
-**Config-level note**: every known platform config sets `BusBarTempSensorNum = 0` (`p3957_cxx/config.h:1405`, `testrunner/config.h:668`, `mcxn547helloworld/config.h:1106`), compiling away the entire `if constexpr` block. The harness strips this gate and exercises only the inner body, proving the substitution bug for any future config that enables busbar sensors.
-
-**Runtime confirmation**: sanitizer run with `threshold = 254` → assertion `result != Ccode::Success` fires. `ctest/f10/`.
-
-**Recommendation**: return an error instead of silently substituting:
-```cpp
-if (resistanceOhm == 0) {
-    nv::warn("%s() out-of-range threshold %d°C\n", __func__, tempCelsius);
-    return Ccode::ErrorInvalidData;
-}
-```
-
----
-
-### F-13 — `DebugTelemetrySmaCh::evaluate` wraps negative percent to unsigned
-
-**File**: `src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h`
-
-```cpp
-// sfxp22_10_to_sfxp32_0 converts SFXP22.10 → SFXP32.0 (i.e. >> 10, signed)
-const auto percent_int = sfxp22_10_to_sfxp32_0(ports.percent);   // SFXP32.0
-static_cast<UFXP8_0>(percent_int)                                  // → uint8_t
-// stored in SMA buffer
-```
-
-`ports.percent` is a signed fixed-point value. `sfxp22_10_to_sfxp32_0` applies a signed right-shift (`>> 10`). If the resulting `SFXP32_0` integer is negative (e.g. `-1`), `static_cast<UFXP8_0>` (which is `uint8_t`) wraps modulo 256: `-1 → 255`. The SMA buffer then stores `255` when the true value was `−1` (≈ `-0.001%`), corrupting any downstream smoothed-percentage computation.
-
-**What ESBMC proved** (`debug_telemetry_f13_neg`, VERIFICATION FAILED):
-
-Harness includes the **production header** `nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h` and calls `filter.evaluate(ports)` directly. Nondet `percent` constrained to `x < 0`. Asserts `stored <= 150`. CEX: `percent = -1024` → `sfxp32_0 = -1` → `stored = 255 > 150`.
-
-**Runtime confirmation**: sanitizer run with `x = -1024` → assertion fires. `ctest/f13/`.
-
-**Recommendation**: guard against negative percent before cast:
-```cpp
-if (percent_int < 0)
-    return;                     // or clamp to 0
-static_cast<UFXP8_0>(percent_int);
-```
-
-**Reachability proof** (`debug_telemetry_f13_system`, VERIFICATION SUCCESSFUL — 2081 VCC, 284 post-simplification):
-
-System-level harness calls the real `PowerManager::run_iteration()` (production code, not an inline model) with nondet ADC reading and nondet GPIO (thermal warning asserted/deasserted). All three `DebugTelemetrySmaCh` outputs are asserted non-negative:
-
-```
-__ESBMC_assert(
-    pm.public_connectors.soc_percent_avg  >= static_cast<SFXP22_10>(0)
- && pm.public_connectors.edpp_offset_avg  >= static_cast<SFXP22_10>(0)
- && pm.public_connectors.isink_offset_avg >= static_cast<SFXP22_10>(0), ...);
-```
-
-ESBMC proves no counterexample exists for any hardware input. The three upstream paths each prevent negative values from reaching `DebugTelemetrySmaCh::evaluate()`:
-
-- `soc_percent_filtered`: `StateOfChargeDev::soc_voltage_to_percent()` applies `std::clamp(%, 0, 100)` before the value enters the SMA.
-- `edpp_offset`: `OffsetPolicy::run_policy<Edpp>` returns `std::clamp(critical+residency, 0, 100)`; reset paths return `0`.
-- `isink_offset`: `OffsetPolicy::run_policy<Isink>` returns `100 - std::clamp(…)` ∈ [0, 100]; reset paths return `100` or `0`.
-
-**Conclusion**: F-13 is a **latent defect**. The function `DebugTelemetrySmaCh::evaluate()` is unsafe when called with negative input, but the current data flow prevents that from ever happening. The recommendation above remains valid as a defensive hardening.
-
----
-
-### F-15 — `is_event_source_enable` missing bounds check on `event_id`
+### F-15 — `is_event_source_enable` missing bounds check on `event_id` *(Tier F)*
 
 **File**: `src/nv/mctp/nsm.cpp:761–799`
 
@@ -567,7 +492,7 @@ bool Nsm::is_event_source_enable(NsmMsgType msg_type, uint8_t event_id) const
 
 ---
 
-### F-16 — `is_event_ack_enable` missing bounds check on `event_id`
+### F-16 — `is_event_ack_enable` missing bounds check on `event_id` *(Tier F)*
 
 **File**: `src/nv/mctp/nsm.cpp:1089–1106`
 
@@ -627,6 +552,98 @@ bool Nsm::is_event_ack_enable(NsmMsgType nv_msg_type, uint8_t event_id)
         return (type0_event_ack_bitmask.at(ByteIndex) & (1u << BitOffset)) != 0;
     else
         return false;
+}
+```
+
+---
+
+### F-4 — `operator""_bit` missing precondition guard on shift count *(Tier F)*
+
+**File**: `src/nv/common/literals.h:61`
+
+```cpp
+constexpr auto operator""_bit(unsigned long long i)
+{
+    return static_cast<decltype(i)>(1) << i;
+}
+```
+
+`1ULL << i` is undefined behaviour when `i >= 64` — the shift count equals or
+exceeds the width of `unsigned long long` (`[expr.shift]/1`). The function is
+`constexpr` but not `consteval`, so a runtime invocation with an out-of-range
+argument is valid C++ that silently invokes UB.
+
+**What ESBMC proved** (`literals_neg`, `--ub-shift-check`, nondet `i ∈ [64, 128)`):
+
+```
+State 1  i = 64
+State 3  Violated: undefined behavior on shift operation shl
+         i::0 < 64  (shift count must be < type width)
+VERIFICATION FAILED
+```
+
+**Severity: low in practice.** Every production call site uses a small
+compile-time constant as the UDL operand (e.g. `1_bit`, `2_bit`, `3_bit` in
+enum class definitions across `spi_edma.h`, `ssif.h`, `i2c_types.h`, etc.).
+The compiler evaluates those at compile time and would diagnose any
+out-of-range literal. No current call site passes a runtime value.
+
+The risk is latent: a future caller that loops over bit positions (e.g.
+`for (int b = 0; b < N; ++b) mask |= nv::operator""_bit(b)`) would silently
+invoke UB once `b >= 64`.
+
+**Recommendation**: change `constexpr` to `consteval` — this locks the
+operator to compile-time-only use at zero runtime cost and eliminates the
+concern entirely:
+
+```cpp
+consteval auto operator""_bit(unsigned long long i)
+{
+    return static_cast<decltype(i)>(1) << i;
+}
+```
+
+If runtime use is ever intentionally needed, add a guard:
+
+```cpp
+constexpr auto operator""_bit(unsigned long long i)
+{
+    return i < 64 ? static_cast<decltype(i)>(1) << i : 0ULL;
+}
+```
+
+### F-10 — `set_busbar_temperature_threshold` silently substitutes 125 °C for out-of-range input *(Tier G — latent, dead code in all current builds)*
+
+**Status**: dead code. `BusBarTempSensorNum = 0` in all known platform configs (`p3957_cxx`, `testrunner`, `mcxn547helloworld`). The `if constexpr (nv::ipc::voltage_monitor_config::BusBarTempSensorNum > 0)` gate at `nsm_type_3.cpp:447` compiles away the entire NTC-lookup body; `set_busbar_temperature_threshold` is an unconditional `return Ccode::Success` in every current production build. The bug would activate only if a future platform sets `BusBarTempSensorNum > 0`.
+
+**File**: `src/nv/mctp/nsm_type_3.cpp:445–491`
+
+```cpp
+uint32_t resistanceOhm = volt_mon::ntc_temperature_to_resistance(tempCelsius);
+if (resistanceOhm == 0) {
+    // Invalid temperature, use default max temp (125°C)   <-- silent substitution
+    resistanceOhm = volt_mon::ntc_temperature_to_resistance(volt_mon::NtcTempMax);
+    // falls through — returns Ccode::Success
+}
+```
+
+`request.threshold` is a `uint8_t` (0–255) cast to `int16_t`. Values 126–255 exceed `NtcTempMax (125)`, so `ntc_temperature_to_resistance` returns 0 (out-of-range sentinel). The code silently substitutes 125 °C and returns `Ccode::Success` instead of an error, making the threshold-set appear to succeed when it applied a clamped value the caller did not request.
+
+**What ESBMC proved** (`nsm_type3_f10_neg`, VERIFICATION FAILED):
+
+The harness **directly compiles `src/nv/volt_mon/ntc_table.cpp`** (production code — 166-entry real NTC lookup table, not a model). ESBMC traces through the actual `ntc_temperature_to_resistance` implementation. Nondet `threshold` constrained to the out-of-range region (`tempCelsius > NtcTempMax`); harness confirms the real NTC function returns 0 on this path, then asserts the function must not return `Ccode::Success`. CEX: `threshold = 255` → `ntc_temperature_to_resistance(255) = 0` → function returns `Success`.
+
+**Rigor note**: `ntc_table.cpp` is compiled from production source without modification; ESBMC traces the real 166-entry NTC lookup. The `set_busbar_temperature_threshold` logic is inlined verbatim from `nsm_type_3.cpp:445–491` (Tier 1 — not F-1 level). Compiling `nsm_type_3.cpp` directly would require stubs for its transitive hardware headers (`nv/volt_mon/busbar_temp.h`, `nv/volt_mon/leak_detect.h`, `nv/i2c/emc1812.h`, etc.) and a config with `BusBarTempSensorNum > 0` to make the bug path live — a system-harness effort comparable to F-6/F-7. Not pursued because the bug path is dead code in all current builds.
+
+**Config-level note**: every known platform config sets `BusBarTempSensorNum = 0` (`p3957_cxx/config.h:1405`, `testrunner/config.h:668`, `mcxn547helloworld/config.h:1106`), compiling away the entire `if constexpr` block. The harness strips this gate and exercises only the inner body, proving the substitution bug for any future config that enables busbar sensors.
+
+**Runtime confirmation**: sanitizer run with `threshold = 254` → assertion `result != Ccode::Success` fires. `ctest/f10/`.
+
+**Recommendation**: return an error instead of silently substituting:
+```cpp
+if (resistanceOhm == 0) {
+    nv::warn("%s() out-of-range threshold %d°C\n", __func__, tempCelsius);
+    return Ccode::ErrorInvalidData;
 }
 ```
 

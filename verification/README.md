@@ -72,6 +72,7 @@ ESBMC to produce a counterexample.
 | `tmp1075` | `src/nv/i2c/tmp1075.{h,cpp}` (`Tmp1075` — TMP1075 sensor driver; 12-bit temperature encoding: `int8_t → <<4 → uint16_t → >>4 → int8_t` round-trip) | ✅ 33 VCC | ✅ k=1 | ✅ | — |
 | `tmp461` | `src/nv/i2c/tmp461.{h,cpp}` (`Tmp461` / NCT72 — sensor driver; `int8_t↔uint8_t` threshold cast round-trip for four set/get pairs) | ✅ 57 VCC | ✅ k=1 | ✅ | — |
 | `nsm_event_source_f15_neg` | `src/nv/mctp/nsm.cpp:761` — `is_event_source_enable` reads `type0/6_event_enable_bitmask.at(event_id/8)` without bounds guard | — | — | — | ✅ FAILED — CEX: `event_id=248`, `ByteIndex=31`, OOB on size-8 array — **F-15** |
+| `nsm_event_ack_f16_neg` | `src/nv/mctp/nsm.cpp:1089` — `is_event_ack_enable` reads `type0/6_event_ack_bitmask.at(event_id/8)` without bounds guard; sibling to F-15 | — | — | — | ✅ FAILED — CEX: `event_id=248`, `ByteIndex=31`, OOB on size-8 array — **F-16** |
 | `nsm_gpio_safety` | `src/nv/mctp/nsm.cpp:3389,3482` — `on_dcd_get_gpio` / `on_dcd_set_gpio` structural safety; `GpioNum=66` (p3957_cxx) | — | — | — | ✅ SUCCESSFUL (536 VCC) — guard sufficient, no defect |
 
 ## ESBMC issues filed
@@ -140,6 +141,13 @@ for the full table; brief view:
   (ESBMC CEX: `event_id=248`, `ByteIndex=31`). Current call sites use
   IPC-internal event IDs bounded well below 64. Fix: add
   `if (ByteIndex >= bitmask.size()) return false;` before the `.at()` calls.
+- **F-16** (latent OOB, low severity):
+  `is_event_ack_enable(NsmMsgType, uint8_t event_id)` in `nsm.cpp:1089` —
+  sibling function to F-15 with the identical missing-bounds-check pattern.
+  Reads `type0/6_event_ack_bitmask.at(event_id/8)` on the same size-8 arrays.
+  ESBMC CEX: `event_id=248`, `ByteIndex=31`, OOB. Call site: `nsm_event.cpp:96`
+  (`PrepareEventMessage`), reached via `Driver::on_receive_event`. Fix: same
+  `if (ByteIndex >= bitmask.size()) return false;` guard.
 - **F-6** (confirmed): `on_dev_cfg_set_errorInjectionMode` stores an unchecked
   `mode` byte — any value passes; no enum validation. ESBMC CEX: `mode=0xFF`
   stored unguarded.
@@ -206,6 +214,7 @@ make debug_telemetry_f13_neg                   # F-13: negative percent wrap (ex
 make debug_telemetry_f13_system                # F-13 reachability proof (expect SUCCESSFUL)
 make pca9555_f14_neg                           # F-14: retracted (expect SUCCESSFUL)
 make nsm_event_source_f15_neg                  # F-15: is_event_source_enable OOB (expect FAILED)
+make nsm_event_ack_f16_neg                     # F-16: is_event_ack_enable OOB (expect FAILED)
 make nsm_gpio_safety                           # DCD GPIO structural safety proof (expect SUCCESSFUL)
 ```
 

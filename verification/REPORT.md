@@ -1,6 +1,6 @@
 # OpenSMA ESBMC Verification — Initial Report
 
-**Date**: 2026-04-25 (updated 2026-05-04)
+**Date**: 2026-04-25 (updated 2026-05-04; F-16 added 2026-05-04)
 **Tool**: ESBMC 8.2.0 (aarch64-macos)
 **Scope**: bounded model checking of selected modules in
 [NVIDIA/OpenSMA](https://github.com/NVIDIA/OpenSMA)
@@ -37,7 +37,10 @@ known platform config (`p3957_cxx`, `testrunner`, `mcxn547helloworld`) causes th
 confirms the same asymmetric-guard pattern on the read path:
 `is_event_source_enable()` reads `type0/6_event_enable_bitmask.at(event_id/8)`
 without a bounds check (ESBMC CEX: `event_id=248`, `ByteIndex=31`, OOB on
-size-8 array). A concurrent sweep of the DCD GPIO handlers (`on_dcd_get_gpio` /
+size-8 array). A fifth latent-OOB finding, **F-16**, is the same pattern in
+the sibling function `is_event_ack_enable()` (`nsm.cpp:1089`), which reads
+`type0/6_event_ack_bitmask.at(event_id/8)` on the same size-8 arrays with no
+bounds check (ESBMC CEX: `event_id=248`, `ByteIndex=31`, OOB). A concurrent sweep of the DCD GPIO handlers (`on_dcd_get_gpio` /
 `on_dcd_set_gpio`) produced VERIFICATION SUCCESSFUL (536 VCC): the
 `(offset+length) > GpioNum` guard is sufficient to keep all `GpioSetup.at()`
 and `gpio_resp.gpio.at()` accesses in bounds. Several ESBMC C++-frontend bugs
@@ -73,6 +76,7 @@ workarounds removed where applicable.
 | TMP1075 temperature sensor driver | `src/nv/i2c/tmp1075.{h,cpp}` (`Tmp1075` — 12-bit two's-complement temperature encoding: `int8_t → <<4 → int16_t → uint16_t → >>4 → int8_t` round-trip; `get_device_id`; `set/get_{low,high}_limit`) | ✅ 33 VCC | ✅ k=1 (12bit_roundtrip: `static_cast<int8_t>(static_cast<int16_t>(static_cast<uint16_t>(static_cast<int16_t>(t<<4)))>>4) == t` for all `int8_t t`; temp_read_cast well-defined) | — |
 | TMP461 temperature sensor driver | `src/nv/i2c/tmp461.{h,cpp}` (`Tmp461` / NCT72 — `int8_t↔uint8_t` threshold cast round-trip for four alert/therm set/get pairs; `get_configuration`) | ✅ 57 VCC | ✅ k=1 (cast_roundtrip + threshold_symmetry for all four pairs) | — |
 | `is_event_source_enable` OOB check (F-15) | `src/nv/mctp/nsm.cpp:761` — `type0/6_event_enable_bitmask.at(event_id/8)` without bounds guard; same asymmetric-guard pattern as F-5 but on the read path | — | — | ✅ VERIFICATION FAILED — CEX: `event_id=248`, `ByteIndex=31`, OOB at `at()` on size-8 array — **F-15** |
+| `is_event_ack_enable` OOB check (F-16) | `src/nv/mctp/nsm.cpp:1089` — `type0/6_event_ack_bitmask.at(event_id/8)` without bounds guard; sibling function to F-15, same pattern | — | — | ✅ VERIFICATION FAILED — CEX: `event_id=248`, `ByteIndex=31`, OOB at `at()` on size-8 array — **F-16** |
 | DCD GPIO safety proof | `src/nv/mctp/nsm.cpp:3389,3482` — `on_dcd_get_gpio` / `on_dcd_set_gpio`; guard `(offset+length) > GpioNum` keeps all `GpioSetup.at()` and `gpio_resp.gpio.at()` in bounds | — | — | ✅ VERIFICATION SUCCESSFUL (536 VCC) — **no defect** |
 
 All BMC runs solved sub-second on Bitwuzla 0.8.2.
@@ -563,6 +567,71 @@ bool Nsm::is_event_source_enable(NsmMsgType msg_type, uint8_t event_id) const
 
 ---
 
+### F-16 — `is_event_ack_enable` missing bounds check on `event_id`
+
+**File**: `src/nv/mctp/nsm.cpp:1089–1106`
+
+```cpp
+bool Nsm::is_event_ack_enable(NsmMsgType nv_msg_type, uint8_t event_id)
+{
+    if (nv_msg_type == NsmMsgType::Firmware) {
+        const size_t ByteIndex = event_id / 8;
+        const size_t BitOffset = event_id % 8;
+        return (type6_event_ack_bitmask.at(ByteIndex) & (1u << BitOffset)) != 0;
+    }
+    else if (nv_msg_type == NsmMsgType::DeviceCapabilityDiscovery) {
+        const size_t ByteIndex = event_id / 8;
+        const size_t BitOffset = event_id % 8;
+        return (type0_event_ack_bitmask.at(ByteIndex) & (1u << BitOffset)) != 0;
+    }
+    else { return false; }
+}
+```
+
+`type0_event_ack_bitmask` and `type6_event_ack_bitmask` are both
+`std::array<uint8_t, NvMctpEventSupportedNum=8>`. For `event_id ∈ [64, 255]`,
+`ByteIndex = event_id/8 ∈ [8, 31]` — out of range. `std::array::at()` calls
+`abort()` under `-fno-exceptions`. Same asymmetric-guard pattern as F-5 and F-15.
+
+**What ESBMC proved** (`nsm_event_ack_f16_neg`, `LANG_FLAGS`, nondet `event_id ≥ 64`):
+
+```
+State 2   event_id = 248
+State 5   ByteIndex = 31
+State 11  Violated: dereference failure: Access to object out of bounds
+          (ByteIndex=31 on a size-8 array)
+VERIFICATION FAILED
+```
+
+**Severity: low in practice.** The sole call site is `nsm_event.cpp:96`
+(`PrepareEventMessage`), which is called from `driver.cpp:227`
+(`Driver::on_receive_event`). The `eventId` parameter is a `uint8_t` from
+an IPC field — an internal message between firmware tasks, not a raw network
+packet. In the current codebase `is_event_source_enable` (F-15) is checked
+first at `nsm_event.cpp:53`; passing that guard does not constrain `event_id`
+to `< 64`, so a future event source with `event_id ≥ 64` would reach F-16
+immediately after passing F-15.
+
+**Recommendation**: add the same guard that `get_bit` carries:
+
+```cpp
+bool Nsm::is_event_ack_enable(NsmMsgType nv_msg_type, uint8_t event_id)
+{
+    const size_t ByteIndex = event_id / 8;
+    if (ByteIndex >= type0_event_ack_bitmask.size())
+        return false;
+    const size_t BitOffset = event_id % 8;
+    if (nv_msg_type == NsmMsgType::Firmware)
+        return (type6_event_ack_bitmask.at(ByteIndex) & (1u << BitOffset)) != 0;
+    else if (nv_msg_type == NsmMsgType::DeviceCapabilityDiscovery)
+        return (type0_event_ack_bitmask.at(ByteIndex) & (1u << BitOffset)) != 0;
+    else
+        return false;
+}
+```
+
+---
+
 ### DCD GPIO handlers — structural safety proof
 
 **Files**: `src/nv/mctp/nsm.cpp:3389` (`on_dcd_get_gpio`), `nsm.cpp:3482` (`on_dcd_set_gpio`)
@@ -680,13 +749,12 @@ resolved with no remaining workarounds in the tree:
    current builds (`BusBarTempSensorNum = 0` everywhere) — apply the fix
    preemptively so the correct `ErrorInvalidData` path is in place before any
    future platform enables busbar sensors.
-3. **Fix F-5 and F-15** — both stem from the same asymmetric-guard pattern
-   in `nsm_msg_bitmask.h` and `nsm.cpp` respectively. Add the
-   `byte_index >= bitmask.size()` guard to `set_bit` / `unset_bit` (F-5),
-   and an equivalent `ByteIndex >= bitmask.size()` guard to
-   `is_event_source_enable` (F-15). Low urgency: call-graph traces confirm no
-   current packet-driven path for either (all call sites use compile-time
-   constants); the risk is from future callers only.
+3. **Fix F-5, F-15, and F-16** — all three stem from the same asymmetric-guard
+   pattern. Add the `byte_index >= bitmask.size()` guard to `set_bit` /
+   `unset_bit` (F-5), and an equivalent `ByteIndex >= bitmask.size()` guard to
+   both `is_event_source_enable` (F-15) and `is_event_ack_enable` (F-16).
+   Low urgency: no current call site passes a value ≥ 64; the risk is from
+   future callers only.
 4. **Continue fresh sweep of unverified packet handlers** — search for the
    validator-gap pattern that made F-1 exploitable: any handler that takes a
    packet-provided integer and uses it as an array index (`.at(x)` or `arr[x]`)
@@ -730,6 +798,7 @@ make debug_telemetry_f13_neg     # F-13: negative percent wrap to uint8 (expect 
 make debug_telemetry_f13_system  # F-13 reachability proof via PowerManager::run_iteration() (expect VERIFICATION SUCCESSFUL)
 make pca9555_f14_neg             # F-14: retracted — production pca9555.cpp (expect VERIFICATION SUCCESSFUL)
 make nsm_event_source_f15_neg   # F-15: is_event_source_enable OOB on event_id≥64 (expect VERIFICATION FAILED)
+make nsm_event_ack_f16_neg      # F-16: is_event_ack_enable OOB on event_id≥64 (expect VERIFICATION FAILED)
 make nsm_gpio_safety            # DCD GPIO structural safety proof (expect VERIFICATION SUCCESSFUL)
 ```
 

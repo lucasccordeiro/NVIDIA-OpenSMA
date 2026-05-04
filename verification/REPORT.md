@@ -12,14 +12,13 @@ Twenty-two modules verified end-to-end against language-level safety properties
 functional contracts via k-induction. **One vulnerability formally proven
 reachable** (F-1) via `mctp_dispatch` — ESBMC finds a counterexample where a
 Control SetEpId Request with a gap interface triggers `set_cur_eid()` to
-OOB-index the 2-entry `cur_eid` array. **Five additional security findings
+OOB-index the 2-entry `cur_eid` array. **Four additional security findings
 formally confirmed** by ESBMC (VERIFICATION FAILED on dedicated negative
 harnesses) and independently reproduced by native execution under address /
 undefined-behaviour sanitizers: **F-6** (unchecked mode byte in
 `on_dev_cfg_set_errorInjectionMode`), **F-7** (no rollback after
 `PortRecoveryPayload` validation failure), **F-8** (OOB in
-`validateGpioSpoofingErrorInjectionPayload`), **F-10** (silent 125 °C
-substitution in `set_busbar_temperature_threshold`), **F-13** (negative percent
+`validateGpioSpoofingErrorInjectionPayload`), **F-13** (negative percent
 wrap in `DebugTelemetrySmaCh`). Six findings retracted: three after ESBMC
 returned VERIFICATION SUCCESSFUL (**F-9**, **F-12**, **F-14**) and three on
 initial review (**F-2**, **F-3**, **former F-6**) — see [Retracted findings](#retracted-findings)
@@ -30,8 +29,12 @@ bitmask (index ≥ 64 reaches `std::array::at` OOB). Neither F-4 nor F-5 has a
 dangerous current call site, but F-5 lacks the runtime guard that sibling
 operations carry. An exhaustive call-graph trace confirmed that every
 `set_bit(8-element, pos)` call site uses a compile-time enum constant — F-5 is
-confirmed latent with no current packet-driven path. A third latent-OOB finding,
-**F-15**, confirms the same asymmetric-guard pattern on the read path:
+confirmed latent with no current packet-driven path. A third latent finding, **F-10** (`set_busbar_temperature_threshold` silent 125 °C
+substitution), is dead code in all current builds: `BusBarTempSensorNum = 0` on every
+known platform config (`p3957_cxx`, `testrunner`, `mcxn547helloworld`) causes the
+`if constexpr` block at `nsm_type_3.cpp:447` to be compiled away; the function returns
+`Ccode::Success` unconditionally in production. A fourth latent-OOB finding, **F-15**,
+confirms the same asymmetric-guard pattern on the read path:
 `is_event_source_enable()` reads `type0/6_event_enable_bitmask.at(event_id/8)`
 without a bounds check (ESBMC CEX: `event_id=248`, `ByteIndex=31`, OOB on
 size-8 array). A concurrent sweep of the DCD GPIO handlers (`on_dcd_get_gpio` /
@@ -53,7 +56,7 @@ workarounds removed where applicable.
 | Saturating arithmetic | `src/nv/common/utils.h` | ✅ 20 VCC | ✅ k=1 | ⚠ ESBMC strict unsigned-overflow demo (not a bug) |
 | MCTP validator state machine | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | — |
 | NSM type 2 (PCIe-link reset validator) | `src/nv/mctp/nsm_type_2.cpp` (`validatePcieLinkResetValue`) | ✅ | ✅ k=12 (membership iff + below-range rejection) | — |
-| NSM type 3 sensor availability | `src/nv/mctp/nsm_type_3.cpp` (`is_temp_sensor_available`, `is_power_sensor_available`, `is_voltage_sensor_available`) | ✅ 37 VCC | ✅ k=9 (membership iff, busbar-unavailable exclusion, voltage always-false) | ✅ **F-10** CEX: `threshold=254` → Success returned for out-of-range temperature |
+| NSM type 3 sensor availability | `src/nv/mctp/nsm_type_3.cpp` (`is_temp_sensor_available`, `is_power_sensor_available`, `is_voltage_sensor_available`) | ✅ 37 VCC | ✅ k=9 (membership iff, busbar-unavailable exclusion, voltage always-false) | ⚠ **F-10** CEX: `threshold=254` → Success for out-of-range temp — dead code in all current builds (`BusBarTempSensorNum = 0`; `if constexpr` body compiled away) |
 | Telemetry sensor-ID lookup + LE deserialiser | `src/nv/telemetry/utils.h` (`getTelemIdFromTempSensorId`, `getTelemIdFromPowerSensorId`, `buffer_to_uint32`) | ✅ 80 VCC | ✅ k=11 (mapping iff, MaxItem for non-members, LE byte-order contract) | — |
 | SPI byte-buffer (de)serialisation | `src/nv/spi/utils.{h,cpp}` (`buf_to_u{16,32}`, `u{16,32}_to_buf`) | ✅ | ✅ k=9 (round-trip + big-endian + OOB-no-write) | — |
 | I2C CRC-8 helpers | `src/nv/i2c/helper.cpp` (`crc8`) | ✅ | ✅ k=5 (incrementality + init-zero invariant) | — |
@@ -408,7 +411,9 @@ if (gpioSpoofingPayload.header.ei_gpio_number > MaxGPIOSpoofingEntries)
 
 ---
 
-### F-10 — `set_busbar_temperature_threshold` silently substitutes 125 °C for out-of-range input
+### F-10 — `set_busbar_temperature_threshold` silently substitutes 125 °C for out-of-range input *(latent — dead code in all current builds)*
+
+**Status**: dead code. `BusBarTempSensorNum = 0` in all known platform configs (`p3957_cxx`, `testrunner`, `mcxn547helloworld`). The `if constexpr (nv::ipc::voltage_monitor_config::BusBarTempSensorNum > 0)` gate at `nsm_type_3.cpp:447` compiles away the entire NTC-lookup body; `set_busbar_temperature_threshold` is an unconditional `return Ccode::Success` in every current production build. The bug would activate only if a future platform sets `BusBarTempSensorNum > 0`.
 
 **File**: `src/nv/mctp/nsm_type_3.cpp:445–491`
 
@@ -427,9 +432,9 @@ if (resistanceOhm == 0) {
 
 The harness **directly compiles `src/nv/volt_mon/ntc_table.cpp`** (production code — 166-entry real NTC lookup table, not a model). ESBMC traces through the actual `ntc_temperature_to_resistance` implementation. Nondet `threshold` constrained to the out-of-range region (`tempCelsius > NtcTempMax`); harness confirms the real NTC function returns 0 on this path, then asserts the function must not return `Ccode::Success`. CEX: `threshold = 255` → `ntc_temperature_to_resistance(255) = 0` → function returns `Success`.
 
-**Rigor note (F-1 style)**: `ntc_table.cpp` is compiled from production source without modification. The `set_busbar_temperature_threshold` logic is inlined verbatim (confirmed line-for-line against `nsm_type_3.cpp:445–491`); only the hardware `BusbarTemp` singleton (ADC interaction) is stubbed. Full compilation of `nsm_type_3.cpp` with ESBMC is blocked by the hardware header `sys/adc/adc.h`. The earlier `<optional>`/`<chrono>` blocker (esbmc#4245) is resolved by [#4246](https://github.com/esbmc/esbmc/pull/4246) (merged 2026-05-02).
+**Rigor note**: `ntc_table.cpp` is compiled from production source without modification; ESBMC traces the real 166-entry NTC lookup. The `set_busbar_temperature_threshold` logic is inlined verbatim from `nsm_type_3.cpp:445–491` (Tier 1 — not F-1 level). Compiling `nsm_type_3.cpp` directly would require stubs for its transitive hardware headers (`nv/volt_mon/busbar_temp.h`, `nv/volt_mon/leak_detect.h`, `nv/i2c/emc1812.h`, etc.) and a config with `BusBarTempSensorNum > 0` to make the bug path live — a system-harness effort comparable to F-6/F-7. Not pursued because the bug path is dead code in all current builds.
 
-**Config-level note**: the testrunner `config.h` sets `BusBarTempSensorNum = 0`, which compiles away the entire if-constexpr block and makes this code path unreachable in the testrunner build. On production hardware `BusBarTempSensorNum > 0` and the path is live.
+**Config-level note**: every known platform config sets `BusBarTempSensorNum = 0` (`p3957_cxx/config.h:1405`, `testrunner/config.h:668`, `mcxn547helloworld/config.h:1106`), compiling away the entire `if constexpr` block. The harness strips this gate and exercises only the inner body, proving the substitution bug for any future config that enables busbar sensors.
 
 **Runtime confirmation**: sanitizer run with `threshold = 254` → assertion `result != Ccode::Success` fires. `ctest/f10/`.
 
@@ -669,9 +674,12 @@ resolved with no remaining workarounds in the tree:
 1. **Fix F-1** — add the `interface >= UsEnd` guard to `set_cur_eid()` (or
    tighten `Validator::validate()` to reject `>= UsEnd`). Confirmed abort path
    for any Control SetEpId Request with `priv.packet_interface ∈ [2, 17]`.
-2. **Fix F-6, F-7, F-8, F-10, F-13** — each section above contains a
-   specific one- or two-line recommendation. F-8 is latent (existing call site
-   has a guard); the other four are directly reachable.
+2. **Fix F-6, F-7, F-8, F-13** — each section above contains a specific
+   one- or two-line recommendation. F-8 is latent (existing call site has a
+   guard); the other three are directly reachable. **F-10** is dead code in all
+   current builds (`BusBarTempSensorNum = 0` everywhere) — apply the fix
+   preemptively so the correct `ErrorInvalidData` path is in place before any
+   future platform enables busbar sensors.
 3. **Fix F-5 and F-15** — both stem from the same asymmetric-guard pattern
    in `nsm_msg_bitmask.h` and `nsm.cpp` respectively. Add the
    `byte_index >= bitmask.size()` guard to `set_bit` / `unset_bit` (F-5),

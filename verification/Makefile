@@ -438,7 +438,6 @@ fru_utils_func:
 
 # Phase 1+2: 4-sample SMA filter for SoC% telemetry (SocSmaFilterCh).
 # Pure SFXP22_10 arithmetic; no MCU platform includes.
-# Needs array stub: bundled <array> lacks correct value-initialisation tracking.
 soc_sma_filter:
 	@mkdir -p $(RESULTS)
 	$(ESBMC) $(LANG_FLAGS) -I$(STUBS) -I$(REPO)/src \
@@ -454,7 +453,6 @@ soc_sma_filter_func:
 
 # Phase 1+2: 256-sample SMA for debug telemetry (DebugTelemetrySmaCh).
 # Mixed-type arithmetic: SFXP22_10 → SFXP32_0 → UFXP8_0 buffer.
-# Needs array stub for the same value-initialisation reason as soc_sma_filter.
 debug_telemetry_sma:
 	@mkdir -p $(RESULTS)
 	$(ESBMC) $(LANG_FLAGS) -I$(STUBS) -I$(REPO)/src \

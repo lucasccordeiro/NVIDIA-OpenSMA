@@ -1,8 +1,4 @@
 // ESBMC verification stub for nv/mctp/nsm_type_4.h
-// Identical to the production header except that DsInterfaceErrorTable is
-// declared `inline const` instead of `constexpr inline`: ESBMC's bundled
-// <tuple> does not mark std::tuple as a literal type, so a constexpr
-// std::array<std::tuple<...>, N> fails to compile (esbmc issue).
 #pragma once
 #include <array>
 #include <climits>
@@ -81,9 +77,7 @@ using DsOobBusError    = nv::perf_mon::OobBus;
 using DsInterfaceError = std::tuple<DsMcpInterface, DsOobBusError>;
 constexpr auto T4DsInterfaceErrorNum = 13;
 
-// `inline const` instead of `constexpr inline`: ESBMC bundled <tuple> does
-// not treat std::tuple as a literal type (esbmc issue).
-inline const std::array<DsInterfaceError, T4DsInterfaceErrorNum> DsInterfaceErrorTable = {
+constexpr inline std::array<DsInterfaceError, T4DsInterfaceErrorNum> DsInterfaceErrorTable = {
     DsInterfaceError{pdk::mctp::platforms::Interface::DsI2c0, nv::perf_mon::OobBus::DsI2c0},
     DsInterfaceError{pdk::mctp::platforms::Interface::DsI2c1, nv::perf_mon::OobBus::DsI2c1},
     DsInterfaceError{pdk::mctp::platforms::Interface::DsI2c2, nv::perf_mon::OobBus::DsI2c2},

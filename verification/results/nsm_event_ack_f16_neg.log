@@ -1,0 +1,42 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_event_ack_f16_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.679s
+GOTO program processing time: 0.009s
+Starting Bounded Model Checking
+Symex completed in: 0.007s (131 assignments)
+Caching time: 0.000s (removed 1 assertions)
+Slicing time: 0.001s (removed 108 assignments)
+Generated 16 VCC(s), 11 remaining after simplification (22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Building error trace
+
+[Counterexample]
+
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_event_ack_f16_harness.cpp line 33 column 5 function main thread 0
+----------------------------------------------------
+  event_id = 248 (11111000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_event_ack_f16_harness.cpp line 36 column 5 function main thread 0
+----------------------------------------------------
+  ByteIndex = 31 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00011111)
+
+State 7 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_event_ack_f16_harness.cpp line 37 column 5 function main thread 0
+----------------------------------------------------
+  BitOffset = 0 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
+
+State 11 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_event_ack_f16_harness.cpp line 41 column 9 function main thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_event_ack_f16_harness.cpp line 41 column 9 function main
+  dereference failure: Access to object out of bounds
+
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit aarch64 macos

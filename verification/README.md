@@ -52,7 +52,7 @@ ESBMC to produce a counterexample.
 | `mctp_dispatch` | F-1 reachability: `Validator::validate()` + production `on_set_endpoint_id()` | — | — | — | ✅ CEX: `iface_val=2`, `valid=true`, OOB at `cur_eid.at(2)` (275 VCC) |
 | `mctp_validator` | `corepdk/.../app/pdk-mctp-app-validator.cpp` | ✅ 119 VCC | ✅ k=1 (full functional contract) | ✅ | — |
 | `nsm_type_2` | `src/nv/mctp/nsm_type_2.cpp` (`validatePcieLinkResetValue`) | ✅ | ✅ k=12 | ✅ | — |
-| `nsm_type3` | `src/nv/mctp/nsm_type_3.cpp` (`is_temp_sensor_available`, `is_power_sensor_available`, `is_voltage_sensor_available`) | ✅ 37 VCC | ✅ k=9 | ✅ | ✅ **F-10** CEX: `threshold=254` → Success returned for out-of-range temperature |
+| `nsm_type3` | `src/nv/mctp/nsm_type_3.cpp` (`is_temp_sensor_available`, `is_power_sensor_available`, `is_voltage_sensor_available`) | ✅ 37 VCC | ✅ k=9 | ✅ | ⚠ **F-10** CEX: `threshold=254` → Success for out-of-range temp — dead code in all current builds (`BusBarTempSensorNum = 0`) |
 | `telemetry` | `src/nv/telemetry/utils.h` (`getTelemIdFromTempSensorId`, `getTelemIdFromPowerSensorId`, `buffer_to_uint32`) | ✅ 80 VCC | ✅ k=11 | ✅ | — |
 | `nsm_bitmask` | `src/nv/mctp/nsm_msg_bitmask.h` (`set_bit`/`unset_bit`/`get_bit`/`is_bit_set`) | ✅ 75 VCC | ✅ k=1 | ✅ | ✅ CEX on `set_bit`/`unset_bit(arr8, pos≥64)` — F-5 |
 | `nsm_type5_validate` | `src/nv/mctp/nsm_type_5.cpp` (five field-validator functions) | ✅ 14 VCC | ✅ k=1 | ✅ | ✅ **F-6** CEX: `mode=0xFF` stored; **F-7** CEX: dirty `portRecoveryResp` on validation failure; **F-8** CEX: `gpio_ei_entries[16]` OOB |
@@ -150,9 +150,12 @@ for the full table; brief view:
   `ei_gpio_entries[16]` (fixed index) on an array whose size is the
   nondet-bounded `num_of_gpio_entries`. ESBMC CEX: `gpio_ei_entries[16]` OOB.
   Current call site passes a compile-time bound, so not currently exploitable.
-- **F-10** (confirmed): `set_busbar_temperature_threshold` silently substitutes
-  125 °C when the input is out of range instead of returning an error.
+- **F-10** (latent — dead code in all current builds): `set_busbar_temperature_threshold`
+  silently substitutes 125 °C for out-of-range input instead of returning an error.
   ESBMC CEX: `threshold=254` → Success returned with silently clamped value.
+  `BusBarTempSensorNum = 0` on every known platform config; the `if constexpr` gate
+  compiles away the NTC-lookup body in production. The fix should be applied
+  preemptively before any platform enables busbar sensors.
 - **F-13** (latent defect): `DebugTelemetrySmaCh::evaluate` casts `SFXP32_0
   percent` (int32_t) to `UFXP8_0` (uint8_t) without a negative-value guard —
   negative inputs wrap modulo 256. ESBMC CEX: `percent=-1024` → `stored=255`.
@@ -198,7 +201,7 @@ make mctp_dispatch                             # F-1 reachability proof (expect 
 make literals_neg                              # F-4: _bit(i≥64) UB (expect FAILED)
 make nsm_bitmask_neg                           # F-5: set_bit OOB (expect FAILED)
 make nsm_type5_f6_neg nsm_type5_f7_neg nsm_type5_f8_neg  # F-6/7/8 (expect FAILED)
-make nsm_type3_f10_neg                         # F-10: silent 125°C substitution (expect FAILED)
+make nsm_type3_f10_neg                         # F-10: silent 125°C substitution (expect FAILED; dead code in production)
 make debug_telemetry_f13_neg                   # F-13: negative percent wrap (expect FAILED)
 make debug_telemetry_f13_system                # F-13 reachability proof (expect SUCCESSFUL)
 make pca9555_f14_neg                           # F-14: retracted (expect SUCCESSFUL)

@@ -104,9 +104,10 @@ FP_INCS := -I$(REPO)/src
         nsm_event_source_f15_neg \
         nsm_event_ack_f16_neg \
         nsm_gpio_safety \
+        c2c_mailbox c2c_mailbox_volatile \
         clean
-all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils soc_sma_filter debug_telemetry_sma pca9555 emc1812 tmp1075 tmp461
-volatile: mctp_packet_volatile mctp_router_volatile mctp_validator_volatile nsm_type_2_volatile nsm_type3_volatile nsm_bitmask_volatile nsm_type5_validate_volatile telemetry_volatile spi_utils_volatile i2c_crc8_volatile literals_volatile fixed_point_volatile utils_volatile ntc_table_volatile pwr_smooth_params_volatile fru_utils_volatile soc_sma_filter_volatile debug_telemetry_sma_volatile pca9555_volatile emc1812_volatile tmp1075_volatile tmp461_volatile
+all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils soc_sma_filter debug_telemetry_sma pca9555 emc1812 tmp1075 tmp461 c2c_mailbox
+volatile: mctp_packet_volatile mctp_router_volatile mctp_validator_volatile nsm_type_2_volatile nsm_type3_volatile nsm_bitmask_volatile nsm_type5_validate_volatile telemetry_volatile spi_utils_volatile i2c_crc8_volatile literals_volatile fixed_point_volatile utils_volatile ntc_table_volatile pwr_smooth_params_volatile fru_utils_volatile soc_sma_filter_volatile debug_telemetry_sma_volatile pca9555_volatile emc1812_volatile tmp1075_volatile tmp461_volatile c2c_mailbox_volatile
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
@@ -895,6 +896,27 @@ nsm_gpio_safety:
 	  --unsigned-overflow-check --nan-check --unwind 67 \
 	  $(HARNESSES)/nsm_gpio_safety_harness.cpp \
 	  2>&1 | tee $(RESULTS)/nsm_gpio_safety.log
+
+# sys::c2c_mailbox — Phase 1 safety baseline.
+# No loops, no memcpy → default --unwind 4 is sufficient.
+# Stubs: fsl_mailbox.h (NXP SDK shim) + nv/ipc/ipc_task.h (slim interceptor
+# that surfaces only get_current_core / CoreId via sys/common/common.h).
+# Expected: VERIFICATION SUCCESSFUL
+c2c_mailbox:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(LANG_FLAGS) \
+	  -I$(STUBS) -I$(REPO)/src -I$(REPO)/src/sys/mcxn556 \
+	  $(HARNESSES)/c2c_mailbox_harness.cpp \
+	  $(REPO)/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp \
+	  2>&1 | tee $(RESULTS)/c2c_mailbox.log
+
+c2c_mailbox_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) $(VOLATILE_FLAGS) \
+	  -I$(STUBS) -I$(REPO)/src -I$(REPO)/src/sys/mcxn556 \
+	  $(HARNESSES)/c2c_mailbox_harness.cpp \
+	  $(REPO)/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp \
+	  2>&1 | tee $(RESULTS)/c2c_mailbox_volatile.log
 
 clean:
 	rm -rf $(RESULTS)

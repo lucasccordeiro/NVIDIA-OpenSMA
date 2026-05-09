@@ -1,0 +1,21 @@
+Target: 64-bit little-endian x86_64-unknown-linux with esbmclibc
+Parsing /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/c2c_mailbox_harness.cpp
+Parsing /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.176s
+GOTO program processing time: 0.000s
+Starting Bounded Model Checking
+Symex completed in: 0.002s (94 assignments)
+Caching time: 0.000s (removed 1 assertions)
+Slicing time: 0.000s (removed 85 assignments)
+Generated 11 VCC(s), 3 remaining after simplification (8 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+BMC program time: 0.003s
+
+VERIFICATION SUCCESSFUL
+ESBMC version 8.2.0 64-bit x86_64 linux

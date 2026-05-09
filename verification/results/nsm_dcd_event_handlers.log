@@ -1,0 +1,60 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 1.054s
+GOTO program processing time: 0.012s
+Starting Bounded Model Checking
+Unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 8 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 70 column 13 function main
+Unwinding loop 8 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 70 column 13 function main
+Unwinding loop 8 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 70 column 13 function main
+Unwinding loop 8 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 70 column 13 function main
+Unwinding loop 8 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 70 column 13 function main
+Unwinding loop 8 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 70 column 13 function main
+Unwinding loop 8 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 70 column 13 function main
+Unwinding loop 8 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 70 column 13 function main
+Unwinding loop 9 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 76 column 13 function main
+Unwinding loop 9 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 76 column 13 function main
+Unwinding loop 9 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 76 column 13 function main
+Unwinding loop 9 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 76 column 13 function main
+Unwinding loop 9 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 76 column 13 function main
+Unwinding loop 9 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 76 column 13 function main
+Unwinding loop 9 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 76 column 13 function main
+Unwinding loop 9 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 76 column 13 function main
+Unwinding loop 10 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 85 column 13 function main
+Unwinding loop 10 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 85 column 13 function main
+Unwinding loop 10 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 85 column 13 function main
+Unwinding loop 10 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 85 column 13 function main
+Unwinding loop 10 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 85 column 13 function main
+Unwinding loop 10 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 85 column 13 function main
+Unwinding loop 10 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 85 column 13 function main
+Unwinding loop 10 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 85 column 13 function main
+Unwinding loop 11 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 90 column 13 function main
+Unwinding loop 11 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 90 column 13 function main
+Unwinding loop 11 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 90 column 13 function main
+Unwinding loop 11 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 90 column 13 function main
+Unwinding loop 11 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 90 column 13 function main
+Unwinding loop 11 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 90 column 13 function main
+Unwinding loop 11 iteration 7   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 90 column 13 function main
+Unwinding loop 11 iteration 8   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 90 column 13 function main
+Symex completed in: 0.081s (556 assignments)
+Caching time: 0.001s (removed 1 assertions)
+Slicing time: 0.002s (removed 490 assignments)
+Generated 370 VCC(s), 53 remaining after simplification (65 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.003s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.006s
+BMC program time: 0.099s
+
+VERIFICATION SUCCESSFUL
+ESBMC version 8.2.0 64-bit aarch64 macos

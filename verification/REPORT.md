@@ -683,6 +683,41 @@ special case (`offset=0, length=0 → length=GpioNum`).
 
 ---
 
+### DCD event-bitmask write handlers — structural safety proof
+
+**Files**: `src/nv/mctp/nsm.cpp:983` (`on_dcd_set_current_event_srcs`), `nsm.cpp:1096` (`on_dcd_configure_event_ack`)
+
+Sibling check to F-15 / F-16: those findings showed the *read* side
+(`is_event_source_enable` / `is_event_ack_enable`) computes
+`bitmask.at(event_id / 8)` on a size-8 array without a bounds check, so
+`event_id ≥ 64` reaches an OOB index. The *write* side under the same
+data structures uses
+
+```cpp
+log_nvmsg_event_bitmask.at(static_cast<uint8_t>(msg_with_bitmask.nv_msg_type)) = false;
+```
+
+inside an `if (nv_msg_type == DCD) { ... } else if (nv_msg_type == Firmware) { ... }`
+guard. `log_nvmsg_event_bitmask` has size `NvMctpSupportedNum = 32`; the
+two enumerator values that reach the write are 0 (DCD) and 6 (Firmware),
+both well within bounds. The accompanying inner loops iterate
+`i ∈ [0, NvMctpEventSupportedNum=8)` over size-8 `type{0,6}_event_*_bitmask`
+and `SupType{0,6}Event` arrays.
+
+**What ESBMC proved** (`nsm_dcd_event_handlers`, `--unwind 10`,
+VERIFICATION SUCCESSFUL, 691 VCC):
+
+Both handler bodies, executed under nondet `nv_msg_type` and nondet 8-byte
+`bitmask`, discharge all 691 verification conditions. No memory-safety,
+overflow, NaN, or unsigned-overflow violation is reachable.
+
+**Conclusion**: the asymmetric-guard pattern that bit F-15 / F-16 does not
+apply to the write side — `nv_msg_type` is value-checked before use as an
+array index, and the index space {0, 6} is contained in the size-32 array.
+No finding.
+
+---
+
 ### Items checked, no defects
 
 - Packed-struct alignment access in `Packet::to_span()` and `Packet::from()`
@@ -809,6 +844,7 @@ make pca9555_f14_neg             # F-14: retracted — production pca9555.cpp (e
 make nsm_event_source_f15_neg   # F-15: is_event_source_enable OOB on event_id≥64 (expect VERIFICATION FAILED)
 make nsm_event_ack_f16_neg      # F-16: is_event_ack_enable OOB on event_id≥64 (expect VERIFICATION FAILED)
 make nsm_gpio_safety            # DCD GPIO structural safety proof (expect VERIFICATION SUCCESSFUL)
+make nsm_dcd_event_handlers     # on_dcd_set_current_event_srcs / on_dcd_configure_event_ack structural safety (expect VERIFICATION SUCCESSFUL)
 ```
 
 ESBMC 8.2.0 on `$PATH`, or pass `ESBMC=/path/to/esbmc make ...`.

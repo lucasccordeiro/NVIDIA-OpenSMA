@@ -74,6 +74,7 @@ ESBMC to produce a counterexample.
 | `nsm_event_source_f15_neg` | `src/nv/mctp/nsm.cpp:761` — `is_event_source_enable` reads `type0/6_event_enable_bitmask.at(event_id/8)` without bounds guard | — | — | — | ✅ FAILED — CEX: `event_id=248`, `ByteIndex=31`, OOB on size-8 array — **F-15** |
 | `nsm_event_ack_f16_neg` | `src/nv/mctp/nsm.cpp:1089` — `is_event_ack_enable` reads `type0/6_event_ack_bitmask.at(event_id/8)` without bounds guard; sibling to F-15 | — | — | — | ✅ FAILED — CEX: `event_id=248`, `ByteIndex=31`, OOB on size-8 array — **F-16** |
 | `nsm_gpio_safety` | `src/nv/mctp/nsm.cpp:3389,3482` — `on_dcd_get_gpio` / `on_dcd_set_gpio` structural safety; `GpioNum=66` (p3957_cxx) | — | — | — | ✅ SUCCESSFUL (536 VCC) — guard sufficient, no defect |
+| `nsm_dcd_event_handlers` | `src/nv/mctp/nsm.cpp:983,1096` — `on_dcd_set_current_event_srcs` / `on_dcd_configure_event_ack` structural safety; sibling check to F-15/F-16 | — | — | — | ✅ SUCCESSFUL (691 VCC) — write-side `.at(uint8_t(nv_msg_type))` correctly gated on `nv_msg_type ∈ {DCD=0, Firmware=6}` against size-32 `log_nvmsg_event_bitmask`; no defect |
 
 ## ESBMC issues filed
 

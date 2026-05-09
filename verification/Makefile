@@ -100,6 +100,7 @@ FP_INCS := -I$(REPO)/src
         tmp461 tmp461_func tmp461_volatile \
         nsm_f6_system \
         nsm_f7_system \
+        nsm_dcd_event_handlers \
         nsm_event_source_f15_neg \
         nsm_event_ack_f16_neg \
         nsm_gpio_safety \
@@ -843,6 +844,25 @@ nsm_f7_system:
 	  -DNV_IPC_CONFIG_H=\"nsm_f6_config.h\" \
 	  $(HARNESSES)/nsm_f7_system_harness.cpp \
 	  2>&1 | tee $(RESULTS)/nsm_f7_system.log
+
+# DCD event-bitmask write handlers: on_dcd_set_current_event_srcs (nsm.cpp:983)
+# and on_dcd_configure_event_ack (nsm.cpp:1096). Both AND-down a packet-supplied
+# 8-byte bitmask with the per-type Sup*Event mask under a for-loop bounded by
+# NvMctpEventSupportedNum=8 → --unwind 9. Sibling check to F-15/F-16 (read-side
+# OOBs): confirms the write-side gates the .at(uint8_t(nv_msg_type)) index on
+# nv_msg_type ∈ {DCD=0, Firmware=6}, both within log_nvmsg_event_bitmask.size()=32.
+# Expected: VERIFICATION SUCCESSFUL.
+nsm_dcd_event_handlers:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --unwind 10 \
+	  -I$(STUBS) \
+	  -I$(REPO) \
+	  -I$(REPO)/src \
+	  -I$(REPO)/corepdk/modules/mctp-cpp/src \
+	  -I$(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86 \
+	  $(HARNESSES)/nsm_dcd_event_handlers_harness.cpp \
+	  2>&1 | tee $(RESULTS)/nsm_dcd_event_handlers.log
 
 # F-15: is_event_source_enable reads type0/6_event_enable_bitmask.at(event_id/8)
 # without a bounds guard. For event_id ∈ [64, 255], ByteIndex ∈ [8, 31] is OOB

@@ -213,7 +213,7 @@ Nondet `request_mode` constrained to `request_mode != Disable && request_mode !=
 
 **System-level proof** (`nsm_f6_system`, VERIFICATION FAILED):
 
-The real `Nsm::process_device_configuration()` compiled from production `nsm_type_5.cpp` (not an inline copy). Nondet `nrx.data[0]`; no constraint. CEX traces `nondet_symbol` from `nrx.data[0]` (harness:49) through `process_device_configuration` (nsm_type_5.cpp:647) → `on_dev_cfg_set_errorInjectionMode` (nsm_type_5.cpp:801) to `type5_data.errorInjectionModeResponse.mode`. Assertion `mode ∈ {Disable, Enable}` violated with `mode = 3` (`--unwind 9`, `--no-align-check` — the latter suppresses a residual false positive on the `[[gnu::packed]]` bitfield constructor `NsmDevCfgErrorInjectionModeResponse()`, tracked as esbmc#4267).
+The real `Nsm::process_device_configuration()` compiled from production `nsm_type_5.cpp` (not an inline copy). Nondet `nrx.data[0]`; no constraint. CEX traces `nondet_symbol` from `nrx.data[0]` (harness:49) through `process_device_configuration` (nsm_type_5.cpp:647) → `on_dev_cfg_set_errorInjectionMode` (nsm_type_5.cpp:801) to `type5_data.errorInjectionModeResponse.mode`. Assertion `mode ∈ {Disable, Enable}` violated with `mode = 3` (`--unwind 9`).
 
 **Runtime confirmation**: sanitizer run (`-fsanitize=address,undefined`) with `request_mode = 0xFF` triggers `assert(mode == Disable || mode == Enable)` → SIGABRT. `ctest/f6/`.
 
@@ -297,7 +297,7 @@ Nondet `incoming` payload, nondet validator constrained to fail (`!valid`). Afte
 
 **System-level proof** (`nsm_f7_system`, VERIFICATION SUCCESSFUL):
 
-The real `Nsm::process_device_configuration()` compiled from production `nsm_type_5.cpp` (not an inline copy). Packet crafted with `SetErrorInjectionPayload` / `PortRecoveryErrors` (OCP v2, DeviceError id, nondet bitmaps). ESBMC reports **VERIFICATION SUCCESSFUL** (`--unwind 13`, same `--no-align-check` workaround as F-6 system): all reachable paths are memory-safe and overflow-free; the validation-failure branch is dead code because `validatePortRecoveryErrorInjectionPayload` always returns `true` (production TODO stub, nsm_type_5.cpp:206–210). This closes gap-1 (real `PortRecoveryPayload`/`NsmDevCfgPersistentData` types) and gap-2 (real dispatch logic) from the structural harness. Gap-3 (validator as nondet bool) cannot be closed without production code changes — the validator must be completed before F-7 becomes reachable. **Confirmed latent in current production code.**
+The real `Nsm::process_device_configuration()` compiled from production `nsm_type_5.cpp` (not an inline copy). Packet crafted with `SetErrorInjectionPayload` / `PortRecoveryErrors` (OCP v2, DeviceError id, nondet bitmaps). ESBMC reports **VERIFICATION SUCCESSFUL** (`--unwind 13`): all reachable paths are memory-safe and overflow-free; the validation-failure branch is dead code because `validatePortRecoveryErrorInjectionPayload` always returns `true` (production TODO stub, nsm_type_5.cpp:206–210). This closes gap-1 (real `PortRecoveryPayload`/`NsmDevCfgPersistentData` types) and gap-2 (real dispatch logic) from the structural harness. Gap-3 (validator as nondet bool) cannot be closed without production code changes — the validator must be completed before F-7 becomes reachable. **Confirmed latent in current production code.**
 
 **Runtime confirmation**: sanitizer run with `incoming.offset = 42` and validator forced to return false → assertion fires. `ctest/f7/`.
 
@@ -706,19 +706,10 @@ Full analysis for each retraction is in [NOTES.md](NOTES.md).
 
 ## Tooling-level findings (ESBMC bugs)
 
-### Active workarounds
-
-One workaround remains in the tree for an issue whose fix has not yet fully
-propagated to the ESBMC binary in use:
-
-| Issue | Description | Workaround in tree |
-|---|---|---|
-| [#4281](https://github.com/esbmc/esbmc/issues/4281) | `[[gnu::packed]]` bitfield member-initialiser in a constructor triggers a false-positive bounds/alignment check (`dereference failure: Access to object out of bounds` / `Misaligned access to struct field`). Reproduced on `NsmDevCfgErrorInjectionModeResponse()` — a packed struct with a `uint8_t` field followed by two bitfield members. | `--no-align-check` on `nsm_f6_system` and `nsm_f7_system` targets. Repro: `esbmc_bug_repros/packed_bitfield_ctor_bounds_fp.cpp`. |
-
 ### Closed issues
 
-The following ESBMC issues were surfaced during this work and are now fully
-resolved with no remaining workarounds in the tree:
+All ESBMC issues surfaced during this work are fully resolved with no remaining
+workarounds in the tree:
 
 [#4180](https://github.com/esbmc/esbmc/issues/4180) (umbrella; split into #4183/#4184),
 [#4190](https://github.com/esbmc/esbmc/issues/4190) (fixed by [#4192](https://github.com/esbmc/esbmc/pull/4192) + [#4194](https://github.com/esbmc/esbmc/pull/4194) + [#4244](https://github.com/esbmc/esbmc/pull/4244) — `<bit>`, `<span>`, `<type_traits>`, and `<array>` aggregate),
@@ -738,7 +729,8 @@ resolved with no remaining workarounds in the tree:
 [#4249](https://github.com/esbmc/esbmc/issues/4249) (fixed — bundled `<span>` relative `#include "array"` replaced; `stubs/span` removed),
 [#4251](https://github.com/esbmc/esbmc/issues/4251) (fixed — bundled `<algorithm>` now provides `std::clamp`; `stubs/algorithm` removed),
 [#4264](https://github.com/esbmc/esbmc/issues/4264) (fixed — `chrono::duration::max()` now compiles correctly in ESBMC's bundled `<chrono>`),
-[#4267](https://github.com/esbmc/esbmc/issues/4267) (partially fixed — general packed-struct alignment suppression landed; residual packed-bitfield-constructor case re-filed as [#4281](https://github.com/esbmc/esbmc/issues/4281)),
+[#4267](https://github.com/esbmc/esbmc/issues/4267) (fixed — general packed-struct alignment suppression landed; residual packed-bitfield-constructor case re-filed as [#4281](https://github.com/esbmc/esbmc/issues/4281) and fixed by [#4283](https://github.com/esbmc/esbmc/pull/4283)),
+[#4281](https://github.com/esbmc/esbmc/issues/4281) (fixed by [#4283](https://github.com/esbmc/esbmc/pull/4283) — `[[gnu::packed]]` bitfield member-initialiser in constructor no longer triggers a false-positive bounds/alignment check; `--no-align-check` workaround removed from `nsm_f6_system` and `nsm_f7_system`),
 [#4269](https://github.com/esbmc/esbmc/issues/4269) (fixed — bundled `<array>` now exposes `constexpr operator[]` and `at()`; `stubs/array` removed),
 [#4270](https://github.com/esbmc/esbmc/issues/4270) (fixed — bundled `<span>` relative `#include "array"` path corrected; `stubs/span` removed),
 [#4271](https://github.com/esbmc/esbmc/issues/4271) (fixed — `using Base::Base` (ConstructorUsingShadow) now handled correctly by ESBMC's Clang frontend),

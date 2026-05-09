@@ -22,8 +22,8 @@ In file included from /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h:41:
       |                                                                 ^
 Converting
 Generating GOTO Program
-GOTO program creation time: 2.532s
-GOTO program processing time: 0.050s
+GOTO program creation time: 2.656s
+GOTO program processing time: 0.051s
 Starting Bounded Model Checking
 WARNING: no body for function tuple#
 WARNING: no body for function tuple#
@@ -55,49 +55,96 @@ Unwinding loop 50 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.
 Unwinding loop 50 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
 Unwinding loop 50 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
 Unwinding loop 50 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1387 column 5 function count_events_in_bitmask
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgErrorInjectionModeResponse
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgErrorInjectionModeResponse
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgErrorInjectionModeResponse
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::FatalErrorPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::FatalErrorPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GPIOSpoofingPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReq
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReq
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReq
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReq
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReq
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReq
 WARNING: no body for function Packet#c#
 WARNING: no body for function Packet#&S2_#1
 WARNING: no body for function Packet#&S1_#1
 WARNING: no body for function Packet#&S1_#1
-Unwinding loop 30 iteration 1   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/array line 185 column 3 function operator==
-Unwinding loop 30 iteration 2   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/array line 185 column 3 function operator==
-Unwinding loop 30 iteration 3   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/array line 185 column 3 function operator==
-Unwinding loop 30 iteration 4   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/array line 185 column 3 function operator==
-Unwinding loop 30 iteration 5   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/array line 185 column 3 function operator==
-Unwinding loop 30 iteration 6   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/array line 185 column 3 function operator==
-Unwinding loop 30 iteration 7   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/array line 185 column 3 function operator==
-Unwinding loop 30 iteration 8   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/array line 185 column 3 function operator==
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReq
+Unwinding loop 30 iteration 1   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/array line 185 column 3 function operator==
+Unwinding loop 30 iteration 2   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/array line 185 column 3 function operator==
+Unwinding loop 30 iteration 3   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/array line 185 column 3 function operator==
+Unwinding loop 30 iteration 4   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/array line 185 column 3 function operator==
+Unwinding loop 30 iteration 5   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/array line 185 column 3 function operator==
+Unwinding loop 30 iteration 6   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/array line 185 column 3 function operator==
+Unwinding loop 30 iteration 7   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/array line 185 column 3 function operator==
+Unwinding loop 30 iteration 8   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/array line 185 column 3 function operator==
 WARNING: no body for function Packet#&S2_#1
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgErrorInjectionModeResponse
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReq
 WARNING: no body for function Packet#&S1_#1
 WARNING: no body for function Packet#&S1_#1
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
 WARNING: no body for function Packet#&S1_#1
 WARNING: no body for function Packet#&S1_#1
-Unwinding loop 32 iteration 1   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/algorithm line 548 column 3 function copy
-Unwinding loop 32 iteration 2   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/algorithm line 548 column 3 function copy
-Unwinding loop 32 iteration 3   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/algorithm line 548 column 3 function copy
-Unwinding loop 32 iteration 4   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/algorithm line 548 column 3 function copy
-Unwinding loop 32 iteration 5   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/algorithm line 548 column 3 function copy
-Unwinding loop 32 iteration 6   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/algorithm line 548 column 3 function copy
-Unwinding loop 32 iteration 7   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/algorithm line 548 column 3 function copy
-Unwinding loop 32 iteration 8   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-4797-ed8d-e111/algorithm line 548 column 3 function copy
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+Unwinding loop 32 iteration 1   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/algorithm line 548 column 3 function copy
+Unwinding loop 32 iteration 2   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/algorithm line 548 column 3 function copy
+Unwinding loop 32 iteration 3   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/algorithm line 548 column 3 function copy
+Unwinding loop 32 iteration 4   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/algorithm line 548 column 3 function copy
+Unwinding loop 32 iteration 5   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/algorithm line 548 column 3 function copy
+Unwinding loop 32 iteration 6   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/algorithm line 548 column 3 function copy
+Unwinding loop 32 iteration 7   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/algorithm line 548 column 3 function copy
+Unwinding loop 32 iteration 8   file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-b49b-67d2-0160/algorithm line 548 column 3 function copy
 WARNING: no body for function Packet#&S1_#1
 WARNING: no body for function Packet#&S1_#1
 WARNING: no body for function Packet#c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReq
 WARNING: no body for function Packet#&S2_#1
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgErrorInjectionModeResponse
 WARNING: no body for function Packet#&S2_#1
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
 Unwinding loop 35 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 406 column 9 function isErrorInjectionIdBitmapSupported
 Unwinding loop 35 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 406 column 9 function isErrorInjectionIdBitmapSupported
 Unwinding loop 35 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 406 column 9 function isErrorInjectionIdBitmapSupported
@@ -107,16 +154,59 @@ Unwinding loop 35 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_
 Unwinding loop 35 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 406 column 9 function isErrorInjectionIdBitmapSupported
 Unwinding loop 35 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 406 column 9 function isErrorInjectionIdBitmapSupported
 WARNING: no body for function Packet#&S2_#1
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
 WARNING: no body for function Packet#&S2_#1
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Not unwinding loop 59 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::FatalErrorPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::FatalErrorPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::ErrorInjectionPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 60 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
 WARNING: no body for function notifyIoxSpoofingState#b#
 Unwinding loop 51 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 883 column 5 function on_dev_cfg_set_currentErrorInjectionTypes
 Unwinding loop 51 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 883 column 5 function on_dev_cfg_set_currentErrorInjectionTypes
@@ -128,210 +218,364 @@ Unwinding loop 51 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_
 Unwinding loop 51 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 883 column 5 function on_dev_cfg_set_currentErrorInjectionTypes
 WARNING: no body for function Packet#&S1_#1
 WARNING: no body for function Packet#&S1_#1
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Not unwinding loop 59 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 60 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
 WARNING: no body for function Packet#&S1_#1
 WARNING: no body for function Packet#&S1_#1
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReqV2
 WARNING: no body for function Packet#&S2_#1
 WARNING: no body for function Packet#c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReqV2
 WARNING: no body for function Packet#&S2_#1
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
 WARNING: no body for function Packet#&S2_#1
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Not unwinding loop 59 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Not unwinding loop 59 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Not unwinding loop 59 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 60 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 60 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 60 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
 WARNING: no body for function Packet#&S2_#1
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
 WARNING: no body for function Packet#&S2_#1
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Not unwinding loop 59 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 60 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
 WARNING: no body for function Packet#&S2_#1
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgErrorInjectionModeResponse
 WARNING: no body for function Packet#&S2_#1
 WARNING: no body for function Packet#&S1_#1
 WARNING: no body for function Packet#&S1_#1
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReqV2
 WARNING: no body for function Packet#&S2_#1
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-WARNING: no body for function Packet#&S2_#1
-WARNING: no body for function Packet#&S2_#1
-WARNING: no body for function Packet#&S2_#1
-WARNING: no body for function Packet#c#
-WARNING: no body for function Packet#&S2_#1
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Not unwinding loop 59 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-WARNING: no body for function Packet#c#
-WARNING: no body for function Packet#&S2_#1
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Not unwinding loop 59 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-WARNING: no body for function Packet#c#
-WARNING: no body for function Packet#&S2_#1
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Not unwinding loop 59 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
 WARNING: no body for function Packet#&S2_#1
 WARNING: no body for function Packet#&S2_#1
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
 WARNING: no body for function Packet#&S2_#1
 WARNING: no body for function Packet#c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReqV2
 WARNING: no body for function Packet#&S2_#1
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Not unwinding loop 59 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 60 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct nv::mctp::FatalErrorPayload
+WARNING: no body for function Packet#c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReqV2
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 60 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReqV2
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 60 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: no body for function Packet#&S2_#1
+WARNING: no body for function Packet#c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReqV2
+WARNING: no body for function Packet#&S2_#1
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 60 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 56 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 56 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 56 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 56 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 56 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 56 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 56 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 56 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Not unwinding loop 56 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 302 column 5 function validateGpioSpoofingErrorInjectionPayload
 WARNING: no body for function Packet#&S2_#1
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Not unwinding loop 59 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 5   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 6   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 7   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 8   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Not unwinding loop 60 iteration 9   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 52 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 52 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 52 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 52 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 52 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 52 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 52 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 52 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Not unwinding loop 52 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1176 column 9 function on_dev_cfg_submit_ErrorInjectionPayload
 WARNING: no body for function Packet#&S2_#1
 WARNING: no body for function Packet#&S1_#1
 WARNING: no body for function Packet#&S1_#1
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktReqV2
 WARNING: no body for function Packet#&S2_#1
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgErrorInjectionModeResponse
 WARNING: no body for function Packet#&S2_#1
 WARNING: no body for function fill_build_type#&c#S
-Unwinding loop 59 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
-Unwinding loop 59 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmPktResp
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+Unwinding loop 60 iteration 1   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 2   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 3   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
+Unwinding loop 60 iteration 4   file /Users/user/esbmc/src/c2goto/library/string.c line 278 column 3 function __memcpy_impl
 WARNING: no body for function Packet#&S2_#1
+WARNING: not checking alignment for access to packed struct struct nv::mctp::FatalErrorPayload
 WARNING: no body for function Packet#&S2_#1
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::PortRecoveryPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::USBBridgeEmulationPayload
 WARNING: no body for function Packet#&S2_#1
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgPersistentData
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 53 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 53 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 53 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 53 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 53 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 53 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 53 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 53 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 WARNING: no body for function get_gpio_default_value#s#&c#
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Not unwinding loop 53 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 1326 column 9 function on_dev_cfg_activate_ErrorInjectionPayload
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingPayloadHeader
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 54 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 54 iteration 2   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 54 iteration 3   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 54 iteration 4   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 54 iteration 5   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 54 iteration 6   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 54 iteration 7   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Unwinding loop 54 iteration 8   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
+WARNING: not checking alignment for access to packed struct struct nv::mctp::GpioSpoofingEntry
 Not unwinding loop 54 iteration 9   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 248 column 5 function triggerGpioSpoofingEvents
 WARNING: no body for function GpioEventSource#S
 Unwinding loop 55 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 285 column 5 function triggerGpioSpoofingEvents
@@ -356,37 +600,22 @@ WARNING: no body for function Packet#&S2_#1
 WARNING: no body for function Packet#&S2_#1
 WARNING: no body for function Packet#&S2_#1
 WARNING: no body for function Packet#&S2_#1
-Symex completed in: 3.172s (4449 assignments)
-Caching time: 0.030s (removed 139 assertions)
-Slicing time: 0.035s (removed 3042 assignments)
-Generated 1775 VCC(s), 446 remaining after simplification (1268 assignments)
+WARNING: not checking alignment for access to packed struct struct nv::mctp::NsmDevCfgErrorInjectionModeResponse
+Symex completed in: 3.622s (4554 assignments)
+Caching time: 0.048s (removed 157 assertions)
+Slicing time: 0.044s (removed 3041 assignments)
+Generated 3541 VCC(s), 536 remaining after simplification (1356 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.222s
+Encoding to solver time: 0.256s
 Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.052s
+Runtime decision procedure: 0.055s
 Building error trace
 
 [Counterexample]
 
 
-State 103 file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 115 column 5 function NsmDevCfgErrorInjectionModeResponse thread 0
-----------------------------------------------------
-  this->persistent_data_modified = 0 (00000000 00000000 00000000 00000000)
-
-State 104 file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 115 column 5 function NsmDevCfgErrorInjectionModeResponse thread 0
-----------------------------------------------------
-  this->persistent_data_modified = 0 (00000000 00000000 00000000 00000000)
-
-State 105 file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 115 column 5 function NsmDevCfgErrorInjectionModeResponse thread 0
-----------------------------------------------------
-  this->persistent_data_modified = 0 (00000000 00000000 00000000 00000000)
-
-State 106 file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.h line 115 column 5 function NsmDevCfgErrorInjectionModeResponse thread 0
-----------------------------------------------------
-  this->persistent_data_modified = 0 (00000000 00000000 00000000 00000000)
-
-State 107 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_f6_system_harness.cpp line 40 column 5 function main thread 0
+State 103 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_f6_system_harness.cpp line 40 column 5 function main thread 0
 ----------------------------------------------------
   nsm = { ._ctl=&ctl_stub, .irreversible_input_received=0, .anon_pad$2=0,
     .irreversible_last_time_stamp=0, ._nonce={ .nonce = { 0 } },
@@ -396,32 +625,29 @@ State 107 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_f6_system_h
     .log_nvmsg_event_bitmask={ .elems = { 0 } },
     .log_event_subscription=0,
     .nsm_event_clients={ .priv = { .packet_length = 0 } }, .event_subscription={ .setting = 0 },
-    .event_cache={ .elems=nil
-  * type:  },
+    .event_cache={ .elems=nil },
     .type5_data={ .errorInjectionModeResponse={ .mode = 0 }, .current_errors_injection_bitmask={ .elems = { 0 } },
     .device_error_status_bitmap=0,
     .gpio_spoofing_error_status_bitmap=0, .fatalerrorResp={ .ei_header = { .offset = 0 } },
     .portRecoveryResp={ .ei_header = { .offset = 0 } },
     .usbBridgeEmulationResp={ .ei_header = { .offset = 0 } },
-    .gpioSpoofingResp={ .gpio_spoofing_header={ .offset = 0 }, .gpio_ei_entries=nil
-  * type:  },
+    .gpioSpoofingResp={ .gpio_spoofing_header={ .offset = 0 }, .gpio_ei_entries=nil },
     .currentNcsiMacAddrLoaded=0,
-    .currentNcsiMacAddr={ .elems = { 0 } }, .pendingNcsiMacAddr={ .elems = { 0 } } },
-    .anon_pad$15=0 }
+    .currentNcsiMacAddr={ .elems = { 0 } }, .pendingNcsiMacAddr={ .elems = { 0 } } }, .anon_pad$15=0 }
 
-State 108 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_f6_system_harness.cpp line 49 column 19 function main thread 0
+State 104 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_f6_system_harness.cpp line 49 column 19 function main thread 0
 ----------------------------------------------------
   nrx->data[0] = { .priv={ .packet_length = 0 }, .hdr={ .hdr_ver = 0 }, .msg={ .elems={ 0, 0, 0, 0, 0, 5, 3, 0, nondet_symbol(symex::nondet77), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } } }
 
-State 109 file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 647 column 5 function process_device_configuration thread 0
+State 105 file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 647 column 5 function process_device_configuration thread 0
 ----------------------------------------------------
   ntx->nv_msg_type = { .priv={ .packet_length = 0 }, .hdr={ .hdr_ver = 0 }, .msg={ .elems={ 0, 0, 0, 0, 0, rx?1!0&0#4.msg.elems[5], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } } }
 
-State 110 file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1031 column 64 function set_dev_cfg_code thread 0
+State 106 file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm.h line 1031 column 64 function set_dev_cfg_code thread 0
 ----------------------------------------------------
   this->cmd_code.devcfg_code = { .priv={ .packet_length = 0 }, .hdr={ .hdr_ver = 0 }, .msg=3 }
 
-State 112 file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 801 column 5 function on_dev_cfg_set_errorInjectionMode thread 0
+State 108 file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 801 column 5 function on_dev_cfg_set_errorInjectionMode thread 0
 ----------------------------------------------------
   this->type5_data.errorInjectionModeResponse.mode = { ._ctl=&ctl_stub, .irreversible_input_received=0, .anon_pad$2=0,
     .irreversible_last_time_stamp=0, ._nonce={ .nonce = { 0 } },
@@ -431,16 +657,14 @@ State 112 file /Users/user/NVIDIA-OpenSMA/src/nv/mctp/nsm_type_5.cpp line 801 co
     .log_nvmsg_event_bitmask={ .elems = { 0 } },
     .log_event_subscription=0,
     .nsm_event_clients={ .priv = { .packet_length = 0 } }, .event_subscription={ .setting = 0 },
-    .event_cache={ .elems=nil
-  * type:  },
-    .type5_data=3,
-    .anon_pad$15=0 }
+    .event_cache={ .elems=nil },
+    .type5_data=3, .anon_pad$15=0 }
 
-State 113 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_f6_system_harness.cpp line 54 column 5 function main thread 0
+State 109 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_f6_system_harness.cpp line 54 column 5 function main thread 0
 ----------------------------------------------------
   mode = nsm.type5_data.errorInjectionModeResponse.mode
 
-State 114 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_f6_system_harness.cpp line 55 column 5 function main thread 0
+State 110 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_f6_system_harness.cpp line 55 column 5 function main thread 0
 ----------------------------------------------------
 Violated property:
   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_f6_system_harness.cpp line 55 column 5 function main

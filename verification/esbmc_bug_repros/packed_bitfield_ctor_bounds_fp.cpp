@@ -1,18 +1,15 @@
 // ESBMC 8.2.0 — false-positive bounds/alignment check on [[gnu::packed]] bitfield constructor
 //
 // A [[gnu::packed]] struct whose constructor initialises a bitfield member via
-// a member-initialiser-list triggers a spurious VCC:
+// a member-initialiser-list triggered a spurious VCC:
 //   dereference failure: Access to object out of bounds
-// The struct is valid C++; the false positive is produced by ESBMC's bounds model
-// treating the bitfield initialiser as an out-of-bounds pointer write.
+// The struct is valid C++; the false positive was produced by ESBMC's bounds
+// model treating the bitfield initialiser as an out-of-bounds pointer write.
 //
-// Reproduce:
+// Filed as esbmc#4281; fixed by esbmc#4283 ([clang-cpp] wrap bitfield LHS in
+// ctor member-init list). Reproducer now verifies cleanly:
 //   esbmc --std c++20 --overflow-check packed_bitfield_ctor_bounds_fp.cpp
-// Expected: VERIFICATION SUCCESSFUL
-// Actual:   VERIFICATION FAILED (dereference failure: Access to object out of bounds)
-//
-// Workaround: --no-bounds-check (or --no-align-check on some variants).
-// Filed as esbmc#<TBD>.
+// → VERIFICATION SUCCESSFUL.
 
 #include <cstdint>
 

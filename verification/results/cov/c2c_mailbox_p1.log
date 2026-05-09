@@ -1,0 +1,153 @@
+Target: 64-bit little-endian x86_64-unknown-linux with esbmclibc
+Parsing /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/c2c_mailbox_harness.cpp
+Parsing /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.172s
+Adding k-path coverage assertions (n=4)...
+GOTO program processing time: 0.000s
+Starting Bounded Model Checking
+✓ PASSED: '(signed int)cur_core != 0' at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value
+✓ PASSED: '(signed int)cur_core != 0' at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 39 column 5 function get_value
+✓ PASSED: '(signed int)cur_core != 0' at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value
+✓ PASSED: '(signed int)cur_core != 0' at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value
+✓ PASSED: '(signed int)cur_core != 0' at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 39 column 5 function get_value
+Symex completed in: 0.002s (99 assignments)
+Caching time: 0.000s (removed 5 assertions)
+Slicing time: 0.000s (removed 85 assignments)
+Generated 13 VCC(s), 3 remaining after simplification (9 assignments)
+No solver specified; defaulting to bitwuzla
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)cur_core == 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 39 column 5 function get_value' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: '(signed int)cur_core == 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 39 column 5 function get_value'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/c2c_mailbox_harness.cpp line 74 column 5 function main thread 0
+----------------------------------------------------
+  raw = 0 (00000000 00000000 00000000 00000000)
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/stubs/fsl_mailbox.h line 64 column 5 function MAILBOX_SetValue thread 0
+----------------------------------------------------
+  _verif_last_set_value = 0 (00000000 00000000 00000000 00000000)
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 39 column 5 function get_value thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 39 column 5 function get_value
+  (signed int)cur_core == 0
+  (signed int)cur_core != 0
+
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)cur_core == 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✗ FAILED: '(signed int)cur_core == 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/c2c_mailbox_harness.cpp line 74 column 5 function main thread 0
+----------------------------------------------------
+  raw = 0 (00000000 00000000 00000000 00000000)
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value
+  (signed int)cur_core == 0
+  (signed int)cur_core != 0
+
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)cur_core == 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✗ FAILED: '(signed int)cur_core == 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value
+  (signed int)cur_core == 0
+
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)cur_core == 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 39 column 5 function get_value' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: '(signed int)cur_core == 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 39 column 5 function get_value'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 39 column 5 function get_value thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 39 column 5 function get_value
+  (signed int)cur_core == 0
+
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)cur_core == 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✗ FAILED: '(signed int)cur_core == 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp line 27 column 5 function set_value
+  (signed int)cur_core == 0
+
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Properties: 13 verified ✓ 8 passed, ✗ 5 failed
+Solver: Bitwuzla 0.9.0 • Decision procedure total time: 0.003s • Avg: 0.000s/property
+
+[Coverage]
+
+k-Path Witnesses : 4
+Reached : 2
+k-Path Coverage: 50%
+Coverage report written to cov-report.json
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit x86_64 linux

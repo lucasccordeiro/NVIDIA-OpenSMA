@@ -1,0 +1,1 @@
+/openbmc/trees/esbmc/release/bin/esbmc --std c++20 --overflow-check --nan-check --unwind 36 --k-path-coverage=4 -I/openbmc/trees/NVIDIA-OpenSMA/verification/stubs -I/openbmc/trees/NVIDIA-OpenSMA/src -DNV_IPC_CONFIG_H=\"ssif_config.h\" -- /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp

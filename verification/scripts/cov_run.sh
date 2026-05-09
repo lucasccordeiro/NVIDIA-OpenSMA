@@ -76,8 +76,10 @@ rm -f "$log" "$json" "$metric_file" "$cmd_file" "$work_dir/cov-report.json"
 
 run_esbmc() {
   local mode_flag="$1"
+  local mode_args=()
+  [[ -n "$mode_flag" ]] && mode_args=("$mode_flag")
   (cd "$work_dir" && \
-     "$esbmc" "${flags[@]}" "$mode_flag" \
+     "$esbmc" "${flags[@]}" "${mode_args[@]}" \
        --cov-assume-asserts --cov-report-json \
        "${inputs[@]}") > "$log" 2>&1 || true
   if [[ -f "$work_dir/cov-report.json" ]]; then
@@ -85,8 +87,53 @@ run_esbmc() {
   fi
 }
 
+# k-path-coverage derives N from --unwind by default but caps at 30
+# (ESBMC errors out with "must be in 1..30" otherwise). It also bails
+# at runtime if per-function goal counts exceed --k-path-max-goals
+# (default 10000), which can happen on harnesses with large nondet-
+# fill loops even at k=30. To handle both cases:
+#
+#   1. If the caller passed an explicit `--k-path-coverage[=N]` in the
+#      pre-`--` flags, honour it and skip auto-derivation. This is the
+#      escape hatch for harnesses whose unwind is high but whose
+#      module-of-interest doesn't need deep path witnesses (e.g.
+#      ssif_safety pins k=4 because the harness's I2cSlaveBuffer fill
+#      loop inflates goals at higher k).
+#   2. Otherwise, if --unwind exceeds 30, pin k-path at 30 so the run
+#      still proceeds. The safety proof keeps its original --unwind —
+#      only the coverage instrumentation is downsized.
+kpath_flag="--k-path-coverage"
+have_explicit_kpath=0
+for f in "${flags[@]}"; do
+  if [[ "$f" == --k-path-coverage* ]]; then
+    have_explicit_kpath=1
+    break
+  fi
+done
+
+if [[ "$have_explicit_kpath" == "0" ]]; then
+  for f in "${flags[@]}"; do
+    if [[ "$f" == --unwind=* ]]; then
+      n="${f#--unwind=}"
+    elif [[ "$f" == --unwind ]]; then
+      next_is_unwind=1; continue
+    elif [[ "${next_is_unwind:-0}" == "1" ]]; then
+      n="$f"; next_is_unwind=0
+    else
+      continue
+    fi
+    if [[ "$n" =~ ^[0-9]+$ ]] && (( n > 30 )); then
+      kpath_flag="--k-path-coverage=30"
+    fi
+  done
+else
+  # Caller's explicit --k-path-coverage[=N] is already in flags[].
+  # Don't add a duplicate; signal run_esbmc not to inject one.
+  kpath_flag=""
+fi
+
 # Stage 1: try k-path coverage.
-run_esbmc --k-path-coverage
+run_esbmc "$kpath_flag"
 
 # Detect ESBMC failures distinct from "0 goals reached" — if no [Coverage]
 # block was emitted at all, the run failed before instrumentation took

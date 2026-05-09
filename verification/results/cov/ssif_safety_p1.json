@@ -1,0 +1,2750 @@
+{
+  "claims": [
+    {
+      "column": 5,
+      "condition": "!is_read::0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_ara",
+      "line": 187,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "!is_read::0 && (signed int)alert != 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_ara",
+      "line": 194,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!is_read::0 && (signed int)alert == 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_ara",
+      "line": 194,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "!is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "!is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "!is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "!is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "!is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "!is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "!is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "!is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!is_read::1",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_callback",
+      "line": 129,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!txrx_pending",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 143,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "!txrx_pending",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 250,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!txrx_pending",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 359,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!txrx_pending && !is_read::0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 149,
+      "status": "covered"
+    },
+    {
+      "column": 18,
+      "condition": "!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 151,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 151,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!txrx_pending && (*i2c_size::1 == 0 || (signed int)rx->size == 0 || (unsigned long int)rx->size > MaxPartSize)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 257,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "!txrx_pending && (signed int)this->_rx_cmd != 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 371,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "!txrx_pending && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 397,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "!txrx_pending && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "!txrx_pending && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "!txrx_pending && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 397,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "!txrx_pending && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "!txrx_pending && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "!txrx_pending && (signed int)this->_rx_cmd == 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 371,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "!txrx_pending && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 397,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "!txrx_pending && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "!txrx_pending && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "!txrx_pending && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 397,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "!txrx_pending && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "!txrx_pending && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!txrx_pending && *i2c_size::1 != 0 && (signed int)rx->size != 0 && (unsigned long int)rx->size <= MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 257,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!txrx_pending && is_read::0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 149,
+      "status": "covered"
+    },
+    {
+      "column": 18,
+      "condition": "!txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 151,
+      "status": "covered"
+    },
+    {
+      "column": 18,
+      "condition": "!txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "covered"
+    },
+    {
+      "column": 18,
+      "condition": "!txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "covered"
+    },
+    {
+      "column": 18,
+      "condition": "!txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 151,
+      "status": "covered"
+    },
+    {
+      "column": 18,
+      "condition": "!txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "!txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) != 16",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_callback",
+      "line": 110,
+      "status": "covered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) != 16",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_read",
+      "line": 241,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) != 16 && (signed int)(*address::0) != 12",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_callback",
+      "line": 113,
+      "status": "covered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) != 16 && (signed int)(*address::0) != 12",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_read",
+      "line": 242,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) != 16 && (signed int)(*address::0) == 12",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_callback",
+      "line": 113,
+      "status": "covered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) != 16 && (signed int)(*address::0) == 12",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_read",
+      "line": 242,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 7",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 218,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) == 16",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_callback",
+      "line": 110,
+      "status": "covered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) == 16",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_read",
+      "line": 241,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) == 16 && (signed int)(*address::0) != 12",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_callback",
+      "line": 113,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) == 16 && (signed int)(*address::0) != 12",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_read",
+      "line": 242,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) == 16 && (signed int)(*address::0) == 12",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_callback",
+      "line": 113,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)(*address::0) == 16 && (signed int)(*address::0) == 12",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_read",
+      "line": 242,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 2 && (signed int)rx->cmd != 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 2 && (signed int)rx->cmd != 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 2 && (signed int)rx->cmd != 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 2 && (signed int)rx->cmd != 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 2 && (signed int)rx->cmd == 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 2 && (signed int)rx->cmd == 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 2 && (signed int)rx->cmd == 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 2 && (signed int)rx->cmd == 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd != 9 && (signed int)rx->cmd != 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd != 9 && (signed int)rx->cmd == 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd == 9 && (signed int)rx->cmd != 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd == 9 && (signed int)rx->cmd == 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd != 9 && (signed int)rx->cmd != 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd != 9 && (signed int)rx->cmd == 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd == 9 && (signed int)rx->cmd != 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd == 9 && (signed int)rx->cmd == 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size != MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size == MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size != MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size == MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size != MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size == MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size != MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size == MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size != MaxPartSize && ((unsigned long int)rx->size != MaxPartSize || this->_rx_offset <= 0 || this->_rx_offset + (unsigned long int)rx->size > MaxPayloadSize)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size != MaxPartSize && (unsigned long int)rx->size == MaxPartSize && this->_rx_offset > 0 && this->_rx_offset + (unsigned long int)rx->size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size == MaxPartSize && ((unsigned long int)rx->size != MaxPartSize || this->_rx_offset <= 0 || this->_rx_offset + (unsigned long int)rx->size > MaxPayloadSize)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size == MaxPartSize && (unsigned long int)rx->size == MaxPartSize && this->_rx_offset > 0 && this->_rx_offset + (unsigned long int)rx->size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd != 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd == 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd != 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd == 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size != MaxPartSize && ((unsigned long int)rx->size != MaxPartSize || this->_rx_offset <= 0 || this->_rx_offset + (unsigned long int)rx->size > MaxPayloadSize)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size != MaxPartSize && (unsigned long int)rx->size == MaxPartSize && this->_rx_offset > 0 && this->_rx_offset + (unsigned long int)rx->size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size == MaxPartSize && ((unsigned long int)rx->size != MaxPartSize || this->_rx_offset <= 0 || this->_rx_offset + (unsigned long int)rx->size > MaxPayloadSize)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size == MaxPartSize && (unsigned long int)rx->size == MaxPartSize && this->_rx_offset > 0 && this->_rx_offset + (unsigned long int)rx->size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd != 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd == 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd != 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd != 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd == 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 10 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 10 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 6",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 217,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 2 && (signed int)rx->cmd != 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 2 && (signed int)rx->cmd != 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 2 && (signed int)rx->cmd != 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 2 && (signed int)rx->cmd != 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 2 && (signed int)rx->cmd == 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 2 && (signed int)rx->cmd == 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 2 && (signed int)rx->cmd == 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 2 && (signed int)rx->cmd == 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 322,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd != 9 && (signed int)rx->cmd != 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd != 9 && (signed int)rx->cmd == 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd == 9 && (signed int)rx->cmd != 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd == 9 && (signed int)rx->cmd == 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd != 9 && (signed int)rx->cmd != 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd != 9 && (signed int)rx->cmd == 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd == 9 && (signed int)rx->cmd != 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd == 9 && (signed int)rx->cmd == 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 224,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 6 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 337,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size != MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size == MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size != MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd != 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size == MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd != 2 && (signed int)rx->cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd == 2 && (signed int)rx->cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 225,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size != MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size == MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size != MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 7 && (signed int)rx->cmd == 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size == MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 293,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size != MaxPartSize && ((unsigned long int)rx->size != MaxPartSize || this->_rx_offset <= 0 || this->_rx_offset + (unsigned long int)rx->size > MaxPayloadSize)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size != MaxPartSize && (unsigned long int)rx->size == MaxPartSize && this->_rx_offset > 0 && this->_rx_offset + (unsigned long int)rx->size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size == MaxPartSize && ((unsigned long int)rx->size != MaxPartSize || this->_rx_offset <= 0 || this->_rx_offset + (unsigned long int)rx->size > MaxPayloadSize)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd != 10 && (unsigned long int)rx->size == MaxPartSize && (unsigned long int)rx->size == MaxPartSize && this->_rx_offset > 0 && this->_rx_offset + (unsigned long int)rx->size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd != 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd == 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd != 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd != 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd == 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size != MaxPartSize && ((unsigned long int)rx->size != MaxPartSize || this->_rx_offset <= 0 || this->_rx_offset + (unsigned long int)rx->size > MaxPayloadSize)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size != MaxPartSize && (unsigned long int)rx->size == MaxPartSize && this->_rx_offset > 0 && this->_rx_offset + (unsigned long int)rx->size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size == MaxPartSize && ((unsigned long int)rx->size != MaxPartSize || this->_rx_offset <= 0 || this->_rx_offset + (unsigned long int)rx->size > MaxPayloadSize)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd == 10 && (unsigned long int)rx->size == MaxPartSize && (unsigned long int)rx->size == MaxPartSize && this->_rx_offset > 0 && this->_rx_offset + (unsigned long int)rx->size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 308,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd != 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd != 6 && (signed int)rx->cmd == 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd != 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "(signed int)rx->cmd == 8 && (signed int)rx->cmd == 7 && (signed int)rx->cmd == 6 && (signed int)rx->cmd == 2",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 216,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size <= MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size > MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > MaxPayloadSize && this->_tx_size <= MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > MaxPayloadSize && this->_tx_size > MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "covered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size <= MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size > MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "covered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "covered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > MaxPayloadSize && this->_tx_size <= MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > MaxPayloadSize && this->_tx_size > MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size <= MaxPartSize && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size <= MaxPartSize && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size > MaxPartSize && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size > MaxPartSize && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 9 && this->_tx_size > MaxPayloadSize && this->_tx_size <= MaxPartSize && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 9 && this->_tx_size > MaxPayloadSize && this->_tx_size <= MaxPartSize && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 9 && this->_tx_size > MaxPayloadSize && this->_tx_size > MaxPartSize && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd != 9 && this->_tx_size > MaxPayloadSize && this->_tx_size > MaxPartSize && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size <= MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size > MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > MaxPayloadSize && this->_tx_size <= MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > MaxPayloadSize && this->_tx_size > MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size <= MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size > MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 158,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > MaxPayloadSize && this->_tx_size <= MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > MaxPayloadSize && this->_tx_size > MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 376,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size <= MaxPartSize && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size <= MaxPartSize && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size > MaxPartSize && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 9 && this->_tx_size <= MaxPayloadSize && this->_tx_size > MaxPartSize && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 9 && this->_tx_size > MaxPayloadSize && this->_tx_size <= MaxPartSize && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 9 && this->_tx_size > MaxPayloadSize && this->_tx_size <= MaxPartSize && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 9 && this->_tx_size > MaxPayloadSize && this->_tx_size > MaxPartSize && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "(signed int)this->_rx_cmd == 9 && this->_tx_size > MaxPayloadSize && this->_tx_size > MaxPartSize && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 384,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "*i2c_size::2 != 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 204,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "*i2c_size::2 != 0 && (signed int)(*address::0) != (signed int)BmcAddress",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 209,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 != 0 && (signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd != 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 220,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 != 0 && (signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 != 0 && (signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 != 0 && (signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd == 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 220,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 != 0 && (signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 != 0 && (signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "*i2c_size::2 != 0 && (signed int)(*address::0) == (signed int)BmcAddress",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 209,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 != 0 && (signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd != 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 220,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 != 0 && (signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 != 0 && (signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 != 0 && (signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd == 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 220,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 != 0 && (signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 != 0 && (signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "*i2c_size::2 == 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 204,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "*i2c_size::2 == 0 && (signed int)(*address::0) != (signed int)BmcAddress",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 209,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 == 0 && (signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd != 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 220,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 == 0 && (signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 == 0 && (signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 == 0 && (signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd == 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 220,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 == 0 && (signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 == 0 && (signed int)(*address::0) != (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "*i2c_size::2 == 0 && (signed int)(*address::0) == (signed int)BmcAddress",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 209,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 == 0 && (signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd != 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 220,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 == 0 && (signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 == 0 && (signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd != 10 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 == 0 && (signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd == 10",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 220,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 == 0 && (signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd != 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "*i2c_size::2 == 0 && (signed int)(*address::0) == (signed int)BmcAddress && (signed int)rx->cmd == 10 && (signed int)rx->cmd == 8",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_write",
+      "line": 219,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "is_read::0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_ara",
+      "line": 187,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "is_read::0 && (signed int)alert != 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_ara",
+      "line": 194,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "is_read::0 && (signed int)alert == 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_ara",
+      "line": 194,
+      "status": "covered"
+    },
+    {
+      "column": 17,
+      "condition": "is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "covered"
+    },
+    {
+      "column": 17,
+      "condition": "is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "covered"
+    },
+    {
+      "column": 17,
+      "condition": "is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 152,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "is_read::1",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_callback",
+      "line": 129,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "size <= 254",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "handle_tx",
+      "line": 89,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "size > 254",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "handle_tx",
+      "line": 89,
+      "status": "covered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size <= MaxPartSize && this->_tx_size <= 0 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_size > MaxPayloadSize || this->_tx_offset <= 0 || this->_tx_offset >= this->_tx_size)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 399,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size <= MaxPartSize && this->_tx_size <= 0 && this->_tx_size <= 0 && this->_tx_size > MaxPartSize && this->_tx_size <= MaxPayloadSize && this->_tx_offset > 0 && this->_tx_offset < this->_tx_size",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 399,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size <= MaxPartSize && this->_tx_size > 0 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_size > MaxPayloadSize || this->_tx_offset <= 0 || this->_tx_offset >= this->_tx_size)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 399,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size <= MaxPartSize && this->_tx_size > 0 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_size <= MaxPayloadSize && this->_tx_offset > 0 && this->_tx_offset < this->_tx_size",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 399,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size <= MaxPayloadSize && this->_tx_size <= MaxPartSize && this->_tx_size <= 0 && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 391,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size <= MaxPayloadSize && this->_tx_size <= MaxPartSize && this->_tx_size > 0 && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 391,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size <= MaxPayloadSize && this->_tx_size > MaxPartSize && this->_tx_size <= 0 && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 391,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size <= MaxPayloadSize && this->_tx_size > MaxPartSize && this->_tx_size > 0 && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 391,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size > MaxPartSize && this->_tx_size <= 0 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_size > MaxPayloadSize || this->_tx_offset <= 0 || this->_tx_offset >= this->_tx_size)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 399,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size > MaxPartSize && this->_tx_size <= 0 && this->_tx_size <= 0 && this->_tx_size > MaxPartSize && this->_tx_size <= MaxPayloadSize && this->_tx_offset > 0 && this->_tx_offset < this->_tx_size",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 399,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size > MaxPartSize && this->_tx_size > 0 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_size > MaxPayloadSize || this->_tx_offset <= 0 || this->_tx_offset >= this->_tx_size)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 399,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size > MaxPartSize && this->_tx_size > 0 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_size <= MaxPayloadSize && this->_tx_offset > 0 && this->_tx_offset < this->_tx_size",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 399,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size > MaxPayloadSize && this->_tx_size <= MaxPartSize && this->_tx_size <= 0 && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 391,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size > MaxPayloadSize && this->_tx_size <= MaxPartSize && this->_tx_size > 0 && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 391,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size > MaxPayloadSize && this->_tx_size > MaxPartSize && this->_tx_size <= 0 && this->_tx_size <= 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 391,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "this->_tx_size > MaxPayloadSize && this->_tx_size > MaxPartSize && this->_tx_size > 0 && this->_tx_size > 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 391,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "txrx_pending",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 143,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "txrx_pending",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 250,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "txrx_pending",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 359,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "txrx_pending && !is_read::0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 149,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 151,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 151,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "txrx_pending && (*i2c_size::1 == 0 || (signed int)rx->size == 0 || (unsigned long int)rx->size > MaxPartSize)",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 257,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "txrx_pending && (signed int)this->_rx_cmd != 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 371,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "txrx_pending && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 397,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "txrx_pending && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "txrx_pending && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "txrx_pending && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 397,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "txrx_pending && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "txrx_pending && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "txrx_pending && (signed int)this->_rx_cmd == 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 371,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "txrx_pending && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 397,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "txrx_pending && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "txrx_pending && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "txrx_pending && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 397,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "txrx_pending && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "txrx_pending && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > MaxPayloadSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_read",
+      "line": 372,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "txrx_pending && *i2c_size::1 != 0 && (signed int)rx->size != 0 && (unsigned long int)rx->size <= MaxPartSize",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "smbus_block_write",
+      "line": 257,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "txrx_pending && is_read::0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 149,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 151,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 151,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "uncovered"
+    },
+    {
+      "column": 18,
+      "condition": "txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp",
+      "function": "i2c_ack_bmc",
+      "line": 157,
+      "status": "uncovered"
+    }
+  ],
+  "coverage_type": "k-path",
+  "source_files": [
+    "/openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp"
+  ],
+  "summary": {
+    "covered": 23,
+    "percentage": 6.7251461988304095,
+    "total": 342,
+    "uncovered": 319
+  }
+}

@@ -13,4 +13,20 @@ inline void error_wait(EventStructItem, EventData = {}) {}
 inline void info(EventStructItem, EventData = {}) {}
 inline void error(EventStructItem, EventData = {}) {}
 
+// Logger class with the static add_from_isr used by ISR-context callers
+// (e.g., src/nv/ssif/ssif.cpp). Production has more methods; verification
+// only needs the ISR-add to satisfy the call sites.
+class Logger
+{
+public:
+    static Status add_from_isr(EventId, Level, EventData = {})
+    {
+        return Status::Ok;
+    }
+    static Status add_from_isr(EventId, Level, EventData, OutputDirection)
+    {
+        return Status::Ok;
+    }
+};
+
 }  // namespace nv::logger

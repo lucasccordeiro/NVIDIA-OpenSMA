@@ -71,6 +71,8 @@ ESBMC to produce a counterexample.
 | `emc1812` | `src/nv/i2c/emc1812.{h,cpp}` (`Emc1812` — EMC1812 temp sensor driver; `int8_t↔uint8_t` threshold cast round-trip) | ✅ 52 VCC | ✅ k=1 | ✅ | — |
 | `tmp1075` | `src/nv/i2c/tmp1075.{h,cpp}` (`Tmp1075` — TMP1075 sensor driver; 12-bit temperature encoding: `int8_t → <<4 → uint16_t → >>4 → int8_t` round-trip) | ✅ 33 VCC | ✅ k=1 | ✅ | — |
 | `tmp461` | `src/nv/i2c/tmp461.{h,cpp}` (`Tmp461` / NCT72 — sensor driver; `int8_t↔uint8_t` threshold cast round-trip for four set/get pairs) | ✅ 57 VCC | ✅ k=1 | ✅ | — |
+| `c2c_mailbox` | `src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.{h,cpp}` (`sys::c2c_mailbox::set_value`/`get_value` — peer-core mailbox dispatch via NXP `MAILBOX_SetValue`/`MAILBOX_GetValue`; harness asserts Phase 3 dispatch contract: set→peer slot, get→self slot, payload bitwise-forwarded) | ✅ 11 VCC | — | ✅ | — |
+| `ssif_safety` | `src/nv/ssif/ssif.{h,cpp}` (`nv::ssif::Ssif` — narrow Phase 1: `i2c_ack_callback`, `handle_tx`, `handle_rx`. Data callback `i2c_callback → smbus_block_*` deferred pending [esbmc#4448](https://github.com/esbmc/esbmc/issues/4448) — pointer-bound loss on `std::bit_cast<View*>(_buffer.data())` followed by member-array offset, same family as #4180 part 1; Phase 4 coverage row reads 23/342 = 6.7 %) | ✅ 61 VCC | — | ✅ | ✅ FAILED — `ssif_underflow_neg` reaches a size_t underflow in `smbus_block_read` ReadMulti else-branch — **F-17** |
 | `nsm_event_source_f15_neg` | `src/nv/mctp/nsm.cpp:761` — `is_event_source_enable` reads `type0/6_event_enable_bitmask.at(event_id/8)` without bounds guard | — | — | — | ✅ FAILED — CEX: `event_id=248`, `ByteIndex=31`, OOB on size-8 array — **F-15** |
 | `nsm_event_ack_f16_neg` | `src/nv/mctp/nsm.cpp:1089` — `is_event_ack_enable` reads `type0/6_event_ack_bitmask.at(event_id/8)` without bounds guard; sibling to F-15 | — | — | — | ✅ FAILED — CEX: `event_id=248`, `ByteIndex=31`, OOB on size-8 array — **F-16** |
 | `nsm_gpio_safety` | `src/nv/mctp/nsm.cpp:3389,3482` — `on_dcd_get_gpio` / `on_dcd_set_gpio` structural safety; `GpioNum=66` (p3957_cxx) | — | — | — | ✅ SUCCESSFUL (536 VCC) — guard sufficient, no defect |
@@ -80,6 +82,17 @@ ESBMC to produce a counterexample.
 
 Every workaround in this tree maps to a specific filed issue. See `REPORT.md`
 for the full table; brief view:
+
+> **Outstanding (filed, awaiting upstream)**:
+> [esbmc#4448](https://github.com/esbmc/esbmc/issues/4448) — bit_cast
+> member-buffer pointer-bound loss. Pattern
+> `*std::bit_cast<View*>(member.data())` followed by a `std::copy` (or
+> any member-array offset) loses the parent-buffer bounds in ESBMC's
+> pointer-provenance tracker. Effect: ssif's `i2c_callback →
+> smbus_block_*` data path is currently uncovered (Phase 4 reads
+> 23/342 = 6.7 % accordingly). In-tree reproducer header at
+> `verification/esbmc_bug_repros/bit_cast_member_buffer_bound_loss.cpp`.
+> Same family as #4180 part 1.
 
 | Issue | State | Workaround |
 |---|---|---|
@@ -208,7 +221,12 @@ make pwr_smooth_params_func fru_utils_func     # ditto
 make soc_sma_filter_func debug_telemetry_sma_func  # ditto
 make pca9555_func emc1812_func                     # ditto
 make tmp1075_func tmp461_func                      # ditto
-make volatile                                  # volatile-check phase (all 22 targets)
+make c2c_mailbox                               # sys::c2c_mailbox Phase 1 + dispatch contract (expect SUCCESSFUL)
+make ssif_safety                               # nv::ssif::Ssif narrow Phase 1 baseline (expect SUCCESSFUL)
+make ssif_underflow_neg                        # F-17: smbus_block_read size_t underflow (expect FAILED)
+make c2c_mailbox_cov_p1                        # Phase 4 coverage on c2c_mailbox (k-path 2/4 = 50 %)
+make ssif_safety_cov_p1                        # Phase 4 coverage on ssif_safety (k-path 23/342 = 6.7 %)
+make volatile                                  # volatile-check phase (all targets)
 make mctp_packet_neg mctp_router_neg           # negative tests (expect FAILED)
 make mctp_dispatch                             # F-1 reachability proof (expect FAILED)
 make literals_neg                              # F-4: _bit(i≥64) UB (expect FAILED)

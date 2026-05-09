@@ -1,0 +1,46 @@
+{
+  "claims": [
+    {
+      "column": 5,
+      "condition": "(signed int)cur_core != 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp",
+      "function": "set_value",
+      "line": 27,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)cur_core != 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp",
+      "function": "get_value",
+      "line": 39,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)cur_core == 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp",
+      "function": "set_value",
+      "line": 27,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)cur_core == 0",
+      "file": "/openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp",
+      "function": "get_value",
+      "line": 39,
+      "status": "covered"
+    }
+  ],
+  "coverage_type": "k-path",
+  "source_files": [
+    "/openbmc/trees/NVIDIA-OpenSMA/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp"
+  ],
+  "summary": {
+    "covered": 2,
+    "percentage": 50.0,
+    "total": 4,
+    "uncovered": 2
+  }
+}

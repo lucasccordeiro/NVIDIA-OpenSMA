@@ -83,7 +83,7 @@ workarounds removed where applicable.
 | TMP1075 temperature sensor driver | `src/nv/i2c/tmp1075.{h,cpp}` (`Tmp1075` — 12-bit two's-complement temperature encoding: `int8_t → <<4 → int16_t → uint16_t → >>4 → int8_t` round-trip; `get_device_id`; `set/get_{low,high}_limit`) | ✅ 33 VCC | ✅ k=1 (12bit_roundtrip: `static_cast<int8_t>(static_cast<int16_t>(static_cast<uint16_t>(static_cast<int16_t>(t<<4)))>>4) == t` for all `int8_t t`; temp_read_cast well-defined) | — |
 | TMP461 temperature sensor driver | `src/nv/i2c/tmp461.{h,cpp}` (`Tmp461` / NCT72 — `int8_t↔uint8_t` threshold cast round-trip for four alert/therm set/get pairs; `get_configuration`) | ✅ 57 VCC | ✅ k=1 (cast_roundtrip + threshold_symmetry for all four pairs) | — |
 | sys::c2c_mailbox dispatch | `src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.{h,cpp}` (`set_value`/`get_value` — peer-core mailbox dispatch over NXP MCUXpresso `MAILBOX_SetValue`/`GetValue`; harness asserts Phase 3 contract: set→peer slot, get→self slot, payload bitwise-forwarded; slim `nv/ipc/ipc_task.h` interceptor avoids the full IPC stack) | ✅ 11 VCC | — | — |
-| nv::ssif::Ssif (narrow) | `src/nv/ssif/ssif.{h,cpp}` (`i2c_ack_callback`, `handle_tx`, `handle_rx` — narrow Phase 1; data callback `i2c_callback → smbus_block_*` deferred pending ESBMC `std::bit_cast<View*>(_buffer.data())` pointer-bound-loss — see also c2c_mailbox commit's note on esbmc#4180 family) | ✅ 61 VCC | — | ✅ **F-17** CEX: `_tx_offset=14`, `_tx_size=63` → size_t underflow on `_tx_offset - StartPartSize` in `smbus_block_read` ReadMulti else-branch (`ssif_underflow_neg`) |
+| nv::ssif::Ssif (narrow) | `src/nv/ssif/ssif.{h,cpp}` (`i2c_ack_callback`, `handle_tx`, `handle_rx` — narrow Phase 1; data callback `i2c_callback → smbus_block_*` deferred pending an upstream ESBMC pointer-bound-loss issue on `std::bit_cast<View*>(_buffer.data())` followed by member-array offset — issue draft at `verification/esbmc_bug_repros/ISSUE_DRAFT_bit_cast_member_buffer_bound_loss.md`, same family as esbmc#4180 part 1; Phase 4 coverage row reports 23/342 = 6.7 % accordingly) | ✅ 61 VCC | — | ✅ **F-17** CEX: `_tx_offset=14`, `_tx_size=63` → size_t underflow on `_tx_offset - StartPartSize` in `smbus_block_read` ReadMulti else-branch (`ssif_underflow_neg`) |
 | `is_event_source_enable` OOB check (F-15) | `src/nv/mctp/nsm.cpp:761` — `type0/6_event_enable_bitmask.at(event_id/8)` without bounds guard; same asymmetric-guard pattern as F-5 but on the read path | — | — | ✅ VERIFICATION FAILED — CEX: `event_id=248`, `ByteIndex=31`, OOB at `at()` on size-8 array — **F-15** |
 | `is_event_ack_enable` OOB check (F-16) | `src/nv/mctp/nsm.cpp:1089` — `type0/6_event_ack_bitmask.at(event_id/8)` without bounds guard; sibling function to F-15, same pattern | — | — | ✅ VERIFICATION FAILED — CEX: `event_id=248`, `ByteIndex=31`, OOB at `at()` on size-8 array — **F-16** |
 | DCD GPIO safety proof | `src/nv/mctp/nsm.cpp:3389,3482` — `on_dcd_get_gpio` / `on_dcd_set_gpio`; guard `(offset+length) > GpioNum` keeps all `GpioSetup.at()` and `gpio_resp.gpio.at()` in bounds | — | — | ✅ VERIFICATION SUCCESSFUL (536 VCC) — **no defect** |
@@ -844,10 +844,35 @@ Full analysis for each retraction is in [NOTES.md](NOTES.md).
 
 ## Tooling-level findings (ESBMC bugs)
 
+### Outstanding (filed, awaiting upstream)
+
+One ESBMC pointer-tracking issue surfaced during the ssif data-path work
+remains unresolved upstream:
+
+- **bit_cast member-buffer pointer-bound loss** — pattern
+  `*std::bit_cast<View*>(member.data())` followed by a `std::copy` (or
+  any member-array offset) loses the parent-buffer bounds in ESBMC's
+  pointer-provenance tracker, producing spurious OOB at `&outer + 1`.
+  Same family as #4180 part 1 (whose original workaround for
+  `pdk-mctp-app-packet.h` is still in tree). Standalone reduction
+  attempted but the bug requires a specific combination of symbolic
+  count, both-side bit_cast, member-array via class-with-user-provided-
+  ctor, and an intervening switch on a bit_cast-derived field — the
+  full ssif harness reliably reproduces it; reduced cases verify
+  successful. Issue draft (paste-ready) at
+  `verification/esbmc_bug_repros/ISSUE_DRAFT_bit_cast_member_buffer_bound_loss.md`.
+  Effect on this tree: ssif's `i2c_callback → smbus_block_*` data path
+  is currently uncovered (deliberately, see narrow Phase 1 baseline);
+  Phase 4 coverage on `ssif_safety` reads 23/342 = 6.7 % accordingly,
+  with `i2c_callback` / `smbus_block_write` / `smbus_block_read` at
+  0/2 / 0/70 / 0/78 in the per-function rollup. F-17 reachability
+  remains at Tier D; system-level promotion to Tier C waits on this
+  fix.
+
 ### Closed issues
 
-All ESBMC issues surfaced during this work are fully resolved with no remaining
-workarounds in the tree:
+All other ESBMC issues surfaced during this work are fully resolved
+with no remaining workarounds in the tree:
 
 [#4180](https://github.com/esbmc/esbmc/issues/4180) (umbrella; split into #4183/#4184),
 [#4190](https://github.com/esbmc/esbmc/issues/4190) (fixed by [#4192](https://github.com/esbmc/esbmc/pull/4192) + [#4194](https://github.com/esbmc/esbmc/pull/4194) + [#4244](https://github.com/esbmc/esbmc/pull/4244) — `<bit>`, `<span>`, `<type_traits>`, and `<array>` aggregate),
@@ -961,6 +986,27 @@ look like failed claims) and is **not a safety regression**.
 | `mctp_router`            | p2 | k-path    |   2 |   2 | 1.000 | 1.000 |  k≤6  | FUNC | 0 |
 | `nsm_type5_validate`     | p1 | k-path    |  14 |  22 | 0.636 | 0.636 |    4  | LANG | 0 |
 | `nsm_type5_validate`     | p2 | k-path    |  14 |  22 | 0.636 | 0.636 |  k≤6  | FUNC | 0 |
+| `c2c_mailbox`            | p1 | k-path    |   2 |   4 | 0.500 | 0.500 |    4  | LANG | 0 |
+| `c2c_mailbox`            | p2 | n/a       |   — |   — |   —   |   —   |    —  |   —  | — |
+| `ssif_safety`            | p1 | k-path    |  23 | 342 | 0.067 | 0.067 |   36* | LANG | 0 |
+| `ssif_safety`            | p2 | n/a       |   — |   — |   —   |   —   |    —  |   —  | — |
+
+`*` ssif_safety pins `--k-path-coverage=4` explicitly (overriding the
+default auto-derivation from `--unwind 36`) because the harness's
+35-iteration `I2cSlaveBuffer` fill loop inflates per-function k-path
+goals beyond `--k-path-max-goals=10000` at higher k. The safety proof
+itself keeps `--unwind 36` — only the coverage instrumentation is
+downsized; documented in the `ssif_safety_cov_p1` rule and
+`scripts/cov_run.sh` honours the explicit form.
+
+`c2c_mailbox` and `ssif_safety` produce p1 rows only — neither has a
+`_func` (k-induction) target. c2c_mailbox is loop-free and trivially
+total, so a Phase 2 inductive proof is unnecessary. ssif_safety's
+Phase 2 is blocked alongside its Phase 1 data-path coverage by the
+same upstream ESBMC pointer-bound-loss issue
+(`bit_cast<View*>(_buffer.data())` followed by member-array offset).
+The n/a row keeps the per-module pair shape and is omitted from the
+p1→p2 delta table.
 
 Per-function rollup, plus the p1 → p2 delta table, lives in
 `results/cov/cov_summary.md`; raw per-claim JSON (one record per
@@ -1034,6 +1080,41 @@ completeness. No other module triggers the heuristic.
 to fit the 5-minute per-run budget. Coverage runs do not need full
 inductive depth — they enumerate goals, they don't close the
 induction. Documented in the `ntc_table_cov_p2` rule.
+
+**P1-only modules.** Two modules contribute a p1 row only and are
+called out explicitly because their coverage figures need context to
+read correctly:
+
+- `c2c_mailbox` — **2/4 (p1, 50 %)**. Per-function rollup: `set_value`
+  at 1/2, `get_value` at 1/2. ESBMC enumerates two k-path witnesses
+  per function — one for the Core0 dispatch branch and one for the
+  Core1 branch. The Core1 branches are unreached because the
+  verification stub at `verification/stubs/sys/common/common.h` fixes
+  `nv::ipc::get_current_core() = Core0`, leaving the Core1 arms as
+  unreachable dead code under this stub by design. The harness's
+  Phase 3 dispatch-contract assertions are written core-agnostically
+  via `expected_peer_slot()` / `expected_self_slot()`, so they will
+  remain valid the day a Core1-pinned variant of the stub is added —
+  at which point this row is expected to reach 4/4. **No follow-up
+  action**: the 50 % is a stub artefact, not a harness gap.
+
+- `ssif_safety` — **23/342 (p1, 6.7 %)**, deliberately narrow.
+  Per-function rollup: `i2c_callback` 0/2, `smbus_block_write` 0/70,
+  `smbus_block_read` 0/78. Those three functions are linked into the
+  GOTO program (the safety proof compiles `src/nv/ssif/ssif.cpp`
+  end-to-end) but the harness intentionally does *not* drive them
+  because `Packet::from(_buffer)` triggers the upstream ESBMC
+  pointer-bound-loss issue described in
+  `verification/esbmc_bug_repros/ISSUE_DRAFT_bit_cast_member_buffer_bound_loss.md`
+  — the same family as esbmc#4180 part 1. The 23 reached witnesses
+  correspond to the three entry points the narrow harness *does*
+  drive (`i2c_ack_callback`, `handle_tx`, `handle_rx`) plus their
+  callees. **Follow-up action**: re-attempt the data-path harness
+  (`smbus_block_*`) once the upstream fix lands or via a
+  verification-only overlay of `ssif.h` that replaces `bit_cast<T*>`
+  factories with reinterpret_cast at struct-decl scope (the
+  pdk-mctp-app-packet.h precedent). Tracked as the
+  `ssif_block_data_path` follow-up.
 
 ### Phase 4.1 — Harness-strengthening backlog
 
@@ -1120,9 +1201,13 @@ flagging noise.
 
 ```sh
 cd verification
-make cov_p1     # 10 Phase 1 coverage runs (~10s wall on -j4)
-make cov_p2     # 10 Phase 2 (k-induction) coverage runs (~70s wall on -j4)
+make cov_p1     # 12 Phase 1 coverage runs (10 + p1-only c2c_mailbox + ssif_safety)
+make cov_p2     # 10 Phase 2 (k-induction) coverage runs
 make cov        # both, plus cov_summary.{tsv,md} aggregator
+
+# Individual rules also runnable directly:
+make c2c_mailbox_cov_p1   # 4 k-path goals; 2 reached (Core1 dead under stub)
+make ssif_safety_cov_p1   # 342 k-path goals; 23 reached (narrow scope by design)
 ```
 
 Outputs:

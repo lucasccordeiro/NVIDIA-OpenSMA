@@ -35,6 +35,16 @@ TARGETS = [
     "mctp_router",
     "nsm_type5_validate",
 ]
+
+# Modules with no Phase 2 (k-induction) target — covered at p1 only.
+# c2c_mailbox is trivially total (no loops/memcpy → no _func rule).
+# ssif_safety's data path Phase 2 is blocked alongside its Phase 1 by
+# the bit_cast pointer-bound-loss issue; only the narrow Phase 1
+# baseline has a coverage measurement.
+TARGETS_P1_ONLY = [
+    "c2c_mailbox",
+    "ssif_safety",
+]
 PHASES = ["p1", "p2"]
 
 
@@ -108,35 +118,55 @@ def parse_unwind(cmd_path: Path) -> str:
 
 
 def collect_rows(cov_dir: Path) -> list[dict]:  # pylint: disable=too-many-locals
-    """Walk results/cov/ and build one row dict per (target, phase)."""
+    """Walk results/cov/ and build one row dict per (target, phase).
+
+    TARGETS produces both p1 and p2 rows.
+    TARGETS_P1_ONLY produces a p1 row plus an n/a marker for p2 so the
+    Markdown table maintains its per-module pair shape; the n/a row is
+    elided from per-function rollups and from the p1→p2 delta table.
+    """
     rows = []
     for target in TARGETS:
         for phase in PHASES:
-            jsn = cov_dir / f"{target}_{phase}.json"
-            metric_file = cov_dir / f"{target}_{phase}.metric"
-            cmd_file = cov_dir / f"{target}_{phase}.cmd"
-            metric = (metric_file.read_text().strip()
-                      if metric_file.exists() else "?")
-            claims = load_claims(jsn)
-            reached, total = counts_from_claims(claims)
-            exit_uncov = count_exit_uncov(claims)
-            denom = max(1, total - exit_uncov)
-            effective = reached / denom if total > 0 else 0.0
-            ratio = reached / total if total > 0 else 0.0
-            rows.append({
-                "target": target,
-                "phase": phase,
-                "metric": metric,
-                "reached": reached,
-                "total": total,
-                "ratio": ratio,
-                "effective_ratio": effective,
-                "unwind": parse_unwind(cmd_file),
-                "flags": infer_flag_family(cmd_file),
-                "exit_uncov": exit_uncov,
-                "claims": claims,
-            })
+            rows.append(_row_for(cov_dir, target, phase))
+    for target in TARGETS_P1_ONLY:
+        rows.append(_row_for(cov_dir, target, "p1"))
+        rows.append({
+            "target": target, "phase": "p2", "metric": "n/a",
+            "reached": 0, "total": 0, "ratio": 0.0,
+            "effective_ratio": 0.0, "unwind": "—",
+            "flags": "—", "exit_uncov": 0, "claims": [],
+            "p1_only": True,
+        })
     return rows
+
+
+def _row_for(cov_dir: Path, target: str, phase: str) -> dict:
+    """Build a single (target, phase) row from disk artefacts."""
+    jsn = cov_dir / f"{target}_{phase}.json"
+    metric_file = cov_dir / f"{target}_{phase}.metric"
+    cmd_file = cov_dir / f"{target}_{phase}.cmd"
+    metric = (metric_file.read_text().strip()
+              if metric_file.exists() else "?")
+    claims = load_claims(jsn)
+    reached, total = counts_from_claims(claims)
+    exit_uncov = count_exit_uncov(claims)
+    denom = max(1, total - exit_uncov)
+    effective = reached / denom if total > 0 else 0.0
+    ratio = reached / total if total > 0 else 0.0
+    return {
+        "target": target,
+        "phase": phase,
+        "metric": metric,
+        "reached": reached,
+        "total": total,
+        "ratio": ratio,
+        "effective_ratio": effective,
+        "unwind": parse_unwind(cmd_file),
+        "flags": infer_flag_family(cmd_file),
+        "exit_uncov": exit_uncov,
+        "claims": claims,
+    }
 
 
 def emit_tsv(rows: list[dict]) -> str:
@@ -189,11 +219,18 @@ def emit_markdown(rows: list[dict]) -> str:  # pylint: disable=too-many-locals
                     if delta < 0 else "p2 explored more paths")
         out.append(f"| `{target}` | {r1:.3f} | {r2:.3f} | {delta:+.3f} | "
                    f"{note} |")
+    if TARGETS_P1_ONLY:
+        out.append("")
+        out.append(f"_p1-only modules ({', '.join(f'`{t}`' for t in TARGETS_P1_ONLY)}) "
+                   "are omitted from the Δ table — no p2 target exists. See "
+                   "Phase 4 commentary for the per-module rationale._")
 
     out.append("")
     out.append("### Per-function rollup (top uncovered)")
     out.append("")
     for r in rows:
+        if r.get("p1_only"):  # n/a placeholder row
+            continue
         roll = per_function_rollup(r["claims"])
         if not roll:
             continue

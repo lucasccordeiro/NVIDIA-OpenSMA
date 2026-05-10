@@ -22,6 +22,10 @@
 | `mctp_router` | p2 | k-path | 2 | 2 | 1.000 | 1.000 | k≤6 | FUNC | 0 |
 | `nsm_type5_validate` | p1 | k-path | 14 | 22 | 0.636 | 0.636 | 4 | LANG | 0 |
 | `nsm_type5_validate` | p2 | k-path | 14 | 22 | 0.636 | 0.636 | k≤6 | FUNC | 0 |
+| `c2c_mailbox` | p1 | k-path | 2 | 4 | 0.500 | 0.500 | 4 | LANG | 0 |
+| `c2c_mailbox` | p2 | n/a | 0 | 0 | 0.000 | 0.000 | — | — | 0 |
+| `ssif_safety` | p1 | k-path | 23 | 342 | 0.067 | 0.067 | 36 | LANG | 0 |
+| `ssif_safety` | p2 | n/a | 0 | 0 | 0.000 | 0.000 | — | — | 0 |
 
 ### p1 → p2 deltas (|Δratio| ≥ 0.30 noted)
 
@@ -37,6 +41,8 @@
 | `mctp_packet` | 0.667 | 0.833 | +0.167 |  |
 | `mctp_router` | 1.000 | 1.000 | +0.000 |  |
 | `nsm_type5_validate` | 0.636 | 0.636 | +0.000 |  |
+
+_p1-only modules (`c2c_mailbox`, `ssif_safety`) are omitted from the Δ table — no p2 target exists. See Phase 4 commentary for the per-module rationale._
 
 ### Per-function rollup (top uncovered)
 
@@ -73,3 +79,10 @@
     - `validateFatalErrorInjectionPayload` — 6/14 (43%)
 - `nsm_type5_validate` (p2, k-path):
     - `validateFatalErrorInjectionPayload` — 6/14 (43%)
+- `c2c_mailbox` (p1, k-path):
+    - `set_value` — 1/2 (50%)
+    - `get_value` — 1/2 (50%)
+- `ssif_safety` (p1, k-path):
+    - `i2c_callback` — 0/2 (0%)
+    - `smbus_block_write` — 0/70 (0%)
+    - `smbus_block_read` — 0/78 (0%)

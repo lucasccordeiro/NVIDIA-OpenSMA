@@ -19,3 +19,7 @@ mctp_router	p1	k-path	2	2	1.000	1.000	4	LANG	0
 mctp_router	p2	k-path	2	2	1.000	1.000	k≤6	FUNC	0
 nsm_type5_validate	p1	k-path	14	22	0.636	0.636	4	LANG	0
 nsm_type5_validate	p2	k-path	14	22	0.636	0.636	k≤6	FUNC	0
+c2c_mailbox	p1	k-path	2	4	0.500	0.500	4	LANG	0
+c2c_mailbox	p2	n/a	0	0	0.000	0.000	—	—	0
+ssif_safety	p1	k-path	23	342	0.067	0.067	36	LANG	0
+ssif_safety	p2	n/a	0	0	0.000	0.000	—	—	0

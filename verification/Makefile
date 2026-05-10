@@ -920,32 +920,36 @@ c2c_mailbox_volatile:
 	  $(REPO)/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp \
 	  2>&1 | tee $(RESULTS)/c2c_mailbox_volatile.log
 
-# nv::ssif::Ssif — Phase 1 safety baseline.
+# nv::ssif::Ssif — narrow Phase 1 safety baseline.
 # Loops: nv::i2c::crc8 over span ≤ 34 bytes; std::copy_n ≤ 32 bytes →
 #        --unwind 36 closes both.
 # 6 [[gnu::packed]] structs (SmbusWriteBlock/ReadBlock, *PartData,
-#   Ssif::Packet) → --no-align-check (esbmc#4267 / esbmc#4281).
+#   Ssif::Packet) parse cleanly with the default alignment profile now
+#   that esbmc#4281 has been fixed (commit 80cbecc dropped
+#   --no-align-check from the f6/f7 system targets for the same reason).
 # Stubs: ssif_config.h (NV_IPC_CONFIG_H), nv/common/expected.h,
 #        nv/lstp/lstp_router.h, nv/i2c/helper.h; sys/i2c/i2c_slave.h
 #        and nv/ipc/event.h extended; nv/logger/common.h+log.h extended
 #        with ssif Event entries and Logger::add_from_isr.
-# Harness uses placement-new on a memset-zeroed buffer to mirror the
-#   production static-storage zero-init invariant for Ssif's primitive
-#   members; --memory-leak-check is therefore dropped (placement-new
-#   lifetime is not closeable in ESBMC's tracker without dropping the
-#   automatic-storage backing buffer first).
+# --memory-leak-check is dropped: the harness uses static-storage Ssif
+#   construction (no new/malloc on the verified paths) so the flag is
+#   structurally uninformative on this target.
 # --unsigned-overflow-check is dropped (matching utils precedent): a
 #   genuine size_t underflow on `_tx_offset - StartPartSize` exists at
 #   smbus_block_read:408 when ReadRetry has set _tx_offset ∈ [2,29]; it
 #   does not corrupt memory (block_num is uint8_t-truncated) but does
-#   corrupt the wire-format response. Tracked separately as a Phase 3
-#   negative target.
+#   corrupt the wire-format response. Tracked separately as F-17 in the
+#   `ssif_underflow_neg` target.
+# Out of scope: i2c_callback → smbus_block_* data path. Blocked by an
+#   ESBMC pointer-bound-loss issue on bit_cast<View*>(_buffer.data())
+#   followed by a member-array offset (issue draft at
+#   verification/esbmc_bug_repros/ISSUE_DRAFT_bit_cast_member_buffer_bound_loss.md;
+#   same family as esbmc#4180 part 1).
 # Expected: VERIFICATION SUCCESSFUL
 ssif_safety:
 	@mkdir -p $(RESULTS)
 	$(ESBMC) --std c++20 --overflow-check \
 	  --nan-check --unwind 36 \
-	  --no-align-check \
 	  -I$(STUBS) -I$(REPO)/src \
 	  -DNV_IPC_CONFIG_H=\"ssif_config.h\" \
 	  $(HARNESSES)/ssif_harness.cpp \
@@ -956,7 +960,6 @@ ssif_safety_volatile:
 	@mkdir -p $(RESULTS)
 	$(ESBMC) --std c++20 --overflow-check \
 	  --nan-check --volatile-check --unwind 36 \
-	  --no-align-check \
 	  -I$(STUBS) -I$(REPO)/src \
 	  -DNV_IPC_CONFIG_H=\"ssif_config.h\" \
 	  $(HARNESSES)/ssif_harness.cpp \
@@ -1160,11 +1163,41 @@ nsm_type5_validate_cov_p2:
 	  $(FUNC_FLAGS) -DESBMC_FUNCTIONAL=1 \
 	  -- $(HARNESSES)/nsm_type5_validate_harness.cpp
 
+# c2c_mailbox and ssif_safety land in COV_TARGETS_P1_ONLY: neither
+# module has a Phase 2 (`_func` k-induction) target — c2c_mailbox is
+# trivially total (no loops, no memcpy) and ssif_safety's Phase 2 is
+# blocked alongside the data-path safety Phase 2 by the bit_cast
+# pointer-bound-loss issue (see ssif_safety comment block above).
+# Coverage for these modules is therefore measured at p1 only; the
+# Phase 4 summary table records `phase=p1` and an n/a row for p2 to
+# keep the per-module pair shape consistent.
+c2c_mailbox_cov_p1:
+	@mkdir -p $(COV)
+	@$(COV_RUN) c2c_mailbox p1 $(ESBMC) \
+	  $(LANG_FLAGS) \
+	  -I$(STUBS) -I$(REPO)/src -I$(REPO)/src/sys/mcxn556 \
+	  -- $(HARNESSES)/c2c_mailbox_harness.cpp \
+	     $(REPO)/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp
+
+ssif_safety_cov_p1:
+	@mkdir -p $(COV)
+	@$(COV_RUN) ssif_safety p1 $(ESBMC) \
+	  --std c++20 --overflow-check --nan-check --unwind 36 \
+	  --k-path-coverage=4 \
+	  -I$(STUBS) -I$(REPO)/src \
+	  -DNV_IPC_CONFIG_H=\"ssif_config.h\" \
+	  -- $(HARNESSES)/ssif_harness.cpp \
+	     $(REPO)/src/nv/ssif/ssif.cpp
+
 COV_TARGETS := nsm_dcd_event_handlers soc_sma_filter debug_telemetry_sma \
                pca9555 ntc_table mctp_validator nsm_bitmask mctp_packet \
                mctp_router nsm_type5_validate
 
-cov_p1: $(addsuffix _cov_p1, $(COV_TARGETS))
+# Phase-1-only coverage targets: modules with no _func / k-induction
+# rule (see comment above c2c_mailbox_cov_p1).
+COV_TARGETS_P1_ONLY := c2c_mailbox ssif_safety
+
+cov_p1: $(addsuffix _cov_p1, $(COV_TARGETS) $(COV_TARGETS_P1_ONLY))
 cov_p2: $(addsuffix _cov_p2, $(COV_TARGETS))
 
 cov: cov_p1 cov_p2
@@ -1173,5 +1206,5 @@ cov: cov_p1 cov_p2
 	@echo "Phase 4 summary written to $(COV)/cov_summary.{tsv,md}"
 
 .PHONY: cov cov_p1 cov_p2 \
-        $(addsuffix _cov_p1, $(COV_TARGETS)) \
+        $(addsuffix _cov_p1, $(COV_TARGETS) $(COV_TARGETS_P1_ONLY)) \
         $(addsuffix _cov_p2, $(COV_TARGETS))

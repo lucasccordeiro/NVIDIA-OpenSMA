@@ -1,0 +1,1315 @@
+Target: 64-bit little-endian x86_64-unknown-linux with esbmclibc
+Parsing /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp
+Parsing /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.611s
+Adding k-path coverage assertions (n=4)...
+GOTO program processing time: 0.029s
+Starting Bounded Model Checking
+WARNING: not checking alignment for access to packed struct nv::lstp::LstpHdr
+WARNING: not checking alignment for access to packed struct nv::lstp::LstpHdr
+Symex completed in: 0.019s (678 assignments)
+Caching time: 0.005s (removed 5 assertions)
+Slicing time: 0.002s (removed 558 assignments)
+Generated 97 VCC(s), 92 remaining after simplification (115 assignments)
+No solver specified; defaulting to bitwuzla
+Slicing time: 0.000s (removed 18 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'size <= 254 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 89 column 5 function handle_tx' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: 'size <= 254 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 89 column 5 function handle_tx'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 66 column 5 function main thread 0
+----------------------------------------------------
+  ssif = { ._event=&event, ._driver={}, ._buffer={ .elems={ 0, 0, 254, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }, ._rx_cmd=0,
+    .anon_pad$4=0, ._rx_size=0, ._rx_offset=0,
+    ._tx_size=0, ._tx_offset=0, ._i2c_bus=0,
+    .anon_pad$10=0, ._alert_port_id=0, ._alert_pin_id=0,
+    .anon_pad$13=0 }
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 88 column 5 function handle_tx thread 0
+----------------------------------------------------
+  size = 254 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 11111110)
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 89 column 5 function handle_tx thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 89 column 5 function handle_tx
+  size <= 254
+  size > 254
+
+Slicing time: 0.000s (removed 18 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'size > 254 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 89 column 5 function handle_tx' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: 'size > 254 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 89 column 5 function handle_tx'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 66 column 5 function main thread 0
+----------------------------------------------------
+  ssif = { ._event=&event, ._driver={}, ._buffer={ .elems={ 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }, ._rx_cmd=0,
+    .anon_pad$4=0, ._rx_size=0, ._rx_offset=0,
+    ._tx_size=0, ._tx_offset=0, ._i2c_bus=0,
+    .anon_pad$10=0, ._alert_port_id=0, ._alert_pin_id=0,
+    .anon_pad$13=0 }
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 88 column 5 function handle_tx thread 0
+----------------------------------------------------
+  size = 65535 (00000000 00000000 00000000 00000000 00000000 00000000 11111111 11111111)
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 89 column 5 function handle_tx thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 89 column 5 function handle_tx
+  size > 254
+  size <= 254
+
+Slicing time: 0.000s (removed 13 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'is_read::0 && (signed int)alert == 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 194 column 5 function i2c_ack_ara' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✗ FAILED: 'is_read::0 && (signed int)alert == 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 194 column 5 function i2c_ack_ara'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 12 (00001100)
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 1
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/verification/stubs/nv/gpio/driver.h line 28 column 16 function read thread 0
+----------------------------------------------------
+  *data::2 = 0 (00000000)
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 194 column 5 function i2c_ack_ara thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 194 column 5 function i2c_ack_ara
+  is_read::0 && (signed int)alert == 0
+  !is_read::0 || (signed int)alert != 0
+
+Slicing time: 0.000s (removed 13 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'is_read::0 && (signed int)alert != 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 194 column 5 function i2c_ack_ara' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: 'is_read::0 && (signed int)alert != 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 194 column 5 function i2c_ack_ara'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 12 (00001100)
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 1
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/verification/stubs/nv/gpio/driver.h line 28 column 16 function read thread 0
+----------------------------------------------------
+  *data::2 = 255 (11111111)
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 194 column 5 function i2c_ack_ara thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 194 column 5 function i2c_ack_ara
+  is_read::0 && (signed int)alert != 0
+  !is_read::0 || (signed int)alert == 0
+
+Slicing time: 0.000s (removed 13 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!is_read::0 && (signed int)alert == 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 194 column 5 function i2c_ack_ara' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '!is_read::0 && (signed int)alert == 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 194 column 5 function i2c_ack_ara'
+Slicing time: 0.000s (removed 13 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!is_read::0 && (signed int)alert != 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 194 column 5 function i2c_ack_ara' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '!is_read::0 && (signed int)alert != 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 194 column 5 function i2c_ack_ara'
+Slicing time: 0.000s (removed 14 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!is_read::0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 187 column 5 function i2c_ack_ara' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✗ FAILED: '!is_read::0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 187 column 5 function i2c_ack_ara'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 12 (00001100)
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 0
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 187 column 5 function i2c_ack_ara thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 187 column 5 function i2c_ack_ara
+  !is_read::0
+  is_read::0
+
+Slicing time: 0.000s (removed 14 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'is_read::0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 187 column 5 function i2c_ack_ara' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: 'is_read::0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 187 column 5 function i2c_ack_ara'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 12 (00001100)
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 1
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 187 column 5 function i2c_ack_ara thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 187 column 5 function i2c_ack_ara
+  is_read::0
+  !is_read::0
+
+Slicing time: 0.002s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 66 column 5 function main thread 0
+----------------------------------------------------
+  ssif = { ._event=&event, ._driver={}, ._buffer={ .elems=nil }, ._rx_cmd=9,
+    .anon_pad$4=0, ._rx_size=0, ._rx_offset=0,
+    ._tx_size=0, ._tx_offset=0, ._i2c_bus=0,
+    .anon_pad$10=0, ._alert_port_id=0, ._alert_pin_id=0,
+    .anon_pad$13=0 }
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 16 (00010000)
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 1
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 142 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+  txrx_pending = 0
+
+State 5 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc
+  (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0)
+  (signed int)this->_rx_cmd == 3 || (signed int)this->_rx_cmd != 9 || this->_tx_size > 0 || this->_tx_size > MaxPartSize && this->_tx_offset > 0
+
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 66 column 5 function main thread 0
+----------------------------------------------------
+  ssif = { ._event=&event, ._driver={}, ._buffer={ .elems=nil }, ._rx_cmd=9,
+    .anon_pad$4=0, ._rx_size=0, ._rx_offset=0,
+    ._tx_size=0xFFFFFFFFFFFFFFFF, ._tx_offset=0xFFFFFFFFFFFFFFFF,
+    ._i2c_bus=0, .anon_pad$10=0,
+    ._alert_port_id=0, ._alert_pin_id=0, .anon_pad$13=0 }
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 16 (00010000)
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 1
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 142 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+  txrx_pending = 0
+
+State 5 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc
+  (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0
+  (signed int)this->_rx_cmd == 3 || (signed int)this->_rx_cmd != 9 || this->_tx_size <= 0 || this->_tx_size <= MaxPartSize || this->_tx_offset <= 0
+
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 66 column 5 function main thread 0
+----------------------------------------------------
+  ssif = { ._event=&event, ._driver={}, ._buffer={ .elems=nil }, ._rx_cmd=9,
+    .anon_pad$4=0, ._rx_size=0, ._rx_offset=0,
+    ._tx_size=0xFFFFFFFFFFFFFFFF, ._tx_offset=0,
+    ._i2c_bus=0, .anon_pad$10=0, ._alert_port_id=0,
+    ._alert_pin_id=0, .anon_pad$13=0 }
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 16 (00010000)
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 1
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 142 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+  txrx_pending = 0
+
+State 5 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc
+  (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0)
+  (signed int)this->_rx_cmd == 3 || (signed int)this->_rx_cmd != 9 || this->_tx_size <= 0 || this->_tx_size > MaxPartSize && this->_tx_offset > 0
+
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '(signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 && this->_tx_size > MaxPartSize && this->_tx_offset > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 4 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 && (this->_tx_size <= MaxPartSize || this->_tx_offset <= 0) at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 158 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '!is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '!is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: 'is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: 'is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '!is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '!is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: 'is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: 'is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '!is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '!is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: 'is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 66 column 5 function main thread 0
+----------------------------------------------------
+  ssif = { ._event=&event, ._driver={}, ._buffer={ .elems=nil }, ._rx_cmd=3,
+    .anon_pad$4=0, ._rx_size=0, ._rx_offset=0,
+    ._tx_size=0xFFFFFFFFFFFFFFFF, ._tx_offset=0,
+    ._i2c_bus=0, .anon_pad$10=0, ._alert_port_id=0,
+    ._alert_pin_id=0, .anon_pad$13=0 }
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 16 (00010000)
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 1
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 142 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+  txrx_pending = 0
+
+State 5 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc
+  is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0
+  !is_read::0 || (signed int)this->_rx_cmd != 3 || (signed int)this->_rx_cmd == 9 || this->_tx_size <= 0
+
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✗ FAILED: 'is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 66 column 5 function main thread 0
+----------------------------------------------------
+  ssif = { ._event=&event, ._driver={}, ._buffer={ .elems=nil }, ._rx_cmd=3,
+    .anon_pad$4=0, ._rx_size=0, ._rx_offset=0,
+    ._tx_size=0, ._tx_offset=0, ._i2c_bus=0,
+    .anon_pad$10=0, ._alert_port_id=0, ._alert_pin_id=0,
+    .anon_pad$13=0 }
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 16 (00010000)
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 1
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 142 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+  txrx_pending = 0
+
+State 5 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc
+  is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0
+  !is_read::0 || (signed int)this->_rx_cmd != 3 || (signed int)this->_rx_cmd == 9 || this->_tx_size > 0
+
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '!is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '!is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 13 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 143 column 5 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: 'txrx_pending at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 143 column 5 function i2c_ack_bmc'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 16 (00010000)
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 142 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+  txrx_pending = 1
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 143 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 143 column 5 function i2c_ack_bmc
+  txrx_pending
+  !txrx_pending
+
+Slicing time: 0.000s (removed 13 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 143 column 5 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✗ FAILED: '!txrx_pending at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 143 column 5 function i2c_ack_bmc'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 16 (00010000)
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 142 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+  txrx_pending = 0
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 143 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 143 column 5 function i2c_ack_bmc
+  !txrx_pending
+  txrx_pending
+
+Slicing time: 0.000s (removed 19 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)(*address::0) == 16 && (signed int)(*address::0) != 12 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 113 column 14 function i2c_ack_callback' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)(*address::0) == 16 && (signed int)(*address::0) != 12 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 113 column 14 function i2c_ack_callback'
+Slicing time: 0.000s (removed 19 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)(*address::0) == 16 && (signed int)(*address::0) == 12 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 113 column 14 function i2c_ack_callback' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '(signed int)(*address::0) == 16 && (signed int)(*address::0) == 12 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 113 column 14 function i2c_ack_callback'
+Slicing time: 0.000s (removed 19 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)(*address::0) != 16 && (signed int)(*address::0) != 12 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 113 column 14 function i2c_ack_callback' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✗ FAILED: '(signed int)(*address::0) != 16 && (signed int)(*address::0) != 12 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 113 column 14 function i2c_ack_callback'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 255 (11111111)
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 113 column 14 function i2c_ack_callback thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 113 column 14 function i2c_ack_callback
+  (signed int)(*address::0) != 16 && (signed int)(*address::0) != 12
+  (signed int)(*address::0) == 16 || (signed int)(*address::0) == 12
+
+Slicing time: 0.000s (removed 19 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)(*address::0) != 16 && (signed int)(*address::0) == 12 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 113 column 14 function i2c_ack_callback' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✗ FAILED: '(signed int)(*address::0) != 16 && (signed int)(*address::0) == 12 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 113 column 14 function i2c_ack_callback'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 12 (00001100)
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 113 column 14 function i2c_ack_callback thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 113 column 14 function i2c_ack_callback
+  (signed int)(*address::0) != 16 && (signed int)(*address::0) == 12
+  (signed int)(*address::0) == 16 || (signed int)(*address::0) != 12
+
+Slicing time: 0.000s (removed 20 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)(*address::0) != 16 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 110 column 14 function i2c_ack_callback' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✗ FAILED: '(signed int)(*address::0) != 16 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 110 column 14 function i2c_ack_callback'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 255 (11111111)
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 110 column 14 function i2c_ack_callback thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 110 column 14 function i2c_ack_callback
+  (signed int)(*address::0) != 16
+  (signed int)(*address::0) == 16
+
+Slicing time: 0.000s (removed 20 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)(*address::0) == 16 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 110 column 14 function i2c_ack_callback' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✗ FAILED: '(signed int)(*address::0) == 16 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 110 column 14 function i2c_ack_callback'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 16 (00010000)
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 110 column 14 function i2c_ack_callback thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 110 column 14 function i2c_ack_callback
+  (signed int)(*address::0) == 16
+  (signed int)(*address::0) != 16
+
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.002s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+Slicing time: 0.000s (removed 22 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 9 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending && !is_read::0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 149 column 5 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: 'txrx_pending && !is_read::0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 149 column 5 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 9 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending && is_read::0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 149 column 5 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: 'txrx_pending && is_read::0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 149 column 5 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 9 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending && !is_read::0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 149 column 5 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: '!txrx_pending && !is_read::0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 149 column 5 function i2c_ack_bmc'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 16 (00010000)
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 0
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 142 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+  txrx_pending = 0
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 149 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 149 column 5 function i2c_ack_bmc
+  !txrx_pending && !is_read::0
+  txrx_pending || is_read::0
+
+Slicing time: 0.000s (removed 9 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending && is_read::0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 149 column 5 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: '!txrx_pending && is_read::0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 149 column 5 function i2c_ack_bmc'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 16 (00010000)
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 1
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 142 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+  txrx_pending = 0
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 149 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 149 column 5 function i2c_ack_bmc
+  !txrx_pending && is_read::0
+  txrx_pending || !is_read::0
+
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: 'txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc'
+Slicing time: 0.002s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: 'txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: '!txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 66 column 5 function main thread 0
+----------------------------------------------------
+  ssif = { ._event=&event, ._driver={}, ._buffer={ .elems=nil }, ._rx_cmd=3,
+    .anon_pad$4=0, ._rx_size=0, ._rx_offset=0,
+    ._tx_size=0, ._tx_offset=0, ._i2c_bus=0,
+    .anon_pad$10=0, ._alert_port_id=0, ._alert_pin_id=0,
+    .anon_pad$13=0 }
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 16 (00010000)
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 1
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 142 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+  txrx_pending = 0
+
+State 5 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc
+  !txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3
+  txrx_pending || !is_read::0 || (signed int)this->_rx_cmd != 3
+
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: '!txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 66 column 5 function main thread 0
+----------------------------------------------------
+  ssif = { ._event=&event, ._driver={}, ._buffer={ .elems=nil }, ._rx_cmd=255,
+    .anon_pad$4=0, ._rx_size=0, ._rx_offset=0,
+    ._tx_size=0, ._tx_offset=0, ._i2c_bus=0,
+    .anon_pad$10=0, ._alert_port_id=0, ._alert_pin_id=0,
+    .anon_pad$13=0 }
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 16 (00010000)
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 1
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 142 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+  txrx_pending = 0
+
+State 5 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc
+  !txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3
+  txrx_pending || !is_read::0 || (signed int)this->_rx_cmd == 3
+
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: 'txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: 'txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 151 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: 'txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: 'txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: '!txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 66 column 5 function main thread 0
+----------------------------------------------------
+  ssif = { ._event=&event, ._driver={}, ._buffer={ .elems=nil }, ._rx_cmd=9,
+    .anon_pad$4=0, ._rx_size=0, ._rx_offset=0,
+    ._tx_size=0, ._tx_offset=0, ._i2c_bus=0,
+    .anon_pad$10=0, ._alert_port_id=0, ._alert_pin_id=0,
+    .anon_pad$13=0 }
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 16 (00010000)
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 1
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 142 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+  txrx_pending = 0
+
+State 5 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc
+  !txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9
+  txrx_pending || !is_read::0 || (signed int)this->_rx_cmd == 3 || (signed int)this->_rx_cmd != 9
+
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✗ FAILED: '!txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+
+[Counterexample]
+
+
+State 1 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 66 column 5 function main thread 0
+----------------------------------------------------
+  ssif = { ._event=&event, ._driver={}, ._buffer={ .elems=nil }, ._rx_cmd=255,
+    .anon_pad$4=0, ._rx_size=0, ._rx_offset=0,
+    ._tx_size=0, ._tx_offset=0, ._i2c_bus=0,
+    .anon_pad$10=0, ._alert_port_id=0, ._alert_pin_id=0,
+    .anon_pad$13=0 }
+
+State 2 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 82 column 9 function main thread 0
+----------------------------------------------------
+  address = 16 (00010000)
+
+State 3 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp line 83 column 9 function main thread 0
+----------------------------------------------------
+  is_read = 1
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 142 column 5 function i2c_ack_bmc thread 0
+----------------------------------------------------
+  txrx_pending = 0
+
+State 5 file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc
+  !txrx_pending && is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9
+  txrx_pending || !is_read::0 || (signed int)this->_rx_cmd == 3 || (signed int)this->_rx_cmd == 9
+
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: 'txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: 'txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+Slicing time: 0.002s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: 'txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: 'txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '!txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '!txrx_pending && is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: 'txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: 'txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+✓ PASSED: '!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd == 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: '!txrx_pending && !is_read::0 && (signed int)this->_rx_cmd == 3 && (signed int)this->_rx_cmd != 9 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 157 column 18 function i2c_ack_bmc'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: 'is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size <= 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+Slicing time: 0.002s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc' with solver Bitwuzla 0.9.0
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+✓ PASSED: 'is_read::0 && (signed int)this->_rx_cmd != 3 && (signed int)this->_rx_cmd != 9 && this->_tx_size > 0 at file /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp line 152 column 17 function i2c_ack_bmc'
+Properties: 97 verified ✓ 74 passed, ✗ 23 failed
+Solver: Bitwuzla 0.9.0 • Decision procedure total time: 0.052s • Avg: 0.000s/property
+
+[Coverage]
+
+k-Path Witnesses : 342
+Reached : 23
+k-Path Coverage: 6.7251461988304095%
+Coverage report written to cov-report.json
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit x86_64 linux

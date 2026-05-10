@@ -940,6 +940,87 @@ to fit the 5-minute per-run budget. Coverage runs do not need full
 inductive depth — they enumerate goals, they don't close the
 induction. Documented in the `ntc_table_cov_p2` rule.
 
+### Phase 4.1 — Harness-strengthening backlog
+
+Concrete next steps to lift the under-driven rows. Each item names the
+specific harness edit, the expected coverage improvement, and an
+effort tag (**S** ≈ 1–2 h, **M** ≈ half-day, **L** ≈ 1+ day). Listed
+in priority order — addressing P1 first plugs the biggest visible gap
+and is the most informative for the proof's overall confidence.
+
+**P1 — `mctp_validator` harness, split by `Control::Command`.** *(M)*
+The current harness drives a single nondet `Control::Command` value
+through `Validator::validate()`. ESBMC enumerates 136 k-path witnesses
+(one per command-path × header-field combination) but only one is
+reached. Action: replace the single-call harness with a
+`switch (nondet_uint() % CommandCount)` driver where each arm
+constructs the matching `Control` payload (SetEpId, GetEpId,
+GetVendorDefined, …) with appropriately-shaped nondet bytes for the
+fields each command actually reads, then calls `validate()`. Expected
+ratio: ≥ 0.70 once each command's CFG arm gets at least one driver
+path. The 16 `exit_uncov` claims will remain (loop bound, not a
+harness gap). Acceptance: `mctp_validator_cov_p1` reports
+`reached ≥ 95` (out of ~120 non-exit goals).
+
+**P2 — `pca9555` harness, drive each `CommandRegister` explicitly.** *(S–M)*
+Phase 1 reaches 24/132 (~18 %). Per-function rollup: `i2c_read` 3/46,
+`i2c_write` 13/78. The harness selects `cmd_byte` nondeterministically;
+ESBMC's k-path goals partition the CFG by `cmd_byte / 2 ∈ {Input,
+Output, Direction, Inversion}` so most witnesses live in dispatch
+arms the harness never picks. Action: add four sub-harnesses (or one
+parameterised harness driven by `nondet_uint() % 4`) that each pin
+`cmd_byte` to a specific `CommandRegister`, then issue a representative
+read and write. Expected ratio: ≥ 0.60 once each register-mode arm has
+at least one read+write driver. Acceptance: per-function rollup shows
+each of `i2c_read` / `i2c_write` ≥ 50 %.
+
+**P2 — `nsm_dcd_event_handlers` harness, enumerate bitmask patterns.** *(S)*
+Phase 1 reaches 12/126 (~10 %); a single nondet 8-byte bitmask is
+drawn per run, leaving most AND-combination paths unwitnessed. Action:
+swap the single `nondet_byte_array(...)` call for a
+`switch (nondet_uint() % K)` over five representative input shapes —
+`{all-zero, all-ones, alternating-0xAA, alternating-0x55, single-bit-set}`
+— each fed through both `on_dcd_set_current_event_srcs` and
+`on_dcd_configure_event_ack`. Expected ratio: ≥ 0.40. Acceptance:
+`main` rollup reports `reached ≥ 50` (out of 126).
+
+**P3 — `nsm_type5_validate` harness, enumerate the {0, 1, 2} accept set.** *(S)*
+Phase 1 reaches 14/22 (~64 %). `validateFatalErrorInjectionPayload`
+sits at 6/14: the harness draws nondet bytes but rarely lands on the
+documented bitmask values 0/1/2 explicitly. Action: replace the
+nondet-byte feed with a `switch (nondet_uint() % 5)` over
+`{0, 1, 2, 3, 0xFF}` so the accept paths and the rejection paths each
+get a concrete witness. Expected ratio: ≥ 0.85. Acceptance:
+`validateFatalErrorInjectionPayload` rollup ≥ 12/14.
+
+**P3 — `mctp_router` harness, drive each interface index.** *(S)*
+Reaches 2/2 but `total = 2` flags the harness as under-enumerated:
+the harness picks one nondet interface and exercises the `set_cur_eid
+→ get_cur_eid` round-trip on it. Action: wrap the round-trip in a
+loop over `interface ∈ [0, UsEnd)` so ESBMC sees a witness per
+interface. Expected: `total` rises from 2 to ≈ 18 (one per `UsEnd`
+member); ratio should stay at 1.000.
+
+**P4 — `ntc_table` harness, representative resistance subset.** *(S, optional)*
+p1 reaches 11/22 (50 %); p2 14/118 (12 %, denominator inflated by
+k-induction's per-step witnesses across the 166-entry binary search).
+The k-path witnesses correspond to specific binary-search outcomes
+the single nondet input rarely hits. Action: add a
+`switch (nondet_uint() % 6)` driver over six representative
+resistance points (table[0], table[42], table[83], table[124],
+table[165], plus one out-of-range). This is cosmetic — the safety
+proof already covers the binary-search range — and only worth doing
+if a future Phase 4.1 batch lands on the same module.
+
+**Cross-cutting — coverage as a CI advisory.** Phase 4 currently runs
+on demand. Once the P1 / P2 backlog is cleared, a CI advisory job
+(non-blocking) could re-run `make cov` on every PR and post a delta
+comment if any module's `reached/total` regresses by ≥ 5 %. Ratio
+gates remain unsuitable for blocking — `total` shifts under flag
+changes, and a coverage-only regression is rarely a real defect — but
+a delta-on-PR comment would catch the cases that matter without
+flagging noise.
+
 ### Reproducing Phase 4
 
 ```sh

@@ -1,0 +1,43 @@
+Target: 64-bit little-endian x86_64-unknown-linux with esbmclibc
+Parsing /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_underflow_neg_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.148s
+GOTO program processing time: 0.000s
+Starting Bounded Model Checking
+Symex completed in: 0.000s (34 assignments)
+Caching time: 0.000s (removed 1 assertions)
+Slicing time: 0.000s (removed 16 assignments)
+Generated 8 VCC(s), 6 remaining after simplification (17 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
+Building error trace
+
+[Counterexample]
+
+
+State 4 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_underflow_neg_harness.cpp line 80 column 5 function main thread 0
+----------------------------------------------------
+  _tx_offset = 14 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001110)
+
+State 5 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_underflow_neg_harness.cpp line 81 column 5 function main thread 0
+----------------------------------------------------
+  _tx_size = 63 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00111111)
+
+State 11 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_underflow_neg_harness.cpp line 88 column 5 function main thread 0
+----------------------------------------------------
+  rem_size = 49 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00110001)
+
+State 13 file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_underflow_neg_harness.cpp line 93 column 5 function main thread 0
+----------------------------------------------------
+Violated property:
+  file /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_underflow_neg_harness.cpp line 93 column 5 function main
+  arithmetic overflow on sub
+  !overflow("-", _tx_offset, StartPartSize)
+
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit x86_64 linux

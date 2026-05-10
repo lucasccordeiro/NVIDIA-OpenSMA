@@ -106,6 +106,7 @@ FP_INCS := -I$(REPO)/src
         nsm_gpio_safety \
         c2c_mailbox c2c_mailbox_volatile \
         ssif_safety ssif_safety_volatile \
+        ssif_underflow_neg \
         clean
 all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils soc_sma_filter debug_telemetry_sma pca9555 emc1812 tmp1075 tmp461 c2c_mailbox ssif_safety
 volatile: mctp_packet_volatile mctp_router_volatile mctp_validator_volatile nsm_type_2_volatile nsm_type3_volatile nsm_bitmask_volatile nsm_type5_validate_volatile telemetry_volatile spi_utils_volatile i2c_crc8_volatile literals_volatile fixed_point_volatile utils_volatile ntc_table_volatile pwr_smooth_params_volatile fru_utils_volatile soc_sma_filter_volatile debug_telemetry_sma_volatile pca9555_volatile emc1812_volatile tmp1075_volatile tmp461_volatile c2c_mailbox_volatile ssif_safety_volatile
@@ -961,6 +962,23 @@ ssif_safety_volatile:
 	  $(HARNESSES)/ssif_harness.cpp \
 	  $(REPO)/src/nv/ssif/ssif.cpp \
 	  2>&1 | tee $(RESULTS)/ssif_safety_volatile.log
+
+# ssif_underflow_neg — F-N reachability proof for the size_t underflow on
+#   `(_tx_offset - StartPartSize) / RemPartSize`
+# at src/nv/ssif/ssif.cpp:408 (Ssif::smbus_block_read, ReadMulti else-branch).
+# Modelled standalone (no production source compiled) — same pattern as
+# nsm_event_*_neg / nsm_bitmask_neg / etc. The harness inlines the SSIF
+# constants verbatim and constrains nondet `_tx_offset` / `_tx_size` to
+# the production-reachable window where ReadRetry has set _tx_offset
+# small (∈ [1, 29] via attacker-supplied block_num ∈ [0, 27]).
+# No loops → default --unwind ok.
+# Expected: VERIFICATION FAILED ("arithmetic overflow on sub").
+ssif_underflow_neg:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --overflow-check --unsigned-overflow-check \
+	  --nan-check --unwind 4 \
+	  $(HARNESSES)/ssif_underflow_neg_harness.cpp \
+	  2>&1 | tee $(RESULTS)/ssif_underflow_neg.log
 
 clean:
 	rm -rf $(RESULTS)

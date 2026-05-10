@@ -1,6 +1,6 @@
 # OpenSMA ESBMC Verification — Initial Report
 
-**Date**: 2026-04-25 (updated 2026-05-04; F-16 added 2026-05-04)
+**Date**: 2026-04-25 (updated 2026-05-04; F-16 added 2026-05-04; F-17 added 2026-05-10)
 **Tool**: ESBMC 8.2.0 (aarch64-macos)
 **Scope**: bounded model checking of selected modules in
 [NVIDIA/OpenSMA](https://github.com/NVIDIA/OpenSMA)
@@ -40,7 +40,14 @@ without a bounds check (ESBMC CEX: `event_id=248`, `ByteIndex=31`, OOB on
 size-8 array). A fifth latent-OOB finding, **F-16**, is the same pattern in
 the sibling function `is_event_ack_enable()` (`nsm.cpp:1089`), which reads
 `type0/6_event_ack_bitmask.at(event_id/8)` on the same size-8 arrays with no
-bounds check (ESBMC CEX: `event_id=248`, `ByteIndex=31`, OOB). A concurrent sweep of the DCD GPIO handlers (`on_dcd_get_gpio` /
+bounds check (ESBMC CEX: `event_id=248`, `ByteIndex=31`, OOB). A sixth
+finding, **F-17** *(Tier D)*, is a `size_t` underflow in
+`Ssif::smbus_block_read`'s ReadMulti else-branch
+(`(_tx_offset - StartPartSize) / RemPartSize` at `ssif.cpp:408`), reachable
+when a hostile BMC sends an SMBus Block Write `ReadRetry` with
+`block_num ∈ [0, 27]` to set `_tx_offset` into the underflow window
+[1, 29]; the wrapped quotient is truncated to `uint8_t` for the response's
+`block_num` field, so this is *protocol corruption, not memory corruption*. A concurrent sweep of the DCD GPIO handlers (`on_dcd_get_gpio` /
 `on_dcd_set_gpio`) produced VERIFICATION SUCCESSFUL (536 VCC): the
 `(offset+length) > GpioNum` guard is sufficient to keep all `GpioSetup.at()`
 and `gpio_resp.gpio.at()` accesses in bounds. Several ESBMC C++-frontend bugs
@@ -76,6 +83,7 @@ workarounds removed where applicable.
 | TMP1075 temperature sensor driver | `src/nv/i2c/tmp1075.{h,cpp}` (`Tmp1075` — 12-bit two's-complement temperature encoding: `int8_t → <<4 → int16_t → uint16_t → >>4 → int8_t` round-trip; `get_device_id`; `set/get_{low,high}_limit`) | ✅ 33 VCC | ✅ k=1 (12bit_roundtrip: `static_cast<int8_t>(static_cast<int16_t>(static_cast<uint16_t>(static_cast<int16_t>(t<<4)))>>4) == t` for all `int8_t t`; temp_read_cast well-defined) | — |
 | TMP461 temperature sensor driver | `src/nv/i2c/tmp461.{h,cpp}` (`Tmp461` / NCT72 — `int8_t↔uint8_t` threshold cast round-trip for four alert/therm set/get pairs; `get_configuration`) | ✅ 57 VCC | ✅ k=1 (cast_roundtrip + threshold_symmetry for all four pairs) | — |
 | sys::c2c_mailbox dispatch | `src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.{h,cpp}` (`set_value`/`get_value` — peer-core mailbox dispatch over NXP MCUXpresso `MAILBOX_SetValue`/`GetValue`; harness asserts Phase 3 contract: set→peer slot, get→self slot, payload bitwise-forwarded; slim `nv/ipc/ipc_task.h` interceptor avoids the full IPC stack) | ✅ 11 VCC | — | — |
+| nv::ssif::Ssif (narrow) | `src/nv/ssif/ssif.{h,cpp}` (`i2c_ack_callback`, `handle_tx`, `handle_rx` — narrow Phase 1; data callback `i2c_callback → smbus_block_*` deferred pending ESBMC `std::bit_cast<View*>(_buffer.data())` pointer-bound-loss — see also c2c_mailbox commit's note on esbmc#4180 family) | ✅ 61 VCC | — | ✅ **F-17** CEX: `_tx_offset=14`, `_tx_size=63` → size_t underflow on `_tx_offset - StartPartSize` in `smbus_block_read` ReadMulti else-branch (`ssif_underflow_neg`) |
 | `is_event_source_enable` OOB check (F-15) | `src/nv/mctp/nsm.cpp:761` — `type0/6_event_enable_bitmask.at(event_id/8)` without bounds guard; same asymmetric-guard pattern as F-5 but on the read path | — | — | ✅ VERIFICATION FAILED — CEX: `event_id=248`, `ByteIndex=31`, OOB at `at()` on size-8 array — **F-15** |
 | `is_event_ack_enable` OOB check (F-16) | `src/nv/mctp/nsm.cpp:1089` — `type0/6_event_ack_bitmask.at(event_id/8)` without bounds guard; sibling function to F-15, same pattern | — | — | ✅ VERIFICATION FAILED — CEX: `event_id=248`, `ByteIndex=31`, OOB at `at()` on size-8 array — **F-16** |
 | DCD GPIO safety proof | `src/nv/mctp/nsm.cpp:3389,3482` — `on_dcd_get_gpio` / `on_dcd_set_gpio`; guard `(offset+length) > GpioNum` keeps all `GpioSetup.at()` and `gpio_resp.gpio.at()` in bounds | — | — | ✅ VERIFICATION SUCCESSFUL (536 VCC) — **no defect** |
@@ -115,7 +123,7 @@ Findings are ordered from highest to lowest proof rigor.
 | **A** | Production source compiled end-to-end; full packet dispatch chain proven from network input; runtime abort confirmed | F-1 |
 | **B** | Production source compiled; handler-level CEX proven; directly reachable | F-6 |
 | **C** | Structural CEX + sanitizer-confirmed + system-level latency proof (production code compiled) | F-13, F-7 |
-| **D** | Structural CEX + sanitizer-confirmed; latent (existing call site carries a guard) | F-8 |
+| **D** | Structural CEX + sanitizer-confirmed; latent (existing call site carries a guard) | F-8, F-17 |
 | **E** | Structural CEX; latent; exhaustive call-graph trace confirms no current packet-driven path | F-5 |
 | **F** | Structural CEX; latent; no current dangerous call site | F-15, F-16, F-4 |
 | **G** | Structural (partial production source compiled); dead code in all current builds | F-10 |
@@ -341,6 +349,100 @@ This guard prevents the OOB from being directly reachable in the current codebas
 if (gpioSpoofingPayload.header.ei_gpio_number > MaxGPIOSpoofingEntries)
     return false;
 ```
+
+---
+
+### F-17 — `Ssif::smbus_block_read` ReadMulti else-branch underflows on `_tx_offset - StartPartSize` *(Tier D)*
+
+**File**: `src/nv/ssif/ssif.cpp:397–417` — `Ssif::smbus_block_read`, ReadMulti branch
+
+```cpp
+case ReadMulti: {
+    auto& part = MiddlePartData::from(tx.data);
+    if ((_tx_size > MaxPartSize) && (_tx_size <= MaxPayloadSize)
+        && (_tx_offset > 0) && (_tx_offset < _tx_size)) {
+        const size_t rem_size = _tx_size - _tx_offset;
+        if (rem_size <= RemPartSize) {
+            tx.size        = rem_size + 1;
+            part.block_num = LastReadBlock;
+        }
+        else {
+            tx.size        = MaxPartSize;
+            // Guard above is `_tx_offset > 0`, NOT `_tx_offset >= StartPartSize`.
+            // For _tx_offset ∈ [1, 29], the size_t subtraction wraps.
+            part.block_num = (_tx_offset - StartPartSize) / RemPartSize;   // ssif.cpp:408
+        }
+        std::copy_n(pkt.ipmi_data.begin() + _tx_offset,
+                    tx.size - sizeof(part.block_num),
+                    part.data.begin());
+        _tx_offset += tx.size - sizeof(part.block_num);
+        tx.set_pec(tx.calculate_pec(BmcAddress, ReadMulti));
+    }
+    ...
+}
+```
+
+`StartPartSize = MaxPartSize - 2 = 30`, `RemPartSize = MaxPartSize - 1 = 31`. For `_tx_offset ∈ [1, 29]`, the subtraction `_tx_offset - StartPartSize` underflows in `size_t` and the wrapped quotient is truncated to `uint8_t` for the `block_num` field of the SMBus response.
+
+**Reachability** — the only production paths setting `_tx_offset` are:
+
+| Setter | Resulting `_tx_offset` | Inside underflow window [1, 29]? |
+|---|---|---|
+| `ReadStart` (`_tx_size > MaxPartSize`) | `StartPartSize = 30` | no |
+| `ReadStart` (`0 < _tx_size <= MaxPartSize`) | `_tx_size` | no — outer ReadMulti guard rejects |
+| `ReadMulti` increment | `_tx_offset += tx.size - 1` (monotone from 30) | no |
+| `ReadRetry` | `2 + block_num` where `block_num = rx.data[0]` | **yes when `block_num ∈ [0, 27]`** |
+
+A hostile BMC that sends an SMBus Block Write with `cmd = ReadRetry` and `data[0] ∈ [0, 27]` sets `_tx_offset` to a value in the underflow window. The next ReadMulti read phase (where the SOC has staged a multi-block IPMI response so `_tx_size > MaxPartSize`, and `rem_size = _tx_size - _tx_offset > RemPartSize` so the else-branch is taken) executes line 408 with the wrapping subtraction.
+
+**What ESBMC proved** (`ssif_underflow_neg`, `--unsigned-overflow-check`, VERIFICATION FAILED):
+
+```
+State 4   _tx_offset = 14
+State 5   _tx_size   = 63
+State 11  rem_size   = 49        (> RemPartSize=31 → else-branch)
+State 13  Violated:  arithmetic overflow on sub
+          !overflow("-", _tx_offset, StartPartSize)
+```
+
+The harness inlines the relevant constants (`MaxPartSize`, `StartPartSize`, `RemPartSize`, `MaxPayloadSize`) verbatim and constrains nondet `_tx_offset` / `_tx_size` to the production-reachable else-branch entry conditions. Standalone — no production source compiled — same pattern as `nsm_event_*_neg`.
+
+**Severity: low in practice — *protocol corruption*, not memory corruption.** `block_num` is `uint8_t` and the wrapped `size_t` quotient is truncated to its low byte, so the value written to `part.block_num` is well-defined modulo 256 and no OOB write follows. But the SMBus response carries a corrupted `block_num` field; the BMC sees malformed protocol and the in-flight multi-block read is desynchronised, potentially causing the BMC to retry, abort the IPMI transaction, or surface a wire-format error to its host.
+
+**Why Tier D**: the call site has a guard (`_tx_offset > 0`), but the guard is insufficient for the operation that follows. Sanitizer-confirmed via `--unsigned-overflow-check`. Full system-level reachability proof (compiling `Ssif::smbus_block_write` end-to-end so the ReadRetry → ReadMulti sequence is forced through real production code) is currently blocked by an upstream ESBMC pointer-bound-loss issue on `std::bit_cast<View*>(_buffer.data())` followed by a member-array offset (filed against esbmc/esbmc; see `verification/esbmc_bug_repros/ISSUE_DRAFT_bit_cast_member_buffer_bound_loss.md`). Once that is resolved, the system-level proof will promote this to Tier C.
+
+**Recommendation**: tighten the guard in `smbus_block_read`'s ReadMulti branch:
+
+```cpp
+case ReadMulti: {
+    auto& part = MiddlePartData::from(tx.data);
+    if ((_tx_size > MaxPartSize) && (_tx_size <= MaxPayloadSize)
+        && (_tx_offset >= StartPartSize) && (_tx_offset < _tx_size)) {
+        ...
+        part.block_num = (_tx_offset - StartPartSize) / RemPartSize;   // now safe
+        ...
+    }
+}
+```
+
+Alternatively, validate `block_num` at the ReadRetry source so `_tx_offset` can never be set into the underflow window:
+
+```cpp
+case ReadRetry: {
+    uint8_t block_num = rx.data[0];
+    if ((block_num == LastReadBlock) && (_tx_size > MaxPartSize)) {
+        block_num = (_tx_size - StartPartSize) / (MaxPartSize - RemPartSize) - 1;
+    }
+    const size_t offset = (MaxPartSize - StartPartSize)
+                        + block_num * (MaxPartSize - RemPartSize);
+    if ((offset >= StartPartSize) && (offset < _tx_size)) {  // tightened
+        _tx_offset = offset;
+    }
+    break;
+}
+```
+
+The first form (tightened ReadMulti guard) is preferable: it is local, syntactically unambiguous, and self-documents the invariant that block-number arithmetic only makes sense once the multi-block read has actually started.
 
 ---
 
@@ -1061,6 +1163,9 @@ make tmp1075_func           # Tmp1075 12-bit encoding round-trip identity (k=1)
 make tmp461_func            # Tmp461 int8_t↔uint8_t cast round-trip identity (k=1)
 make c2c_mailbox            # sys::c2c_mailbox Phase 1 + dispatch contract (expect VERIFICATION SUCCESSFUL)
 make c2c_mailbox_volatile   # ditto, with --volatile-check
+make ssif_safety            # nv::ssif::Ssif narrow Phase 1 baseline (expect VERIFICATION SUCCESSFUL)
+make ssif_safety_volatile   # ditto, with --volatile-check
+make ssif_underflow_neg     # F-17: smbus_block_read size_t underflow (expect VERIFICATION FAILED)
 make mctp_packet_neg        # negative tests (expect VERIFICATION FAILED)
 make mctp_router_neg
 make mctp_dispatch          # F-1 reachability proof (expect VERIFICATION FAILED)

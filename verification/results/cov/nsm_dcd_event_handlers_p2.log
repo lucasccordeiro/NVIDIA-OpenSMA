@@ -1,0 +1,232 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.620s
+Interval Analysis time: 0.014s
+--k-path-coverage: no N or --unwind specified; defaulting to N=4
+Adding k-path coverage assertions (n=4)...
+GOTO program processing time: 0.041s
+Checking base case, k = 1
+Starting Bounded Model Checking
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Not unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Symex completed in: 0.004s (144 assignments)
+Slicing time: 0.000s (removed 141 assignments)
+Generated 2 VCC(s), 1 remaining after simplification (3 assignments)
+No solver specified; defaulting to bitwuzla
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'i < (unsigned long int)NvMctpEventSupportedNum at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✗ FAILED: 'i < (unsigned long int)NvMctpEventSupportedNum at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+  i < (unsigned long int)NvMctpEventSupportedNum
+  i >= (unsigned long int)NvMctpEventSupportedNum
+
+Properties: 2 verified ✓ 1 passed, ✗ 1 failed
+Solver: Bitwuzla 0.8.2 • Decision procedure total time: 0.000s • Avg: 0.000s/property
+
+VERIFICATION FAILED
+
+Bug found (k = 1)
+Checking base case, k = 2
+Starting Bounded Model Checking
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Not unwinding loop 7 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Symex completed in: 0.005s (148 assignments)
+Slicing time: 0.000s (removed 146 assignments)
+Generated 2 VCC(s), 0 remaining after simplification (2 assignments)
+
+[Coverage]
+
+k-Path Witnesses : 110
+Reached : 0
+k-Path Coverage: 0%
+Coverage report written to cov-report.json
+BMC program time: 0.009s
+Checking forward condition, k = 2
+Starting Bounded Model Checking
+Unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Not unwinding loop 7 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Symex completed in: 0.005s (148 assignments)
+Slicing time: 0.000s (removed 146 assignments)
+Generated 1 VCC(s), 1 remaining after simplification (2 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+The forward condition is unable to prove the property
+Checking base case, k = 3
+Starting Bounded Model Checking
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Not unwinding loop 7 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Symex completed in: 0.005s (153 assignments)
+Slicing time: 0.001s (removed 151 assignments)
+Generated 3 VCC(s), 0 remaining after simplification (2 assignments)
+
+[Coverage]
+
+k-Path Witnesses : 110
+Reached : 0
+k-Path Coverage: 0%
+Coverage report written to cov-report.json
+BMC program time: 0.020s
+Checking forward condition, k = 3
+Starting Bounded Model Checking
+Unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Not unwinding loop 7 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Symex completed in: 0.005s (153 assignments)
+Slicing time: 0.000s (removed 151 assignments)
+Generated 1 VCC(s), 1 remaining after simplification (2 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+The forward condition is unable to prove the property
+Checking base case, k = 4
+Starting Bounded Model Checking
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Not unwinding loop 7 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Symex completed in: 0.006s (158 assignments)
+Slicing time: 0.000s (removed 156 assignments)
+Generated 4 VCC(s), 0 remaining after simplification (2 assignments)
+
+[Coverage]
+
+k-Path Witnesses : 110
+Reached : 0
+k-Path Coverage: 0%
+Coverage report written to cov-report.json
+BMC program time: 0.024s
+Checking forward condition, k = 4
+Starting Bounded Model Checking
+Unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Not unwinding loop 7 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Symex completed in: 0.007s (158 assignments)
+Slicing time: 0.000s (removed 156 assignments)
+Generated 1 VCC(s), 1 remaining after simplification (2 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+The forward condition is unable to prove the property
+Checking base case, k = 5
+Starting Bounded Model Checking
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Not unwinding loop 7 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Symex completed in: 0.007s (163 assignments)
+Slicing time: 0.000s (removed 161 assignments)
+Generated 5 VCC(s), 0 remaining after simplification (2 assignments)
+
+[Coverage]
+
+k-Path Witnesses : 110
+Reached : 0
+k-Path Coverage: 0%
+Coverage report written to cov-report.json
+BMC program time: 0.010s
+Checking forward condition, k = 5
+Starting Bounded Model Checking
+Unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Not unwinding loop 7 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Symex completed in: 0.007s (163 assignments)
+Slicing time: 0.000s (removed 161 assignments)
+Generated 1 VCC(s), 1 remaining after simplification (2 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+The forward condition is unable to prove the property
+Checking base case, k = 6
+Starting Bounded Model Checking
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+✓ PASSED: 'i >= (unsigned long int)NvMctpEventSupportedNum' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Not unwinding loop 7 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Symex completed in: 0.008s (168 assignments)
+Slicing time: 0.000s (removed 166 assignments)
+Generated 6 VCC(s), 0 remaining after simplification (2 assignments)
+
+[Coverage]
+
+k-Path Witnesses : 110
+Reached : 0
+k-Path Coverage: 0%
+Coverage report written to cov-report.json
+BMC program time: 0.011s
+Checking forward condition, k = 6
+Starting Bounded Model Checking
+Unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 2   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 3   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 4   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Unwinding loop 7 iteration 5   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Not unwinding loop 7 iteration 6   file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp line 62 column 5 function main
+Symex completed in: 0.007s (168 assignments)
+Slicing time: 0.001s (removed 166 assignments)
+Generated 1 VCC(s), 1 remaining after simplification (2 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+The forward condition is unable to prove the property
+Unable to prove or falsify the program, giving up.
+VERIFICATION UNKNOWN
+
+[Coverage]
+
+k-Path Witnesses : 110
+Reached : 1
+k-Path Coverage: 0.9090909090909091%
+Coverage report written to cov-report.json
+ESBMC version 8.2.0 64-bit aarch64 macos

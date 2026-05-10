@@ -1,0 +1,102 @@
+{
+  "claims": [
+    {
+      "column": 5,
+      "condition": "function entry: c:@F@main#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp",
+      "function": "main",
+      "line": 134,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_is_bit_set_iff_get#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp",
+      "function": "f_contract_is_bit_set_iff_get",
+      "line": 118,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_set_then_get#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp",
+      "function": "f_contract_set_then_get",
+      "line": 91,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_unset_then_get#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp",
+      "function": "f_contract_unset_then_get",
+      "line": 103,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:nsm_bitmask_harness.cpp@aN@F@f_get_bit32_safe#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp",
+      "function": "f_get_bit32_safe",
+      "line": 45,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:nsm_bitmask_harness.cpp@aN@F@f_get_bit8_safe_all#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp",
+      "function": "f_get_bit8_safe_all",
+      "line": 62,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:nsm_bitmask_harness.cpp@aN@F@f_is_bit_set32_safe#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp",
+      "function": "f_is_bit_set32_safe",
+      "line": 52,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:nsm_bitmask_harness.cpp@aN@F@f_set_bit32_safe#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp",
+      "function": "f_set_bit32_safe",
+      "line": 31,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:nsm_bitmask_harness.cpp@aN@F@f_set_bit8_safe_inrange#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp",
+      "function": "f_set_bit8_safe_inrange",
+      "line": 70,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:nsm_bitmask_harness.cpp@aN@F@f_unset_bit32_safe#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp",
+      "function": "f_unset_bit32_safe",
+      "line": 38,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:nsm_bitmask_harness.cpp@aN@F@f_unset_bit8_safe_inrange#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp",
+      "function": "f_unset_bit8_safe_inrange",
+      "line": 80,
+      "status": "covered"
+    }
+  ],
+  "coverage_type": "branch-function",
+  "source_files": [
+    "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp"
+  ],
+  "summary": {
+    "covered": 11,
+    "percentage": 100.0,
+    "total": 11,
+    "uncovered": 0
+  }
+}

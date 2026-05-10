@@ -1,0 +1,600 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.615s
+Adding false assertions...
+GOTO program processing time: 0.008s
+Starting Bounded Model Checking
+Symex completed in: 0.029s (352 assignments)
+Caching time: 0.002s (removed 1 assertions)
+Slicing time: 0.002s (removed 210 assignments)
+Generated 72 VCC(s), 71 remaining after simplification (141 assignments)
+No solver specified; defaulting to bitwuzla
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+Slicing time: 0.000s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 49 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 45 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 45 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 48 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_is_bit_set_iff_get# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 118 column 5 function f_contract_is_bit_set_iff_get' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_is_bit_set_iff_get# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 118 column 5 function f_contract_is_bit_set_iff_get'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 118 column 5 function f_contract_is_bit_set_iff_get thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 118 column 5 function f_contract_is_bit_set_iff_get
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_is_bit_set_iff_get#
+  0
+
+Slicing time: 0.000s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+Slicing time: 0.000s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+Slicing time: 0.001s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_unset_then_get# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 103 column 5 function f_contract_unset_then_get' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_unset_then_get# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 103 column 5 function f_contract_unset_then_get'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 103 column 5 function f_contract_unset_then_get thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 103 column 5 function f_contract_unset_then_get
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_unset_then_get#
+  0
+
+Slicing time: 0.001s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_set_then_get# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 91 column 5 function f_contract_set_then_get' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_set_then_get# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 91 column 5 function f_contract_set_then_get'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 91 column 5 function f_contract_set_then_get thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 91 column 5 function f_contract_set_then_get
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_set_then_get#
+  0
+
+Slicing time: 0.000s (removed 48 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 48 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 49 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 49 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_unset_bit8_safe_inrange# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 80 column 5 function f_unset_bit8_safe_inrange' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_unset_bit8_safe_inrange# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 80 column 5 function f_unset_bit8_safe_inrange'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 80 column 5 function f_unset_bit8_safe_inrange thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 80 column 5 function f_unset_bit8_safe_inrange
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_unset_bit8_safe_inrange#
+  0
+
+Slicing time: 0.000s (removed 48 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 48 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 49 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 49 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_set_bit8_safe_inrange# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 70 column 5 function f_set_bit8_safe_inrange' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_set_bit8_safe_inrange# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 70 column 5 function f_set_bit8_safe_inrange'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 70 column 5 function f_set_bit8_safe_inrange thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 70 column 5 function f_set_bit8_safe_inrange
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_set_bit8_safe_inrange#
+  0
+
+Slicing time: 0.001s (removed 44 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+Slicing time: 0.000s (removed 44 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 45 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_get_bit8_safe_all# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 62 column 5 function f_get_bit8_safe_all' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_get_bit8_safe_all# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 62 column 5 function f_get_bit8_safe_all'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 62 column 5 function f_get_bit8_safe_all thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 62 column 5 function f_get_bit8_safe_all
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_get_bit8_safe_all#
+  0
+
+Slicing time: 0.000s (removed 43 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 43 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 44 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_is_bit_set32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 52 column 5 function f_is_bit_set32_safe' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_is_bit_set32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 52 column 5 function f_is_bit_set32_safe'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 52 column 5 function f_is_bit_set32_safe thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 52 column 5 function f_is_bit_set32_safe
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_is_bit_set32_safe#
+  0
+
+Slicing time: 0.000s (removed 44 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 44 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 45 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_get_bit32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 45 column 5 function f_get_bit32_safe' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_get_bit32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 45 column 5 function f_get_bit32_safe'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 45 column 5 function f_get_bit32_safe thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 45 column 5 function f_get_bit32_safe
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_get_bit32_safe#
+  0
+
+Slicing time: 0.000s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_unset_bit32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 38 column 5 function f_unset_bit32_safe' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_unset_bit32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 38 column 5 function f_unset_bit32_safe'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 38 column 5 function f_unset_bit32_safe thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 38 column 5 function f_unset_bit32_safe
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_unset_bit32_safe#
+  0
+
+Slicing time: 0.000s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_set_bit32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 31 column 5 function f_set_bit32_safe' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_set_bit32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 31 column 5 function f_set_bit32_safe'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 31 column 5 function f_set_bit32_safe thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 31 column 5 function f_set_bit32_safe
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_set_bit32_safe#
+  0
+
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:@F@main# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 134 column 5 function main' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✗ FAILED: 'function entry: c:@F@main# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 134 column 5 function main'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 134 column 5 function main thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 134 column 5 function main
+  function entry: c:@F@main#
+  0
+
+Slicing time: 0.001s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 50 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Properties: 72 verified ✓ 61 passed, ✗ 11 failed
+Solver: Bitwuzla 0.8.2 • Decision procedure total time: 0.062s • Avg: 0.000s/property
+
+[Coverage]
+
+Function Entry Points & Branches : 11
+Reached : 11
+Branch Coverage: 100%
+Coverage report written to cov-report.json
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit aarch64 macos

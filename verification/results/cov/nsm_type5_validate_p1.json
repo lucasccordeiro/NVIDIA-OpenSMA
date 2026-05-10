@@ -1,0 +1,190 @@
+{
+  "claims": [
+    {
+      "column": 5,
+      "condition": "(signed int)action::0 != (signed int)ModeDisable && (signed int)action::0 != (signed int)ModeEnable",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateActionGpuDegradeMode",
+      "line": 73,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)action::0 == (signed int)ModeDisable || (signed int)action::0 == (signed int)ModeEnable",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateActionGpuDegradeMode",
+      "line": 73,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)device_index::0 < (signed int)lowDeviceIndexGpuDegradeMode || (signed int)device_index::0 > (signed int)highDeviceIndexGpuDegradeMode",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateDeviceIndexGpuDegradeMode",
+      "line": 65,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)device_index::0 <= (signed int)highDeviceIndexPowerSupply",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateDeviceIndexPowerSupply",
+      "line": 80,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)device_index::0 > (signed int)highDeviceIndexPowerSupply",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateDeviceIndexPowerSupply",
+      "line": 80,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)device_index::0 >= (signed int)lowDeviceIndexGpuDegradeMode && (signed int)device_index::0 <= (signed int)highDeviceIndexGpuDegradeMode",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateDeviceIndexGpuDegradeMode",
+      "line": 65,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)mode::0 != (signed int)ModeDisable && (signed int)mode::0 != (signed int)ModeEnable",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateModePowerSupply",
+      "line": 87,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)mode::0 == (signed int)ModeDisable || (signed int)mode::0 == (signed int)ModeEnable",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateModePowerSupply",
+      "line": 87,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "bitset_counter <= 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateFatalErrorInjectionPayload",
+      "line": 54,
+      "status": "covered"
+    },
+    {
+      "column": 9,
+      "condition": "bitset_counter <= 0 && bitset_counter <= 1",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateFatalErrorInjectionPayload",
+      "line": 55,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "bitset_counter <= 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateFatalErrorInjectionPayload",
+      "line": 57,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "bitset_counter <= 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateFatalErrorInjectionPayload",
+      "line": 57,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "bitset_counter <= 0 && bitset_counter > 1",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateFatalErrorInjectionPayload",
+      "line": 55,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "bitset_counter <= 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateFatalErrorInjectionPayload",
+      "line": 57,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "bitset_counter <= 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateFatalErrorInjectionPayload",
+      "line": 57,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "bitset_counter > 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateFatalErrorInjectionPayload",
+      "line": 54,
+      "status": "covered"
+    },
+    {
+      "column": 9,
+      "condition": "bitset_counter > 0 && bitset_counter <= 1",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateFatalErrorInjectionPayload",
+      "line": 55,
+      "status": "covered"
+    },
+    {
+      "column": 9,
+      "condition": "bitset_counter > 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateFatalErrorInjectionPayload",
+      "line": 57,
+      "status": "covered"
+    },
+    {
+      "column": 9,
+      "condition": "bitset_counter > 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateFatalErrorInjectionPayload",
+      "line": 57,
+      "status": "covered"
+    },
+    {
+      "column": 9,
+      "condition": "bitset_counter > 0 && bitset_counter > 1",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateFatalErrorInjectionPayload",
+      "line": 55,
+      "status": "covered"
+    },
+    {
+      "column": 9,
+      "condition": "bitset_counter > 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateFatalErrorInjectionPayload",
+      "line": 57,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "bitset_counter > 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp",
+      "function": "validateFatalErrorInjectionPayload",
+      "line": 57,
+      "status": "uncovered"
+    }
+  ],
+  "coverage_type": "k-path",
+  "source_files": [
+    "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp"
+  ],
+  "summary": {
+    "covered": 14,
+    "percentage": 63.63636363636363,
+    "total": 22,
+    "uncovered": 8
+  }
+}

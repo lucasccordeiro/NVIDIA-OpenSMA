@@ -1,0 +1,1120 @@
+{
+  "claims": [
+    {
+      "column": 9,
+      "condition": "!eid_ok && ((signed int)type == 1 || (signed int)type == 0) && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && ((signed int)type == 1 || (signed int)type == 0) && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && ((signed int)type == 1 || (signed int)type == 0) && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && ((signed int)type == 1 || (signed int)type == 0) && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && (signed int)type != 1 && (signed int)type != 0 && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && (signed int)type != 1 && (signed int)type != 0 && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && (signed int)type != 1 && (signed int)type != 0 && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && (signed int)type != 1 && (signed int)type != 0 && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && (signed int)vendor_id != 56848 && (signed int)ctl->msg_type != 127 && (vdr->iana == 5703 || vdr->iana == 1192624128)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && (signed int)vendor_id != 56848 && (signed int)ctl->msg_type != 127 && vdr->iana != 5703 && vdr->iana != 1192624128",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && (signed int)vendor_id != 56848 && (signed int)ctl->msg_type == 127 && (vdr->iana == 5703 || vdr->iana == 1192624128)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && (signed int)vendor_id != 56848 && (signed int)ctl->msg_type == 127 && vdr->iana != 5703 && vdr->iana != 1192624128",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && (signed int)vendor_id == 56848 && (signed int)ctl->msg_type != 127 && (vdr->iana == 5703 || vdr->iana == 1192624128)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && (signed int)vendor_id == 56848 && (signed int)ctl->msg_type != 127 && vdr->iana != 5703 && vdr->iana != 1192624128",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && (signed int)vendor_id == 56848 && (signed int)ctl->msg_type == 127 && (vdr->iana == 5703 || vdr->iana == 1192624128)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "!eid_ok && (signed int)vendor_id == 56848 && (signed int)ctl->msg_type == 127 && vdr->iana != 5703 && vdr->iana != 1192624128",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "!eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 10,
+      "condition": "((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) && (!eid_ok || (signed int)this->_eid != (signed int)ctl->dst_eid) && ((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 156,
+      "status": "uncovered"
+    },
+    {
+      "column": 10,
+      "condition": "((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) && (!eid_ok || (signed int)this->_eid != (signed int)ctl->dst_eid) && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 156,
+      "status": "uncovered"
+    },
+    {
+      "column": 10,
+      "condition": "((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) && eid_ok && (signed int)this->_eid == (signed int)ctl->dst_eid && ((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 156,
+      "status": "uncovered"
+    },
+    {
+      "column": 10,
+      "condition": "((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) && eid_ok && (signed int)this->_eid == (signed int)ctl->dst_eid && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 156,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)((unsigned char)ctl->hdr_ver) != 1",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 33,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 < 18",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 38,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 < 18 && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 43,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 < 18 && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 43,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 >= 18",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 38,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 >= 18 && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 43,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 >= 18 && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 43,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)((unsigned char)ctl->hdr_ver) == 1",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 33,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 < 18",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 38,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 < 18 && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 43,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 < 18 && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 43,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 >= 18",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 38,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 >= 18 && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 43,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 >= 18 && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 43,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type != 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type != 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type != 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type != 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type != 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type != 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type != 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type != 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type == 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type == 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type == 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type == 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type == 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type == 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type == 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(signed int)ctl->msg_type == 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 118,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)iface_byte < 18",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_validator_harness.cpp",
+      "function": "check_validate_safe_for_any_interface",
+      "line": 50,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)iface_byte >= 18",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_validator_harness.cpp",
+      "function": "check_validate_safe_for_any_interface",
+      "line": 50,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)interface::1 < 2",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp",
+      "function": "get_cur_eid",
+      "line": 26,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)interface::1 >= 2",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp",
+      "function": "get_cur_eid",
+      "line": 26,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id != 56848 && (signed int)ctl->msg_type != 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id != 56848 && (signed int)ctl->msg_type != 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id != 56848 && (signed int)ctl->msg_type != 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id != 56848 && (signed int)ctl->msg_type != 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id != 56848 && (signed int)ctl->msg_type == 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id != 56848 && (signed int)ctl->msg_type == 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id != 56848 && (signed int)ctl->msg_type == 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id != 56848 && (signed int)ctl->msg_type == 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id == 56848 && (signed int)ctl->msg_type != 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id == 56848 && (signed int)ctl->msg_type != 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id == 56848 && (signed int)ctl->msg_type != 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id == 56848 && (signed int)ctl->msg_type != 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id == 56848 && (signed int)ctl->msg_type == 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id == 56848 && (signed int)ctl->msg_type == 127 && (vdr->iana == 5703 || vdr->iana == 1192624128) && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id == 56848 && (signed int)ctl->msg_type == 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)vendor_id == 56848 && (signed int)ctl->msg_type == 127 && vdr->iana != 5703 && vdr->iana != 1192624128 && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 117,
+      "status": "uncovered"
+    },
+    {
+      "column": 10,
+      "condition": "(unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 && (!eid_ok || (signed int)this->_eid != (signed int)ctl->dst_eid) && ((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 156,
+      "status": "uncovered"
+    },
+    {
+      "column": 10,
+      "condition": "(unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 && (!eid_ok || (signed int)this->_eid != (signed int)ctl->dst_eid) && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 156,
+      "status": "uncovered"
+    },
+    {
+      "column": 10,
+      "condition": "(unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 && eid_ok && (signed int)this->_eid == (signed int)ctl->dst_eid && ((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 156,
+      "status": "uncovered"
+    },
+    {
+      "column": 10,
+      "condition": "(unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 && eid_ok && (signed int)this->_eid == (signed int)ctl->dst_eid && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 156,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 >= 18 && !eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 >= 18 && !eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 >= 18 && !eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 >= 18 && !eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 >= 18 && eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 >= 18 && eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 >= 18 && eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(unsigned int)interface::1 >= 18 && eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 45,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(vdr->iana == 5703 || vdr->iana == 1192624128) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && ((signed int)type == 1 || (signed int)type == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(vdr->iana == 5703 || vdr->iana == 1192624128) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && (signed int)type != 1 && (signed int)type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(vdr->iana == 5703 || vdr->iana == 1192624128) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && ((signed int)type == 1 || (signed int)type == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(vdr->iana == 5703 || vdr->iana == 1192624128) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && (signed int)type != 1 && (signed int)type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(vdr->iana == 5703 || vdr->iana == 1192624128) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && ((signed int)type == 1 || (signed int)type == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(vdr->iana == 5703 || vdr->iana == 1192624128) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && (signed int)type != 1 && (signed int)type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(vdr->iana == 5703 || vdr->iana == 1192624128) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && ((signed int)type == 1 || (signed int)type == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "(vdr->iana == 5703 || vdr->iana == 1192624128) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && (signed int)type != 1 && (signed int)type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && ((signed int)type == 1 || (signed int)type == 0) && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && ((signed int)type == 1 || (signed int)type == 0) && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && ((signed int)type == 1 || (signed int)type == 0) && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && ((signed int)type == 1 || (signed int)type == 0) && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && (signed int)type != 1 && (signed int)type != 0 && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && (signed int)type != 1 && (signed int)type != 0 && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && (signed int)type != 1 && (signed int)type != 0 && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && !eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && (signed int)type != 1 && (signed int)type != 0 && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && eid_ok",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && (signed int)vendor_id != 56848 && (signed int)ctl->msg_type != 127 && (vdr->iana == 5703 || vdr->iana == 1192624128)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && (signed int)vendor_id != 56848 && (signed int)ctl->msg_type != 127 && vdr->iana != 5703 && vdr->iana != 1192624128",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && (signed int)vendor_id != 56848 && (signed int)ctl->msg_type == 127 && (vdr->iana == 5703 || vdr->iana == 1192624128)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && (signed int)vendor_id != 56848 && (signed int)ctl->msg_type == 127 && vdr->iana != 5703 && vdr->iana != 1192624128",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && (signed int)vendor_id == 56848 && (signed int)ctl->msg_type != 127 && (vdr->iana == 5703 || vdr->iana == 1192624128)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && (signed int)vendor_id == 56848 && (signed int)ctl->msg_type != 127 && vdr->iana != 5703 && vdr->iana != 1192624128",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && (signed int)vendor_id == 56848 && (signed int)ctl->msg_type == 127 && (vdr->iana == 5703 || vdr->iana == 1192624128)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "eid_ok && (signed int)vendor_id == 56848 && (signed int)ctl->msg_type == 127 && vdr->iana != 5703 && vdr->iana != 1192624128",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 116,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "eid_ok && (unsigned long int)i < 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "eid_ok && (unsigned long int)i >= 2 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "vdr->iana != 5703 && vdr->iana != 1192624128 && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && ((signed int)type == 1 || (signed int)type == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "vdr->iana != 5703 && vdr->iana != 1192624128 && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && (signed int)type != 1 && (signed int)type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "vdr->iana != 5703 && vdr->iana != 1192624128 && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && ((signed int)type == 1 || (signed int)type == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "vdr->iana != 5703 && vdr->iana != 1192624128 && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && (signed int)type != 1 && (signed int)type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "vdr->iana != 5703 && vdr->iana != 1192624128 && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && ((signed int)type == 1 || (signed int)type == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "vdr->iana != 5703 && vdr->iana != 1192624128 && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && (signed int)type != 1 && (signed int)type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "vdr->iana != 5703 && vdr->iana != 1192624128 && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && ((signed int)type == 1 || (signed int)type == 0)",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    },
+    {
+      "column": 17,
+      "condition": "vdr->iana != 5703 && vdr->iana != 1192624128 && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && (signed int)type != 1 && (signed int)type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+      "function": "validate",
+      "line": 123,
+      "status": "uncovered"
+    }
+  ],
+  "coverage_type": "k-path",
+  "source_files": [
+    "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp",
+    "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp",
+    "/Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_validator_harness.cpp"
+  ],
+  "summary": {
+    "covered": 3,
+    "percentage": 2.1739130434782608,
+    "total": 138,
+    "uncovered": 135
+  }
+}

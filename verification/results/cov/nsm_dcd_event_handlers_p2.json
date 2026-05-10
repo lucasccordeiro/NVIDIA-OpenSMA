@@ -1,0 +1,894 @@
+{
+  "claims": [
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 85,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 85,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 85,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 85,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 85,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 85,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 85,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 85,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "(signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@4223@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 90,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type != 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 13,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@2786@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type == 0 && c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 70,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 83,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 83,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 83,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 83,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 83,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 83,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 83,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3201@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 83,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "c:nsm_dcd_event_handlers_harness.cpp@3538@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6 && c:nsm_dcd_event_handlers_harness.cpp@3958@F@main#@i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 88,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "i < (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 62,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "i < (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 66,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "i < (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "i < (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "i < (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 66,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "i < (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "i < (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "i >= (unsigned long int)NvMctpEventSupportedNum",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 62,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "i >= (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 66,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "i >= (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "i >= (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "i >= (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 66,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "i >= (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 9,
+      "condition": "i >= (unsigned long int)NvMctpEventSupportedNum && return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 68,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type != 0 && i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type != 0 && i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type != 0 && i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type != 0 && i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type == 0 && i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type == 0 && i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type == 0 && i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 != 0 && (signed int)nv_msg_type == 0 && i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type != 0 && i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type != 0 && i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type != 0 && i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type != 0 && i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type == 0 && i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type == 0 && i < (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type == 0 && i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type != 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    },
+    {
+      "column": 14,
+      "condition": "return_value$_nondet_uint$13 % 2 == 0 && (signed int)nv_msg_type == 0 && i >= (unsigned long int)NvMctpEventSupportedNum && (signed int)nv_msg_type == 6",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp",
+      "function": "main",
+      "line": 74,
+      "status": "uncovered"
+    }
+  ],
+  "coverage_type": "k-path",
+  "source_files": [
+    "/Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_dcd_event_handlers_harness.cpp"
+  ],
+  "summary": {
+    "covered": 1,
+    "percentage": 0.9090909090909091,
+    "total": 110,
+    "uncovered": 109
+  }
+}

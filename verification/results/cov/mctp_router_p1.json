@@ -1,0 +1,30 @@
+{
+  "claims": [
+    {
+      "column": 5,
+      "condition": "(signed int)interface::1 < 2",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp",
+      "function": "get_cur_eid",
+      "line": 26,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)interface::1 >= 2",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp",
+      "function": "get_cur_eid",
+      "line": 26,
+      "status": "covered"
+    }
+  ],
+  "coverage_type": "k-path",
+  "source_files": [
+    "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp"
+  ],
+  "summary": {
+    "covered": 2,
+    "percentage": 100.0,
+    "total": 2,
+    "uncovered": 0
+  }
+}

@@ -1,0 +1,1985 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.760s
+Adding k-path coverage assertions (n=9)...
+GOTO program processing time: 0.154s
+Starting Bounded Model Checking
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'division by zero' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.h line 168 column 5 function ntc_temp_to_adc_value
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1' at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Unwinding loop 4 iteration 1   file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+Symex completed in: 0.051s (641 assignments)
+Caching time: 0.006s (removed 1 assertions)
+Slicing time: 0.006s (removed 188 assignments)
+Generated 152 VCC(s), 130 remaining after simplification (452 assignments)
+No solver specified; defaulting to bitwuzla
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 103 column 5 function f_round_trip thread 0
+----------------------------------------------------
+  t = 122 (00000000 01111010)
+
+State 4 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 175 column 5 function ntc_temperature_to_resistance thread 0
+----------------------------------------------------
+  index = 162 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 10100010)
+
+State 8 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 106 column 5 function f_round_trip thread 0
+----------------------------------------------------
+  r = 370 (00000000 00000000 00000001 01110010)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 37 (00000000 00000000 00000000 00100101)
+
+State 17 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1
+  rScaled > (unsigned int)(NtcResistanceTable[0]) || rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) || low >= high - 1
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.010s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.010s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 103 column 5 function f_round_trip thread 0
+----------------------------------------------------
+  t = 122 (00000000 01111010)
+
+State 4 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 175 column 5 function ntc_temperature_to_resistance thread 0
+----------------------------------------------------
+  index = 162 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 10100010)
+
+State 8 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 106 column 5 function f_round_trip thread 0
+----------------------------------------------------
+  r = 370 (00000000 00000000 00000001 01110010)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 37 (00000000 00000000 00000000 00100101)
+
+State 14 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1
+
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.127s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 103 column 5 function f_round_trip thread 0
+----------------------------------------------------
+  t = 122 (00000000 01111010)
+
+State 4 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 175 column 5 function ntc_temperature_to_resistance thread 0
+----------------------------------------------------
+  index = 162 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 10100010)
+
+State 8 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 106 column 5 function f_round_trip thread 0
+----------------------------------------------------
+  r = 370 (00000000 00000000 00000001 01110010)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 37 (00000000 00000000 00000000 00100101)
+
+State 12 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])
+  rScaled > (unsigned int)(NtcResistanceTable[0]) || rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])
+
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.010s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.164s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 103 column 5 function f_round_trip thread 0
+----------------------------------------------------
+  t = 1 (00000000 00000001)
+
+State 4 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 175 column 5 function ntc_temperature_to_resistance thread 0
+----------------------------------------------------
+  index = 41 (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00101001)
+
+State 8 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 106 column 5 function f_round_trip thread 0
+----------------------------------------------------
+  r = 30940 (00000000 00000000 01111000 11011100)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 3094 (00000000 00000000 00001100 00010110)
+
+State 11 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0])
+  rScaled > (unsigned int)(NtcResistanceTable[0])
+
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)tempCelsius::0 < (signed int)NtcTempMin || (signed int)tempCelsius::0 > (signed int)NtcTempMax at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.006s
+✓ PASSED: '(signed int)tempCelsius::0 < (signed int)NtcTempMin || (signed int)tempCelsius::0 > (signed int)NtcTempMax at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)tempCelsius::0 >= (signed int)NtcTempMin && (signed int)tempCelsius::0 <= (signed int)NtcTempMax at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.010s
+✗ FAILED: '(signed int)tempCelsius::0 >= (signed int)NtcTempMin && (signed int)tempCelsius::0 <= (signed int)NtcTempMax at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 103 column 5 function f_round_trip thread 0
+----------------------------------------------------
+  t = -2 (11111111 11111110)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance
+  (signed int)tempCelsius::0 >= (signed int)NtcTempMin && (signed int)tempCelsius::0 <= (signed int)NtcTempMax
+  (signed int)tempCelsius::0 < (signed int)NtcTempMin || (signed int)tempCelsius::0 > (signed int)NtcTempMax
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 89 column 5 function f_resistance_to_temp_range thread 0
+----------------------------------------------------
+  r = 340 (00000000 00000000 00000001 01010100)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 34 (00000000 00000000 00000000 00100010)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.005s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 89 column 5 function f_resistance_to_temp_range thread 0
+----------------------------------------------------
+  r = 340 (00000000 00000000 00000001 01010100)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 34 (00000000 00000000 00000000 00100010)
+
+State 7 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.010s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 89 column 5 function f_resistance_to_temp_range thread 0
+----------------------------------------------------
+  r = 0 (00000000 00000000 00000000 00000000)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 0 (00000000 00000000 00000000 00000000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])
+  rScaled > (unsigned int)(NtcResistanceTable[0]) || rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 89 column 5 function f_resistance_to_temp_range thread 0
+----------------------------------------------------
+  r = 340 (00000000 00000000 00000001 01010100)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 34 (00000000 00000000 00000000 00100010)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+✗ FAILED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 89 column 5 function f_resistance_to_temp_range thread 0
+----------------------------------------------------
+  r = 4294967168 (11111111 11111111 11111111 10000000)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 429496716 (00011001 10011001 10011001 10001100)
+
+State 4 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature
+  rScaled > (unsigned int)(NtcResistanceTable[0])
+  rScaled <= (unsigned int)(NtcResistanceTable[0])
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 89 column 5 function f_resistance_to_temp_range thread 0
+----------------------------------------------------
+  r = 0 (00000000 00000000 00000000 00000000)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 0 (00000000 00000000 00000000 00000000)
+
+State 4 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0])
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)tempCelsius::0 < (signed int)NtcTempMin || (signed int)tempCelsius::0 > (signed int)NtcTempMax at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+✓ PASSED: '(signed int)tempCelsius::0 < (signed int)NtcTempMin || (signed int)tempCelsius::0 > (signed int)NtcTempMax at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)tempCelsius::0 >= (signed int)NtcTempMin && (signed int)tempCelsius::0 <= (signed int)NtcTempMax at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✗ FAILED: '(signed int)tempCelsius::0 >= (signed int)NtcTempMin && (signed int)tempCelsius::0 <= (signed int)NtcTempMax at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 73 column 5 function f_temp_to_resistance_contract thread 0
+----------------------------------------------------
+  t = -2 (11111111 11111110)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance
+  (signed int)tempCelsius::0 >= (signed int)NtcTempMin && (signed int)tempCelsius::0 <= (signed int)NtcTempMax
+
+Slicing time: 0.003s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+Slicing time: 0.004s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.031s
+Slicing time: 0.003s (removed 1 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.007s
+Slicing time: 0.004s (removed 1 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+Slicing time: 0.004s (removed 1 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+Slicing time: 0.004s (removed 1 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.010s
+Slicing time: 0.004s (removed 2 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+Slicing time: 0.004s (removed 2 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+Slicing time: 0.003s (removed 2 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+Slicing time: 0.004s (removed 3 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.007s
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)tempCelsius::0 < (signed int)NtcTempMin || (signed int)tempCelsius::0 > (signed int)NtcTempMax at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.007s
+✗ FAILED: '(signed int)tempCelsius::0 < (signed int)NtcTempMin || (signed int)tempCelsius::0 > (signed int)NtcTempMax at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 59 column 5 function f_temp_to_resistance thread 0
+----------------------------------------------------
+  t = -42 (11111111 11010110)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance
+  (signed int)tempCelsius::0 < (signed int)NtcTempMin || (signed int)tempCelsius::0 > (signed int)NtcTempMax
+  (signed int)tempCelsius::0 >= (signed int)NtcTempMin && (signed int)tempCelsius::0 <= (signed int)NtcTempMax
+
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)tempCelsius::0 >= (signed int)NtcTempMin && (signed int)tempCelsius::0 <= (signed int)NtcTempMax at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✗ FAILED: '(signed int)tempCelsius::0 >= (signed int)NtcTempMin && (signed int)tempCelsius::0 <= (signed int)NtcTempMax at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 59 column 5 function f_temp_to_resistance thread 0
+----------------------------------------------------
+  t = -2 (11111111 11111110)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 171 column 5 function ntc_temperature_to_resistance
+  (signed int)tempCelsius::0 >= (signed int)NtcTempMin && (signed int)tempCelsius::0 <= (signed int)NtcTempMax
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.024s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 52 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  adc = 2048 (00001000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 53 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  vref = 32768 (10000000 00000000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 158 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv = 1024 (00000000 00000000 00000100 00000000)
+
+State 6 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 161 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv16 = 1024 (00000000 00000000 00000100 00000000)
+
+State 8 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 49 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+  numerator = 1024000 (00000000 00001111 10100000 00000000)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 50 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+  denominator = 2276 (00000000 00000000 00001000 11100100)
+
+State 13 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 147 column 5 function ntc_voltage_to_temperature thread 0
+----------------------------------------------------
+  resistance = 449 (00000000 00000000 00000001 11000001)
+
+State 15 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 44 (00000000 00000000 00000000 00101100)
+
+State 22 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.023s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 52 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  adc = 2048 (00001000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 53 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  vref = 32768 (10000000 00000000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 158 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv = 1024 (00000000 00000000 00000100 00000000)
+
+State 6 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 161 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv16 = 1024 (00000000 00000000 00000100 00000000)
+
+State 8 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 49 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+  numerator = 1024000 (00000000 00001111 10100000 00000000)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 50 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+  denominator = 2276 (00000000 00000000 00001000 11100100)
+
+State 13 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 147 column 5 function ntc_voltage_to_temperature thread 0
+----------------------------------------------------
+  resistance = 449 (00000000 00000000 00000001 11000001)
+
+State 15 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 44 (00000000 00000000 00000000 00101100)
+
+State 19 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 52 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  adc = 0 (00000000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 53 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  vref = 0 (00000000 00000000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 158 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv = 0 (00000000 00000000 00000000 00000000)
+
+State 6 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 161 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv16 = 0 (00000000 00000000 00000000 00000000)
+
+State 7 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 147 column 5 function ntc_voltage_to_temperature thread 0
+----------------------------------------------------
+  resistance = 0 (00000000 00000000 00000000 00000000)
+
+State 9 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 0 (00000000 00000000 00000000 00000000)
+
+State 11 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.023s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 52 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  adc = 2048 (00001000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 53 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  vref = 32768 (10000000 00000000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 158 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv = 1024 (00000000 00000000 00000100 00000000)
+
+State 6 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 161 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv16 = 1024 (00000000 00000000 00000100 00000000)
+
+State 8 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 49 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+  numerator = 1024000 (00000000 00001111 10100000 00000000)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 50 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+  denominator = 2276 (00000000 00000000 00001000 11100100)
+
+State 13 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 147 column 5 function ntc_voltage_to_temperature thread 0
+----------------------------------------------------
+  resistance = 449 (00000000 00000000 00000001 11000001)
+
+State 15 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 44 (00000000 00000000 00000000 00101100)
+
+State 17 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+✗ FAILED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 52 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  adc = 65535 (11111111 11111111)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 53 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  vref = 65535 (11111111 11111111)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 158 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv = 65535 (00000000 00000000 11111111 11111111)
+
+State 6 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 161 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv16 = 65535 (00000000 00000000 11111111 11111111)
+
+State 7 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 147 column 5 function ntc_voltage_to_temperature thread 0
+----------------------------------------------------
+  resistance = 4294967295 (11111111 11111111 11111111 11111111)
+
+State 9 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 429496729 (00011001 10011001 10011001 10011001)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature
+  rScaled > (unsigned int)(NtcResistanceTable[0])
+
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.012s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 52 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  adc = 0 (00000000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 53 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  vref = 0 (00000000 00000000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 158 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv = 0 (00000000 00000000 00000000 00000000)
+
+State 6 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 161 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv16 = 0 (00000000 00000000 00000000 00000000)
+
+State 7 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 147 column 5 function ntc_voltage_to_temperature thread 0
+----------------------------------------------------
+  resistance = 0 (00000000 00000000 00000000 00000000)
+
+State 9 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 0 (00000000 00000000 00000000 00000000)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0])
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)voltageMv::0 < NtcVref && (signed int)voltageMv::0 == 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✗ FAILED: '(unsigned int)voltageMv::0 < NtcVref && (signed int)voltageMv::0 == 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 52 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  adc = 0 (00000000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 53 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  vref = 0 (00000000 00000000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 158 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv = 0 (00000000 00000000 00000000 00000000)
+
+State 6 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 161 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv16 = 0 (00000000 00000000 00000000 00000000)
+
+State 7 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance
+  (unsigned int)voltageMv::0 < NtcVref && (signed int)voltageMv::0 == 0
+  (unsigned int)voltageMv::0 >= NtcVref || (signed int)voltageMv::0 != 0
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)voltageMv::0 < NtcVref && (signed int)voltageMv::0 != 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✗ FAILED: '(unsigned int)voltageMv::0 < NtcVref && (signed int)voltageMv::0 != 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 52 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  adc = 65535 (11111111 11111111)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 53 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  vref = 1 (00000000 00000001)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 158 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv = 1 (00000000 00000000 00000000 00000001)
+
+State 6 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 161 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv16 = 1 (00000000 00000000 00000000 00000001)
+
+State 7 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance
+  (unsigned int)voltageMv::0 < NtcVref && (signed int)voltageMv::0 != 0
+  (unsigned int)voltageMv::0 >= NtcVref || (signed int)voltageMv::0 == 0
+
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)voltageMv::0 >= NtcVref && (signed int)voltageMv::0 == 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.007s
+✓ PASSED: '(unsigned int)voltageMv::0 >= NtcVref && (signed int)voltageMv::0 == 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)voltageMv::0 >= NtcVref && (signed int)voltageMv::0 != 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✓ PASSED: '(unsigned int)voltageMv::0 >= NtcVref && (signed int)voltageMv::0 != 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)voltageMv::0 >= NtcVref at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✗ FAILED: '(unsigned int)voltageMv::0 >= NtcVref at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 52 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  adc = 65535 (11111111 11111111)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 53 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  vref = 65535 (11111111 11111111)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 158 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv = 65535 (00000000 00000000 11111111 11111111)
+
+State 6 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 161 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv16 = 65535 (00000000 00000000 11111111 11111111)
+
+State 7 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance
+  (unsigned int)voltageMv::0 >= NtcVref
+  (unsigned int)voltageMv::0 < NtcVref
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)voltageMv::0 < NtcVref at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✗ FAILED: '(unsigned int)voltageMv::0 < NtcVref at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 52 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  adc = 0 (00000000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 53 column 5 function f_adc_to_temp thread 0
+----------------------------------------------------
+  vref = 0 (00000000 00000000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 158 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv = 0 (00000000 00000000 00000000 00000000)
+
+State 6 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 161 column 5 function ntc_adc_to_temperature thread 0
+----------------------------------------------------
+  voltageMv16 = 0 (00000000 00000000 00000000 00000000)
+
+State 7 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance
+  (unsigned int)voltageMv::0 < NtcVref
+  (unsigned int)voltageMv::0 >= NtcVref
+
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 46 column 5 function f_voltage_to_temp thread 0
+----------------------------------------------------
+  v = 1098 (00000100 01001010)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 49 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+  numerator = 1098000 (00000000 00010000 11000001 00010000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 50 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+  denominator = 2202 (00000000 00000000 00001000 10011010)
+
+State 8 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 147 column 5 function ntc_voltage_to_temperature thread 0
+----------------------------------------------------
+  resistance = 498 (00000000 00000000 00000001 11110010)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 49 (00000000 00000000 00000000 00110001)
+
+State 17 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.007s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 46 column 5 function f_voltage_to_temp thread 0
+----------------------------------------------------
+  v = 1098 (00000100 01001010)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 49 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+  numerator = 1098000 (00000000 00010000 11000001 00010000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 50 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+  denominator = 2202 (00000000 00000000 00001000 10011010)
+
+State 8 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 147 column 5 function ntc_voltage_to_temperature thread 0
+----------------------------------------------------
+  resistance = 498 (00000000 00000000 00000001 11110010)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 49 (00000000 00000000 00000000 00110001)
+
+State 14 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.007s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.009s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 46 column 5 function f_voltage_to_temp thread 0
+----------------------------------------------------
+  v = 0 (00000000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 147 column 5 function ntc_voltage_to_temperature thread 0
+----------------------------------------------------
+  resistance = 0 (00000000 00000000 00000000 00000000)
+
+State 4 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 0 (00000000 00000000 00000000 00000000)
+
+State 6 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.011s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 46 column 5 function f_voltage_to_temp thread 0
+----------------------------------------------------
+  v = 1098 (00000100 01001010)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 49 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+  numerator = 1098000 (00000000 00010000 11000001 00010000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 50 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+  denominator = 2202 (00000000 00000000 00001000 10011010)
+
+State 8 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 147 column 5 function ntc_voltage_to_temperature thread 0
+----------------------------------------------------
+  resistance = 498 (00000000 00000000 00000001 11110010)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 49 (00000000 00000000 00000000 00110001)
+
+State 12 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.007s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.008s
+✗ FAILED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 46 column 5 function f_voltage_to_temp thread 0
+----------------------------------------------------
+  v = 65535 (11111111 11111111)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 147 column 5 function ntc_voltage_to_temperature thread 0
+----------------------------------------------------
+  resistance = 4294967295 (11111111 11111111 11111111 11111111)
+
+State 4 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 429496729 (00011001 10011001 10011001 10011001)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature
+  rScaled > (unsigned int)(NtcResistanceTable[0])
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.007s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 46 column 5 function f_voltage_to_temp thread 0
+----------------------------------------------------
+  v = 0 (00000000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 147 column 5 function ntc_voltage_to_temperature thread 0
+----------------------------------------------------
+  resistance = 0 (00000000 00000000 00000000 00000000)
+
+State 4 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 0 (00000000 00000000 00000000 00000000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0])
+
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)voltageMv::0 < NtcVref && (signed int)voltageMv::0 == 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+✗ FAILED: '(unsigned int)voltageMv::0 < NtcVref && (signed int)voltageMv::0 == 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 46 column 5 function f_voltage_to_temp thread 0
+----------------------------------------------------
+  v = 0 (00000000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance
+  (unsigned int)voltageMv::0 < NtcVref && (signed int)voltageMv::0 == 0
+
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)voltageMv::0 < NtcVref && (signed int)voltageMv::0 != 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+✗ FAILED: '(unsigned int)voltageMv::0 < NtcVref && (signed int)voltageMv::0 != 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 46 column 5 function f_voltage_to_temp thread 0
+----------------------------------------------------
+  v = 3299 (00001100 11100011)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance
+  (unsigned int)voltageMv::0 < NtcVref && (signed int)voltageMv::0 != 0
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)voltageMv::0 >= NtcVref && (signed int)voltageMv::0 == 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✓ PASSED: '(unsigned int)voltageMv::0 >= NtcVref && (signed int)voltageMv::0 == 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)voltageMv::0 >= NtcVref && (signed int)voltageMv::0 != 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✓ PASSED: '(unsigned int)voltageMv::0 >= NtcVref && (signed int)voltageMv::0 != 0 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 43 column 5 function voltage_to_resistance'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)voltageMv::0 >= NtcVref at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+✗ FAILED: '(unsigned int)voltageMv::0 >= NtcVref at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 46 column 5 function f_voltage_to_temp thread 0
+----------------------------------------------------
+  v = 65532 (11111111 11111100)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance
+  (unsigned int)voltageMv::0 >= NtcVref
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)voltageMv::0 < NtcVref at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✗ FAILED: '(unsigned int)voltageMv::0 < NtcVref at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 46 column 5 function f_voltage_to_temp thread 0
+----------------------------------------------------
+  v = 3296 (00001100 11100000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 39 column 5 function voltage_to_resistance
+  (unsigned int)voltageMv::0 < NtcVref
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 40 column 5 function f_resistance_to_temp thread 0
+----------------------------------------------------
+  r = 340 (00000000 00000000 00000001 01010100)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 34 (00000000 00000000 00000000 00100010)
+
+State 10 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 40 column 5 function f_resistance_to_temp thread 0
+----------------------------------------------------
+  r = 340 (00000000 00000000 00000001 01010100)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 34 (00000000 00000000 00000000 00100010)
+
+State 7 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✓ PASSED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1 at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 86 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 40 column 5 function f_resistance_to_temp thread 0
+----------------------------------------------------
+  r = 0 (00000000 00000000 00000000 00000000)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 0 (00000000 00000000 00000000 00000000)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 40 column 5 function f_resistance_to_temp thread 0
+----------------------------------------------------
+  r = 340 (00000000 00000000 00000001 01010100)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 34 (00000000 00000000 00000000 00100010)
+
+State 5 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✓ PASSED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 76 column 5 function ntc_resistance_to_temperature'
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled > (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'rScaled > (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 40 column 5 function f_resistance_to_temp thread 0
+----------------------------------------------------
+  r = 4294967168 (11111111 11111111 11111111 10000000)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 429496716 (00011001 10011001 10011001 10001100)
+
+State 4 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature
+  rScaled > (unsigned int)(NtcResistanceTable[0])
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'rScaled <= (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'rScaled <= (unsigned int)(NtcResistanceTable[0]) at file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/ntc_table_harness.cpp line 40 column 5 function f_resistance_to_temp thread 0
+----------------------------------------------------
+  r = 0 (00000000 00000000 00000000 00000000)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 66 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+  rScaled = 0 (00000000 00000000 00000000 00000000)
+
+State 4 file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp line 70 column 5 function ntc_resistance_to_temperature
+  rScaled <= (unsigned int)(NtcResistanceTable[0])
+
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.003s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.005s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.004s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Properties: 152 verified ✓ 112 passed, ✗ 40 failed
+Solver: Bitwuzla 0.8.2 • Decision procedure total time: 2.080s • Avg: 0.013s/property
+
+[Coverage]
+
+k-Path Witnesses : 22
+Reached : 11
+k-Path Coverage: 50%
+Coverage report written to cov-report.json
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit aarch64 macos

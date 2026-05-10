@@ -1,0 +1,835 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.646s
+Interval Analysis time: 0.015s
+Adding false assertions...
+GOTO program processing time: 0.024s
+Checking base case, k = 1
+Starting Bounded Model Checking
+Symex completed in: 0.038s (416 assignments)
+Slicing time: 0.003s (removed 206 assignments)
+Generated 59 VCC(s), 59 remaining after simplification (210 assignments)
+No solver specified; defaulting to bitwuzla
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.006s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_is_bit_set_iff_get# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 118 column 5 function f_contract_is_bit_set_iff_get' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.006s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_is_bit_set_iff_get# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 118 column 5 function f_contract_is_bit_set_iff_get'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 118 column 5 function f_contract_is_bit_set_iff_get thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 118 column 5 function f_contract_is_bit_set_iff_get
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_is_bit_set_iff_get#
+  0
+
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.008s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_unset_then_get# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 103 column 5 function f_contract_unset_then_get' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_unset_then_get# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 103 column 5 function f_contract_unset_then_get'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 103 column 5 function f_contract_unset_then_get thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 103 column 5 function f_contract_unset_then_get
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_unset_then_get#
+  0
+
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_set_then_get# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 91 column 5 function f_contract_set_then_get' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_set_then_get# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 91 column 5 function f_contract_set_then_get'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 91 column 5 function f_contract_set_then_get thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 91 column 5 function f_contract_set_then_get
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_contract_set_then_get#
+  0
+
+Slicing time: 0.002s (removed 29 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.002s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_unset_bit8_safe_inrange# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 80 column 5 function f_unset_bit8_safe_inrange' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_unset_bit8_safe_inrange# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 80 column 5 function f_unset_bit8_safe_inrange'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 80 column 5 function f_unset_bit8_safe_inrange thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 80 column 5 function f_unset_bit8_safe_inrange
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_unset_bit8_safe_inrange#
+  0
+
+Slicing time: 0.001s (removed 29 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.001s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_set_bit8_safe_inrange# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 70 column 5 function f_set_bit8_safe_inrange' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_set_bit8_safe_inrange# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 70 column 5 function f_set_bit8_safe_inrange'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 70 column 5 function f_set_bit8_safe_inrange thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 70 column 5 function f_set_bit8_safe_inrange
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_set_bit8_safe_inrange#
+  0
+
+Slicing time: 0.001s (removed 25 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.002s (removed 26 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 28 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_get_bit8_safe_all# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 62 column 5 function f_get_bit8_safe_all' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_get_bit8_safe_all# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 62 column 5 function f_get_bit8_safe_all'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 62 column 5 function f_get_bit8_safe_all thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 62 column 5 function f_get_bit8_safe_all
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_get_bit8_safe_all#
+  0
+
+Slicing time: 0.002s (removed 24 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.002s (removed 25 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.008s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.002s (removed 27 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_is_bit_set32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 52 column 5 function f_is_bit_set32_safe' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.006s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_is_bit_set32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 52 column 5 function f_is_bit_set32_safe'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 52 column 5 function f_is_bit_set32_safe thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 52 column 5 function f_is_bit_set32_safe
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_is_bit_set32_safe#
+  0
+
+Slicing time: 0.001s (removed 25 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.001s (removed 26 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.002s (removed 28 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_get_bit32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 45 column 5 function f_get_bit32_safe' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_get_bit32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 45 column 5 function f_get_bit32_safe'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 45 column 5 function f_get_bit32_safe thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 45 column 5 function f_get_bit32_safe
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_get_bit32_safe#
+  0
+
+Slicing time: 0.001s (removed 27 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+Slicing time: 0.001s (removed 28 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 28 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_unset_bit32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 38 column 5 function f_unset_bit32_safe' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_unset_bit32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 38 column 5 function f_unset_bit32_safe'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 38 column 5 function f_unset_bit32_safe thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 38 column 5 function f_unset_bit32_safe
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_unset_bit32_safe#
+  0
+
+Slicing time: 0.002s (removed 27 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.002s (removed 28 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 28 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_set_bit32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 31 column 5 function f_set_bit32_safe' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+✗ FAILED: 'function entry: c:nsm_bitmask_harness.cpp@aN@F@f_set_bit32_safe# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 31 column 5 function f_set_bit32_safe'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 31 column 5 function f_set_bit32_safe thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 31 column 5 function f_set_bit32_safe
+  function entry: c:nsm_bitmask_harness.cpp@aN@F@f_set_bit32_safe#
+  0
+
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:@F@main# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 134 column 5 function main' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✗ FAILED: 'function entry: c:@F@main# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 134 column 5 function main'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 134 column 5 function main thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_bitmask_harness.cpp line 134 column 5 function main
+  function entry: c:@F@main#
+  0
+
+Properties: 59 verified ✓ 48 passed, ✗ 11 failed
+Solver: Bitwuzla 0.8.2 • Decision procedure total time: 0.556s • Avg: 0.009s/property
+
+VERIFICATION FAILED
+
+Bug found (k = 1)
+Checking base case, k = 2
+Starting Bounded Model Checking
+Symex completed in: 0.037s (405 assignments)
+Slicing time: 0.003s (removed 206 assignments)
+Generated 48 VCC(s), 48 remaining after simplification (199 assignments)
+No solver specified; defaulting to bitwuzla
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.006s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.008s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 31 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 29 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.002s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 29 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.002s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.002s (removed 25 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.001s (removed 26 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 28 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 24 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.001s (removed 25 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 27 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 25 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.008s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.001s (removed 26 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.002s (removed 28 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 27 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.002s (removed 28 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 28 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 27 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+Slicing time: 0.002s (removed 28 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 28 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.006s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Properties: 48 verified ✓ 48 passed
+Solver: Bitwuzla 0.8.2 • Decision procedure total time: 0.430s • Avg: 0.008s/property
+BMC program time: 0.610s
+Checking forward condition, k = 2
+Starting Bounded Model Checking
+Symex completed in: 0.036s (405 assignments)
+Slicing time: 0.003s (removed 206 assignments)
+Generated 48 VCC(s), 48 remaining after simplification (199 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.008s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+BMC program time: 0.053s
+
+Solution found by the forward condition; all states are reachable (k = 2)
+
+[Coverage]
+
+Function Entry Points & Branches : 11
+Reached : 11
+Branch Coverage: 100%
+Coverage report written to cov-report.json
+ESBMC version 8.2.0 64-bit aarch64 macos

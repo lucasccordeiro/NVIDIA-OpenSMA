@@ -898,3 +898,196 @@ nsm_gpio_safety:
 
 clean:
 	rm -rf $(RESULTS)
+
+# ----------------------------------------------------------------------------
+# Phase 4 — coverage of structurally-verified modules.
+#
+# Each in-scope module gets two coverage rules: <target>_cov_p1 (Phase 1,
+# language-level safety profile) and <target>_cov_p2 (Phase 2, k-induction).
+# scripts/cov_run.sh tries --k-path-coverage first; if ESBMC reports zero
+# k-path goals (flat harness CFG, deeply inlined header code), it falls
+# back to --branch-function-coverage. Outputs go under results/cov/, never
+# results/, so a casual grep for VERIFICATION FAILED in the safety logs
+# stays uncontaminated by coverage-mode "failures" (coverage runs activate
+# --multi-property and surface unreached goals as failed claims).
+#
+# Aggregate targets: cov_p1, cov_p2, cov (= cov_p1 + cov_p2 + summarise).
+# See verification/PHASE4_PLAN.md for the rubric and decision history.
+
+COV_RUN := ./scripts/cov_run.sh
+COV     := $(RESULTS)/cov
+
+# nsm_dcd_event_handlers — no _func variant in Phase 1/2; the p2 rule reuses
+# its custom flags+includes but swaps in the FUNC_FLAGS profile.
+nsm_dcd_event_handlers_cov_p1:
+	@mkdir -p $(COV)
+	@$(COV_RUN) nsm_dcd_event_handlers p1 $(ESBMC) \
+	  --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --unwind 10 \
+	  -I$(STUBS) -I$(REPO) -I$(REPO)/src \
+	  -I$(REPO)/corepdk/modules/mctp-cpp/src \
+	  -I$(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86 \
+	  -- $(HARNESSES)/nsm_dcd_event_handlers_harness.cpp
+
+nsm_dcd_event_handlers_cov_p2:
+	@mkdir -p $(COV)
+	@$(COV_RUN) nsm_dcd_event_handlers p2 $(ESBMC) \
+	  $(FUNC_FLAGS) \
+	  -I$(STUBS) -I$(REPO) -I$(REPO)/src \
+	  -I$(REPO)/corepdk/modules/mctp-cpp/src \
+	  -I$(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86 \
+	  -- $(HARNESSES)/nsm_dcd_event_handlers_harness.cpp
+
+soc_sma_filter_cov_p1:
+	@mkdir -p $(COV)
+	@$(COV_RUN) soc_sma_filter p1 $(ESBMC) \
+	  $(LANG_FLAGS) -I$(STUBS) -I$(REPO)/src \
+	  -- $(HARNESSES)/soc_sma_filter_harness.cpp
+
+soc_sma_filter_cov_p2:
+	@mkdir -p $(COV)
+	@$(COV_RUN) soc_sma_filter p2 $(ESBMC) \
+	  $(FUNC_FLAGS) -DESBMC_FUNCTIONAL=1 \
+	  -I$(STUBS) -I$(REPO)/src \
+	  -- $(HARNESSES)/soc_sma_filter_harness.cpp
+
+debug_telemetry_sma_cov_p1:
+	@mkdir -p $(COV)
+	@$(COV_RUN) debug_telemetry_sma p1 $(ESBMC) \
+	  $(LANG_FLAGS) -I$(STUBS) -I$(REPO)/src \
+	  -- $(HARNESSES)/debug_telemetry_sma_harness.cpp
+
+debug_telemetry_sma_cov_p2:
+	@mkdir -p $(COV)
+	@$(COV_RUN) debug_telemetry_sma p2 $(ESBMC) \
+	  $(FUNC_FLAGS) -DESBMC_FUNCTIONAL=1 \
+	  -I$(STUBS) -I$(REPO)/src \
+	  -- $(HARNESSES)/debug_telemetry_sma_harness.cpp
+
+pca9555_cov_p1:
+	@mkdir -p $(COV)
+	@$(COV_RUN) pca9555 p1 $(ESBMC) \
+	  $(LANG_FLAGS) -I$(STUBS) -I$(STUBS)/sys/i2c -I$(REPO)/src \
+	  -- $(HARNESSES)/pca9555_harness.cpp \
+	     $(REPO)/src/nv/emulation/pca9555.cpp
+
+pca9555_cov_p2:
+	@mkdir -p $(COV)
+	@$(COV_RUN) pca9555 p2 $(ESBMC) \
+	  $(FUNC_FLAGS) -DESBMC_FUNCTIONAL=1 \
+	  -I$(STUBS) -I$(STUBS)/sys/i2c -I$(REPO)/src \
+	  -- $(HARNESSES)/pca9555_harness.cpp \
+	     $(REPO)/src/nv/emulation/pca9555.cpp
+
+ntc_table_cov_p1:
+	@mkdir -p $(COV)
+	@$(COV_RUN) ntc_table p1 $(ESBMC) \
+	  --std c++20 --memory-leak-check --overflow-check \
+	  --unsigned-overflow-check --nan-check --unwind 9 \
+	  -I$(REPO)/src \
+	  -- $(REPO)/src/nv/volt_mon/ntc_table.cpp \
+	     $(HARNESSES)/ntc_table_harness.cpp
+
+ntc_table_cov_p2:
+	@mkdir -p $(COV)
+	@# --max-k-step 4 (vs 12 in ntc_table_func): the 166-entry binary-search
+	@# VCC count multiplied by k-path-coverage's multi-property mode pushes
+	@# the original k=12 setting past Phase 4's 5-minute per-run budget.
+	@# k=4 still exercises every harness path; the inductive depth matters
+	@# for the safety proof, not for path enumeration.
+	@$(COV_RUN) ntc_table p2 $(ESBMC) \
+	  --std c++20 --overflow-check --interval-analysis \
+	  --k-induction --k-step 1 --max-k-step 4 \
+	  -DESBMC_FUNCTIONAL=1 -I$(REPO)/src \
+	  -- $(REPO)/src/nv/volt_mon/ntc_table.cpp \
+	     $(HARNESSES)/ntc_table_harness.cpp
+
+mctp_validator_cov_p1:
+	@mkdir -p $(COV)
+	@$(COV_RUN) mctp_validator p1 $(ESBMC) \
+	  $(LANG_FLAGS) $(MCTP_INCS) \
+	  -- $(HARNESSES)/mctp_validator_harness.cpp \
+	     $(REPO)/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp \
+	     $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
+	     $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+
+mctp_validator_cov_p2:
+	@mkdir -p $(COV)
+	@$(COV_RUN) mctp_validator p2 $(ESBMC) \
+	  --std c++20 --overflow-check --interval-analysis \
+	  --k-induction --k-step 1 --max-k-step 16 \
+	  $(MCTP_INCS) -DESBMC_FUNCTIONAL=1 \
+	  -- $(HARNESSES)/mctp_validator_harness.cpp \
+	     $(REPO)/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp \
+	     $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
+	     $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+
+nsm_bitmask_cov_p1:
+	@mkdir -p $(COV)
+	@$(COV_RUN) nsm_bitmask p1 $(ESBMC) \
+	  $(LANG_FLAGS) -I$(REPO)/src \
+	  -- $(HARNESSES)/nsm_bitmask_harness.cpp
+
+nsm_bitmask_cov_p2:
+	@mkdir -p $(COV)
+	@$(COV_RUN) nsm_bitmask p2 $(ESBMC) \
+	  $(FUNC_FLAGS) -DESBMC_FUNCTIONAL=1 -I$(REPO)/src \
+	  -- $(HARNESSES)/nsm_bitmask_harness.cpp
+
+mctp_packet_cov_p1:
+	@mkdir -p $(COV)
+	@$(COV_RUN) mctp_packet p1 $(ESBMC) \
+	  $(LANG_FLAGS) $(MCTP_INCS) \
+	  -- $(HARNESSES)/mctp_packet_harness.cpp \
+	     $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+
+mctp_packet_cov_p2:
+	@mkdir -p $(COV)
+	@$(COV_RUN) mctp_packet p2 $(ESBMC) \
+	  $(FUNC_FLAGS) $(MCTP_INCS) -DESBMC_FUNCTIONAL=1 \
+	  -- $(HARNESSES)/mctp_packet_harness.cpp \
+	     $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+
+mctp_router_cov_p1:
+	@mkdir -p $(COV)
+	@$(COV_RUN) mctp_router p1 $(ESBMC) \
+	  $(LANG_FLAGS) $(MCTP_INCS) \
+	  -- $(HARNESSES)/mctp_router_harness.cpp \
+	     $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
+	     $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+
+mctp_router_cov_p2:
+	@mkdir -p $(COV)
+	@$(COV_RUN) mctp_router p2 $(ESBMC) \
+	  $(FUNC_FLAGS) $(MCTP_INCS) -DESBMC_FUNCTIONAL=1 \
+	  -- $(HARNESSES)/mctp_router_harness.cpp \
+	     $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp \
+	     $(REPO)/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+
+nsm_type5_validate_cov_p1:
+	@mkdir -p $(COV)
+	@$(COV_RUN) nsm_type5_validate p1 $(ESBMC) \
+	  $(LANG_FLAGS) \
+	  -- $(HARNESSES)/nsm_type5_validate_harness.cpp
+
+nsm_type5_validate_cov_p2:
+	@mkdir -p $(COV)
+	@$(COV_RUN) nsm_type5_validate p2 $(ESBMC) \
+	  $(FUNC_FLAGS) -DESBMC_FUNCTIONAL=1 \
+	  -- $(HARNESSES)/nsm_type5_validate_harness.cpp
+
+COV_TARGETS := nsm_dcd_event_handlers soc_sma_filter debug_telemetry_sma \
+               pca9555 ntc_table mctp_validator nsm_bitmask mctp_packet \
+               mctp_router nsm_type5_validate
+
+cov_p1: $(addsuffix _cov_p1, $(COV_TARGETS))
+cov_p2: $(addsuffix _cov_p2, $(COV_TARGETS))
+
+cov: cov_p1 cov_p2
+	@python3 scripts/cov_aggregate.py $(COV) > $(COV)/cov_summary.tsv
+	@python3 scripts/cov_aggregate.py --markdown $(COV) > $(COV)/cov_summary.md
+	@echo "Phase 4 summary written to $(COV)/cov_summary.{tsv,md}"
+
+.PHONY: cov cov_p1 cov_p2 \
+        $(addsuffix _cov_p1, $(COV_TARGETS)) \
+        $(addsuffix _cov_p2, $(COV_TARGETS))

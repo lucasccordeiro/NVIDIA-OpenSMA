@@ -809,6 +809,235 @@ workarounds in the tree:
 5. **Stand up a CI hook** — run `make all` on every PR; verification must
    stay green and any failure must be triaged before merge.
 
+## Phase 4 — Coverage of structurally-verified modules
+
+Phase 4 measures *harness quality*, not safety. Every module's Phase 1
+and Phase 2 verdict above is unchanged. The aim of this phase is to
+expose harnesses that pass the safety proofs but exercise too few of
+the program's paths — a false-confidence failure mode for nondet-driven
+proofs where one symbolic input dominates and the others collapse to a
+concrete value.
+
+**Method**: per-`(target, phase)` re-run of each in-scope harness with
+ESBMC's `--k-path-coverage` (PathCrawler-style witnesses), falling back
+to `--branch-function-coverage` when k-path emits zero goals (the
+harness's branching lives in deeply inlined header code beyond the
+witness-depth cap). `--cov-assume-asserts` keeps assertions from
+truncating path constraints. Both runs use the **same flag profile, the
+same `--unwind`, and the same input set as the Phase 1 / Phase 2 safety
+runs** — coverage is measured over the actual proof, not a stripped
+build.
+
+**Reading the table**: `metric` says which counter ESBMC emitted;
+`reached/total` is the headline; `eff. = reached / max(1, total -
+exit_uncov)` excludes loop-exit branches that go uncovered as an
+artifact of the unwind bound (not a harness weakness). Coverage logs
+under `verification/results/cov/` will print `VERIFICATION FAILED` —
+that's a property of `--multi-property` mode (unreached coverage goals
+look like failed claims) and is **not a safety regression**.
+
+| target | phase | metric | reached | total | ratio | eff. | unwind | flags | exit_uncov |
+|---|---|---|---:|---:|---:|---:|---:|---|---:|
+| `nsm_dcd_event_handlers` | p1 | k-path    |  12 | 126 | 0.095 | 0.095 |   10  | LANG | 0 |
+| `nsm_dcd_event_handlers` | p2 | k-path    |   1 | 110 | 0.009 | 0.009 |  k≤6  | FUNC | 0 |
+| `soc_sma_filter`         | p1 | branch-fn |   4 |   4 | 1.000 | 1.000 |    4  | LANG | 0 |
+| `soc_sma_filter`         | p2 | branch-fn |   4 |   4 | 1.000 | 1.000 |  k≤6  | FUNC | 0 |
+| `debug_telemetry_sma`    | p1 | branch-fn |   4 |   4 | 1.000 | 1.000 |    4  | LANG | 0 |
+| `debug_telemetry_sma`    | p2 | branch-fn |   4 |   4 | 1.000 | 1.000 |  k≤6  | FUNC | 0 |
+| `pca9555`                | p1 | k-path    |  24 | 132 | 0.182 | 0.182 |    4  | LANG | 0 |
+| `pca9555`                | p2 | k-path    |  24 | 132 | 0.182 | 0.182 |  k≤6  | FUNC | 0 |
+| `ntc_table`              | p1 | k-path    |  11 |  22 | 0.500 | 0.500 |    9  | LANG | 0 |
+| `ntc_table`              | p2 | k-path    |  14 | 118 | 0.119 | 0.119 |  k≤4  | FUNC | 0 |
+| `mctp_validator`         | p1 | k-path    |   1 | 136 | 0.007 | 0.008 |    4  | LANG | 16 |
+| `mctp_validator`         | p2 | k-path    |   3 | 138 | 0.022 | 0.025 | k≤16  | FUNC | 16 |
+| `nsm_bitmask`            | p1 | branch-fn |  11 |  11 | 1.000 | 1.000 |    4  | LANG | 0 |
+| `nsm_bitmask`            | p2 | branch-fn |  11 |  11 | 1.000 | 1.000 |  k≤6  | FUNC | 0 |
+| `mctp_packet`            | p1 | branch-fn |   8 |  12 | 0.667 | 0.667 |    4  | LANG | 0 |
+| `mctp_packet`            | p2 | branch-fn |  10 |  12 | 0.833 | 0.833 |  k≤6  | FUNC | 0 |
+| `mctp_router`            | p1 | k-path    |   2 |   2 | 1.000 | 1.000 |    4  | LANG | 0 |
+| `mctp_router`            | p2 | k-path    |   2 |   2 | 1.000 | 1.000 |  k≤6  | FUNC | 0 |
+| `nsm_type5_validate`     | p1 | k-path    |  14 |  22 | 0.636 | 0.636 |    4  | LANG | 0 |
+| `nsm_type5_validate`     | p2 | k-path    |  14 |  22 | 0.636 | 0.636 |  k≤6  | FUNC | 0 |
+
+Per-function rollup, plus the p1 → p2 delta table, lives in
+`results/cov/cov_summary.md`; raw per-claim JSON (one record per
+covered/uncovered branch with `file/function/line/column/condition/
+status`) is at `results/cov/<target>_<phase>.json`. Counts are taken
+from the JSON, not the log: under `--k-induction` ESBMC emits a
+`[Coverage]` block per inductive step (the first one is always 0/N
+before convergence), so the JSON is the only reliable source of truth.
+
+### Findings
+
+**Path-rich harnesses (eff. ≥ 0.90 in both phases).** `soc_sma_filter`
+(4/4), `debug_telemetry_sma` (4/4), `nsm_bitmask` (11/11) all reach
+every branch-function goal under both regimes. `mctp_router` reaches
+both of its k-path witnesses but the total is only 2 — flagged by the
+`total ≤ 3` rubric as under-driven (the harness exercises the
+`set_cur_eid → get_cur_eid` round-trip on a single nondet interface;
+the 18-element `UsEnd` dispatch surface is not enumerated at the
+k-path layer). Phase 4.1 follow-up: widen the harness to drive each
+interface index explicitly.
+
+**Stable across phases (eff. ≥ 0.60 in both, no p2 collapse).**
+`mctp_packet` (0.667 → 0.833), `nsm_type5_validate` (0.636 in both),
+`pca9555` (0.182 in both). The fact that p2 ratios match (or, for
+`mctp_packet`, *exceed*) p1 confirms k-induction does not in general
+hide paths from coverage; the original "systematic p2 collapse"
+hypothesis was an artifact of reading the wrong `[Coverage]` block.
+
+**Under-driven harnesses (action needed).**
+
+- `mctp_validator` — **1/136 (p1)**, **3/138 (p2)**. The harness drives
+  one specific path through `Validator::validate()`; 134 other path
+  witnesses exist but are not reached. This is the largest finding of
+  Phase 4 and confirms the harness covers the safety property only.
+  Per-function rollup shows `validate` at 1/134 and `get_cur_eid` at
+  0/2. Recommended follow-up: split the validator harness by
+  `Control::Command` so each command path gets its own nondet driver.
+- `pca9555` — **24/132 (p1 and p2)**. The harness reaches roughly
+  one fifth of the register-mode dispatch CFG; per-function rollup
+  highlights `i2c_read` at 3/46 and `i2c_write` at 13/78. The CFG is
+  large because each register-mode case (`Input`, `Output`,
+  `Direction`, `Inversion`) generates its own witness set.
+  Recommended follow-up: add a harness variant that explicitly drives
+  each `CommandRegister` value rather than nondet-selects one.
+- `nsm_dcd_event_handlers` — **12/126 (p1)**, **1/110 (p2)**. `main`
+  rolls up at 12/126 (~10 %) under bounded run; the inductive step
+  reduces both numerator and denominator (1/110) but the harness is
+  still under-driven. Recommended follow-up: drive the AND-mask
+  combination explicitly (e.g. all-zero mask, all-ones mask, alternate
+  patterns) rather than a single nondet draw.
+- `nsm_type5_validate` — **14/22 (p1 and p2, 64 %)**. Per-function
+  rollup shows `validateFatalErrorInjectionPayload` at 6/14 — eight
+  uncovered k-path witnesses correspond to bitmask combinations not
+  yet driven by the harness. Recommended follow-up: enumerate the
+  documented {0, 1, 2} accept set explicitly.
+- `ntc_table` — **11/22 (p1, 50 %)**, **14/118 (p2, 12 %)**. The p2
+  denominator inflates because k-induction generates per-step
+  witnesses across the 166-entry binary search; the absolute count
+  reached *grows* (11 → 14) but the ratio drops as the denominator
+  grows faster. Optional follow-up: drive a representative subset of
+  the resistance-input range explicitly.
+
+**`mctp_validator` exit_uncov = 16.** Sixteen uncovered claims of the
+form `i >= <bound>` correspond to the harness's loop-exit edges under
+`--unwind 4` against the validator's per-command loops (the body
+iterates four times so the exit edge is not witnessed). The `eff.`
+ratio strips these out; the headline `ratio` keeps them for
+completeness. No other module triggers the heuristic.
+
+**`ntc_table` p2 used `--max-k-step 4`** (vs `12` in `ntc_table_func`)
+to fit the 5-minute per-run budget. Coverage runs do not need full
+inductive depth — they enumerate goals, they don't close the
+induction. Documented in the `ntc_table_cov_p2` rule.
+
+### Phase 4.1 — Harness-strengthening backlog
+
+Concrete next steps to lift the under-driven rows. Each item names the
+specific harness edit, the expected coverage improvement, and an
+effort tag (**S** ≈ 1–2 h, **M** ≈ half-day, **L** ≈ 1+ day). Listed
+in priority order — addressing P1 first plugs the biggest visible gap
+and is the most informative for the proof's overall confidence.
+
+**P1 — `mctp_validator` harness, split by `Control::Command`.** *(M)*
+The current harness drives a single nondet `Control::Command` value
+through `Validator::validate()`. ESBMC enumerates 136 k-path witnesses
+(one per command-path × header-field combination) but only one is
+reached. Action: replace the single-call harness with a
+`switch (nondet_uint() % CommandCount)` driver where each arm
+constructs the matching `Control` payload (SetEpId, GetEpId,
+GetVendorDefined, …) with appropriately-shaped nondet bytes for the
+fields each command actually reads, then calls `validate()`. Expected
+ratio: ≥ 0.70 once each command's CFG arm gets at least one driver
+path. The 16 `exit_uncov` claims will remain (loop bound, not a
+harness gap). Acceptance: `mctp_validator_cov_p1` reports
+`reached ≥ 95` (out of ~120 non-exit goals).
+
+**P2 — `pca9555` harness, drive each `CommandRegister` explicitly.** *(S–M)*
+Phase 1 reaches 24/132 (~18 %). Per-function rollup: `i2c_read` 3/46,
+`i2c_write` 13/78. The harness selects `cmd_byte` nondeterministically;
+ESBMC's k-path goals partition the CFG by `cmd_byte / 2 ∈ {Input,
+Output, Direction, Inversion}` so most witnesses live in dispatch
+arms the harness never picks. Action: add four sub-harnesses (or one
+parameterised harness driven by `nondet_uint() % 4`) that each pin
+`cmd_byte` to a specific `CommandRegister`, then issue a representative
+read and write. Expected ratio: ≥ 0.60 once each register-mode arm has
+at least one read+write driver. Acceptance: per-function rollup shows
+each of `i2c_read` / `i2c_write` ≥ 50 %.
+
+**P2 — `nsm_dcd_event_handlers` harness, enumerate bitmask patterns.** *(S)*
+Phase 1 reaches 12/126 (~10 %); a single nondet 8-byte bitmask is
+drawn per run, leaving most AND-combination paths unwitnessed. Action:
+swap the single `nondet_byte_array(...)` call for a
+`switch (nondet_uint() % K)` over five representative input shapes —
+`{all-zero, all-ones, alternating-0xAA, alternating-0x55, single-bit-set}`
+— each fed through both `on_dcd_set_current_event_srcs` and
+`on_dcd_configure_event_ack`. Expected ratio: ≥ 0.40. Acceptance:
+`main` rollup reports `reached ≥ 50` (out of 126).
+
+**P3 — `nsm_type5_validate` harness, enumerate the {0, 1, 2} accept set.** *(S)*
+Phase 1 reaches 14/22 (~64 %). `validateFatalErrorInjectionPayload`
+sits at 6/14: the harness draws nondet bytes but rarely lands on the
+documented bitmask values 0/1/2 explicitly. Action: replace the
+nondet-byte feed with a `switch (nondet_uint() % 5)` over
+`{0, 1, 2, 3, 0xFF}` so the accept paths and the rejection paths each
+get a concrete witness. Expected ratio: ≥ 0.85. Acceptance:
+`validateFatalErrorInjectionPayload` rollup ≥ 12/14.
+
+**P3 — `mctp_router` harness, drive each interface index.** *(S)*
+Reaches 2/2 but `total = 2` flags the harness as under-enumerated:
+the harness picks one nondet interface and exercises the `set_cur_eid
+→ get_cur_eid` round-trip on it. Action: wrap the round-trip in a
+loop over `interface ∈ [0, UsEnd)` so ESBMC sees a witness per
+interface. Expected: `total` rises from 2 to ≈ 18 (one per `UsEnd`
+member); ratio should stay at 1.000.
+
+**P4 — `ntc_table` harness, representative resistance subset.** *(S, optional)*
+p1 reaches 11/22 (50 %); p2 14/118 (12 %, denominator inflated by
+k-induction's per-step witnesses across the 166-entry binary search).
+The k-path witnesses correspond to specific binary-search outcomes
+the single nondet input rarely hits. Action: add a
+`switch (nondet_uint() % 6)` driver over six representative
+resistance points (table[0], table[42], table[83], table[124],
+table[165], plus one out-of-range). This is cosmetic — the safety
+proof already covers the binary-search range — and only worth doing
+if a future Phase 4.1 batch lands on the same module.
+
+**Cross-cutting — coverage as a CI advisory.** Phase 4 currently runs
+on demand. Once the P1 / P2 backlog is cleared, a CI advisory job
+(non-blocking) could re-run `make cov` on every PR and post a delta
+comment if any module's `reached/total` regresses by ≥ 5 %. Ratio
+gates remain unsuitable for blocking — `total` shifts under flag
+changes, and a coverage-only regression is rarely a real defect — but
+a delta-on-PR comment would catch the cases that matter without
+flagging noise.
+
+### Reproducing Phase 4
+
+```sh
+cd verification
+make cov_p1     # 10 Phase 1 coverage runs (~10s wall on -j4)
+make cov_p2     # 10 Phase 2 (k-induction) coverage runs (~70s wall on -j4)
+make cov        # both, plus cov_summary.{tsv,md} aggregator
+```
+
+Outputs:
+
+- `results/cov/<target>_<p1|p2>.log` — full ESBMC log, coverage
+  metric in the trailing `[Coverage]` block.
+- `results/cov/<target>_<p1|p2>.json` — per-claim JSON written by
+  `--cov-report-json`.
+- `results/cov/<target>_<p1|p2>.metric` — `k-path` or `branch-fn`,
+  whichever ESBMC populated.
+- `results/cov/<target>_<p1|p2>.cmd` — exact resolved invocation.
+- `results/cov/cov_summary.tsv` / `cov_summary.md` — aggregated by
+  `scripts/cov_aggregate.py`.
+
+The runner is `scripts/cov_run.sh <target> <phase> <esbmc> <flags…> --
+<inputs…>`; it tries `--k-path-coverage` first and falls back to
+`--branch-function-coverage` when k-path emits zero goals.
+
 ## Reproducing
 
 ```sh

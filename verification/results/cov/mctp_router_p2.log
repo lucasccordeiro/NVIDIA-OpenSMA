@@ -1,0 +1,155 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_router_harness.cpp
+Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp
+Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.788s
+Interval Analysis time: 0.013s
+--k-path-coverage: no N or --unwind specified; defaulting to N=4
+Adding k-path coverage assertions (n=4)...
+GOTO program processing time: 0.021s
+Checking base case, k = 1
+Starting Bounded Model Checking
+WARNING: no body for function here#
+WARNING: no body for function here#
+Symex completed in: 0.017s (188 assignments)
+Slicing time: 0.000s (removed 157 assignments)
+Generated 5 VCC(s), 5 remaining after simplification (31 assignments)
+No solver specified; defaulting to bitwuzla
+Slicing time: 0.000s (removed 3 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)interface::1 >= 2 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)interface::1 >= 2 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid'
+Slicing time: 0.000s (removed 3 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)interface::1 < 2 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.003s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: '(signed int)interface::1 < 2 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_router_harness.cpp line 49 column 5 function check_set_with_in_range_interface thread 0
+----------------------------------------------------
+  iface = 0 (00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_router_harness.cpp line 50 column 5 function check_set_with_in_range_interface thread 0
+----------------------------------------------------
+  eid = 0 (00000000)
+
+State 4 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 36 column 5 function set_cur_eid thread 0
+----------------------------------------------------
+  *return_value$_at$1 = ( struct pdk::mctp::platforms::RoutingTable {  struct pdk::mctp::platforms::RoutingTable::Routing { unsigned char default_eid;  struct std::array<unsigned char, 2> { unsigned char [2] elems; }cur_eid; unsigned char smb_address;  struct std::array<unsigned char, 16> { unsigned char [16] elems; }uuid; }ec;  struct pdk::mctp::platforms::RoutingTable::Routing { unsigned char default_eid;  struct std::array<unsigned char, 2> { unsigned char [2] elems; }cur_eid; unsigned char smb_address;  struct std::array<unsigned char, 16> { unsigned char [16] elems; }uuid; }mc; })(byte_update_little_endian((unsigned _ExtInt(320))({ .ec = { .default_eid = 0 } }), 1, 0))
+
+State 5 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid
+  (signed int)interface::1 < 2
+  (signed int)interface::1 >= 2
+
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)interface::1 >= 2 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: '(signed int)interface::1 >= 2 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_router_harness.cpp line 41 column 5 function check_get_with_any_interface thread 0
+----------------------------------------------------
+  iface = 254 (11111110)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid
+  (signed int)interface::1 >= 2
+  (signed int)interface::1 < 2
+
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)interface::1 < 2 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.003s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: '(signed int)interface::1 < 2 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_router_harness.cpp line 41 column 5 function check_get_with_any_interface thread 0
+----------------------------------------------------
+  iface = 0 (00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid
+  (signed int)interface::1 < 2
+
+Slicing time: 0.000s (removed 3 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Properties: 5 verified ✓ 2 passed, ✗ 3 failed
+Solver: Bitwuzla 0.8.2 • Decision procedure total time: 0.019s • Avg: 0.003s/property
+
+VERIFICATION FAILED
+
+Bug found (k = 1)
+Checking base case, k = 2
+Starting Bounded Model Checking
+WARNING: no body for function here#
+WARNING: no body for function here#
+Symex completed in: 0.017s (184 assignments)
+Slicing time: 0.000s (removed 160 assignments)
+Generated 1 VCC(s), 1 remaining after simplification (24 assignments)
+No solver specified; defaulting to bitwuzla
+Slicing time: 0.001s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Properties: 1 verified ✓ 1 passed
+Solver: Bitwuzla 0.8.2 • Decision procedure total time: 0.003s • Avg: 0.003s/property
+BMC program time: 0.021s
+Checking forward condition, k = 2
+Starting Bounded Model Checking
+WARNING: no body for function here#
+WARNING: no body for function here#
+Symex completed in: 0.017s (184 assignments)
+Slicing time: 0.000s (removed 160 assignments)
+Generated 1 VCC(s), 1 remaining after simplification (24 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+BMC program time: 0.020s
+
+Solution found by the forward condition; all states are reachable (k = 2)
+
+[Coverage]
+
+k-Path Witnesses : 2
+Reached : 2
+k-Path Coverage: 100%
+Coverage report written to cov-report.json
+ESBMC version 8.2.0 64-bit aarch64 macos

@@ -1,0 +1,46 @@
+{
+  "claims": [
+    {
+      "column": 5,
+      "condition": "function entry: c:@F@main#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp",
+      "function": "main",
+      "line": 103,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:debug_telemetry_sma_harness.cpp@aN@F@f_index_bounded#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp",
+      "function": "f_index_bounded",
+      "line": 59,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:debug_telemetry_sma_harness.cpp@aN@F@f_output_nonneg#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp",
+      "function": "f_output_nonneg",
+      "line": 84,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:debug_telemetry_sma_harness.cpp@aN@F@f_totality#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp",
+      "function": "f_totality",
+      "line": 43,
+      "status": "covered"
+    }
+  ],
+  "coverage_type": "branch-function",
+  "source_files": [
+    "/Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp"
+  ],
+  "summary": {
+    "covered": 4,
+    "percentage": 100.0,
+    "total": 4,
+    "uncovered": 0
+  }
+}

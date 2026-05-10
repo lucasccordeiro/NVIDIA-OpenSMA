@@ -1,0 +1,46 @@
+{
+  "claims": [
+    {
+      "column": 5,
+      "condition": "function entry: c:@F@main#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/soc_sma_filter_harness.cpp",
+      "function": "main",
+      "line": 106,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:soc_sma_filter_harness.cpp@aN@F@f_output_bounded#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/soc_sma_filter_harness.cpp",
+      "function": "f_output_bounded",
+      "line": 85,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:soc_sma_filter_harness.cpp@aN@F@f_steady_state#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/soc_sma_filter_harness.cpp",
+      "function": "f_steady_state",
+      "line": 60,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:soc_sma_filter_harness.cpp@aN@F@f_totality#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/soc_sma_filter_harness.cpp",
+      "function": "f_totality",
+      "line": 39,
+      "status": "covered"
+    }
+  ],
+  "coverage_type": "branch-function",
+  "source_files": [
+    "/Users/user/NVIDIA-OpenSMA/verification/harnesses/soc_sma_filter_harness.cpp"
+  ],
+  "summary": {
+    "covered": 4,
+    "percentage": 100.0,
+    "total": 4,
+    "uncovered": 0
+  }
+}

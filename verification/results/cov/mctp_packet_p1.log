@@ -1,0 +1,269 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp
+Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.836s
+Adding false assertions...
+GOTO program processing time: 0.007s
+Starting Bounded Model Checking
+✓ PASSED: 'span index out of bounds' at file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-c06e-7fae-e91c/span line 83 column 5 function operator[]
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
+Symex completed in: 0.015s (218 assignments)
+Caching time: 0.000s (removed 7 assertions)
+Slicing time: 0.001s (removed 191 assignments)
+Generated 19 VCC(s), 11 remaining after simplification (20 assignments)
+No solver specified; defaulting to bitwuzla
+Slicing time: 0.000s (removed 2 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_interface#&$@N@pdk@N@mctp@N@app@S@Packet#c# at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 43 column 5 function set_packet_interface' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_interface#&$@N@pdk@N@mctp@N@app@S@Packet#c# at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 43 column 5 function set_packet_interface'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 43 column 5 function set_packet_interface thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 43 column 5 function set_packet_interface
+  function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_interface#&$@N@pdk@N@mctp@N@app@S@Packet#c#
+  0
+
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_length#&$@N@pdk@N@mctp@N@app@S@Packet#s# at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 48 column 5 function set_packet_length' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_length#&$@N@pdk@N@mctp@N@app@S@Packet#s# at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 48 column 5 function set_packet_length'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 48 column 5 function set_packet_length thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 48 column 5 function set_packet_length
+  function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_length#&$@N@pdk@N@mctp@N@app@S@Packet#s#
+  0
+
+Slicing time: 0.000s (removed 0 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:mctp_packet_harness.cpp@aN@F@check_round_trip# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 64 column 5 function check_round_trip' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'function entry: c:mctp_packet_harness.cpp@aN@F@check_round_trip# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 64 column 5 function check_round_trip'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 64 column 5 function check_round_trip thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 64 column 5 function check_round_trip
+  function entry: c:mctp_packet_harness.cpp@aN@F@check_round_trip#
+  0
+
+Slicing time: 0.000s (removed 1 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:@N@pdk@N@mctp@N@platforms@F@get_packet_interface#&1$@N@pdk@N@mctp@N@app@S@Packet# at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 23 column 5 function get_packet_interface' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'function entry: c:@N@pdk@N@mctp@N@platforms@F@get_packet_interface#&1$@N@pdk@N@mctp@N@app@S@Packet# at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 23 column 5 function get_packet_interface'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 23 column 5 function get_packet_interface thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 23 column 5 function get_packet_interface
+  function entry: c:@N@pdk@N@mctp@N@platforms@F@get_packet_interface#&1$@N@pdk@N@mctp@N@app@S@Packet#
+  0
+
+Slicing time: 0.000s (removed 1 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:@N@pdk@N@mctp@N@platforms@F@get_packet_length#&1$@N@pdk@N@mctp@N@app@S@Packet# at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 28 column 5 function get_packet_length' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'function entry: c:@N@pdk@N@mctp@N@platforms@F@get_packet_length#&1$@N@pdk@N@mctp@N@app@S@Packet# at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 28 column 5 function get_packet_length'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 28 column 5 function get_packet_length thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 28 column 5 function get_packet_length
+  function entry: c:@N@pdk@N@mctp@N@platforms@F@get_packet_length#&1$@N@pdk@N@mctp@N@app@S@Packet#
+  0
+
+Slicing time: 0.000s (removed 1 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_interface#&$@N@pdk@N@mctp@N@app@S@Packet#c# at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 43 column 5 function set_packet_interface' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_interface#&$@N@pdk@N@mctp@N@app@S@Packet#c# at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 43 column 5 function set_packet_interface'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 43 column 5 function set_packet_interface thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 43 column 5 function set_packet_interface
+  function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_interface#&$@N@pdk@N@mctp@N@app@S@Packet#c#
+
+Slicing time: 0.000s (removed 1 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_length#&$@N@pdk@N@mctp@N@app@S@Packet#s# at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 48 column 5 function set_packet_length' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_length#&$@N@pdk@N@mctp@N@app@S@Packet#s# at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 48 column 5 function set_packet_length'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 48 column 5 function set_packet_length thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp line 48 column 5 function set_packet_length
+  function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_length#&$@N@pdk@N@mctp@N@app@S@Packet#s#
+
+Slicing time: 0.000s (removed 1 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:mctp_packet_harness.cpp@aN@F@check_get_set_helpers# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 45 column 5 function check_get_set_helpers' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'function entry: c:mctp_packet_harness.cpp@aN@F@check_get_set_helpers# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 45 column 5 function check_get_set_helpers'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 45 column 5 function check_get_set_helpers thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 45 column 5 function check_get_set_helpers
+  function entry: c:mctp_packet_harness.cpp@aN@F@check_get_set_helpers#
+  0
+
+Slicing time: 0.000s (removed 2 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:mctp_packet_harness.cpp@aN@F@check_to_span_self_consistency# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 35 column 5 function check_to_span_self_consistency' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'function entry: c:mctp_packet_harness.cpp@aN@F@check_to_span_self_consistency# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 35 column 5 function check_to_span_self_consistency'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 35 column 5 function check_to_span_self_consistency thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 35 column 5 function check_to_span_self_consistency
+  function entry: c:mctp_packet_harness.cpp@aN@F@check_to_span_self_consistency#
+  0
+
+Slicing time: 0.000s (removed 1 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 2 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 2 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 2 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:@F@main# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 86 column 5 function main' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✗ FAILED: 'function entry: c:@F@main# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 86 column 5 function main'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 86 column 5 function main thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp line 86 column 5 function main
+  function entry: c:@F@main#
+  0
+
+Slicing time: 0.000s (removed 2 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 2 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 2 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Properties: 19 verified ✓ 9 passed, ✗ 10 failed
+Solver: Bitwuzla 0.8.2 • Decision procedure total time: 0.017s • Avg: 0.000s/property
+
+[Coverage]
+
+Function Entry Points & Branches : 12
+Reached : 8
+Branch Coverage: 66.66666666666667%
+Coverage report written to cov-report.json
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit aarch64 macos

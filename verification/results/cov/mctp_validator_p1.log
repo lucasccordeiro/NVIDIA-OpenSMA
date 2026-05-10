@@ -1,0 +1,1605 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_validator_harness.cpp
+Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp
+Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp
+Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 1.174s
+Adding k-path coverage assertions (n=4)...
+GOTO program processing time: 0.075s
+Starting Bounded Model Checking
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(signed int)((unsigned char)ctl->hdr_ver) == 1' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 33 column 5 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 >= 18' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 38 column 5 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 >= 18' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 38 column 5 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 >= 18 && eid_ok' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 43 column 5 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 >= 18 && !eid_ok' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 43 column 5 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 >= 18 && eid_ok' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 43 column 5 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 >= 18 && !eid_ok' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 43 column 5 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(signed int)interface::1 >= 2' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && !eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && !eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && !eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && !eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+Unwinding loop 7 iteration 1   file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 44 column 9 function validate
+✓ PASSED: '(signed int)interface::1 >= 2' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && !eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && !eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && !eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && !eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 >= 18 && eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+✓ PASSED: '(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid' at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+Unwinding loop 7 iteration 2   file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 44 column 9 function validate
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: no body for function Packet#S
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::NsmPktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: no body for function hide#
+WARNING: no body for function Packet#S
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::VendorPktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
+WARNING: no body for function hide#
+WARNING: no body for function hide#
+WARNING: no body for function hide#
+Symex completed in: 0.174s (560 assignments)
+Caching time: 0.044s (removed 1 assertions)
+Slicing time: 0.005s (removed 390 assignments)
+Generated 165 VCC(s), 131 remaining after simplification (169 assignments)
+No solver specified; defaulting to bitwuzla
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) && (!eid_ok || (signed int)this->_eid != (signed int)ctl->dst_eid) && ((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) && (!eid_ok || (signed int)this->_eid != (signed int)ctl->dst_eid) && ((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate'
+Slicing time: 0.001s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) && (!eid_ok || (signed int)this->_eid != (signed int)ctl->dst_eid) && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) && (!eid_ok || (signed int)this->_eid != (signed int)ctl->dst_eid) && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 && (!eid_ok || (signed int)this->_eid != (signed int)ctl->dst_eid) && ((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 && (!eid_ok || (signed int)this->_eid != (signed int)ctl->dst_eid) && ((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate'
+Slicing time: 0.001s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 && (!eid_ok || (signed int)this->_eid != (signed int)ctl->dst_eid) && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 && (!eid_ok || (signed int)this->_eid != (signed int)ctl->dst_eid) && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) && eid_ok && (signed int)this->_eid == (signed int)ctl->dst_eid && ((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) && eid_ok && (signed int)this->_eid == (signed int)ctl->dst_eid && ((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate'
+Slicing time: 0.001s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) && eid_ok && (signed int)this->_eid == (signed int)ctl->dst_eid && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) && eid_ok && (signed int)this->_eid == (signed int)ctl->dst_eid && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 && eid_ok && (signed int)this->_eid == (signed int)ctl->dst_eid && ((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 && eid_ok && (signed int)this->_eid == (signed int)ctl->dst_eid && ((unsigned char)ctl->som == 0 || (unsigned char)ctl->eom != 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 && eid_ok && (signed int)this->_eid == (signed int)ctl->dst_eid && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 && eid_ok && (signed int)this->_eid == (signed int)ctl->dst_eid && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 156 column 10 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.001s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && (signed int)type != 1 && (signed int)type != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 5 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 && ((signed int)type == 1 || (signed int)type == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 123 column 17 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.001s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.001s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.001s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.001s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok && (signed int)((unsigned char)vdr->pkt_seq) == 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 118 column 17 function validate'
+Slicing time: 0.001s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.001s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.001s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.001s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.001s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.001s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.001s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 117 column 13 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.001s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.001s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '!eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type != 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (signed int)vendor_id == (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && (vdr->iana == dmtf_iana_be || vdr->iana == dmtf_iana_le) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.000s (removed 7 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (signed int)vendor_id != (signed int)NvMctpPciVendorId && (signed int)ctl->msg_type == 127 && vdr->iana != dmtf_iana_be && vdr->iana != dmtf_iana_le at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 116 column 9 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && ((signed int)type == 1 || (signed int)type == 0) && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'eid_ok && ((signed int)type == 1 || (signed int)type == 0) && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && ((signed int)type == 1 || (signed int)type == 0) && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && ((signed int)type == 1 || (signed int)type == 0) && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.001s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && ((signed int)type == 1 || (signed int)type == 0) && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '!eid_ok && ((signed int)type == 1 || (signed int)type == 0) && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && ((signed int)type == 1 || (signed int)type == 0) && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && ((signed int)type == 1 || (signed int)type == 0) && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (signed int)type != 1 && (signed int)type != 0 && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && (signed int)type != 1 && (signed int)type != 0 && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (signed int)type != 1 && (signed int)type != 0 && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && (signed int)type != 1 && (signed int)type != 0 && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.001s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (signed int)type != 1 && (signed int)type != 0 && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (signed int)type != 1 && (signed int)type != 0 && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (signed int)type != 1 && (signed int)type != 0 && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (signed int)type != 1 && (signed int)type != 0 && ((signed int)ctl->msg_type != 1 || (unsigned char)ctl->som == 0) && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.001s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && ((signed int)type == 1 || (signed int)type == 0) && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && ((signed int)type == 1 || (signed int)type == 0) && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && ((signed int)type == 1 || (signed int)type == 0) && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && ((signed int)type == 1 || (signed int)type == 0) && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && ((signed int)type == 1 || (signed int)type == 0) && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && ((signed int)type == 1 || (signed int)type == 0) && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && ((signed int)type == 1 || (signed int)type == 0) && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '!eid_ok && ((signed int)type == 1 || (signed int)type == 0) && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (signed int)type != 1 && (signed int)type != 0 && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && (signed int)type != 1 && (signed int)type != 0 && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.001s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (signed int)type != 1 && (signed int)type != 0 && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'eid_ok && (signed int)type != 1 && (signed int)type != 0 && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (signed int)type != 1 && (signed int)type != 0 && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (signed int)type != 1 && (signed int)type != 0 && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.001s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (signed int)type != 1 && (signed int)type != 0 && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (signed int)type != 1 && (signed int)type != 0 && (signed int)ctl->msg_type == 1 && (unsigned char)ctl->som != 0 && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 68 column 9 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.001s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.001s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: 'eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.001s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (unsigned long int)i >= return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '!eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && (signed int)ctl->msg_type == 0 && (unsigned char)ctl->som != 0 && (unsigned char)ctl->eom != 0 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.000s (removed 6 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '!eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '!eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid && ((signed int)ctl->msg_type != 0 || (unsigned char)ctl->som == 0 || (unsigned char)ctl->eom == 0) at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 53 column 5 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate'
+Slicing time: 0.001s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)interface::1 < 2 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)interface::1 < 2 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(unsigned int)interface::1 < 18 && eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate'
+Slicing time: 0.001s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 == (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate'
+Slicing time: 0.001s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(unsigned int)interface::1 < 18 && !eid_ok && (unsigned long int)i < return_value$_size$4 && (signed int)return_value$_get_cur_eid$5 != (signed int)ctl->dst_eid at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 45 column 13 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)interface::1 < 2 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)interface::1 < 2 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp line 26 column 5 function get_cur_eid'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 < 18 && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 43 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 < 18 && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 43 column 5 function validate'
+Slicing time: 0.001s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 < 18 && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 43 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 < 18 && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 43 column 5 function validate'
+Slicing time: 0.001s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 < 18 && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 43 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 < 18 && !eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 43 column 5 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 < 18 && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 43 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 < 18 && eid_ok at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 43 column 5 function validate'
+Slicing time: 0.001s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 < 18 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 38 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: '(signed int)((unsigned char)ctl->hdr_ver) == 1 && (unsigned int)interface::1 < 18 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 38 column 5 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 < 18 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 38 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)((unsigned char)ctl->hdr_ver) != 1 && (unsigned int)interface::1 < 18 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 38 column 5 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)((unsigned char)ctl->hdr_ver) != 1 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 33 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: '(signed int)((unsigned char)ctl->hdr_ver) != 1 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 33 column 5 function validate'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_validator_harness.cpp line 67 column 5 function check_validate_rejects_bad_hdr_ver thread 0
+----------------------------------------------------
+  pkt.hdr.hdr_ver = { .priv={ .packet_length = 0 }, .hdr={ .hdr_ver=(unsigned _ExtInt(4))((unsigned char)((signed int)check_validate_rejects_bad_hdr_ver#::$tmp::return_value$_nondet_u8$2?1!0&0#1 & 15)), .rsvd=0,
+    .dst_eid=0, .src_eid=0, .msg_tag=0, .tag_owner=0,
+    .pkt_seq=0, .eom=0, .som=0 }, .msg={ .elems = { 0 } } }
+
+State 3 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 33 column 5 function validate thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 33 column 5 function validate
+  (signed int)((unsigned char)ctl->hdr_ver) != 1
+  (signed int)((unsigned char)ctl->hdr_ver) == 1
+
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)((unsigned char)ctl->hdr_ver) == 1 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 33 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+✓ PASSED: '(signed int)((unsigned char)ctl->hdr_ver) == 1 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 33 column 5 function validate'
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)((unsigned char)ctl->hdr_ver) != 1 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 33 column 5 function validate' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: '(signed int)((unsigned char)ctl->hdr_ver) != 1 at file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 33 column 5 function validate'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 33 column 5 function validate thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp line 33 column 5 function validate
+  (signed int)((unsigned char)ctl->hdr_ver) != 1
+
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 8 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.002s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Properties: 165 verified ✓ 163 passed, ✗ 2 failed
+Solver: Bitwuzla 0.8.2 • Decision procedure total time: 0.265s • Avg: 0.001s/property
+
+[Coverage]
+
+k-Path Witnesses : 136
+Reached : 1
+k-Path Coverage: 0.7352941176470589%
+Coverage report written to cov-report.json
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit aarch64 macos

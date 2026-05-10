@@ -1,0 +1,1 @@
+/Users/user/esbmc/build/src/esbmc/esbmc --std c++20 --overflow-check --interval-analysis --k-induction --k-step 1 --max-k-step 6 -DESBMC_FUNCTIONAL=1 -I/Users/user/NVIDIA-OpenSMA/verification/stubs -I/Users/user/NVIDIA-OpenSMA/src -- /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp

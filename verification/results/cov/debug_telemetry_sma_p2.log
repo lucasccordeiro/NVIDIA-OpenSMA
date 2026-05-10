@@ -1,0 +1,258 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 1.320s
+Interval Analysis time: 0.021s
+Adding false assertions...
+GOTO program processing time: 0.033s
+Checking base case, k = 1
+Starting Bounded Model Checking
+✓ PASSED: 'undefined behavior on shift operation ashr' at file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h line 53 column 9 function evaluate
+✓ PASSED: 'undefined behavior on shift operation ashr' at file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h line 53 column 9 function evaluate
+✓ PASSED: 'undefined behavior on shift operation ashr' at file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h line 53 column 9 function evaluate
+✓ PASSED: 'undefined behavior on shift operation ashr' at file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h line 53 column 9 function evaluate
+Symex completed in: 0.040s (576 assignments)
+Slicing time: 0.002s (removed 499 assignments)
+Generated 18 VCC(s), 14 remaining after simplification (77 assignments)
+No solver specified; defaulting to bitwuzla
+Slicing time: 0.001s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.012s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+Slicing time: 0.000s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.012s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:debug_telemetry_sma_harness.cpp@aN@F@f_output_nonneg# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 84 column 5 function f_output_nonneg' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.011s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'function entry: c:debug_telemetry_sma_harness.cpp@aN@F@f_output_nonneg# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 84 column 5 function f_output_nonneg'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 84 column 5 function f_output_nonneg thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 84 column 5 function f_output_nonneg
+  function entry: c:debug_telemetry_sma_harness.cpp@aN@F@f_output_nonneg#
+  0
+
+Slicing time: 0.001s (removed 10 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.023s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+Slicing time: 0.000s (removed 13 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.023s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.000s (removed 20 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.014s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+Slicing time: 0.001s (removed 23 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.017s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:debug_telemetry_sma_harness.cpp@aN@F@f_index_bounded# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 59 column 5 function f_index_bounded' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.012s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'function entry: c:debug_telemetry_sma_harness.cpp@aN@F@f_index_bounded# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 59 column 5 function f_index_bounded'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 59 column 5 function f_index_bounded thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 59 column 5 function f_index_bounded
+  function entry: c:debug_telemetry_sma_harness.cpp@aN@F@f_index_bounded#
+  0
+
+Slicing time: 0.000s (removed 20 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.014s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+Slicing time: 0.000s (removed 23 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.015s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:debug_telemetry_sma_harness.cpp@aN@F@f_totality# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 43 column 5 function f_totality' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.012s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'function entry: c:debug_telemetry_sma_harness.cpp@aN@F@f_totality# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 43 column 5 function f_totality'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 43 column 5 function f_totality thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 43 column 5 function f_totality
+  function entry: c:debug_telemetry_sma_harness.cpp@aN@F@f_totality#
+  0
+
+Slicing time: 0.001s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'function entry: c:@F@main# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 103 column 5 function main' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.011s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'function entry: c:@F@main# at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 103 column 5 function main'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 103 column 5 function main thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp line 103 column 5 function main
+  function entry: c:@F@main#
+  0
+
+Slicing time: 0.000s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.011s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.011s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Properties: 18 verified ✓ 14 passed, ✗ 4 failed
+Solver: Bitwuzla 0.8.2 • Decision procedure total time: 0.225s • Avg: 0.012s/property
+
+VERIFICATION FAILED
+
+Bug found (k = 1)
+Checking base case, k = 2
+Starting Bounded Model Checking
+✓ PASSED: 'undefined behavior on shift operation ashr' at file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h line 53 column 9 function evaluate
+✓ PASSED: 'undefined behavior on shift operation ashr' at file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h line 53 column 9 function evaluate
+✓ PASSED: 'undefined behavior on shift operation ashr' at file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h line 53 column 9 function evaluate
+✓ PASSED: 'undefined behavior on shift operation ashr' at file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h line 53 column 9 function evaluate
+Symex completed in: 0.039s (572 assignments)
+Slicing time: 0.001s (removed 499 assignments)
+Generated 14 VCC(s), 10 remaining after simplification (73 assignments)
+No solver specified; defaulting to bitwuzla
+Slicing time: 0.000s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.012s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+Slicing time: 0.000s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.011s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 10 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.024s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.004s
+Slicing time: 0.000s (removed 13 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.023s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+Slicing time: 0.000s (removed 20 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.015s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+Slicing time: 0.000s (removed 23 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.015s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 20 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.015s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+Slicing time: 0.000s (removed 23 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.016s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.011s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.001s (removed 30 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.011s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Properties: 14 verified ✓ 14 passed
+Solver: Bitwuzla 0.8.2 • Decision procedure total time: 0.171s • Avg: 0.012s/property
+BMC program time: 0.240s
+Checking forward condition, k = 2
+Starting Bounded Model Checking
+✓ PASSED: 'undefined behavior on shift operation ashr' at file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h line 53 column 9 function evaluate
+✓ PASSED: 'undefined behavior on shift operation ashr' at file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h line 53 column 9 function evaluate
+✓ PASSED: 'undefined behavior on shift operation ashr' at file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h line 53 column 9 function evaluate
+✓ PASSED: 'undefined behavior on shift operation ashr' at file /Users/user/NVIDIA-OpenSMA/src/nv/soc_pwr_smoothing/debug_telemetry_sma_ch.h line 53 column 9 function evaluate
+Symex completed in: 0.039s (572 assignments)
+Slicing time: 0.002s (removed 499 assignments)
+Generated 14 VCC(s), 10 remaining after simplification (73 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.027s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.005s
+BMC program time: 0.073s
+
+Solution found by the forward condition; all states are reachable (k = 2)
+
+[Coverage]
+
+Function Entry Points & Branches : 4
+Reached : 4
+Branch Coverage: 100%
+Coverage report written to cov-report.json
+ESBMC version 8.2.0 64-bit aarch64 macos

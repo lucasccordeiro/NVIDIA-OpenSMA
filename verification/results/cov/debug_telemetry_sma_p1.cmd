@@ -1,0 +1,1 @@
+/Users/user/esbmc/build/src/esbmc/esbmc --std c++20 --memory-leak-check --overflow-check --unsigned-overflow-check --nan-check --unwind 4 -I/Users/user/NVIDIA-OpenSMA/verification/stubs -I/Users/user/NVIDIA-OpenSMA/src -- /Users/user/NVIDIA-OpenSMA/verification/harnesses/debug_telemetry_sma_harness.cpp

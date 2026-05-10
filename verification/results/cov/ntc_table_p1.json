@@ -1,0 +1,190 @@
+{
+  "claims": [
+    {
+      "column": 5,
+      "condition": "(signed int)tempCelsius::0 < (signed int)NtcTempMin || (signed int)tempCelsius::0 > (signed int)NtcTempMax",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_temperature_to_resistance",
+      "line": 171,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(signed int)tempCelsius::0 >= (signed int)NtcTempMin && (signed int)tempCelsius::0 <= (signed int)NtcTempMax",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_temperature_to_resistance",
+      "line": 171,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(unsigned int)voltageMv::0 < NtcVref",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "voltage_to_resistance",
+      "line": 39,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(unsigned int)voltageMv::0 < NtcVref && (signed int)voltageMv::0 != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "voltage_to_resistance",
+      "line": 43,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(unsigned int)voltageMv::0 < NtcVref && (signed int)voltageMv::0 == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "voltage_to_resistance",
+      "line": 43,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(unsigned int)voltageMv::0 >= NtcVref",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "voltage_to_resistance",
+      "line": 39,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "(unsigned int)voltageMv::0 >= NtcVref && (signed int)voltageMv::0 != 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "voltage_to_resistance",
+      "line": 43,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "(unsigned int)voltageMv::0 >= NtcVref && (signed int)voltageMv::0 == 0",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "voltage_to_resistance",
+      "line": 43,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "rScaled <= (unsigned int)(NtcResistanceTable[0])",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_resistance_to_temperature",
+      "line": 70,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_resistance_to_temperature",
+      "line": 76,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_resistance_to_temperature",
+      "line": 86,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_resistance_to_temperature",
+      "line": 86,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_resistance_to_temperature",
+      "line": 76,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_resistance_to_temperature",
+      "line": 86,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "rScaled <= (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_resistance_to_temperature",
+      "line": 86,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "rScaled > (unsigned int)(NtcResistanceTable[0])",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_resistance_to_temperature",
+      "line": 70,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_resistance_to_temperature",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_resistance_to_temperature",
+      "line": 86,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled < (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_resistance_to_temperature",
+      "line": 86,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)])",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_resistance_to_temperature",
+      "line": 76,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low < high - 1",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_resistance_to_temperature",
+      "line": 86,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "rScaled > (unsigned int)(NtcResistanceTable[0]) && rScaled >= (unsigned int)(NtcResistanceTable[(signed long int)(NtcTableSize - 1)]) && low >= high - 1",
+      "file": "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp",
+      "function": "ntc_resistance_to_temperature",
+      "line": 86,
+      "status": "uncovered"
+    }
+  ],
+  "coverage_type": "k-path",
+  "source_files": [
+    "/Users/user/NVIDIA-OpenSMA/src/nv/volt_mon/ntc_table.cpp"
+  ],
+  "summary": {
+    "covered": 11,
+    "percentage": 50.0,
+    "total": 22,
+    "uncovered": 11
+  }
+}

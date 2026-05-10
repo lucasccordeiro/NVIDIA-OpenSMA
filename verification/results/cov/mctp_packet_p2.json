@@ -1,0 +1,111 @@
+{
+  "claims": [
+    {
+      "column": 5,
+      "condition": "function entry: c:@F@main#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp",
+      "function": "main",
+      "line": 86,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:@N@pdk@N@mctp@N@platforms@F@get_packet_interface#&1$@N@pdk@N@mctp@N@app@S@Packet#",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp",
+      "function": "get_packet_interface",
+      "line": 23,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:@N@pdk@N@mctp@N@platforms@F@get_packet_interface#&1$@N@pdk@N@mctp@N@platforms@S@PrivateHeader#",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp",
+      "function": "get_packet_interface",
+      "line": 33,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:@N@pdk@N@mctp@N@platforms@F@get_packet_length#&1$@N@pdk@N@mctp@N@app@S@Packet#",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp",
+      "function": "get_packet_length",
+      "line": 28,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:@N@pdk@N@mctp@N@platforms@F@get_packet_length#&1$@N@pdk@N@mctp@N@platforms@S@PrivateHeader#",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp",
+      "function": "get_packet_length",
+      "line": 38,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_interface#&$@N@pdk@N@mctp@N@app@S@Packet#c#",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp",
+      "function": "set_packet_interface",
+      "line": 43,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_interface#&$@N@pdk@N@mctp@N@platforms@S@PrivateHeader#c#",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp",
+      "function": "set_packet_interface",
+      "line": 53,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_length#&$@N@pdk@N@mctp@N@app@S@Packet#s#",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp",
+      "function": "set_packet_length",
+      "line": 48,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:@N@pdk@N@mctp@N@platforms@F@set_packet_length#&$@N@pdk@N@mctp@N@platforms@S@PrivateHeader#s#",
+      "file": "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp",
+      "function": "set_packet_length",
+      "line": 58,
+      "status": "uncovered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:mctp_packet_harness.cpp@aN@F@check_get_set_helpers#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp",
+      "function": "check_get_set_helpers",
+      "line": 45,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:mctp_packet_harness.cpp@aN@F@check_round_trip#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp",
+      "function": "check_round_trip",
+      "line": 64,
+      "status": "covered"
+    },
+    {
+      "column": 5,
+      "condition": "function entry: c:mctp_packet_harness.cpp@aN@F@check_to_span_self_consistency#",
+      "file": "/Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp",
+      "function": "check_to_span_self_consistency",
+      "line": 35,
+      "status": "covered"
+    }
+  ],
+  "coverage_type": "branch-function",
+  "source_files": [
+    "/Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp",
+    "/Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_packet_harness.cpp"
+  ],
+  "summary": {
+    "covered": 10,
+    "percentage": 83.33333333333333,
+    "total": 12,
+    "uncovered": 2
+  }
+}

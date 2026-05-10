@@ -1,0 +1,923 @@
+Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
+Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.572s
+Adding k-path coverage assertions (n=4)...
+GOTO program processing time: 0.007s
+Starting Bounded Model Checking
+✓ PASSED: 'undefined behavior on shift operation shl' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 35 column 1
+✓ PASSED: 'undefined behavior on shift operation shl' at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 35 column 1
+Symex completed in: 0.012s (183 assignments)
+Caching time: 0.002s (removed 1 assertions)
+Slicing time: 0.001s (removed 77 assignments)
+Generated 61 VCC(s), 58 remaining after simplification (105 assignments)
+No solver specified; defaulting to bitwuzla
+Slicing time: 0.000s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 33 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)mode::0 != (signed int)ModeDisable && (signed int)mode::0 != (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✗ FAILED: '(signed int)mode::0 != (signed int)ModeDisable && (signed int)mode::0 != (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 180 column 5 function f_power_supply_mode_contract thread 0
+----------------------------------------------------
+  m = 2 (00000010)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply
+  (signed int)mode::0 != (signed int)ModeDisable && (signed int)mode::0 != (signed int)ModeEnable
+  (signed int)mode::0 == (signed int)ModeDisable || (signed int)mode::0 == (signed int)ModeEnable
+
+Slicing time: 0.000s (removed 33 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)mode::0 == (signed int)ModeDisable || (signed int)mode::0 == (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✗ FAILED: '(signed int)mode::0 == (signed int)ModeDisable || (signed int)mode::0 == (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 180 column 5 function f_power_supply_mode_contract thread 0
+----------------------------------------------------
+  m = 0 (00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply
+  (signed int)mode::0 == (signed int)ModeDisable || (signed int)mode::0 == (signed int)ModeEnable
+  (signed int)mode::0 != (signed int)ModeDisable && (signed int)mode::0 != (signed int)ModeEnable
+
+Slicing time: 0.000s (removed 34 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)device_index::0 > (signed int)highDeviceIndexPowerSupply at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✗ FAILED: '(signed int)device_index::0 > (signed int)highDeviceIndexPowerSupply at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 170 column 5 function f_power_supply_idx_contract thread 0
+----------------------------------------------------
+  d = 128 (10000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply
+  (signed int)device_index::0 > (signed int)highDeviceIndexPowerSupply
+  (signed int)device_index::0 <= (signed int)highDeviceIndexPowerSupply
+
+Slicing time: 0.000s (removed 34 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)device_index::0 <= (signed int)highDeviceIndexPowerSupply at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.003s
+✗ FAILED: '(signed int)device_index::0 <= (signed int)highDeviceIndexPowerSupply at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 170 column 5 function f_power_supply_idx_contract thread 0
+----------------------------------------------------
+  d = 0 (00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply
+  (signed int)device_index::0 <= (signed int)highDeviceIndexPowerSupply
+  (signed int)device_index::0 > (signed int)highDeviceIndexPowerSupply
+
+Slicing time: 0.000s (removed 35 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)action::0 != (signed int)ModeDisable && (signed int)action::0 != (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: '(signed int)action::0 != (signed int)ModeDisable && (signed int)action::0 != (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 160 column 5 function f_gpu_degrade_action_contract thread 0
+----------------------------------------------------
+  a = 2 (00000010)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode
+  (signed int)action::0 != (signed int)ModeDisable && (signed int)action::0 != (signed int)ModeEnable
+  (signed int)action::0 == (signed int)ModeDisable || (signed int)action::0 == (signed int)ModeEnable
+
+Slicing time: 0.000s (removed 35 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)action::0 == (signed int)ModeDisable || (signed int)action::0 == (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: '(signed int)action::0 == (signed int)ModeDisable || (signed int)action::0 == (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 160 column 5 function f_gpu_degrade_action_contract thread 0
+----------------------------------------------------
+  a = 0 (00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode
+  (signed int)action::0 == (signed int)ModeDisable || (signed int)action::0 == (signed int)ModeEnable
+  (signed int)action::0 != (signed int)ModeDisable && (signed int)action::0 != (signed int)ModeEnable
+
+Slicing time: 0.000s (removed 36 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)device_index::0 < (signed int)lowDeviceIndexGpuDegradeMode || (signed int)device_index::0 > (signed int)highDeviceIndexGpuDegradeMode at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: '(signed int)device_index::0 < (signed int)lowDeviceIndexGpuDegradeMode || (signed int)device_index::0 > (signed int)highDeviceIndexGpuDegradeMode at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 149 column 5 function f_gpu_degrade_idx_contract thread 0
+----------------------------------------------------
+  d = 0 (00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode
+  (signed int)device_index::0 < (signed int)lowDeviceIndexGpuDegradeMode || (signed int)device_index::0 > (signed int)highDeviceIndexGpuDegradeMode
+  (signed int)device_index::0 >= (signed int)lowDeviceIndexGpuDegradeMode && (signed int)device_index::0 <= (signed int)highDeviceIndexGpuDegradeMode
+
+Slicing time: 0.000s (removed 36 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)device_index::0 >= (signed int)lowDeviceIndexGpuDegradeMode && (signed int)device_index::0 <= (signed int)highDeviceIndexGpuDegradeMode at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: '(signed int)device_index::0 >= (signed int)lowDeviceIndexGpuDegradeMode && (signed int)device_index::0 <= (signed int)highDeviceIndexGpuDegradeMode at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 149 column 5 function f_gpu_degrade_idx_contract thread 0
+----------------------------------------------------
+  d = 128 (10000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode
+  (signed int)device_index::0 >= (signed int)lowDeviceIndexGpuDegradeMode && (signed int)device_index::0 <= (signed int)highDeviceIndexGpuDegradeMode
+  (signed int)device_index::0 < (signed int)lowDeviceIndexGpuDegradeMode || (signed int)device_index::0 > (signed int)highDeviceIndexGpuDegradeMode
+
+Slicing time: 0.000s (removed 34 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter <= 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'bitset_counter <= 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.000s (removed 34 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter <= 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'bitset_counter <= 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.001s (removed 34 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter > 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'bitset_counter > 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 132 column 5 function f_fatal_ei_contract thread 0
+----------------------------------------------------
+  bm = 2147483648 (10000000 00000000 00000000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 53 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+  bitset_counter = 1 (00000000 00000000 00000000 00000001)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload
+  bitset_counter > 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0
+  bitset_counter <= 0 || bitset_counter > 1 || (fault_bitmap::0 & FatalFaultEIMask) != 0
+
+Slicing time: 0.000s (removed 34 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter > 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'bitset_counter > 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 132 column 5 function f_fatal_ei_contract thread 0
+----------------------------------------------------
+  bm = 2 (00000000 00000000 00000000 00000010)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 53 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+  bitset_counter = 1 (00000000 00000000 00000000 00000001)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload
+  bitset_counter > 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0
+  bitset_counter <= 0 || bitset_counter > 1 || (fault_bitmap::0 & FatalFaultEIMask) == 0
+
+Slicing time: 0.001s (removed 34 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter <= 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'bitset_counter <= 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.000s (removed 34 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter <= 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'bitset_counter <= 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.000s (removed 34 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter > 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'bitset_counter > 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.000s (removed 34 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter > 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'bitset_counter > 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.000s (removed 35 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter <= 0 && bitset_counter > 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'bitset_counter <= 0 && bitset_counter > 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.000s (removed 35 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter <= 0 && bitset_counter <= 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'bitset_counter <= 0 && bitset_counter <= 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.001s (removed 35 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter > 0 && bitset_counter > 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'bitset_counter > 0 && bitset_counter > 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 132 column 5 function f_fatal_ei_contract thread 0
+----------------------------------------------------
+  bm = 4294967295 (11111111 11111111 11111111 11111111)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 53 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+  bitset_counter = 32 (00000000 00000000 00000000 00100000)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload
+  bitset_counter > 0 && bitset_counter > 1
+  bitset_counter <= 0 || bitset_counter <= 1
+
+Slicing time: 0.000s (removed 35 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter > 0 && bitset_counter <= 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'bitset_counter > 0 && bitset_counter <= 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 132 column 5 function f_fatal_ei_contract thread 0
+----------------------------------------------------
+  bm = 2147483648 (10000000 00000000 00000000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 53 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+  bitset_counter = 1 (00000000 00000000 00000000 00000001)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload
+  bitset_counter > 0 && bitset_counter <= 1
+  bitset_counter <= 0 || bitset_counter > 1
+
+Slicing time: 0.000s (removed 36 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter > 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'bitset_counter > 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 132 column 5 function f_fatal_ei_contract thread 0
+----------------------------------------------------
+  bm = 4294967295 (11111111 11111111 11111111 11111111)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 53 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+  bitset_counter = 32 (00000000 00000000 00000000 00100000)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload
+  bitset_counter > 0
+  bitset_counter <= 0
+
+Slicing time: 0.000s (removed 36 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter <= 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'bitset_counter <= 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 132 column 5 function f_fatal_ei_contract thread 0
+----------------------------------------------------
+  bm = 0 (00000000 00000000 00000000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 53 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+  bitset_counter = 0 (00000000 00000000 00000000 00000000)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload
+  bitset_counter <= 0
+  bitset_counter > 0
+
+Slicing time: 0.000s (removed 38 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)mode::0 != (signed int)ModeDisable && (signed int)mode::0 != (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: '(signed int)mode::0 != (signed int)ModeDisable && (signed int)mode::0 != (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 124 column 5 function f_power_supply_mode_total thread 0
+----------------------------------------------------
+  m = 255 (11111111)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply
+  (signed int)mode::0 != (signed int)ModeDisable && (signed int)mode::0 != (signed int)ModeEnable
+
+Slicing time: 0.000s (removed 38 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)mode::0 == (signed int)ModeDisable || (signed int)mode::0 == (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: '(signed int)mode::0 == (signed int)ModeDisable || (signed int)mode::0 == (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 124 column 5 function f_power_supply_mode_total thread 0
+----------------------------------------------------
+  m = 0 (00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 87 column 5 function validateModePowerSupply
+  (signed int)mode::0 == (signed int)ModeDisable || (signed int)mode::0 == (signed int)ModeEnable
+
+Slicing time: 0.001s (removed 39 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)device_index::0 > (signed int)highDeviceIndexPowerSupply at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: '(signed int)device_index::0 > (signed int)highDeviceIndexPowerSupply at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 118 column 5 function f_power_supply_idx_total thread 0
+----------------------------------------------------
+  d = 248 (11111000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply
+  (signed int)device_index::0 > (signed int)highDeviceIndexPowerSupply
+
+Slicing time: 0.000s (removed 39 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)device_index::0 <= (signed int)highDeviceIndexPowerSupply at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: '(signed int)device_index::0 <= (signed int)highDeviceIndexPowerSupply at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 118 column 5 function f_power_supply_idx_total thread 0
+----------------------------------------------------
+  d = 0 (00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 80 column 5 function validateDeviceIndexPowerSupply
+  (signed int)device_index::0 <= (signed int)highDeviceIndexPowerSupply
+
+Slicing time: 0.000s (removed 40 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)action::0 != (signed int)ModeDisable && (signed int)action::0 != (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: '(signed int)action::0 != (signed int)ModeDisable && (signed int)action::0 != (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 112 column 5 function f_gpu_degrade_action_total thread 0
+----------------------------------------------------
+  a = 255 (11111111)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode
+  (signed int)action::0 != (signed int)ModeDisable && (signed int)action::0 != (signed int)ModeEnable
+
+Slicing time: 0.000s (removed 40 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)action::0 == (signed int)ModeDisable || (signed int)action::0 == (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: '(signed int)action::0 == (signed int)ModeDisable || (signed int)action::0 == (signed int)ModeEnable at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 112 column 5 function f_gpu_degrade_action_total thread 0
+----------------------------------------------------
+  a = 0 (00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 73 column 5 function validateActionGpuDegradeMode
+  (signed int)action::0 == (signed int)ModeDisable || (signed int)action::0 == (signed int)ModeEnable
+
+Slicing time: 0.000s (removed 41 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)device_index::0 < (signed int)lowDeviceIndexGpuDegradeMode || (signed int)device_index::0 > (signed int)highDeviceIndexGpuDegradeMode at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: '(signed int)device_index::0 < (signed int)lowDeviceIndexGpuDegradeMode || (signed int)device_index::0 > (signed int)highDeviceIndexGpuDegradeMode at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 106 column 5 function f_gpu_degrade_idx_total thread 0
+----------------------------------------------------
+  d = 248 (11111000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode
+  (signed int)device_index::0 < (signed int)lowDeviceIndexGpuDegradeMode || (signed int)device_index::0 > (signed int)highDeviceIndexGpuDegradeMode
+
+Slicing time: 0.000s (removed 41 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim '(signed int)device_index::0 >= (signed int)lowDeviceIndexGpuDegradeMode && (signed int)device_index::0 <= (signed int)highDeviceIndexGpuDegradeMode at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: '(signed int)device_index::0 >= (signed int)lowDeviceIndexGpuDegradeMode && (signed int)device_index::0 <= (signed int)highDeviceIndexGpuDegradeMode at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 106 column 5 function f_gpu_degrade_idx_total thread 0
+----------------------------------------------------
+  d = 128 (10000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 65 column 5 function validateDeviceIndexGpuDegradeMode
+  (signed int)device_index::0 >= (signed int)lowDeviceIndexGpuDegradeMode && (signed int)device_index::0 <= (signed int)highDeviceIndexGpuDegradeMode
+
+Slicing time: 0.000s (removed 39 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter <= 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✓ PASSED: 'bitset_counter <= 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.000s (removed 39 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter <= 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'bitset_counter <= 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.000s (removed 39 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter > 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'bitset_counter > 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 100 column 5 function f_fatal_ei_total thread 0
+----------------------------------------------------
+  bm = 2147483648 (10000000 00000000 00000000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 53 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+  bitset_counter = 1 (00000000 00000000 00000000 00000001)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload
+  bitset_counter > 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0
+
+Slicing time: 0.000s (removed 39 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter > 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✗ FAILED: 'bitset_counter > 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 100 column 5 function f_fatal_ei_total thread 0
+----------------------------------------------------
+  bm = 2 (00000000 00000000 00000000 00000010)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 53 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+  bitset_counter = 1 (00000000 00000000 00000000 00000001)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload
+  bitset_counter > 0 && bitset_counter <= 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0
+
+Slicing time: 0.000s (removed 39 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter <= 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'bitset_counter <= 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.000s (removed 39 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter <= 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'bitset_counter <= 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.000s (removed 39 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter > 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✓ PASSED: 'bitset_counter > 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) == 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.000s (removed 39 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter > 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.002s
+✓ PASSED: 'bitset_counter > 0 && bitset_counter > 1 && (fault_bitmap::0 & FatalFaultEIMask) != 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 57 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.000s (removed 40 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter <= 0 && bitset_counter > 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'bitset_counter <= 0 && bitset_counter > 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.000s (removed 40 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter <= 0 && bitset_counter <= 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✓ PASSED: 'bitset_counter <= 0 && bitset_counter <= 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload'
+Slicing time: 0.000s (removed 40 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter > 0 && bitset_counter > 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'bitset_counter > 0 && bitset_counter > 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 100 column 5 function f_fatal_ei_total thread 0
+----------------------------------------------------
+  bm = 4294967295 (11111111 11111111 11111111 11111111)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 53 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+  bitset_counter = 32 (00000000 00000000 00000000 00100000)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload
+  bitset_counter > 0 && bitset_counter > 1
+
+Slicing time: 0.000s (removed 40 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter > 0 && bitset_counter <= 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'bitset_counter > 0 && bitset_counter <= 1 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 100 column 5 function f_fatal_ei_total thread 0
+----------------------------------------------------
+  bm = 2147483648 (10000000 00000000 00000000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 53 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+  bitset_counter = 1 (00000000 00000000 00000000 00000001)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 55 column 9 function validateFatalErrorInjectionPayload
+  bitset_counter > 0 && bitset_counter <= 1
+
+Slicing time: 0.000s (removed 41 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter > 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'bitset_counter > 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 100 column 5 function f_fatal_ei_total thread 0
+----------------------------------------------------
+  bm = 4294967295 (11111111 11111111 11111111 11111111)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 53 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+  bitset_counter = 32 (00000000 00000000 00000000 00100000)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload
+  bitset_counter > 0
+
+Slicing time: 0.000s (removed 41 assignments)
+No solver specified; defaulting to bitwuzla
+Solving claim 'bitset_counter <= 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload' with solver Bitwuzla 0.8.2
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+✗ FAILED: 'bitset_counter <= 0 at file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload'
+
+[Counterexample]
+
+
+State 1 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 100 column 5 function f_fatal_ei_total thread 0
+----------------------------------------------------
+  bm = 0 (00000000 00000000 00000000 00000000)
+
+State 2 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 53 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+  bitset_counter = 0 (00000000 00000000 00000000 00000000)
+
+State 3 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload thread 0
+----------------------------------------------------
+Violated property:
+  file /Users/user/NVIDIA-OpenSMA/verification/harnesses/nsm_type5_validate_harness.cpp line 54 column 5 function validateFatalErrorInjectionPayload
+  bitset_counter <= 0
+
+Slicing time: 0.000s (removed 37 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 38 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 39 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 40 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 41 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.001s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 42 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 43 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 44 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 45 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.001s (removed 46 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.001s
+Slicing time: 0.000s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Slicing time: 0.000s (removed 47 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.8.2
+Runtime decision procedure: 0.000s
+Properties: 61 verified ✓ 33 passed, ✗ 28 failed
+Solver: Bitwuzla 0.8.2 • Decision procedure total time: 0.096s • Avg: 0.001s/property
+
+[Coverage]
+
+k-Path Witnesses : 22
+Reached : 14
+k-Path Coverage: 63.63636363636363%
+Coverage report written to cov-report.json
+
+VERIFICATION FAILED
+ESBMC version 8.2.0 64-bit aarch64 macos

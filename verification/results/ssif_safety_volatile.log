@@ -1,0 +1,21 @@
+Target: 64-bit little-endian x86_64-unknown-linux with esbmclibc
+Parsing /openbmc/trees/NVIDIA-OpenSMA/verification/harnesses/ssif_harness.cpp
+Parsing /openbmc/trees/NVIDIA-OpenSMA/src/nv/ssif/ssif.cpp
+Converting
+Generating GOTO Program
+GOTO program creation time: 0.625s
+GOTO program processing time: 0.004s
+Starting Bounded Model Checking
+Symex completed in: 0.011s (602 assignments)
+Caching time: 0.000s (removed 5 assertions)
+Slicing time: 0.002s (removed 580 assignments)
+Generated 61 VCC(s), 16 remaining after simplification (17 assignments)
+No solver specified; defaulting to bitwuzla
+Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
+Encoding to solver time: 0.000s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.000s
+BMC program time: 0.012s
+
+VERIFICATION SUCCESSFUL
+ESBMC version 8.2.0 64-bit x86_64 linux

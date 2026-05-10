@@ -105,9 +105,10 @@ FP_INCS := -I$(REPO)/src
         nsm_event_ack_f16_neg \
         nsm_gpio_safety \
         c2c_mailbox c2c_mailbox_volatile \
+        ssif_safety ssif_safety_volatile \
         clean
-all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils soc_sma_filter debug_telemetry_sma pca9555 emc1812 tmp1075 tmp461 c2c_mailbox
-volatile: mctp_packet_volatile mctp_router_volatile mctp_validator_volatile nsm_type_2_volatile nsm_type3_volatile nsm_bitmask_volatile nsm_type5_validate_volatile telemetry_volatile spi_utils_volatile i2c_crc8_volatile literals_volatile fixed_point_volatile utils_volatile ntc_table_volatile pwr_smooth_params_volatile fru_utils_volatile soc_sma_filter_volatile debug_telemetry_sma_volatile pca9555_volatile emc1812_volatile tmp1075_volatile tmp461_volatile c2c_mailbox_volatile
+all: mctp_packet mctp_router mctp_validator nsm_type_2 nsm_type3 nsm_bitmask nsm_type5_validate telemetry spi_utils i2c_crc8 literals fixed_point utils ntc_table pwr_smooth_params fru_utils soc_sma_filter debug_telemetry_sma pca9555 emc1812 tmp1075 tmp461 c2c_mailbox ssif_safety
+volatile: mctp_packet_volatile mctp_router_volatile mctp_validator_volatile nsm_type_2_volatile nsm_type3_volatile nsm_bitmask_volatile nsm_type5_validate_volatile telemetry_volatile spi_utils_volatile i2c_crc8_volatile literals_volatile fixed_point_volatile utils_volatile ntc_table_volatile pwr_smooth_params_volatile fru_utils_volatile soc_sma_filter_volatile debug_telemetry_sma_volatile pca9555_volatile emc1812_volatile tmp1075_volatile tmp461_volatile c2c_mailbox_volatile ssif_safety_volatile
 
 # Phase 1: language-level checks on the MCTP packet parser.
 mctp_packet:
@@ -917,6 +918,49 @@ c2c_mailbox_volatile:
 	  $(HARNESSES)/c2c_mailbox_harness.cpp \
 	  $(REPO)/src/sys/mcxn556/sys/c2c_mailbox/c2c_mailbox.cpp \
 	  2>&1 | tee $(RESULTS)/c2c_mailbox_volatile.log
+
+# nv::ssif::Ssif — Phase 1 safety baseline.
+# Loops: nv::i2c::crc8 over span ≤ 34 bytes; std::copy_n ≤ 32 bytes →
+#        --unwind 36 closes both.
+# 6 [[gnu::packed]] structs (SmbusWriteBlock/ReadBlock, *PartData,
+#   Ssif::Packet) → --no-align-check (esbmc#4267 / esbmc#4281).
+# Stubs: ssif_config.h (NV_IPC_CONFIG_H), nv/common/expected.h,
+#        nv/lstp/lstp_router.h, nv/i2c/helper.h; sys/i2c/i2c_slave.h
+#        and nv/ipc/event.h extended; nv/logger/common.h+log.h extended
+#        with ssif Event entries and Logger::add_from_isr.
+# Harness uses placement-new on a memset-zeroed buffer to mirror the
+#   production static-storage zero-init invariant for Ssif's primitive
+#   members; --memory-leak-check is therefore dropped (placement-new
+#   lifetime is not closeable in ESBMC's tracker without dropping the
+#   automatic-storage backing buffer first).
+# --unsigned-overflow-check is dropped (matching utils precedent): a
+#   genuine size_t underflow on `_tx_offset - StartPartSize` exists at
+#   smbus_block_read:408 when ReadRetry has set _tx_offset ∈ [2,29]; it
+#   does not corrupt memory (block_num is uint8_t-truncated) but does
+#   corrupt the wire-format response. Tracked separately as a Phase 3
+#   negative target.
+# Expected: VERIFICATION SUCCESSFUL
+ssif_safety:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --overflow-check \
+	  --nan-check --unwind 36 \
+	  --no-align-check \
+	  -I$(STUBS) -I$(REPO)/src \
+	  -DNV_IPC_CONFIG_H=\"ssif_config.h\" \
+	  $(HARNESSES)/ssif_harness.cpp \
+	  $(REPO)/src/nv/ssif/ssif.cpp \
+	  2>&1 | tee $(RESULTS)/ssif_safety.log
+
+ssif_safety_volatile:
+	@mkdir -p $(RESULTS)
+	$(ESBMC) --std c++20 --overflow-check \
+	  --nan-check --volatile-check --unwind 36 \
+	  --no-align-check \
+	  -I$(STUBS) -I$(REPO)/src \
+	  -DNV_IPC_CONFIG_H=\"ssif_config.h\" \
+	  $(HARNESSES)/ssif_harness.cpp \
+	  $(REPO)/src/nv/ssif/ssif.cpp \
+	  2>&1 | tee $(RESULTS)/ssif_safety_volatile.log
 
 clean:
 	rm -rf $(RESULTS)

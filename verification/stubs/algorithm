@@ -1,0 +1,23 @@
+// ESBMC verification shim for <algorithm>.
+//
+// ESBMC's bundled libc++ algorithm is partial — it ships std::copy and
+// std::min/std::max but not std::copy_n, which production code in this
+// tree (ssif, mctp) relies on. Same shim pattern as <cstring>: pull in
+// the bundled header, then inject the missing template.
+#pragma once
+#include_next <algorithm>
+
+namespace std {
+
+// std::copy_n — delegate to ESBMC's bundled std::copy (which already
+// has pointer-provenance handling) rather than rolling our own
+// dereference loop. The manual `*result++ = *first++` form trips
+// ESBMC's pointer-bounds tracker on iterators derived through
+// std::bit_cast<T*>(buffer.data()) (see <bit> shim).
+template<class InputIt, class Size, class OutputIt>
+constexpr OutputIt copy_n(InputIt first, Size n, OutputIt result)
+{
+    return std::copy(first, first + n, result);
+}
+
+}  // namespace std

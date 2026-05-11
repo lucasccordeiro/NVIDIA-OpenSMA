@@ -2,7 +2,10 @@
 
 A 14-slide Beamer deck (plus 2 backup slides) briefing NVIDIA firmware
 leadership on the value of formal verification, using the confirmed F-1
-finding from `verification/REPORT.md` as the motivating example.
+finding from `verification/REPORT.md` as the motivating example. F-1 was
+[confirmed and fixed upstream by NVIDIA's OpenSMA
+team](https://github.com/NVIDIA/OpenSMA/issues/1#issuecomment-4417902007)
+on 2026-05-11.
 
 ## Audience
 

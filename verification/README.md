@@ -114,14 +114,17 @@ for the full table; brief view:
 
 Ordered by proof rigor (highest first). See `REPORT.md` for the tier definitions.
 
-- **F-1** *(Tier A — confirmed reachable, full dispatch chain proven)*:
+- **F-1** *(Tier A — confirmed reachable, full dispatch chain proven; **fixed upstream 2026-05-11**)*:
   `Validator::validate()` guards `interface >= Interface::End` (18) but
   `RoutingTable::ec.cur_eid` has size `Interface::UsEnd` (2). Any interface
   in `[2, 17]` passes validation and then OOBs in `set_cur_eid()`. ESBMC
   proves this end-to-end from a crafted Control SetEpId Request through the
   production dispatch chain (`iface_val=2`, `valid=true`, `cur_eid.at(2)`
   fails). Production builds with `-fno-exceptions`, so the OOB hits `abort()`.
-  Fix: add an `interface >= UsEnd` guard to `set_cur_eid()`.
+  Fix: add an `interface >= UsEnd` guard to `set_cur_eid()`. **NVIDIA's
+  OpenSMA team [confirmed the finding and applied the recommended
+  fix](https://github.com/NVIDIA/OpenSMA/issues/1#issuecomment-4417902007)**:
+  the bound check is now mirrored into `set_cur_eid()` upstream.
 - **F-6** *(Tier B — confirmed, production source compiled)*:
   `on_dev_cfg_set_errorInjectionMode` stores an unchecked `mode` byte — any
   value passes; no enum validation. System-level harness compiles production

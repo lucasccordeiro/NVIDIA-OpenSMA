@@ -1,11 +1,15 @@
 # Executive presentation: Formal Verification for Firmware
 
-A 14-slide Beamer deck (plus 2 backup slides) briefing NVIDIA firmware
-leadership on the value of formal verification, using the confirmed F-1
-finding from `verification/REPORT.md` as the motivating example. F-1 was
+Two Beamer decks, both centred on the F-1 finding in NVIDIA OpenSMA
+(`verification/REPORT.md`). F-1 was
 [confirmed and fixed upstream by NVIDIA's OpenSMA
 team](https://github.com/NVIDIA/OpenSMA/issues/1#issuecomment-4417902007)
 on 2026-05-11.
+
+| Deck | File | Slides | Use |
+|---|---|:-:|---|
+| Executive | `fv_f1_executive.tex` / `.pdf` | 14 + 2 backup | 10–15 min walkthrough for firmware leadership |
+| Summary   | `fv_f1_summary.tex` / `.pdf`   | 4 | Quick-scan link for social/blog/email |
 
 ## Audience
 
@@ -15,13 +19,22 @@ formal verification. Optimised for a 10–15 minute walkthrough.
 ## Build
 
 ```sh
-pdflatex fv_f1_executive.tex
-pdflatex fv_f1_executive.tex   # second pass for cross-references
+pdflatex fv_f1_executive.tex && pdflatex fv_f1_executive.tex   # 16 pages
+pdflatex fv_f1_summary.tex   && pdflatex fv_f1_summary.tex     #  4 pages
 ```
 
-Output: `fv_f1_executive.pdf` (16 pages, 16:9).
+Both decks are 16:9.
 
-## Outline
+## Summary deck outline (`fv_f1_summary.tex`)
+
+| # | Slide                                          |
+|--:|------------------------------------------------|
+| 1 | Title + report link                            |
+| 2 | The bug — a four-line view                     |
+| 3 | What ESBMC proved — in three states            |
+| 4 | Outcome — confirmed and fixed upstream         |
+
+## Executive deck outline (`fv_f1_executive.tex`)
 
 | #  | Slide                                                             |
 |---:|-------------------------------------------------------------------|

@@ -1,0 +1,246 @@
+% Short summary deck: F-1 in NVIDIA OpenSMA, found by ESBMC, fixed upstream.
+% Companion to fv_f1_executive.tex; intended for a quick scan (LinkedIn / X /
+% blog link). 4 slides, 16:9.
+%
+% Build with:  pdflatex fv_f1_summary.tex  (run twice)
+%
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{pifont}
+
+%% ---------- Theme ----------
+\usetheme{Boadilla}
+\useinnertheme{circles}
+\useoutertheme{infolines}
+
+% NVIDIA-inspired palette
+\definecolor{nvgreen}{HTML}{76B900}
+\definecolor{nvgreendark}{HTML}{4F8000}
+\definecolor{nvblack}{HTML}{1A1A1A}
+\definecolor{nvgray}{HTML}{4D4D4D}
+\definecolor{nvlight}{HTML}{F2F2F2}
+\definecolor{nvred}{HTML}{C0392B}
+\definecolor{nvblue}{HTML}{2C3E50}
+
+\setbeamercolor{structure}{fg=nvgreendark}
+\setbeamercolor{title}{fg=nvblack}
+\setbeamercolor{frametitle}{fg=white,bg=nvgreendark}
+\setbeamercolor{author}{fg=nvgray}
+\setbeamercolor{institute}{fg=nvgray}
+\setbeamercolor{date}{fg=nvgray}
+\setbeamercolor{block title}{fg=white,bg=nvgreendark}
+\setbeamercolor{block body}{bg=nvlight}
+\setbeamercolor{itemize item}{fg=nvgreendark}
+\setbeamercolor{itemize subitem}{fg=nvgreendark}
+\setbeamercolor{section in head/foot}{bg=nvblack,fg=white}
+\setbeamercolor{author in head/foot}{bg=nvgreendark,fg=white}
+\setbeamercolor{title in head/foot}{bg=nvblack,fg=white}
+\setbeamercolor{date in head/foot}{bg=nvgreendark,fg=white}
+
+\setbeamertemplate{navigation symbols}{}
+\hypersetup{colorlinks=true,urlcolor=nvgreendark,linkcolor=nvgreendark}
+\setbeamertemplate{itemize item}{\textbullet}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{title}{series=\bfseries,size=\LARGE}
+
+%% ---------- Code listing style ----------
+\lstdefinestyle{cppstyle}{
+  language=C++,
+  basicstyle=\ttfamily\scriptsize,
+  keywordstyle=\color{nvgreendark}\bfseries,
+  commentstyle=\color{nvgray}\itshape,
+  stringstyle=\color{nvblue},
+  numbers=none,
+  showstringspaces=false,
+  breaklines=true,
+  frame=single,
+  rulecolor=\color{nvgray!30},
+  backgroundcolor=\color{nvlight},
+  xleftmargin=0.4em,
+  xrightmargin=0.4em,
+  aboveskip=0.4em,
+  belowskip=0.4em,
+}
+\lstset{style=cppstyle}
+
+%% ---------- Helper macros ----------
+\newcommand{\cmark}{\textcolor{nvgreendark}{\ding{51}}}
+\newcommand{\xmark}{\textcolor{nvred}{\ding{55}}}
+\newcommand{\hil}[1]{\textbf{\textcolor{nvgreendark}{#1}}}
+\newcommand{\bad}[1]{\textbf{\textcolor{nvred}{#1}}}
+
+%% ---------- Title metadata ----------
+\title[FV in NVIDIA OpenSMA]{Formal Verification finds and fixes\\an MCTP control-path bug in NVIDIA OpenSMA}
+\subtitle{ESBMC counterexample, confirmed and fixed upstream}
+\author[Cordeiro]{Lucas C. Cordeiro}
+\institute[Univ.\ of Manchester]{University of Manchester \\ \textit{lucas.cordeiro@manchester.ac.uk}}
+\date{May 2026}
+
+\begin{document}
+
+%% =================================================================
+\begin{frame}
+  \titlepage
+  \vspace{-1.0em}
+  \begin{center}
+    \scriptsize\textcolor{nvgray}{Full report: \texttt{verification/REPORT.md}
+    \textbar{} Issue:
+    \href{https://github.com/NVIDIA/OpenSMA/issues/1}{NVIDIA/OpenSMA\#1}}
+  \end{center}
+\end{frame}
+
+%% =================================================================
+\begin{frame}[fragile]{The bug --- a four-line view}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.52\textwidth}
+\begin{lstlisting}[basicstyle=\ttfamily\tiny]
+// pdk-mctp-platforms-router-plat.cpp:34
+void set_cur_eid(RoutingTable& rt,
+                 Packet::InterfaceType iface,
+                 uint8_t eid)
+{
+    rt.ec.cur_eid.at(iface) = eid;  // (*)
+}
+\end{lstlisting}
+
+{\tiny\textcolor{nvgray}{Source: OpenSMA, \textcopyright{} NVIDIA Corporation,
+Apache-2.0.}}
+
+\vspace{0.4em}
+\scriptsize
+\textbf{The asymmetric guard}
+\begin{itemize}\setlength\itemsep{0.1em}
+  \item \texttt{cur\_eid} is sized \texttt{UsEnd = 2}.
+  \item Validator rejects only \texttt{iface $\geq$ End = 18}.
+  \item Any \texttt{iface $\in [2, 17]$} \hil{passes validation},
+        then aborts at (\textasteriskcentered).
+  \item Sibling \texttt{get\_cur\_eid()} \emph{has} the guard;
+        \bad{\texttt{set\_cur\_eid()} did not.}
+\end{itemize}
+    \end{column}
+
+    \begin{column}{0.46\textwidth}
+      \begin{block}{Behaviour under production flags}
+        \scriptsize
+        With \texttt{-fno-exceptions -fno-rtti},
+        \texttt{std::array::at(OOB)} calls \hil{\texttt{abort()}} ---
+        the firmware terminates (SIGABRT, exit 134).
+      \end{block}
+
+      \vspace{0.3em}
+      \begin{block}{Trigger}
+        \scriptsize
+        An MCTP Control SetEpId Request whose
+        \texttt{packet\_interface} falls in the gap drives the
+        production dispatch path into the OOB access.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%% =================================================================
+\begin{frame}[fragile]{What ESBMC proved --- in three states}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.46\textwidth}
+      \footnotesize
+      \textbf{Setup}
+      \begin{itemize}\setlength\itemsep{0.1em}
+        \scriptsize
+        \item Harness builds a Control SetEpId Request; 9 header
+              fields constrained to pass \texttt{Validator::validate()}.
+        \item \texttt{iface\_val} left \emph{nondeterministic} in $[2, 18)$.
+        \item Calls production \texttt{on\_set\_endpoint\_id()} unmodified.
+      \end{itemize}
+
+      \vspace{0.4em}
+      \textbf{Solver result}
+      \begin{itemize}\setlength\itemsep{0.1em}
+        \scriptsize
+        \item 275 verification conditions; Bitwuzla returns SAT in
+              \hil{$<$ 0.01\,s}.
+      \end{itemize}
+
+      \vspace{0.4em}
+      \textbf{Production confirmation}
+      \begin{itemize}\setlength\itemsep{0.1em}
+        \scriptsize
+        \item ESBMC-generated test case compiled and run natively
+              $\Rightarrow$ \hil{SIGABRT (signal 6)}.
+      \end{itemize}
+    \end{column}
+
+    \begin{column}{0.52\textwidth}
+\begin{lstlisting}[basicstyle=\ttfamily\tiny,language={}]
+ESBMC counterexample (abridged):
+
+  State 5   iface_val = 2
+            (passes assume >= UsEnd && < End)
+
+  State 9   valid = 1
+            (Validator::validate() returns true)
+
+  State 10  Violated property:
+            std::array::at out of range
+            [i::0 < 2 fails]
+            at set_cur_eid()
+            -> cur_eid.at(2) on size-2 array
+
+VERIFICATION FAILED
+\end{lstlisting}
+
+      \vspace{0.2em}
+      {\scriptsize End-to-end proof from validator entry through
+      dispatch to OOB write --- \hil{no code modification, no manual
+      test input.}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%% =================================================================
+\begin{frame}{Outcome --- confirmed and fixed upstream}
+  \begin{block}{Disclosure timeline}
+    \footnotesize
+    \begin{itemize}\setlength\itemsep{0.15em}
+      \item Reported to NVIDIA as
+            \href{https://github.com/NVIDIA/OpenSMA/issues/1}{\hil{NVIDIA/OpenSMA\#1}}
+            with the ESBMC counterexample and a one-line fix.
+      \item NVIDIA's OpenSMA team acknowledged the report and tracked the
+            fix internally.
+      \item \hil{Fix applied upstream} (2026-05-11): the
+            \texttt{interface\,$\geq$\,UsEnd} bound check is now mirrored
+            into \texttt{set\_cur\_eid()}, closing the asymmetric-guard gap.
+    \end{itemize}
+  \end{block}
+
+  \vspace{0.3em}
+  \begin{block}{Scope and caveats}
+    \scriptsize
+    The verification covered 22 selected modules of OpenSMA
+    ($\sim$7{,}900\,LOC of first-party C++); not the full codebase, and
+    not vendored components (\texttt{libspdm}, FreeRTOS, MCU SDK glue).
+    Findings beyond F-1 are documented in the full report; some are
+    latent (no current packet-driven path) and recorded as such.
+    \hil{No claims of broad firmware insecurity are made or implied.}
+  \end{block}
+
+  \vspace{0.3em}
+  \centering
+  \footnotesize
+  Full report and reproducers:
+  \href{https://github.com/lucasccordeiro/NVIDIA-OpenSMA}{\texttt{github.com/lucasccordeiro/NVIDIA-OpenSMA}}
+  \\[0.2em]
+  ESBMC: \href{https://github.com/esbmc/esbmc}{\texttt{github.com/esbmc/esbmc}}
+
+  \vspace{0.5em}
+  {\tiny\textcolor{nvgray}{Independent research, University of Manchester.
+  NVIDIA, OpenSMA, and related marks are trademarks of NVIDIA Corporation;
+  no affiliation or endorsement implied.}}
+\end{frame}
+
+\end{document}

@@ -6,9 +6,13 @@
 
 #include "base.h"
 
+__ESBMC_contract
 bool libspdm_consttime_is_mem_equal(const void *destination_buffer,
                                     const void *source_buffer, size_t length)
 {
+    __ESBMC_requires(length == 0 || (destination_buffer != 0 && source_buffer != 0));
+    __ESBMC_ensures(length != 0 || __ESBMC_return_value == 1);
+    __ESBMC_assigns();
     const volatile uint8_t *pointer_dst;
     const volatile uint8_t *pointer_src;
     uint8_t delta;
@@ -16,6 +20,7 @@ bool libspdm_consttime_is_mem_equal(const void *destination_buffer,
     pointer_dst = (const uint8_t *)destination_buffer;
     pointer_src = (const uint8_t *)source_buffer;
     delta = 0;
+    // __contractor_loop: libspdm_consttime_is_mem_equal:0
     while ((length-- != 0)) {
         delta |= *(pointer_dst++) ^ *(pointer_src++);
     }

@@ -7,9 +7,12 @@
 #include "library/debuglib.h"
 #include "hal/library/memlib.h"
 
+__ESBMC_contract
 void libspdm_copy_mem(void *dst_buf, size_t dst_len,
                       const void *src_buf, size_t src_len)
 {
+    __ESBMC_requires(1);
+    __ESBMC_assigns();
     volatile uint8_t* dst;
     const volatile uint8_t* src;
 
@@ -26,6 +29,7 @@ void libspdm_copy_mem(void *dst_buf, size_t dst_len,
         LIBSPDM_ASSERT(0);
     }
 
+    // __contractor_loop: libspdm_copy_mem:0
     while (src_len-- != 0) {
         *(dst++) = *(src++);
     }

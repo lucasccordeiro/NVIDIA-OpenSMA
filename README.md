@@ -1,8 +1,6 @@
 # OpenSMA #
 Instructions to build helloworld FW
 
-test
-
 ## Prepare Environment ##
 Use Ubuntu 24.04
 1. Install package

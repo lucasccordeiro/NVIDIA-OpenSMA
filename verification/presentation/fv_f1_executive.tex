@@ -104,7 +104,8 @@
     using the open-source ESBMC model checker. The tool \hil{produced a counterexample}
     showing one MCTP control path can be driven into an out-of-bounds array access
     within the harness's modelled bound (\bad{F-1}, filed as
-    \href{https://github.com/NVIDIA/OpenSMA/issues/1}{NVIDIA/OpenSMA\#1}).
+    \href{https://github.com/NVIDIA/OpenSMA/issues/1}{NVIDIA/OpenSMA\#1};
+    \hil{confirmed and fixed upstream by NVIDIA}).
     Seven further findings were confirmed (three reachable, five latent). All in \hil{sub-second proofs},
     with \hil{no test cases written by hand}.
   \end{block}
@@ -178,8 +179,9 @@ void set_cur_eid(RoutingTable& rt,
         An MCTP Control SetEpId Request whose \texttt{packet\_interface}
         falls in the gap drives the dispatch path into the OOB access.
         Reported upstream as
-        \href{https://github.com/NVIDIA/OpenSMA/issues/1}{\hil{NVIDIA/OpenSMA\#1}}
-        and pending triage.
+        \href{https://github.com/NVIDIA/OpenSMA/issues/1}{\hil{NVIDIA/OpenSMA\#1}};
+        \hil{confirmed and fixed by NVIDIA} (2026-05-11) --- the bound
+        check is now mirrored into \texttt{set\_cur\_eid()} as recommended.
       \end{block}
     \end{column}
   \end{columns}
@@ -472,7 +474,8 @@ VERIFICATION FAILED
         \tiny
         \item \bad{Confirmed reachable (3):}
               \bad{F-1} abort path in MCTP dispatch
-              (\href{https://github.com/NVIDIA/OpenSMA/issues/1}{\hil{NVIDIA/OpenSMA\#1}});
+              (\href{https://github.com/NVIDIA/OpenSMA/issues/1}{\hil{NVIDIA/OpenSMA\#1}}
+              --- \hil{confirmed and fixed upstream by NVIDIA, 2026-05-11});
               F-6 unchecked \texttt{mode} byte stored in error-injection
               config; F-7 dirty \texttt{portRecoveryResp} written before
               validation.
@@ -774,7 +777,8 @@ VERIFICATION FAILED
     \begin{enumerate}
       \item Formal verification \hil{produced a counterexample for a real
             abort path} in OpenSMA that manual review and unit testing
-            had missed (filed upstream for triage).
+            had missed --- \hil{confirmed and fixed upstream by NVIDIA}
+            (\href{https://github.com/NVIDIA/OpenSMA/issues/1}{NVIDIA/OpenSMA\#1}).
       \item It did so in \hil{seconds}, on a laptop, with \hil{open-source
             tooling} and \hil{no production code changes}.
       \item Adopting it as a CI gate is a \hil{low-cost, high-leverage}

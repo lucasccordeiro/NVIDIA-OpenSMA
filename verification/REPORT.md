@@ -1,9 +1,17 @@
 # OpenSMA ESBMC Verification — Initial Report
 
-**Date**: 2026-04-25 (updated 2026-05-04; F-16 added 2026-05-04)
+**Date**: 2026-04-25 (updated 2026-05-04; F-16 added 2026-05-04; F-1 upstream-fix confirmation added 2026-05-11)
 **Tool**: ESBMC 8.2.0 (aarch64-macos)
 **Scope**: bounded model checking of selected modules in
 [NVIDIA/OpenSMA](https://github.com/NVIDIA/OpenSMA)
+
+> **Upstream status (2026-05-11)** — NVIDIA's OpenSMA team has
+> [confirmed F-1 and applied the recommended
+> fix](https://github.com/NVIDIA/OpenSMA/issues/1#issuecomment-4417902007):
+> the `interface >= UsEnd` bound check is now mirrored into `set_cur_eid()`,
+> closing the asymmetric-guard gap end-to-end. NVIDIA explicitly acknowledged
+> the ESBMC counterexample and the work of the ESBMC team at the University
+> of Manchester.
 
 ## TL;DR
 
@@ -191,6 +199,20 @@ routing_table.ec.cur_eid.at(interface) = eid;
 
 Alternatively, tighten `Validator::validate()` to reject `interface >=
 Interface::UsEnd` instead of `>= Interface::End`.
+
+**Upstream status (resolved, 2026-05-11)**: NVIDIA's OpenSMA team
+[confirmed the finding and applied the
+fix](https://github.com/NVIDIA/OpenSMA/issues/1#issuecomment-4417902007),
+mirroring the `interface >= UsEnd` bound check into `set_cur_eid()`. The
+asymmetric-guard gap between `get_cur_eid()` and `set_cur_eid()` is now
+closed. NVIDIA's response (collaborator `garlin-nv`):
+
+> Thanks for the careful analysis and the ESBMC counterexample. The bound
+> check is now mirrored into `set_cur_eid()` as you suggested. Really
+> appreciate the work from the ESBMC team at the University of Manchester.
+
+An earlier reply from `bechiang-nv` acknowledged the report and confirmed
+the fix was being tracked internally before landing.
 
 ### F-6 — `on_dev_cfg_set_errorInjectionMode` stores unchecked mode byte *(Tier B)*
 

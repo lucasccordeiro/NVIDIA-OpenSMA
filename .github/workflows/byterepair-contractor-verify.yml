@@ -1,0 +1,45 @@
+# byterepair-integration: contractor-verify v1
+# byterepair-config:
+# bypass_simple_signatures: auto
+# focus: ''
+# k_induction: 'false'
+# property: ''
+# target: ''
+# target_recursive: ''
+# unwind: ''
+# verbose: 'false'
+
+name: ByteRepair / Contractor Verify
+'on':
+  pull_request: {}
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Add to PATH
+      run: echo "$HOME/.local/esbmc/bin" >> "$GITHUB_PATH"
+    - name: Install Contractor
+      run: pipx install contractor
+    - name: Install ESBMC
+      run: 'set -euo pipefail
+
+        ESBMC_VERSION="${ESBMC_VERSION:-v7.6.1}"
+
+        echo "Installing ESBMC $ESBMC_VERSION"
+
+        mkdir -p "$HOME/.local/esbmc"
+
+        curl -fsSL https://github.com/esbmc/esbmc/releases/download/"$ESBMC_VERSION"/ESBMC-Linux.sh
+        -o /tmp/esbmc-install.sh
+
+        bash /tmp/esbmc-install.sh --skip-license --prefix="$HOME/.local/esbmc"
+
+        '
+    - name: Run Contractor Verify
+      run: contractor verify . --bypass-simple-signatures auto

@@ -1,0 +1,101 @@
+// ESBMC verification overlay for <array> — F-1 reproducibility shim.
+//
+// ESBMC 8.3.0 made std::array accessors constexpr (commit 6121c894ed,
+// "[cpp] make std::array accessors constexpr") and removed the explicit
+// __ESBMC_assert(index < N, "Index out of bounds") that previously lived
+// inside operator[] and at(). The comment on that commit notes the
+// underlying C-array bounds check still fires for OOB access — that is
+// true when the array is the parent object, but NOT when the array is a
+// member of a larger struct: ESBMC's dereference check then sees the
+// access fall within the containing struct's footprint and does not
+// trigger. This regresses the F-1 finding, whose witness path threads an
+// OOB write through `routing_table.ec.cur_eid.at(iface)` — a member of a
+// packed parent struct with ~22 trailing bytes that absorbs indices in
+// [UsEnd, UsEnd+22).
+//
+// This overlay restores the explicit per-element bounds assertion on the
+// non-const accessors only, while keeping operator[] and at() callable as
+// constexpr-compatible. We guard the overlay on ESBMC_ARRAY so the
+// bundled <array> header skips itself when this overlay is included
+// first.
+#pragma once
+
+#include "cstddef"
+#include "iterator"
+#include "tuple"
+#include "utility"
+
+#if __cplusplus >= 201703L
+#  define __ESBMC_ARRAY_CONSTEXPR_17 constexpr
+#else
+#  define __ESBMC_ARRAY_CONSTEXPR_17
+#endif
+
+#ifndef ESBMC_ARRAY
+#define ESBMC_ARRAY
+
+namespace std
+{
+template <class T, size_t N>
+struct array
+{
+    typedef T                                    value_type;
+    typedef size_t                               size_type;
+    typedef ptrdiff_t                            difference_type;
+    typedef value_type&                          reference;
+    typedef const value_type&                    const_reference;
+    typedef value_type*                          pointer;
+    typedef const value_type*                    const_pointer;
+    typedef std::reverse_iterator<pointer>       reverse_iterator;
+    typedef std::reverse_iterator<const_pointer> const_reverse_iterator;
+
+    value_type elems[N];
+
+    __ESBMC_ARRAY_CONSTEXPR_17 reference operator[](size_type index)
+    {
+        __ESBMC_assert(index < N, "Index out of bounds");
+        return elems[index];
+    }
+
+    constexpr const_reference operator[](size_type index) const
+    {
+        return elems[index];
+    }
+
+    __ESBMC_ARRAY_CONSTEXPR_17 reference at(size_type index)
+    {
+        __ESBMC_assert(index < N, "Index out of bounds");
+        return elems[index];
+    }
+
+    constexpr const_reference at(size_type index) const
+    {
+        return elems[index];
+    }
+
+    constexpr size_type size() const noexcept     { return N; }
+    constexpr bool      empty() const noexcept    { return N == 0; }
+    constexpr size_type max_size() const noexcept { return N; }
+
+    __ESBMC_ARRAY_CONSTEXPR_17 reference       front()       { return elems[0]; }
+    constexpr const_reference                  front() const { return elems[0]; }
+    __ESBMC_ARRAY_CONSTEXPR_17 reference       back()        { return elems[N - 1]; }
+    constexpr const_reference                  back() const  { return elems[N - 1]; }
+    __ESBMC_ARRAY_CONSTEXPR_17 pointer         data() noexcept       { return elems; }
+    constexpr const_pointer                    data() const noexcept { return elems; }
+
+    __ESBMC_ARRAY_CONSTEXPR_17 pointer       begin() noexcept       { return elems; }
+    constexpr const_pointer                  begin() const noexcept { return elems; }
+    __ESBMC_ARRAY_CONSTEXPR_17 pointer       end() noexcept         { return elems + N; }
+    constexpr const_pointer                  end() const noexcept   { return elems + N; }
+    constexpr const_pointer                  cbegin() const noexcept{ return elems; }
+    constexpr const_pointer                  cend() const noexcept  { return elems + N; }
+
+    __ESBMC_ARRAY_CONSTEXPR_17 void fill(const value_type& v)
+    {
+        for (size_type i = 0; i < N; ++i) elems[i] = v;
+    }
+};
+}  // namespace std
+
+#endif  // ESBMC_ARRAY

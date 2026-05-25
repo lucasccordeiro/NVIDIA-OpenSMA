@@ -1,13 +1,29 @@
 Target: 64-bit little-endian aarch64-unknown-macos with esbmclibc
 Parsing /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-validator.cpp
+In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:31:
+In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-control.h:20:
+/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:37:1: warning: template parameter lists have a different number of parameters (3 vs 2) [-Wodr]
+   37 | template<class To, class From>
+      | ^
+/var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-f6df-9a26-7045/bit:21:1: note: template parameter list also declared here
+   21 | template <
+      | ^
+In file included from /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_harness.cpp:31:
+In file included from /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/app/pdk-mctp-app-control.h:20:
+/Users/user/NVIDIA-OpenSMA/verification/stubs/bit:37:1: warning: template parameter lists have a different number of parameters (3 vs 2) [-Wodr]
+   37 | template<class To, class From>
+      | ^
+/var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-f6df-9a26-7045/bit:37:1: note: template parameter list also declared here
+   37 | template <
+      | ^
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-control.cpp
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-router-plat.cpp
 Parsing /Users/user/NVIDIA-OpenSMA/corepdk/modules/mctp-cpp/src/platforms/x86/pdk-mctp-platforms-packet-plat.cpp
 Converting
 Generating GOTO Program
-GOTO program creation time: 1.280s
-GOTO program processing time: 0.011s
+GOTO program creation time: 1.245s
+GOTO program processing time: 0.012s
 Starting Bounded Model Checking
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
@@ -101,15 +117,15 @@ WARNING: not checking alignment for access to packed struct struct pdk::mctp::pl
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::TransportHeader
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::app::Control::PktReq
 WARNING: not checking alignment for access to packed struct struct pdk::mctp::platforms::PrivateHeader
-Symex completed in: 0.202s (659 assignments)
+Symex completed in: 0.201s (667 assignments)
 Caching time: 0.001s (removed 1 assertions)
-Slicing time: 0.002s (removed 545 assignments)
-Generated 496 VCC(s), 16 remaining after simplification (113 assignments)
+Slicing time: 0.002s (removed 555 assignments)
+Generated 451 VCC(s), 14 remaining after simplification (111 assignments)
 No solver specified; defaulting to bitwuzla
 Encoding remaining VCC(s) using bit-vector/floating-point arithmetic
-Encoding to solver time: 0.008s
-Solving with solver Bitwuzla 0.8.2
-Runtime decision procedure: 0.003s
+Encoding to solver time: 0.007s
+Solving with solver Bitwuzla 0.9.0
+Runtime decision procedure: 0.002s
 Building error trace
 
 [Counterexample]
@@ -135,13 +151,13 @@ State 9 file /Users/user/NVIDIA-OpenSMA/verification/harnesses/mctp_dispatch_har
 ----------------------------------------------------
   valid = 1
 
-State 10 file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-1fa3-5689-8b55/array line 40 column 5 function at thread 0
+State 10 file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 67 column 9 function at thread 0
 ----------------------------------------------------
 Violated property:
-  file /var/folders/mg/vqk59x310077jp5kh68mrt_00000gp/T/esbmc-cpp-headers-1fa3-5689-8b55/array line 40 column 5 function at
+  file /Users/user/NVIDIA-OpenSMA/verification/stubs/array line 67 column 9 function at
   Index out of bounds
   index::0 < 2
 
 
 VERIFICATION FAILED
-ESBMC version 8.2.0 64-bit aarch64 macos
+ESBMC version 8.3.0 64-bit aarch64 macos

@@ -17,9 +17,13 @@
 // member-array offsets. Non-pointer destinations defer to
 // __builtin_bit_cast for memcpy semantics.
 #pragma once
-#define ESBMC_BIT 1
 
 #include <type_traits>
+
+// Skip the overlay if ESBMC's bundled <bit> already provides a
+// const-correct bit_cast (ESBMC >= 8.3.0 ships the fix for #4191/#4247).
+#ifndef ESBMC_BIT
+#define ESBMC_BIT 1
 
 namespace std {
 
@@ -34,7 +38,7 @@ template<class To, class From>
 constexpr To bit_cast(const From& src) noexcept
 {
     if constexpr (std::is_pointer_v<To> && std::is_pointer_v<From>) {
-        return reinterpret_cast<To>(src);
+        return reinterpret_cast<To>(const_cast<void*>(static_cast<const void*>(src)));
     }
     else {
         static_assert(sizeof(To) == sizeof(From),
@@ -44,3 +48,4 @@ constexpr To bit_cast(const From& src) noexcept
 }
 
 }  // namespace std
+#endif  // ESBMC_BIT
